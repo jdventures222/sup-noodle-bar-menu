@@ -472,6 +472,34 @@
               ]
             }
           ],
+          "addons": [
+            {
+              "id": "lomofriedegg",
+              "prices": [
+                {
+                  "p": 2.5,
+                  "plus": true
+                }
+              ],
+              "contains": [
+                "egg"
+              ],
+              "likely": []
+            },
+            {
+              "id": "lomosoftegg",
+              "prices": [
+                {
+                  "p": 2,
+                  "plus": true
+                }
+              ],
+              "contains": [
+                "egg"
+              ],
+              "likely": []
+            }
+          ],
           "contains": [
             "milk",
             "egg",
@@ -514,6 +542,34 @@
               "p": 17
             }
           ],
+          "addons": [
+            {
+              "id": "lomofriedegg",
+              "prices": [
+                {
+                  "p": 2.5,
+                  "plus": true
+                }
+              ],
+              "contains": [
+                "egg"
+              ],
+              "likely": []
+            },
+            {
+              "id": "lomosoftegg",
+              "prices": [
+                {
+                  "p": 2,
+                  "plus": true
+                }
+              ],
+              "contains": [
+                "egg"
+              ],
+              "likely": []
+            }
+          ],
           "contains": [
             "milk",
             "egg",
@@ -539,6 +595,34 @@
             {
               "k": "filet",
               "p": 24.5
+            }
+          ],
+          "addons": [
+            {
+              "id": "lomofriedegg",
+              "prices": [
+                {
+                  "p": 2.5,
+                  "plus": true
+                }
+              ],
+              "contains": [
+                "egg"
+              ],
+              "likely": []
+            },
+            {
+              "id": "lomosoftegg",
+              "prices": [
+                {
+                  "p": 2,
+                  "plus": true
+                }
+              ],
+              "contains": [
+                "egg"
+              ],
+              "likely": []
             }
           ],
           "contains": [

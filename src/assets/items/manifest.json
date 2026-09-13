@@ -41,12 +41,13 @@
     "rights": "Restaurant-supplied menu photography from SUP Noodle Bar's own Grubhub storefront. Confirm with Kei Concepts before wide distribution."
   },
   "parmfries": {
-    "source": "restaurant-supplied",
-    "location": "Irvine (Restaurantji listing)",
+    "source": "restaurant-studio",
+    "location": "Irvine (Grubhub storefront)",
     "dish": "Parmesan Fries",
-    "note": "SUP's Grubhub storefront reuses the Truffle Fries photo for Parmesan Fries, so this listing photo was used instead.",
-    "itemPage": "https://www.restaurantji.com/ca/irvine/sup-noodle-bar-/",
-    "rights": "Restaurant listing photo. Confirm with Kei Concepts before wide distribution."
+    "note": "SUP's storefront serves this same frame for both Parmesan Fries and Truffle Fries, so the two rows show the same photo. James chose the official red-background image over a distinct white-background listing photo.",
+    "photoUrl": "https://media-cdn.grubhub.com/image/upload/tyg4agkkpdfkctuw8tpl",
+    "itemPage": "https://www.grubhub.com/restaurant/sup-noodle-bar-14370-culver-dr-h-irvine/2179680",
+    "rights": "Restaurant-supplied menu photography from SUP Noodle Bar's own Grubhub storefront. Confirm with Kei Concepts before wide distribution."
   },
   "wings": {
     "source": "restaurant-studio",
