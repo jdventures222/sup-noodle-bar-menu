@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<title>SUP Menu QR card</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&display=swap">
+<style>
+  @page { size: 5in 7in; margin: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Barlow Condensed", "Helvetica Neue", Arial, sans-serif; }
+  .card { width: 5in; height: 7in; padding: 0.42in 0.4in 0.36in; background: #fff; color: #1B1917; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .logo { width: 0.9in; height: 0.9in; border-radius: 50%; object-fit: cover; }
+  h1 { font-weight: 800; text-transform: uppercase; font-size: 30pt; line-height: 1.02; margin: 10pt 0 2pt; letter-spacing: .01em; }
+  .sub { font-family: "Noto Sans", Arial, sans-serif; font-size: 10.5pt; line-height: 1.35; color: #4A4542; margin: 0 0 10pt; max-width: 3.5in; }
+  .qr { width: 2.75in; height: 2.75in; border: 3pt solid #E5342B; border-radius: 14pt; padding: 7pt; }
+  .qr img { width: 100%; height: 100%; display: block; }
+  .langs { font-family: "Noto Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: #1B1917; margin: 11pt 0 0; font-weight: 600; }
+  .langs span { color: #B4231C; margin: 0 3pt; }
+  .foot { font-family: "Noto Sans", Arial, sans-serif; font-size: 8.5pt; line-height: 1.4; color: #625B56; margin-top: auto; }
+  .foot b { color: #1B1917; }
+</style>
+<div class="card">
+  <img class="logo" src="assets/logo.png" alt="">
+  <h1>Scan for our menu</h1>
+  <p class="sub">Dish photos, prices, and the allergens in every dish. Five languages.</p>
+  <div class="qr"><img src="shots/qr-print.png" alt=""></div>
+  <p class="langs">English <span>·</span> Español <span>·</span> Tiếng Việt <span>·</span> 한국어 <span>·</span> 中文</p>
+  <p class="foot"><b>supnoodlebar.com</b><br>Buena Park · 5141 Beach Blvd Unit B · 714-521-2444<br>Irvine · 14370 Culver Dr Unit 2H · 657-300-8420</p>
+</div>
