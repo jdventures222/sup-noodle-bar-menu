@@ -1,6 +1,6 @@
 import json, re
 a=json.load(open("research/toast-out.json")); st=json.load(open("structure.json"))
-WORDS={"dairy":"milk","milk":"milk","egg":"egg","eggs":"egg","fish":"fish","shellfish":"shellfish","peanut":"peanut","peanuts":"peanut","tree nuts":"treenut","tree nut":"treenut","wheat":"wheat","soy":"soy","sesame":"sesame"}
+WORDS={"dairy":"milk","milk":"milk","egg":"egg","eggs":"egg","fish":"fish","shellfish":"shellfish","peanut":"peanut","peanuts":"peanut","tree nuts":"treenut","tree nut":"treenut","wheat":"gluten","soy":"soy","sesame":"sesame"}
 ORDER=st["allergens"]
 def norm(s): return re.sub(r'[^a-z0-9 ]','',s.lower().replace("&","and")).replace("noodles","noodle").strip()
 def parse(stmt):

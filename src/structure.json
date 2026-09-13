@@ -6,7 +6,6 @@
     "shellfish",
     "peanut",
     "treenut",
-    "wheat",
     "gluten",
     "soy",
     "sesame"
@@ -32,7 +31,6 @@
             "egg",
             "fish",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -51,7 +49,6 @@
             "shellfish",
             "peanut",
             "treenut",
-            "wheat",
             "gluten",
             "soy",
             "sesame"
@@ -76,7 +73,6 @@
             "egg",
             "fish",
             "shellfish",
-            "wheat",
             "gluten",
             "soy",
             "sesame"
@@ -97,7 +93,6 @@
             "egg",
             "fish",
             "shellfish",
-            "wheat",
             "gluten",
             "soy",
             "sesame"
@@ -116,7 +111,6 @@
             "milk",
             "egg",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -134,7 +128,6 @@
             "milk",
             "egg",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -157,7 +150,6 @@
             "milk",
             "egg",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -175,7 +167,6 @@
             "milk",
             "egg",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -255,7 +246,6 @@
           "contains": [
             "fish",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -272,7 +262,6 @@
           "contains": [
             "fish",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -317,7 +306,6 @@
           "contains": [
             "fish",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -334,7 +322,6 @@
           "contains": [
             "fish",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -353,7 +340,6 @@
             "fish",
             "shellfish",
             "peanut",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -445,7 +431,6 @@
             "milk",
             "egg",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -500,7 +485,6 @@
             "egg",
             "fish",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -542,7 +526,6 @@
             "milk",
             "egg",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -571,7 +554,6 @@
             "egg",
             "fish",
             "shellfish",
-            "wheat",
             "gluten",
             "soy",
             "sesame"
@@ -647,7 +629,6 @@
           "contains": [
             "milk",
             "egg",
-            "wheat",
             "gluten",
             "soy"
           ],
@@ -669,7 +650,6 @@
           "contains": [
             "egg",
             "shellfish",
-            "wheat",
             "gluten",
             "soy"
           ],
