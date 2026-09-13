@@ -158,7 +158,7 @@
   .addons .item { padding: 10px 0; }
   /* Nothing in this block has a photo, so it must not reserve the photo column. */
   .has-photos .addons .item { grid-template-columns: minmax(0, 1fr); }
-  .has-photos .addons .item > .al { justify-self: stretch; text-align: left; margin-top: 7px; }
+  .has-photos .addons .item > .al { margin-top: 7px; }
   .addons .item.flagged { margin: 2px -8px; padding-left: 10px; padding-right: 8px; }
   .addons .item:last-child { border-bottom: 0; }
   .addons .item h3 { font-size: 18px; line-height: 22px; }
@@ -679,7 +679,6 @@ function lbCancelGesture() {
   LB.pointers.forEach((p, id) => { try { LB.track.releasePointerCapture(id); } catch (e) {} });
   LB.pointers.clear(); LB.gest = null; lbCancelTap();
   if (g && g.mode === "drag") lbSpringBack();
-  if (g && g.mode === "page") lbPlaceTrack(true);
 }
 function lbGoto(i, animate) {
   i = clamp(i, 0, PHOTOS.length - 1);
@@ -688,21 +687,15 @@ function lbGoto(i, animate) {
   lbPlaceTrack(animate);
 }
 function lbChrome(on) { LB.chromeOn = on; LB.chrome.style.transition = "opacity .2s ease-in-out"; LB.chrome.style.opacity = on ? 1 : 0; LB.chrome.classList.toggle("off", !on); }
-function lbDrag(dy) {
-  const z = LB.zooms[LB.index]; z.style.transition = "none";
-  z.style.transform = `translate(0, ${dy}px) scale(${1 - Math.min(Math.abs(dy) / 1400, .14)})`;
-  LB.bg.style.transition = "none"; LB.bg.style.opacity = Math.max(1 - Math.abs(dy) / 420, .4);
-  LB.chrome.style.transition = "none"; LB.chrome.style.opacity = Math.max(1 - Math.abs(dy) / 130, 0) * (LB.chromeOn ? 1 : 0);
-}
-/* The axis is chosen from the first 14px of travel, which is too little to tell a
-   downward drag from a diagonal page swipe, so the choice stays revisable until the
-   stroke has committed at 34px. Paging needs the horizontal to clearly win; anything
-   else is a dismissal. */
-function lbAxis(dx, dy) { return Math.abs(dx) > Math.abs(dy) * 1.2 ? "page" : "drag"; }
-function lbDragReset() {
-  const z = LB.zooms[LB.index]; z.style.transition = "none"; z.style.transform = "";
-  LB.bg.style.transition = "none"; LB.bg.style.opacity = 1;
-  LB.chrome.style.transition = "none"; LB.chrome.style.opacity = LB.chromeOn ? 1 : 0;
+/* A swipe in ANY direction dismisses. Splitting the axis into drag-to-dismiss and
+   swipe-to-page meant a sideways swipe paged instead of closing on every photo except
+   the first, where there was no neighbour to page to. Paging lives on the arrows and
+   the keyboard now. */
+function lbDrag(dx, dy) {
+  const z = LB.zooms[LB.index], d = Math.hypot(dx, dy); z.style.transition = "none";
+  z.style.transform = `translate(${dx}px, ${dy}px) scale(${1 - Math.min(d / 1400, .14)})`;
+  LB.bg.style.transition = "none"; LB.bg.style.opacity = Math.max(1 - d / 420, .4);
+  LB.chrome.style.transition = "none"; LB.chrome.style.opacity = Math.max(1 - d / 130, 0) * (LB.chromeOn ? 1 : 0);
 }
 function lbSpringBack() {
   const z = LB.zooms[LB.index]; z.style.transition = "transform .34s cubic-bezier(.3, 1.25, .5, 1)"; z.style.transform = "";
@@ -750,14 +743,9 @@ function lbExit() {
   const bgFrom = getComputedStyle(LB.bg).opacity;
   LB.chrome.animate([{ opacity: getComputedStyle(LB.chrome).opacity }, { opacity: 0 }], { duration: 150, fill: "forwards" });
   let ms = 200;
-  if (LB.exit && LB.exit.drag !== undefined) {
-    const dy = LB.exit.drag;
-    z.animate([{ transform: z.style.transform, opacity: 1 }, { transform: `translate(0, ${dy + Math.sign(dy || 1) * 180}px) scale(.8)`, opacity: 0 }], { duration: 220, easing: "ease-out", fill: "forwards" });
-    ms = 220;
-  } else if (LB.exit && LB.exit.swipe !== undefined) {
-    const dx = LB.exit.swipe;
-    LB.track.style.transition = "none";
-    z.animate([{ transform: "none", opacity: 1 }, { transform: `translate(${dx + Math.sign(dx || 1) * 200}px, 0) scale(.85)`, opacity: 0 }], { duration: 220, easing: "ease-out", fill: "forwards" });
+  if (LB.exit && LB.exit.fling) {
+    const { dx, dy } = LB.exit.fling, d = Math.hypot(dx, dy) || 1;
+    z.animate([{ transform: z.style.transform, opacity: 1 }, { transform: `translate(${dx + dx / d * 190}px, ${dy + dy / d * 190}px) scale(.8)`, opacity: 0 }], { duration: 220, easing: "ease-out", fill: "forwards" });
     ms = 220;
   } else if (!LB.exit && r0 && r0.width && r0.bottom > 0 && r0.top < vh() && LB.s <= 1.01) {
     const f = LB.fit[i]; const dx = (r0.left + r0.width / 2) - vw() / 2, dy = (r0.top + r0.height / 2) - vh() / 2;
@@ -798,7 +786,6 @@ LB.track.addEventListener("pointerdown", e => {
   else {
     const g = LB.gest;
     if (g && g.mode === "drag") lbSpringBack();
-    if (g && g.mode === "page") lbPlaceTrack(false);
     lbCancelTap(); lbStartPinch(now);
   }
 });
@@ -822,19 +809,8 @@ LB.track.addEventListener("pointermove", e => {
     if (!g.mode) { if (Math.hypot(dx, dy) < 6) return; g.mode = "pan"; lbCancelTap(); }
     const bd = lbBounds(LB.s); lbSetZoom(LB.index, LB.s, clamp(g.tx0 + dx, -bd.x, bd.x), clamp(g.ty0 + dy, -bd.y, bd.y), false); return;
   }
-  if (!g.mode) { if (Math.hypot(dx, dy) < 14) return; g.mode = lbAxis(dx, dy); lbCancelTap(); }
-  else if (!g.locked && (g.mode === "drag" || g.mode === "page")) {
-    if (Math.hypot(dx, dy) >= 34) g.locked = 1;
-    else {
-      const want = lbAxis(dx, dy);
-      if (want !== g.mode) { if (g.mode === "drag") lbDragReset(); else lbPlaceTrack(false); g.mode = want; }
-    }
-  }
-  if (g.mode === "drag") lbDrag(dy);
-  else if (g.mode === "page") {
-    const atEnd = (dx > 0 && LB.index === 0) || (dx < 0 && LB.index === PHOTOS.length - 1);
-    LB.track.style.transition = "none"; LB.track.style.transform = `translateX(${-LB.index * vw() + dx * (atEnd ? .35 : 1)}px)`;
-  }
+  if (!g.mode) { if (Math.hypot(dx, dy) < 14) return; g.mode = "drag"; lbCancelTap(); }
+  if (g.mode === "drag") lbDrag(dx, dy);
 });
 function lbPointerEnd(e) {
   if (!LB.pointers.has(e.pointerId)) return;
@@ -854,17 +830,9 @@ function lbPointerEnd(e) {
   const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
   const v = lbVelocity(g, now, e.clientX, e.clientY);
   if (g.mode === "drag") {
-    if (e.type === "pointerup" && (Math.abs(dy) > 60 || Math.abs(dy + v.vy * .25) > 300)) { LB.exit = { drag: dy }; closeDialog(LB.dlg); }
+    const d = Math.hypot(dx, dy), flick = Math.hypot(dx + v.vx * .25, dy + v.vy * .25);
+    if (e.type === "pointerup" && (d > 60 || flick > 300)) { LB.exit = { fling: { dx, dy } }; closeDialog(LB.dlg); }
     else lbSpringBack();
-    return;
-  }
-  if (g.mode === "page") {
-    const up = e.type === "pointerup";
-    const fwd = up && (dx < -vw() * .2 || v.vx < -400), back = up && (dx > vw() * .2 || v.vx > 400);
-    if (fwd && LB.index < PHOTOS.length - 1) lbGoto(LB.index + 1, true);
-    else if (back && LB.index > 0) lbGoto(LB.index - 1, true);
-    else if (fwd || back) { LB.exit = { swipe: dx }; closeDialog(LB.dlg); }
-    else lbPlaceTrack(true);
     return;
   }
   if (e.type === "pointerup" && Math.hypot(dx, dy) < 10 && now - g.t0 < 350) lbTap(e.clientX, e.clientY);
