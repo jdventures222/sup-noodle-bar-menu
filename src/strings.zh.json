@@ -203,5 +203,6 @@
   "ui.autoDetected": "已按您设备的语言显示。",
   "ui.chooseLanguage": "选择语言",
   "ui.langName.zh-Hant": "繁体中文",
-  "ui.langName.tl": "他加禄语"
+  "ui.langName.tl": "他加禄语",
+  "ui.eachOption": "各款选择"
 }

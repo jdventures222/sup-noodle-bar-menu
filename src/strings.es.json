@@ -203,5 +203,6 @@
   "ui.autoDetected": "Se muestra en el idioma de tu dispositivo.",
   "ui.chooseLanguage": "Elige un idioma",
   "ui.langName.zh-Hant": "Chino (tradicional)",
-  "ui.langName.tl": "Tagalo"
+  "ui.langName.tl": "Tagalo",
+  "ui.eachOption": "Cada opción"
 }

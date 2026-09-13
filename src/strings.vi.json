@@ -203,5 +203,6 @@
   "ui.autoDetected": "Hiển thị theo ngôn ngữ trên thiết bị của bạn.",
   "ui.chooseLanguage": "Chọn ngôn ngữ",
   "ui.langName.zh-Hant": "Tiếng Trung (phồn thể)",
-  "ui.langName.tl": "Tiếng Tagalog"
+  "ui.langName.tl": "Tiếng Tagalog",
+  "ui.eachOption": "Từng lựa chọn"
 }

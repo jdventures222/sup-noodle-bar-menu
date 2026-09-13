@@ -12,6 +12,9 @@ for p in (root / "assets" / "items").glob("*"):
     if p.suffix in (".jpg", ".png"): shutil.copy(p, site / "img" / p.name)
 for p in (root / "assets" / "full").glob("*"):
     if p.suffix in (".jpg", ".png"): shutil.copy(p, site / "img" / "full" / p.name)
+(site / "img" / "var").mkdir(parents=True, exist_ok=True)
+for p in (root / "assets" / "variants").glob("*.jpg"):
+    shutil.copy(p, site / "img" / "var" / p.name)
 for l in ["en", "es", "vi", "ko", "zh", "zh-Hant", "tl"]:
     shutil.copy(root / "pdf" / f"SUP-Menu-{l}.pdf", site / "pdf" / f"SUP-Menu-{l}.pdf")
 (site / ".nojekyll").write_text("")

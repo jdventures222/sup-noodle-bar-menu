@@ -203,5 +203,6 @@
   "ui.autoDetected": "기기 언어에 맞춰 표시하고 있습니다.",
   "ui.chooseLanguage": "언어 선택",
   "ui.langName.zh-Hant": "중국어(번체)",
-  "ui.langName.tl": "타갈로그어"
+  "ui.langName.tl": "타갈로그어",
+  "ui.eachOption": "옵션별 사진"
 }

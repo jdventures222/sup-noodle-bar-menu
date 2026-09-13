@@ -203,5 +203,6 @@
   "ui.autoDetected": "Shown in your device's language.",
   "ui.chooseLanguage": "Choose a language",
   "ui.langName.zh-Hant": "Chinese (Traditional)",
-  "ui.langName.tl": "Tagalog"
+  "ui.langName.tl": "Tagalog",
+  "ui.eachOption": "Each option"
 }

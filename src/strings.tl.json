@@ -203,5 +203,6 @@
   "ui.autoDetected": "Ipinapakita sa wikang gamit ng iyong aparato.",
   "ui.chooseLanguage": "Pumili ng wika",
   "ui.langName.zh-Hant": "Tsino (Tradisyonal)",
-  "ui.langName.tl": "Tagalog"
+  "ui.langName.tl": "Tagalog",
+  "ui.eachOption": "Bawat opsyon"
 }

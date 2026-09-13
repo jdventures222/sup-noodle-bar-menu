@@ -203,5 +203,6 @@
   "ui.autoDetected": "已依裝置語言顯示。",
   "ui.chooseLanguage": "選擇語言",
   "ui.langName.zh-Hant": "繁體中文",
-  "ui.langName.tl": "他加祿語"
+  "ui.langName.tl": "他加祿語",
+  "ui.eachOption": "各款選擇"
 }

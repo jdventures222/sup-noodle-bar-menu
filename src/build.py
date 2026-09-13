@@ -21,7 +21,19 @@ full = {}
 for p in sorted((root / "assets" / "full").glob("*")):
     if p.suffix in (".jpg", ".png") and p.stem in photos:
         w, h = dims(p); full[p.stem] = {"f": p.name, "w": w, "h": h}
-data = json.dumps({"structure": structure, "strings": strings, "photos": photos, "full": full}, ensure_ascii=False, separators=(",", ":"))
+variants = {}
+vdir = root / "assets" / "variants"
+if vdir.exists():
+    vmap = json.load(open(vdir / "map.json"))
+    for item, keys in vmap.items():
+        rows = []
+        for k in keys:
+            f = vdir / f"{item}-{k}.jpg"; t = vdir / f"{item}-{k}-thumb.jpg"
+            if not (f.exists() and t.exists()): continue
+            w, h = dims(f)
+            rows.append({"k": k, "t": t.name, "f": f.name, "w": w, "h": h})
+        if len(rows) > 1: variants[item] = rows
+data = json.dumps({"structure": structure, "strings": strings, "photos": photos, "full": full, "variants": variants}, ensure_ascii=False, separators=(",", ":"))
 def uri(name, mime):
     return f"data:{mime};base64," + base64.b64encode((root / "assets" / name).read_bytes()).decode()
 html = (root / "template.html").read_text()

@@ -147,6 +147,15 @@
   .sides { margin: 10px 0 0; padding: 8px 0 0; border-top: 1px dotted var(--line); }
   .lab { font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; line-height: 19px; font-weight: 700; color: var(--muted); }
   html[lang="ko"] .lab, html[lang^="zh"] .lab { text-transform: none; letter-spacing: 0; }
+  .shots { grid-column: 1 / -1; margin: 10px 0 0; }
+  .shots ul { list-style: none; display: flex; gap: 10px; margin: 6px -16px 0; padding: 2px 16px 4px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .shots ul::-webkit-scrollbar { display: none; }
+  @media (min-width: 560px) { .shots ul { margin: 6px -24px 0; padding: 2px 24px 4px; } }
+  .shots li { flex: 0 0 auto; }
+  .shot { display: grid; gap: 4px; justify-items: center; width: 76px; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  .shot img { width: 76px; height: 76px; object-fit: cover; border-radius: 10px; background: var(--line-soft); display: block; }
+  .shot span { font-size: 12px; line-height: 16px; color: var(--body); text-align: center; }
+  .shot:active img { transform: scale(.95); }
   .al { margin: 7px 0 0; font-size: 13px; line-height: 19px; color: var(--body); }
   /* The photo column is too narrow to hold the line, so it takes its own row and
      shrinks to fit against the right edge, sitting under the photo. */
@@ -337,12 +346,17 @@ const aName = a => state.avoid.has(a) ? `<mark>${esc(t("allergen." + a))}</mark>
 const listNames = arr => arr.map(aName).join(", ");
 
 /* Photos, in menu order. */
-const PHOTOS = []; const PHOTO_INDEX = {};
+const PHOTOS = []; const PHOTO_INDEX = {}; const VARIANT_INDEX = {};
 DATA.structure.sections.forEach(sec => sec.items.forEach(it => {
   const f = DATA.photos[it.id]; if (!f) return;
   const full = DATA.full[it.id];
   PHOTO_INDEX[it.id] = PHOTOS.length;
   PHOTOS.push({ id: it.id, thumb: "img/" + f, full: full ? "img/full/" + full.f : "img/" + f, w: full ? full.w : 1, h: full ? full.h : 1, cutout: f.endsWith(".png"), single: it.prices.length === 1 && it.prices[0].k === undefined ? it.prices[0] : null });
+  (DATA.variants[it.id] || []).forEach(v => {
+    VARIANT_INDEX[it.id + "/" + v.k] = PHOTOS.length;
+    const price = (it.prices || []).find(x => x.k === v.k && !x.plus);
+    PHOTOS.push({ id: it.id, vk: v.k, thumb: "img/var/" + v.t, full: "img/var/" + v.f, w: v.w, h: v.h, cutout: false, single: price || null });
+  });
 }));
 
 function containsHTML(entry) {
@@ -387,8 +401,20 @@ function itemHTML(it, kind) {
     <div class="item-body">
       <div class="item-head"><h3>${nm.h3}</h3>${single}</div>
       ${nm.sub}${badgesHTML(it)}${tagline}${desc}${variants}${note}${sides}
-    </div>${photo}${containsHTML(it)}
+    </div>${photo}${optionShotsHTML(it, k)}${containsHTML(it)}
   </li>`;
+}
+/* Dishes served several ways get a scrollable strip of what each one looks like.
+   It scrolls natively, so it never competes with the viewer's swipe-to-close. */
+function optionShotsHTML(it, k) {
+  const rows = DATA.variants[it.id];
+  if (!rows || rows.length < 2) return "";
+  const shots = rows.map(v => {
+    const i = VARIANT_INDEX[it.id + "/" + v.k];
+    const label = t(`${k}.price.${v.k}`);
+    return `<li><button class="shot" type="button" data-photo="${i}" aria-label="${esc(t("ui.photoOf").replace("{name}", t(k + ".name") + " — " + label))}" aria-haspopup="dialog"><img src="img/var/${v.t}" alt="" loading="lazy" width="76" height="76"><span>${esc(label)}</span></button></li>`;
+  }).join("");
+  return `<div class="shots"><span class="lab">${esc(t("ui.eachOption"))}</span><ul>${shots}</ul></div>`;
 }
 function specialsHTML() {
   return `<div class="specials">${DATA.structure.specials.map(sp => {
@@ -663,7 +689,8 @@ function lbLoad(i) {
 }
 function lbCaption(i) {
   const p = PHOTOS[i];
-  LB.cap.innerHTML = `<span>${esc(t(`item.${p.id}.name`))}${p.single ? `<b>${money(p.single.p)}</b>` : ""}</span>`;
+  const vn = p.vk ? " · " + t(`item.${p.id}.price.${p.vk}`) : "";
+  LB.cap.innerHTML = `<span>${esc(t(`item.${p.id}.name`) + vn)}${p.single ? `<b>${money(p.single.p)}</b>` : ""}</span>`;
   $("lbPrev").disabled = i === 0; $("lbNext").disabled = i === PHOTOS.length - 1;
 }
 function lbSetZoom(i, s, tx, ty, animate) {
