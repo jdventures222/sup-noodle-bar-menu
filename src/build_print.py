@@ -92,13 +92,11 @@ def build(lang):
 <div class="flow">
 {"".join(section(sec) for sec in structure["sections"])}
 <div class="end">
-  <p class="notice"><b class="caps">{esc(t("ui.allergyTitle"))}</b>{esc(t("ui.allergyNotice"))}</p>
-  <p class="notice"><b class="caps">{esc(t("ui.rawTitle"))}</b>{esc(t("ui.rawNotice"))}</p>
   <div class="loc"><h3 class="caps">{esc(t("ui.buenaPark"))}</h3><address>5141 Beach Blvd Unit B, Buena Park, CA 90621 · 714-521-2444</address></div>
   <div class="loc"><h3 class="caps">{esc(t("ui.irvine"))}</h3><address>14370 Culver Dr Unit 2H, Irvine, CA 92604 · 657-300-8420</address></div>
   <div class="loc"><h3 class="caps">SUP Noodle Bar</h3><div class="web">supnoodlebar.com · @supnoodlebar · info@supnoodlebar.com</div></div>
-  <p class="fine" lang="en">{esc(en["ui.photoNote"])}</p>
-  <p class="fine">{esc(t("ui.footer"))} {esc(t("ui.revised"))} {structure["revision"]}</p>
+  <p class="notice"><b class="caps">{esc(t("ui.allergyTitle"))}</b>{esc(t("ui.allergyNotice"))}</p>
+  <p class="notice"><b class="caps">{esc(t("ui.rawTitle"))}</b>{esc(t("ui.rawNotice"))}</p>
 </div>
 </div>'''
     tpl = (root/"print_template.html").read_text()

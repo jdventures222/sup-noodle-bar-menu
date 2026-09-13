@@ -170,7 +170,7 @@
   .notice { font-size: 14px; line-height: 20px; color: var(--body); max-width: 66ch; margin: 0 0 14px; }
   .notice b { display: block; font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; color: var(--ink); margin-bottom: 2px; }
   html[lang="ko"] .notice b, html[lang="zh-Hans"] .notice b { text-transform: none; letter-spacing: 0; }
-  .locs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 0; padding-top: 16px; border-top: 2px solid var(--ink); }
+  .locs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 22px; padding-top: 16px; border-top: 2px solid var(--ink); }
   .locs h3 { font-family: var(--display); text-transform: uppercase; font-weight: 800; color: var(--red); font-size: 20px; line-height: 24px; margin: 0 0 2px; }
   .locs address { font-style: normal; font-size: 14px; line-height: 20px; color: var(--body); }
   .locs a { text-decoration: none; display: inline-block; padding: 6px 0; }
@@ -413,15 +413,14 @@ function sectionHTML(sec) {
   </section>`;
 }
 function footerHTML() {
-  return `<p class="notice"><b>${esc(t("ui.allergyTitle"))}</b>${esc(t("ui.allergyNotice"))}</p>
-  <p class="notice"><b>${esc(t("ui.rawTitle"))}</b>${esc(t("ui.rawNotice"))}</p>
-  <div class="locs">
+  return `<div class="locs">
     <div><h3>${esc(t("ui.buenaPark"))}</h3><address>5141 Beach Blvd Unit B<br>Buena Park, CA 90621<br><a href="tel:+17145212444">714-521-2444</a></address></div>
     <div><h3>${esc(t("ui.irvine"))}</h3><address>14370 Culver Dr Unit 2H<br>Irvine, CA 92604<br><a href="tel:+16573008420">657-300-8420</a></address></div>
   </div>
+  <p class="notice"><b>${esc(t("ui.allergyTitle"))}</b>${esc(t("ui.allergyNotice"))}</p>
+  <p class="notice"><b>${esc(t("ui.rawTitle"))}</b>${esc(t("ui.rawNotice"))}</p>
   <p class="pdfs"><b>${esc(t("ui.pdfMenu"))}:</b> ${LANGS.map(l => `<a href="pdf/SUP-Menu-${l.code}.pdf" lang="${l.code}">${l.label}</a>`).join(" · ")}</p>
-  <p class="fine" lang="en">${esc(S_EN["ui.photoNote"])}</p>
-  <p class="fine"><a href="https://www.supnoodlebar.com">supnoodlebar.com</a> · @supnoodlebar · <a href="mailto:info@supnoodlebar.com">info@supnoodlebar.com</a><br>${esc(t("ui.footer"))} ${esc(t("ui.revised"))} ${DATA.structure.revision}</p>`;
+  <p class="fine"><a href="https://www.supnoodlebar.com">supnoodlebar.com</a> · @supnoodlebar · <a href="mailto:info@supnoodlebar.com">info@supnoodlebar.com</a></p>`;
 }
 function langSheetHTML() {
   return `<div class="sheet-head"><h2 id="langTitle">${esc(t("ui.language"))}</h2><button class="x" type="button" data-close aria-label="${esc(t("ui.close"))}"><span>${ICON.x}</span></button></div>
