@@ -8,7 +8,8 @@ for l in langs:
     strings[l] = json.load(open(p))
 en = set(strings["en"])
 for l, s in strings.items():
-    missing = en - set(s)
+    optional = {"ui.halalNote"} if l not in ("en", "fa", "ar", "ur") else set()
+    missing = en - set(s) - optional
     assert not missing, f"{l}: missing keys {missing}"
     extra = set(s) - en
     assert not extra, f"{l}: unknown keys {extra}"

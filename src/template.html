@@ -8,7 +8,7 @@
 <title>SUP Noodle Bar Menu</title>
 <link rel="icon" href="__ICON__">
 <link rel="apple-touch-icon" href="__ICON__">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap">
 <style>
   :root {
     --red: #E5342B; --red-deep: #B4231C;
@@ -171,11 +171,10 @@
   .shot img { width: 76px; height: 76px; object-fit: cover; border-radius: 10px; background: var(--line-soft); display: block; }
   .shot span { font-size: 12px; line-height: 16px; color: var(--body); text-align: center; }
   .shot:active img { transform: scale(.95); }
-  .al { margin: 7px 0 0; font-size: 13px; line-height: 19px; color: var(--body); }
+  .al { margin: 7px 0 0; font-size: 13px; line-height: 19px; color: var(--body); text-align: end; justify-self: end; }
   /* The photo column is too narrow to hold the line, so it takes its own row and
      shrinks to fit against the inline-end edge, sitting under the photo. */
   .has-photos .item > .al { grid-column: 1 / -1; justify-self: end; text-align: end; max-width: 100%; margin-top: 2px; }
-  .has-photos .item.no-photo > .al { justify-self: start; text-align: start; }
   .al b { font-weight: 600; color: var(--ink); }
   .al mark { background: transparent; color: var(--red-deep); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 2px; }
   .addons { border: 2px solid var(--red); border-radius: 12px; padding: 10px 14px 4px; margin: 16px 0 0; }
@@ -280,6 +279,16 @@
   html:is([lang="fa"], [lang="ar"], [lang="ur"], [lang="hi"]) :is(h1, h2, h3, .eyebrow, .badge, .lab, .opt .native, .shot span) { line-height: 1.6; }
   html:is([lang="fa"], [lang="ar"], [lang="ur"]) :is(.desc, .note, .notice, .intro, .when, .terms, .al, .sheet-hint, .variants li, .lb-cap span) { line-height: 1.8; }
   .native:is([lang="fa"], [lang="ar"], [lang="ur"], [lang="hi"]) { line-height: 1.7; }
+
+  html[lang="ur"] { --display: "Noto Nastaliq Urdu", "Noto Sans Arabic", "Geeza Pro", serif; --text: "Noto Nastaliq Urdu", "Noto Sans Arabic", "Geeza Pro", serif; font-synthesis: none; }
+  html[lang="ur"] [lang="ur"] { font-family: var(--text); }
+  html[lang="ur"] :is(bdi[dir="ltr"]:not([lang="ja"]):not([lang="hi"]), .price, .en-name, address[dir], .web[dir], .fine, .count) { font-family: "Noto Sans", "Helvetica Neue", Arial, sans-serif; }
+  html[lang="ur"] :is(h1, h2, h3, b, strong) { font-weight: 700; }
+  html[lang="ur"] :is(body, h1, h2, h3, .brand p, .eyebrow, .badge, .lab, .desc, .note, .notice, .intro, .when, .terms, .al, .sheet-hint, .variants li, .lb-cap span, .shot span, .opt .native, .opt .eng, .autodetect, .summary, .linkbtn, .cta b, .cta small, .tagline, .empty, .pdfs, .sheet-status, .seg, .chip, .pill, .btn) { line-height: 2.6; }
+  html[lang="ur"] :is(.seg, .chip) { height: auto; min-height: 48px; padding-top: 6px; padding-bottom: 6px; }
+  html[lang="ur"] .btn { padding-top: 6px; padding-bottom: 6px; }
+  html[lang="ur"] .count { line-height: 1; }
+  html[lang="ur"] .lb-cap span { white-space: normal; overflow: visible; text-align: center; }
 
   @media print { .bar, .cta, .skip, dialog { display: none !important; } body { background: #fff; } .thumb-btn { pointer-events: none; } }
 </style>
@@ -491,6 +500,7 @@ function footerHTML() {
     <div><h3>${prose(t("ui.irvine"))}</h3><address dir="ltr">14370 Culver Dr Unit 2H<br>Irvine, CA 92604<br><a href="tel:+16573008420"><bdi dir="ltr">657-300-8420</bdi></a></address></div>
   </div>
   <p class="notice"><b>${prose(t("ui.allergyTitle"))}</b>${prose(t("ui.allergyNotice"))}</p>
+  ${["ar", "fa", "ur"].includes(state.lang) ? `<p class="notice halal-note">${prose(t("ui.halalNote"))}</p>` : ""}
   <p class="notice"><b>${prose(t("ui.rawTitle"))}</b>${prose(t("ui.rawNotice"))}</p>
   <p class="pdfs"><b>${prose(t("ui.pdfMenu"))}:</b> ${LANGS.map(l => `<a href="pdf/SUP-Menu-${l.code}.pdf" lang="${l.code}">${nativeName(l)}</a>`).join(" · ")}</p>
   <p class="fine"><bdi dir="ltr"><a href="https://www.supnoodlebar.com">supnoodlebar.com</a></bdi> · <bdi dir="ltr">@supnoodlebar</bdi> · <bdi dir="ltr"><a href="mailto:info@supnoodlebar.com">info@supnoodlebar.com</a></bdi></p>`;

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>__TITLE__</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap">
 <style>
   @page { size: letter; margin: 0.5in; }
   :root {
@@ -98,6 +98,12 @@
   html:is([lang="fa"], [lang="ar"], [lang="ur"]) * { letter-spacing: 0 !important; }
   html:is([lang="fa"], [lang="ar"], [lang="ur"], [lang="hi"]) :is(h1, h2, h3, .eyebrow, .badge, .lab) { line-height: 1.6; }
   html:is([lang="fa"], [lang="ar"], [lang="ur"]) :is(body, .desc, .note, .notice, .intro, .when, .terms, .al, .variants li, .key, .brand p) { line-height: 1.8; }
+  html[lang="ur"] { --display: "Noto Nastaliq Urdu", "Noto Sans Arabic", "Geeza Pro", serif; --text: "Noto Nastaliq Urdu", "Noto Sans Arabic", "Geeza Pro", serif; font-synthesis: none; }
+  html[lang="ur"] [lang="ur"] { font-family: var(--text); }
+  html[lang="ur"] :is(bdi[dir="ltr"]:not([lang="ja"]):not([lang="hi"]), .price, .en-name, address[dir], .web[dir], .fine, .count) { font-family: "Noto Sans", "Helvetica Neue", Arial, sans-serif; }
+  html[lang="ur"] :is(h1, h2, h3, b, strong) { font-weight: 700; }
+  html[lang="ur"] :is(body, h1, h2, h3, .eyebrow, .badge, .lab, .desc, .note, .notice, .intro, .when, .terms, .al, .variants li, .key, .brand p, .tagline) { line-height: 2.6; }
+
   html[lang="ru"] :is(.item h3, .special h2) { line-height: 1.3; }
 </style>
 </head>

@@ -5,7 +5,8 @@ LANGS = [("en","English"),("es","Español"),("vi","Tiếng Việt"),("ko","한�
 structure = json.load(open(root/"structure.json"))
 S = {l: json.load(open(root/f"strings.{l}.json")) for l,_ in LANGS}
 for l, s in S.items():
-    assert set(s) == set(S["en"]), f"{l}: translation keys differ"
+    optional = {"ui.halalNote"} if l not in ("en", "fa", "ar", "ur") else set()
+    assert not (set(S["en"]) - set(s) - optional or set(s) - set(S["en"])), f"{l}: translation keys differ"
 ORDER = structure["allergens"]
 esc = html.escape
 def uri(p, mime=None):
@@ -104,6 +105,7 @@ def build(lang):
   <div class="loc"><h3 class="caps">{prose(t("ui.irvine"))}</h3><address dir="ltr">14370 Culver Dr Unit 2H, Irvine, CA 92604 · 657-300-8420</address></div>
   <div class="loc"><h3 class="caps"><bdi dir="ltr">SUP Noodle Bar</bdi></h3><div class="web" dir="ltr">supnoodlebar.com · @supnoodlebar · info@supnoodlebar.com</div></div>
   <p class="notice"><b class="caps">{prose(t("ui.allergyTitle"))}</b>{prose(t("ui.allergyNotice"))}</p>
+  {f'<p class="notice halal-note">{prose(t("ui.halalNote"))}</p>' if lang in ("ar", "fa", "ur") else ""}
   <p class="notice"><b class="caps">{prose(t("ui.rawTitle"))}</b>{prose(t("ui.rawNotice"))}</p>
 </div>
 </div>'''
