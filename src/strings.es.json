@@ -124,7 +124,7 @@
   "addon.spicy.desc": "Pasta de chile con zacate limón hecha en casa.",
   "item.lomo.name": "Lomo Saltado",
   "item.lomo.desc": "Papas fritas de corte grueso, cebolla morada dulce tatemada, tomate y salsa de soya con vino blanco, con la proteína de tu elección y arroz blanco al vapor. Servido con alioli picante de ají verde hecho en casa.",
-  "item.lomo.note": "El plato de camarón contiene mariscos. El alioli normalmente lleva huevo, así que pregunta a tu mesero sobre el plato de tofu vegano.",
+  "item.lomo.note": "El alioli de ají verde contiene huevo y queso parmesano, por lo que la salsa de alioli de ají verde no es vegana.",
   "item.lomo.price.filet": "Filet mignon",
   "item.lomo.price.shrimp": "Camarón",
   "item.lomo.price.tofu": "Tofu vegano",

@@ -124,7 +124,7 @@
   "addon.spicy.desc": "레몬그라스를 넣어 직접 만든 고추 페이스트.",
   "item.lomo.name": "로모 살타도",
   "item.lomo.desc": "선택하신 재료에 두툼한 감자튀김, 불에 구운 달콤한 적양파, 토마토, 화이트 와인 간장 소스와 흰쌀밥을 곁들였습니다. 직접 만든 매콤한 aji verde 아이올리와 함께 드립니다.",
-  "item.lomo.note": "새우 메뉴에는 갑각류·조개류가 포함되어 있습니다. 아이올리는 보통 달걀로 만들므로 비건 두부 메뉴에 대해서는 직원에게 확인하시기 바랍니다.",
+  "item.lomo.note": "aji verde 아이올리에는 달걀과 파르메산 치즈가 포함되어 있으므로 aji verde 아이올리 소스는 비건이 아닙니다.",
   "item.lomo.price.filet": "안심",
   "item.lomo.price.shrimp": "새우",
   "item.lomo.price.tofu": "비건 두부",

@@ -124,7 +124,7 @@
   "addon.spicy.desc": "自制香茅辣椒酱。",
   "item.lomo.name": "秘鲁小炒（Lomo Saltado）",
   "item.lomo.desc": "粗切薯条、焦香甜红洋葱、番茄和白葡萄酒酱油汁，配自选主料和白米饭。佐以自制香辣 aji verde 蒜香酱。",
-  "item.lomo.note": "鲜虾款含有甲壳类及软体海鲜过敏原。蒜香酱通常用蛋制作；点纯素豆腐款时，请向服务员确认。",
+  "item.lomo.note": "aji verde 蒜香酱含有蛋和帕玛森芝士，因此 aji verde 蒜香酱并非纯素。",
   "item.lomo.price.filet": "菲力牛柳",
   "item.lomo.price.shrimp": "鲜虾",
   "item.lomo.price.tofu": "纯素豆腐",

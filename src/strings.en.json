@@ -125,7 +125,7 @@
   "addon.spicy.desc": "House-made chili paste with lemongrass.",
   "item.lomo.name": "Lomo Saltado",
   "item.lomo.desc": "Thick-cut fries, charred sweet red onions, tomatoes, and white wine soy with your choice of protein and steamed white rice. Served with house-made spicy aji verde aioli.",
-  "item.lomo.note": "The shrimp plate contains shellfish. The aioli is usually egg-based, so ask your server about the vegan tofu plate.",
+  "item.lomo.note": "The aji verde aioli contains egg and Parmesan cheese, so the aji verde aioli sauce is not vegan.",
   "item.lomo.price.filet": "Filet mignon",
   "item.lomo.price.shrimp": "Shrimp",
   "item.lomo.price.tofu": "Vegan tofu",
