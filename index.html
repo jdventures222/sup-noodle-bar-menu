@@ -710,10 +710,15 @@ function lbSpringBack() {
   LB.bg.style.transition = "opacity .3s"; LB.bg.style.opacity = 1;
   LB.chrome.style.transition = "opacity .2s"; LB.chrome.style.opacity = LB.chromeOn ? 1 : 0;
 }
+function lbOnPhoto(x, y) {
+  const r = LB.zooms[LB.index].getBoundingClientRect();
+  return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+}
 function lbTap(x, y) {
   const now = performance.now();
   if (LB.tapT && now - LB.tapT < 300 && Math.hypot(x - LB.tapX, y - LB.tapY) < 30) { lbCancelTap(); lbDoubleTap(x, y); return; }
   lbCancelTap();
+  if (LB.s <= 1.01 && !lbOnPhoto(x, y)) { closeDialog(LB.dlg); return; }
   LB.tapT = now; LB.tapX = x; LB.tapY = y;
   const sess = LB.session, gen = LB.tapGen;
   LB.tapTimer = setTimeout(() => { if (LB.tapGen !== gen) return; LB.tapTimer = 0; LB.tapT = 0; if (LB.session === sess && LB.dlg.open) lbChrome(!LB.chromeOn); }, 300);
@@ -839,7 +844,7 @@ function lbPointerEnd(e) {
   const v = lbVelocity(g, now, e.clientX, e.clientY);
   if (g.mode === "drag") {
     const d = Math.hypot(dx, dy), flick = Math.hypot(dx + v.vx * .25, dy + v.vy * .25);
-    if (e.type === "pointerup" && (d > 60 || flick > 300)) { LB.exit = { fling: { dx, dy } }; closeDialog(LB.dlg); }
+    if (d > 60 || (e.type === "pointerup" && flick > 300)) { LB.exit = { fling: { dx, dy } }; closeDialog(LB.dlg); }
     else lbSpringBack();
     return;
   }
