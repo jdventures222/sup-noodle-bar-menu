@@ -1,0 +1,275 @@
+{
+  "language": "zh-Hans",
+  "verdict": "publishable-after-fixes",
+  "summary": "Audited all 180 keys. The translation is generally readable, but ingredient claims, allergen terminology, and several dish names need correction before publication. Key coverage, {n}, prices, quantities, dates, and times are preserved.",
+  "corrections": [
+    {
+      "key": "ui.unlimitedRefill",
+      "current": "河粉无限免费加",
+      "corrected": "无限加粉",
+      "reason": "The current word order is awkward. This is concise, matches the source label, and standardizes noodle refills as 加粉.",
+      "severity": "major"
+    },
+    {
+      "key": "ui.rawNotice",
+      "current": "食用生的或未全熟的鸡蛋、肉类、禽类、海鲜或贝类可能增加食源性疾病的风险，尤其对患有某些疾病的人士。使用溏心蛋、水波蛋、单面煎蛋或双面嫩煎蛋制作的菜品，以及一分熟或三分熟的牛排，可能未完全煮熟。如有任何顾虑，请告知服务员。",
+      "corrected": "食用生的或未熟透的蛋类、肉类、禽类、海鲜、甲壳类或贝类，可能增加患食源性疾病的风险，患有某些疾病的人士尤其如此。含溏心蛋、水波蛋、单面煎蛋或双面嫩煎蛋的菜品，以及一分熟或三分熟的牛排，均可能未熟透。如有任何顾虑，请告知服务员。",
+      "reason": "鸡蛋 narrows 'eggs'; 贝类 alone does not fully convey 'shellfish.' Restore the warning's explicit scope and repair the incomplete 尤其对 clause.",
+      "severity": "critical"
+    },
+    {
+      "key": "allergen.milk",
+      "current": "牛奶",
+      "corrected": "乳类",
+      "reason": "牛奶 restricts the allergen category to cow's milk. Use the broader category label required by the stated FDA taxonomy.",
+      "severity": "critical"
+    },
+    {
+      "key": "allergen.egg",
+      "current": "鸡蛋",
+      "corrected": "蛋类",
+      "reason": "鸡蛋 restricts the allergen category to chicken eggs. 蛋类 preserves the category's scope.",
+      "severity": "critical"
+    },
+    {
+      "key": "allergen.shellfish",
+      "current": "甲壳类/贝类",
+      "corrected": "甲壳类",
+      "reason": "For the explicitly requested nine-FDA-allergen system, this category is crustacean shellfish. The English label also needs clarification to 'Crustacean shellfish'; see terminology notes.",
+      "severity": "critical"
+    },
+    {
+      "key": "allergen.treenut",
+      "current": "坚果",
+      "corrected": "树坚果",
+      "reason": "坚果 is broader than 'tree nuts' and can blur the distinction from the separately listed peanut category.",
+      "severity": "critical"
+    },
+    {
+      "key": "sec.pho.intro",
+      "current": "细滑河粉配牛骨浓汤，佐以洋葱、葱花和香菜。堂食河粉可免费无限加粉。",
+      "corrected": "细条河粉配牛骨汤，佐以白洋葱、葱花和香菜。堂食河粉可免费无限加粉。",
+      "reason": "Restores the specified noodle width and white onions. 白洋葱 also distinguishes this garnish from the red onions elsewhere.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.bao.name",
+      "current": "金黄炸猪肉包",
+      "corrected": "黄金炸包",
+      "reason": "A more idiomatic, concise menu name. The pork filling is already identified in the tagline and description.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.bao.desc",
+      "current": "猪肩肉末、焦糖洋葱、蘑菇和水煮蛋，以自制面皮包裹，炸至金黄酥脆。",
+      "corrected": "自制面皮包入猪肩肉末、焦糖洋葱、蘑菇和全熟水煮蛋，炸至金黄酥脆。",
+      "reason": "水煮蛋 leaves doneness unspecified; the English explicitly says 'hard-boiled.' Preserve that distinction for an egg-containing dish.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.shakenfries.name",
+      "current": "黑椒牛肉薯条",
+      "corrected": "招牌炒牛五花薯条",
+      "reason": "'Shaken' does not mean black pepper. Remove the unsupported seasoning and identify the beef belly specified in the description.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.shakenfries.desc",
+      "current": "粗切酥脆薯条，铺上越式黑椒牛五花粒、蒜蓉、焦糖洋葱、浓味切达芝士和香辣塔塔酱。",
+      "corrected": "粗切酥脆薯条，铺上越式爆炒牛五花、蒜蓉、焦糖洋葱、浓味切达芝士和香辣塔塔酱。",
+      "reason": "Neither black pepper nor diced beef is specified. Translate the cooking style without inventing seasoning or cut size.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.trufflefries.desc",
+      "current": "粗切酥脆薯条拌以新鲜香草、帕玛森芝士和意大利松露油。配香辣 aji verde 蒜香蛋黄酱、番茄酱和辣味蛋黄酱。",
+      "corrected": "粗切酥脆薯条拌以新鲜香草、帕玛森芝士和意大利松露油。配香辣 aji verde 蒜香酱、番茄酱和辣味蛋黄酱。",
+      "reason": "Calling aioli 蛋黄酱 asserts an egg ingredient. The source explicitly treats aioli's egg content as usual, rather than confirmed, in item.lomo.note.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.parmfries.desc",
+      "current": "粗切酥脆薯条拌以新鲜香草和蒜蓉，撒上帕玛森芝士。配香辣 aji verde 蒜香蛋黄酱、番茄酱和辣味蛋黄酱。",
+      "corrected": "粗切酥脆薯条拌以新鲜香草和蒜蓉，撒上帕玛森芝士。配香辣 aji verde 蒜香酱、番茄酱和辣味蛋黄酱。",
+      "reason": "Use the same neutral aioli term throughout; 蛋黄酱 adds an unconfirmed egg claim. Retain 蛋黄酱 for the explicitly named mayonnaise.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.wings.note",
+      "current": "帕玛森芝士鸡翅含有牛奶。",
+      "corrected": "帕玛森芝士鸡翅含有乳类成分。",
+      "reason": "Align the safety declaration with the milk allergen category and avoid implying that liquid cow's milk is the specifically confirmed ingredient.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.phoribbones.desc",
+      "current": "慢炖四小时的牛肋排，骨肉分离，味道浓郁醇厚。",
+      "corrected": "慢炖四小时的牛肋排，软烂脱骨，味道浓郁醇厚。",
+      "reason": "软烂脱骨 is the idiomatic menu expression for fall-off-the-bone tenderness. 骨肉分离 sounds like a description of disassembly.",
+      "severity": "major"
+    },
+    {
+      "key": "item.phocombo.name",
+      "current": "牛肉组合河粉",
+      "corrected": "什锦牛肉河粉",
+      "reason": "组合 is a literal rendering of 'combination'; 什锦牛肉河粉 is a natural bilingual-menu dish name.",
+      "severity": "major"
+    },
+    {
+      "key": "item.phobourdain.desc",
+      "current": "镬气爆香的葱段、红洋葱和蒜蓉，配菲力牛柳和宽河粉。烟香十足，滋味浓郁。",
+      "corrected": "葱段、红洋葱和蒜蓉经大火爆香，配菲力牛柳和宽河粉。镬气十足，滋味浓郁。",
+      "reason": "镬气爆香 is an unnatural construction: 镬气 describes the resulting aroma, while 爆香 describes the cooking action.",
+      "severity": "major"
+    },
+    {
+      "key": "item.drynoodle.desc",
+      "current": "香茅酱炒牛五花，铺在新鲜时蔬沙拉和宽河粉上。撒上烤花生、炸红葱和新鲜香草。干拌，不带汤。",
+      "corrected": "香茅酱炒牛五花，铺在新鲜混合生菜、蔬菜和宽河粉上。撒上烤花生、炸红葱头和新鲜香草。干拌，不带汤。",
+      "reason": "'Spring mix' means mixed salad greens, not seasonal vegetables; the separately listed vegetables must also remain. 红葱头 clearly identifies shallots.",
+      "severity": "critical"
+    },
+    {
+      "key": "addon.shaken.name",
+      "current": "河粉改为黑椒爆炒风味",
+      "corrected": "河粉加爆香配料",
+      "reason": "The add-on is wok-seared aromatics, as its description explains. Black pepper is not stated, and the noodles themselves are not described as stir-fried.",
+      "severity": "critical"
+    },
+    {
+      "key": "addon.sousvide.desc",
+      "current": "慢煮溏心蛋，为汤底增添绵滑浓香。",
+      "corrected": "低温慢煮蛋，为汤底增添绵滑浓香。",
+      "reason": "溏心 adds a specific yolk-doneness claim absent from the source. Keep the named cooking method without asserting doneness.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.lomo.name",
+      "current": "秘鲁炒牛柳 (Lomo Saltado)",
+      "corrected": "秘鲁小炒（Lomo Saltado）",
+      "reason": "This heading covers beef, shrimp, and tofu options. A protein-neutral Chinese name avoids labeling every option as beef, preserves Lomo Saltado, and uses Chinese parentheses.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.lomo.desc",
+      "current": "粗切薯条、炭烤甜红洋葱、番茄和白葡萄酒酱油，配自选主料和白米饭。佐以自制香辣 aji verde 蒜香蛋黄酱。",
+      "corrected": "粗切薯条、焦香甜红洋葱、番茄和白葡萄酒酱油汁，配自选主料和白米饭。佐以自制香辣 aji verde 蒜香酱。",
+      "reason": "'Charred' does not establish charcoal grilling. Also remove the definite egg claim from the aioli name and clarify that white wine soy is a sauce.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.lomo.note",
+      "current": "鲜虾版本含有甲壳类/贝类。蒜香蛋黄酱通常以鸡蛋制成，点纯素豆腐版本前请向服务员确认。",
+      "corrected": "鲜虾款含有甲壳类过敏原。蒜香酱通常用蛋制作；点纯素豆腐款时，请向服务员确认。",
+      "reason": "Preserve 'usually egg-based' without first declaring the sauce to be egg mayonnaise. Align the shrimp declaration with the specified FDA category and retain the instruction to ask the server.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.cajun.name",
+      "current": "卡真蒜香面",
+      "corrected": "Cajun 蒜香面",
+      "reason": "Retains the explicitly requested Cajun identifier in a short menu name and avoids dependence on variable Chinese transliterations.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.cajun.desc",
+      "current": "面条拌以黄油和卡真蒜香酱，撒上新鲜葱花。佐以自制香辣 aji verde 蒜香蛋黄酱。",
+      "corrected": "小麦面条拌以黄油和 Cajun 蒜香酱，撒上新鲜葱花。佐以自制香辣 aji verde 蒜香酱。",
+      "reason": "The explicit wheat ingredient was omitted, which matters for allergen identification. Also standardize Cajun and remove the unconfirmed egg claim from aioli.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.cajun.note",
+      "current": "鲜虾香肠版本含有甲壳类/贝类。",
+      "corrected": "鲜虾配香肠款含有甲壳类过敏原。",
+      "reason": "鲜虾香肠 can mean sausage made from shrimp; the source lists shrimp and sausage separately. Align the warning with the specified crustacean allergen category.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.cajun.price.shrimpsausage",
+      "current": "鲜虾香肠",
+      "corrected": "鲜虾配香肠",
+      "reason": "Makes clear that this option contains shrimp plus sausage, rather than shrimp sausage. It remains short enough for a price label.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.friedrice.desc",
+      "current": "自选主料，配炒蛋和葱花。另附自制香辣 aji verde 蒜香蛋黄酱。",
+      "corrected": "自选主料，配炒蛋和葱花。另附自制香辣 aji verde 蒜香酱。",
+      "reason": "Standardize aioli without adding a definite egg-content claim to the sauce. The separately stated scrambled eggs remain explicit.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.friedrice.note",
+      "current": "鲜虾版本含有甲壳类/贝类。豆腐版本含有大豆。炸鸡翅裹有小麦面糊。",
+      "corrected": "鲜虾款含有甲壳类过敏原。豆腐款含有大豆。鸡翅的外层裹粉含有小麦。",
+      "reason": "'Breaded' does not establish a wet batter. Preserve the wheat warning without inventing that preparation, and standardize the shrimp allergen category.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.kimchi.desc",
+      "current": "招牌炒饭拌入泡菜，配炒蛋和葱花。另附自制香辣 aji verde 蒜香蛋黄酱。",
+      "corrected": "招牌炒饭拌入泡菜，配炒蛋和葱花。另附自制香辣 aji verde 蒜香酱。",
+      "reason": "Use the same neutral aioli term throughout instead of asserting an unconfirmed egg ingredient in the sauce.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.kimchi.note",
+      "current": "泡菜通常以鱼露和虾酱腌制。嫩豆腐版本含有大豆。",
+      "corrected": "泡菜通常用鱼露和盐渍虾发酵制成。嫩豆腐款含有大豆。",
+      "reason": "'Salted shrimp' is not necessarily shrimp paste, and 'fermented' should remain explicit. Preserve 通常 and the definite soy warning.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.sidenoodles.desc",
+      "current": "堂食河粉可无限加。",
+      "corrected": "堂食河粉可无限加粉。",
+      "reason": "The current sentence ends awkwardly without the object of 加. 加粉 matches the other noodle-refill notices.",
+      "severity": "major"
+    },
+    {
+      "key": "item.yuzupeach.name",
+      "current": "柚子蜜桃饮 (yuzu)",
+      "corrected": "柚子蜜桃饮",
+      "reason": "Remove the glossary-like lowercase parenthesis. The English name displayed above already identifies yuzu.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.herbaltea.desc",
+      "current": "斑斓叶与洋蓟调配。",
+      "corrected": "香兰叶与洋蓟调制而成。",
+      "reason": "Standardize pandan to the established ingredient name 香兰叶 and repair the awkward 调配 fragment.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.thaitea.name",
+      "current": "泰式奶茶",
+      "corrected": "泰式冰奶茶",
+      "reason": "Restores the explicitly stated iced serving style and matches the other cold-drink names.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.vietcoffee.name",
+      "current": "越南炼乳冰咖啡",
+      "corrected": "越南冰咖啡",
+      "reason": "The source does not specify condensed milk. Do not add a dairy ingredient based on a customary recipe.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.fountain.name",
+      "current": "汽水",
+      "corrected": "现调饮料",
+      "reason": "'Fountain drink' describes dispensed drinks and here includes lemonade. 汽水 incorrectly restricts the category to carbonated beverages.",
+      "severity": "critical"
+    }
+  ],
+  "terminologyNotes": [
+    "Allergen labels: milk → 乳类; egg → 蛋类; tree nuts → 树坚果. FDA's current interpretation includes milk from other ruminants and eggs from other domestic birds, so cow-only and chicken-only category labels are too narrow. [FDA allergen guidance FAQ](https://www.fda.gov/food/food-allergensgluten-free-guidance-documents-regulatory-information/frequently-asked-questions-food-allergen-labeling-guidance-industry).",
+    "Source issue: the FDA category is crustacean shellfish, excluding molluscan shellfish. The proposed 甲壳类 label and shrimp declarations follow the brief's explicit FDA scope; corresponding English category references should say 'Crustacean shellfish.' The general raw-food warning retains the broader 甲壳类或贝类 wording. [FDA guidance, question B.9](https://www.fda.gov/media/117410/download?attachment=).",
+    "Aioli → 蒜香酱; mayonnaise → 蛋黄酱. Preserve aji verde exactly. This terminology does not claim that aioli is egg-free; the safety note retains 'usually' and server confirmation.",
+    "Retain consistent, recognizable menu terms: beef belly → 牛五花; filet mignon → 菲力牛柳; brisket → 牛腩; soft tofu → 嫩豆腐; fries → 薯条; parmesan → 帕玛森芝士.",
+    "Pho → 河粉; noodle refill → 加粉; drink refill → 续杯; dine-in → 堂食. Keep rice vermicelli 米粉, glass noodles 粉丝, and explicitly stated wheat noodles 小麦面条 distinct.",
+    "Shaken describes the cooking style, not black-pepper seasoning. Use 越式爆炒 for the beef and 爆香配料 for the pho add-on. Shallots → 红葱头; red onions → 红洋葱; white onions → 白洋葱; salted shrimp → 盐渍虾.",
+    "Pandan is standardized as 香兰叶, an established name for the culinary plant. [Chinese Academy of Sciences botanical reference](https://xtbg.cas.cn/2022/wzbc/ylxx_1/201208/t20120813_3626366.html)."
+  ]
+}

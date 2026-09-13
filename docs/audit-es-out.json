@@ -1,0 +1,346 @@
+{
+  "language": "es-MX",
+  "verdict": "publishable-after-fixes",
+  "summary": "Audited all 180 original string pairs. Corrections address beef-belly mistranslations, an unsupported soy reference, egg-doneness wording, menu phrasing, and orthography. During review, English gained ui.photoNote and now has 181 keys; its missing translation is included below. Placeholders, numbers, and required names match across the 180 paired entries.",
+  "corrections": [
+    {
+      "key": "ui.tagline",
+      "current": "Bar de fideos vietnamita en Buena Park e Irvine",
+      "corrected": "Restaurante de fideos vietnamitas en Buena Park e Irvine",
+      "reason": "'Bar de fideos' reads like a literal English calque. 'Restaurante de fideos vietnamitas' naturally identifies the restaurant and cuisine.",
+      "severity": "major"
+    },
+    {
+      "key": "ui.hideFlagged",
+      "current": "Ocultar platillos marcados",
+      "corrected": "Ocultar marcados",
+      "reason": "Shorter for a phone-width control; the filter context already identifies the marked dishes.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.showFlagged",
+      "current": "Mostrar platillos marcados",
+      "corrected": "Mostrar marcados",
+      "reason": "Matches the shortened hide control and reduces unnecessary label length.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.draftLabel",
+      "current": "Borrador, pendiente de revisión por la cocina",
+      "corrected": "Borrador: por revisar en cocina",
+      "reason": "Shortens a lengthy status label while retaining both draft status and pending kitchen review.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.lunchTitle",
+      "current": "Especial de almuerzo: Pho de panza de res",
+      "corrected": "Especial de almuerzo: pho de panceta de res",
+      "reason": "In Mexican culinary usage, 'panza de res' means tripe, not beef belly. Also lowercase the common dish name after the colon.",
+      "severity": "critical"
+    },
+    {
+      "key": "ui.lunchWhen",
+      "current": "De lunes a viernes, de 10 AM a 4 PM",
+      "corrected": "Lunes a viernes, de 10 a. m. a 4 p. m.",
+      "reason": "Use Spanish time abbreviations with lowercase letters, periods, and spaces. Days and hours are unchanged.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.rawNotice",
+      "current": "Consumir huevos, carne, aves, pescados o mariscos crudos o poco cocidos puede aumentar el riesgo de enfermedades transmitidas por alimentos, especialmente en personas con ciertas condiciones médicas. Los platillos preparados con huevos tibios, pochados, estrellados o volteados ligeramente, así como los cortes de carne término rojo o medio rojo, pueden estar poco cocidos. Por favor comunica cualquier inquietud a tu mesero.",
+      "corrected": "Consumir huevos, carne, aves, pescados o mariscos crudos o poco cocidos puede aumentar el riesgo de enfermedades transmitidas por alimentos, especialmente en personas con ciertas afecciones médicas. Los platillos preparados con huevos tibios, pochados, estrellados sin voltear o fritos por ambos lados con la yema líquida, así como los cortes de carne en término rojo o medio rojo, pueden estar poco cocidos. Por favor, comunica cualquier inquietud a tu mesero.",
+      "reason": "'Volteados ligeramente' does not identify over-easy eggs: they are cooked on both sides with a runny yolk. Clarify both fried-egg preparations while preserving every warning and doneness category.",
+      "severity": "critical"
+    },
+    {
+      "key": "ui.footer",
+      "current": "Precios en dólares estadounidenses. Reconstruido a partir del menú impreso de julio de 2026.",
+      "corrected": "Precios en dólares estadounidenses. Menú recreado a partir de la versión impresa de julio de 2026.",
+      "reason": "'Menú recreado' is more natural publication wording than the subjectless 'Reconstruido'. Currency and provenance remain unchanged.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.phoRefill",
+      "current": "Refill ilimitado de fideos gratis con pho para comer aquí.",
+      "corrected": "Refill gratis e ilimitado de fideos al pedir pho para comer aquí.",
+      "reason": "Makes both refill benefits and the qualifying dine-in pho order easier to read.",
+      "severity": "minor"
+    },
+    {
+      "key": "allergen.treenut",
+      "current": "Frutos secos",
+      "corrected": "Nueces de árbol",
+      "reason": "A precision improvement for a US allergen filter: explicitly distinguishes tree nuts from the separate peanut category. 'Frutos secos' is an accepted broader rendering, not inherently an incorrect translation.",
+      "severity": "minor"
+    },
+    {
+      "key": "sec.pho.intro",
+      "current": "Fideos de arroz delgados servidos en caldo de hueso de res, con cebolla blanca, cebollín y cilantro. Refill ilimitado de fideos gratis con pho para comer aquí.",
+      "corrected": "Fideos de arroz delgados servidos en caldo de hueso de res, con cebolla blanca, cebollín y cilantro. Refill gratis e ilimitado de fideos al pedir pho para comer aquí.",
+      "reason": "Apply the same clearer refill wording used in ui.phoRefill, retaining the dine-in restriction.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.bao.tagline",
+      "current": "Empanada frita de cerdo",
+      "corrected": "Bao frito relleno de cerdo",
+      "reason": "Use the established dish name in this bilingual menu. 'Empanada' evokes a different local preparation.",
+      "severity": "major"
+    },
+    {
+      "key": "item.springroll.name",
+      "current": "Rollos primavera",
+      "corrected": "Rollo primavera fresco",
+      "reason": "Match the singular English name and distinguish this fresh rice-paper roll from the fried rolls.",
+      "severity": "major"
+    },
+    {
+      "key": "item.springroll.desc",
+      "current": "Germen de soya fresco, menta, lechuga y fideos vermicelli envueltos en papel de arroz. Servidos con salsa de cacahuate.",
+      "corrected": "Brotes frescos de frijol, menta, lechuga y fideos finos envueltos en papel de arroz. Se sirve con salsa de cacahuate.",
+      "reason": "English specifies bean sprouts without identifying soy. 'Soya' introduces an unverified major-allergen ingredient. Also localize vermicelli and match the singular roll.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.eggrolls.desc",
+      "current": "Carne molida de cerdo, champiñones, cebolla, zanahoria y fideos transparentes, fritos hasta quedar crujientes. Servidos con zanahoria encurtida, vermicelli, lechuga y salsa de pescado agridulce.",
+      "corrected": "Rollos rellenos de carne molida de cerdo, champiñones, cebolla, zanahoria y fideos de cristal, fritos en abundante aceite hasta quedar crujientes. Se sirven con zanahoria encurtida, fideos finos, lechuga y salsa de pescado agridulce.",
+      "reason": "Use consistent noodle terminology and make clear that the filled rolls are deep-fried.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.shakenfries.desc",
+      "current": "Papas fritas gruesas y crujientes cubiertas con panza de res salteada, ajo, cebolla caramelizada, queso cheddar fuerte y salsa tártara picante.",
+      "corrected": "Papas fritas gruesas y crujientes cubiertas con panceta de res salteada, ajo, cebolla caramelizada, queso cheddar de sabor intenso y salsa tártara picante.",
+      "reason": "Replace the incorrect tripe reference with beef belly. 'Cheddar de sabor intenso' also reads more naturally than 'cheddar fuerte'.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.trufflefries.desc",
+      "current": "Papas fritas gruesas y crujientes con hierbas frescas, queso parmesano y aceite de trufa italiano. Servidas con alioli picante de aji verde, cátsup y mayonesa picante.",
+      "corrected": "Papas fritas gruesas y crujientes con hierbas frescas, queso parmesano y aceite de trufa italiano. Servidas con alioli picante de ají verde, cátsup y mayonesa picante.",
+      "reason": "'Ají' requires an accent; the sauce name remains recognizable.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.parmfries.desc",
+      "current": "Papas fritas gruesas y crujientes con hierbas frescas y ajo, cubiertas con queso parmesano. Servidas con alioli picante de aji verde, cátsup y mayonesa picante.",
+      "corrected": "Papas fritas gruesas y crujientes con hierbas frescas y ajo, cubiertas con queso parmesano. Servidas con alioli picante de ají verde, cátsup y mayonesa picante.",
+      "reason": "Restore the required accent in 'ají'.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.phoshortrib.name",
+      "current": "Pho de costilla de res",
+      "corrected": "Pho de costilla corta de res",
+      "reason": "Preserve the specific short-rib cut instead of reducing it to generic beef rib.",
+      "severity": "major"
+    },
+    {
+      "key": "item.phoshortrib.desc",
+      "current": "Costilla de res sin hueso en rebanadas finas, llena de sabor y tan suave que se deshace en la boca.",
+      "corrected": "Costilla corta de res sin hueso en rebanadas finas, llena de sabor y tan suave que se deshace en la boca.",
+      "reason": "Match the specific short-rib terminology in the corrected dish name.",
+      "severity": "major"
+    },
+    {
+      "key": "item.phoribbones.desc",
+      "current": "Costillas de res que se desprenden del hueso, cocidas a fuego lento durante cuatro horas para un sabor profundo y sustancioso.",
+      "corrected": "Costillas de res cocidas a fuego lento durante cuatro horas, de sabor intenso y con carne tan suave que se desprende del hueso.",
+      "reason": "The meat separates from the bone, not the ribs themselves. Replace the literal flavor phrasing with natural menu Spanish.",
+      "severity": "major"
+    },
+    {
+      "key": "item.phobeefbelly.name",
+      "current": "Pho de panza de res",
+      "corrected": "Pho de panceta de res",
+      "reason": "'Panza de res' identifies tripe in Mexican Spanish; the source specifies beef belly.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.phobeefbelly.desc",
+      "current": "Panza de res marmoleada en rebanadas finas.",
+      "corrected": "Panceta de res marmoleada en rebanadas finas.",
+      "reason": "Correct the beef cut while preserving marbling and thin slicing.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.phobeefbelly.note",
+      "current": "Especial de almuerzo entre semana: 11.99, solo para comer aquí, de 10 AM a 4 PM.",
+      "corrected": "Especial de almuerzo entre semana: 11.99, solo para comer aquí, de 10 a. m. a 4 p. m.",
+      "reason": "Orthographic correction only: standard Spanish time abbreviations. Price, weekday eligibility, hours, and dine-in restriction remain intact.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.phocombo.desc",
+      "current": "Una mezcla de panza de res, tendón, pecho de res, albóndiga y una costilla con hueso.",
+      "corrected": "Una mezcla de panceta de res, tendón, pecho de res, albóndiga y una costilla con hueso.",
+      "reason": "Replace the incorrect tripe reference with beef belly.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.phomeatballs.desc",
+      "current": "Albóndigas vietnamitas de tendón.",
+      "corrected": "Albóndigas vietnamitas con tendón.",
+      "reason": "'Con tendón' more naturally describes tendon as a component of the meatballs.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.phobourdain.desc",
+      "current": "Cebollín, cebolla morada y ajo picado sellados al wok, con filet mignon y fideos planos. Ahumado y lleno de sabor.",
+      "corrected": "Cebollín, cebolla morada y ajo picado dorados en el wok, con filet mignon y fideos planos. Con un sabor ahumado e intenso.",
+      "reason": "'Dorados en el wok' reads more naturally for these aromatics; describing the flavor as smoky also avoids suggesting a separate smoking process.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.drynoodle.name",
+      "current": "Fideos secos con panza de res",
+      "corrected": "Fideos secos con panceta de res",
+      "reason": "Correct beef belly throughout the menu; 'panza' denotes tripe.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.drynoodle.desc",
+      "current": "Panza de res salteada en salsa de hierba de limón, servida sobre mezcla de lechugas frescas, verduras y fideos planos. Con cacahuate tostado, chalote frito y hierbas frescas. Se sirve seco, sin caldo.",
+      "corrected": "Panceta de res salteada en salsa de zacate limón, servida sobre una mezcla de hojas verdes frescas, verduras y fideos planos. Con cacahuates tostados, chalotes fritos y hierbas frescas. El platillo se sirve seco, sin caldo.",
+      "reason": "Correct beef belly, use a Mexican name for lemongrass, and avoid narrowing spring mix to lettuce alone. Clarify the referent of 'seco'.",
+      "severity": "critical"
+    },
+    {
+      "key": "addon.shaken.name",
+      "current": "Pho estilo salteado",
+      "corrected": "Pide tu pho al estilo shaken",
+      "reason": "Retain the house preparation name and the customization action. The current wording can suggest that the pho itself is stir-fried.",
+      "severity": "major"
+    },
+    {
+      "key": "addon.shaken.desc",
+      "current": "Ajo, cebollín y cebolla morada sellados al wok en aceite de tuétano. Aporta un toque ahumado para un sabor distintivo al estilo del norte.",
+      "corrected": "Ajo, cebollín y cebolla morada dorados en el wok con aceite de tuétano. Aportan un profundo sabor ahumado al estilo del norte.",
+      "reason": "Use natural wording for browning aromatics, correct the plural verb agreement, and preserve the source's depth of smoky flavor.",
+      "severity": "minor"
+    },
+    {
+      "key": "addon.sousvide.desc",
+      "current": "Huevo pochado lentamente que le da una cremosidad especial a tu caldo.",
+      "corrected": "Huevo pochado a fuego lento que le da cremosidad al caldo.",
+      "reason": "'A fuego lento' is more idiomatic menu wording than 'lentamente'. Creaminess remains a texture description, without adding milk as an ingredient.",
+      "severity": "minor"
+    },
+    {
+      "key": "addon.mala.name",
+      "current": "Agrega el toque adormecedor",
+      "corrected": "Agrega un toque que adormece la boca",
+      "reason": "The definite article sounds unnatural, and 'adormecedor' alone can suggest drowsiness. Identify the intended oral numbing sensation.",
+      "severity": "major"
+    },
+    {
+      "key": "addon.mala.desc",
+      "current": "Aceite de chile mala hecho en casa.",
+      "corrected": "Aceite de chile estilo mala hecho en casa.",
+      "reason": "Mala identifies the flavor style; the current construction can read as the name of a chile variety.",
+      "severity": "minor"
+    },
+    {
+      "key": "addon.spicy.name",
+      "current": "Pho picante",
+      "corrected": "Agrega picante a tu pho",
+      "reason": "Restore the customization action and match the other action-based pho add-on labels.",
+      "severity": "minor"
+    },
+    {
+      "key": "addon.spicy.desc",
+      "current": "Pasta de chile con hierba de limón hecha en casa.",
+      "corrected": "Pasta de chile con zacate limón hecha en casa.",
+      "reason": "Standardize lemongrass as 'zacate limón' for the Mexican register.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.lomo.desc",
+      "current": "Papas fritas en corte grueso, cebolla morada dulce tatemada, tomate y salsa de soya con vino blanco, con la proteína de tu elección y arroz blanco al vapor. Servido con alioli picante de aji verde hecho en casa.",
+      "corrected": "Papas fritas de corte grueso, cebolla morada dulce tatemada, tomate y salsa de soya con vino blanco, con la proteína de tu elección y arroz blanco al vapor. Servido con alioli picante de ají verde hecho en casa.",
+      "reason": "Use the idiomatic 'de corte grueso' and restore the accent in 'ají'.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.cajun.desc",
+      "current": "Fideos de trigo salteados en mantequilla y salsa Cajun de ajo, terminados con cebollín fresco. Servidos con alioli picante de aji verde hecho en casa.",
+      "corrected": "Fideos de trigo con mantequilla y salsa Cajun de ajo, coronados con cebollín fresco. Se sirven con alioli picante de ají verde hecho en casa.",
+      "reason": "Replace the literal 'terminados con' construction with natural garnish wording and restore the accent in 'ají'.",
+      "severity": "major"
+    },
+    {
+      "key": "item.friedrice.desc",
+      "current": "La proteína de tu elección con huevo revuelto y cebollín. Servido con alioli picante de aji verde hecho en casa aparte.",
+      "corrected": "La proteína de tu elección con huevo revuelto y cebollín. Se acompaña de alioli picante de ají verde hecho en casa, servido aparte.",
+      "reason": "'Hecho en casa aparte' attaches 'aparte' awkwardly to preparation. Make clear that the sauce is served separately, and accent 'ají'.",
+      "severity": "major"
+    },
+    {
+      "key": "item.kimchi.desc",
+      "current": "El arroz frito de la casa salteado con kimchi, huevo revuelto y cebollín. Servido con alioli picante de aji verde hecho en casa aparte.",
+      "corrected": "Arroz frito de la casa con kimchi, huevo revuelto y cebollín. Se acompaña de alioli picante de ají verde hecho en casa, servido aparte.",
+      "reason": "Smooth the menu phrasing, clarify that the aioli is served separately, and restore the accent in 'ají'.",
+      "severity": "major"
+    },
+    {
+      "key": "item.sidenoodles.desc",
+      "current": "Ilimitada con pedidos de pho para comer aquí.",
+      "corrected": "Refill ilimitado al pedir pho para comer aquí.",
+      "reason": "An 'unlimited portion' sounds unnatural; identify unlimited refills and retain the qualifying dine-in pho order.",
+      "severity": "major"
+    },
+    {
+      "key": "item.poachedegg.name",
+      "current": "Huevo pochado lentamente",
+      "corrected": "Huevo pochado a fuego lento",
+      "reason": "Use an idiomatic preparation name instead of an adverbial gloss, consistent with the egg add-on description.",
+      "severity": "major"
+    },
+    {
+      "key": "item.soybutter.name",
+      "current": "Fideos con soya y mantequilla",
+      "corrected": "Fideos con salsa de soya y mantequilla",
+      "reason": "In this dish, English 'soy' is shorthand for soy sauce. Bare 'soya' can suggest soybeans or soy protein.",
+      "severity": "major"
+    },
+    {
+      "key": "item.kidsbox.desc",
+      "current": "Nuggets de pollo dorados y crujientes con papas sazonadas, y un juguito para completar la comida.",
+      "corrected": "Nuggets de pollo dorados y crujientes con papas fritas sazonadas y un jugo en cajita para completar la comida.",
+      "reason": "Restore the fries and juice-box format specified in English. 'Juguito' does not convey the packaging.",
+      "severity": "major"
+    },
+    {
+      "key": "item.watermelon.name",
+      "current": "Refresco de sandía",
+      "corrected": "Bebida refrescante de sandía",
+      "reason": "In Mexican usage, 'refresco' commonly suggests soda. 'Refresher' does not establish carbonation, so use a neutral beverage name.",
+      "severity": "major"
+    },
+    {
+      "key": "item.fountain.name",
+      "current": "Bebida de máquina",
+      "corrected": "Bebida de fuente de soda",
+      "reason": "'De máquina' is vague and can suggest a vending-machine drink. Name the soda-fountain category explicitly.",
+      "severity": "major"
+    },
+    {
+      "key": "ui.photoNote",
+      "current": "",
+      "corrected": "Las fotos de los platillos son provisionales y provienen de fotos de las sucursales de Buena Park e Irvine compartidas por la comunidad de Yelp y de imágenes promocionales de SUP. Antes de publicar este menú, reemplaza las fotos de la comunidad por fotografías propiedad del restaurante.",
+      "reason": "This English key appeared during the audit and is missing from Spanish; the empty current value denotes an absent key. Preserve the full provenance notice and the required replacement before publication.",
+      "severity": "critical"
+    }
+  ],
+  "terminologyNotes": [
+    "Standardize beef belly as 'panceta de res'. Mexican 'panza' denotes stomach/tripe; 'panceta de res' is attested for beef belly. See [Larousse](https://laroussecocina.mx/palabra/panza/) and [Sociedad Mexicana de Parrilleros](https://smpgrill.com/es/blogs/novedades). Do not substitute a more specific butcher's cut without confirmation.",
+    "'Nueces de árbol' provides an explicit US allergen-category label, also used by [FARE](https://www.foodallergy.org/our-initiatives/awareness-campaigns/ready-act/listo-para-actuar). FDA Spanish materials also use 'frutos secos'; this proposed change is for clarity.",
+    "'Mariscos' preserves the supplied English 'Shellfish'. The formal FDA category is crustacean shellfish. Any narrowing to 'Crustáceos' should follow a coordinated review of the English label and underlying tags. See [FDA allergen categories](https://www.fda.gov/food/buy-store-serve-safe-food/food-allergies-what-you-need-know).",
+    "Retain regional menu terms such as 'refill', 'filet mignon', 'tofu suave', 'cátsup', 'cacahuate', 'soya', and 'ajonjolí'. Keep 'alioli' consistently; write the recognizable sauce name as 'ají verde'.",
+    "Use 'zacate limón' for lemongrass, an established Mexican name documented by [Larousse](https://laroussecocina.mx/palabra/te-limon/). Use 'fideos finos' for vermicelli and 'fideos de cristal' for glass noodles without inventing their ingredients.",
+    "Retain 'huevo tibio' for soft-boiled egg; it is established Mexican culinary usage. Keep soft-boiled, poached, and fried preparations distinct. See [Larousse](https://laroussecocina.mx/palabra/huevo-tibio-o-huevo-mollet/).",
+    "Use sentence capitalization while retaining recognizable proper names. Format times as 'a. m.' and 'p. m.'; preserve US decimal prices. See [Fundéu](https://fundeu.do/a-m-y-p-m-en-minuscula-y-con-punto/).",
+    "Length recommendations are based on the strings, not a rendered layout. Existing price labels are at most 19 characters. Let longer allergen qualifications wrap instead of shortening them into an allergen-free claim."
+  ]
+}

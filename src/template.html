@@ -1,0 +1,386 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SUP Noodle Bar Menu</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap">
+<style>
+  :root {
+    --red: #E5342B; --red-deep: #B4231C;
+    --ink: #1B1917; --body: #4A4542; --muted: #625B56;
+    --ground: #F6F2ED; --surface: #FFFFFF; --line: #D8D0C8; --control: #837A74;
+    --flag-bg: #FCEAE8; --amber: #9A5A0B; --amber-bg: #FFF3DE; --amber-line: #F0D3A3;
+    --display: "Barlow Condensed", "Noto Sans", "Arial Narrow", Arial, sans-serif;
+    --text: "Noto Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --maxw: 720px; --bar-h: 56px;
+  }
+  html[lang="ko"] { --display: "Noto Sans", "Noto Sans KR", sans-serif; --text: "Noto Sans", "Noto Sans KR", sans-serif; }
+  html[lang="zh-Hans"] { --display: "Noto Sans", "Noto Sans SC", sans-serif; --text: "Noto Sans", "Noto Sans SC", sans-serif; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--text); font-size: 16px; line-height: 1.5; -webkit-text-size-adjust: 100%; }
+  html[lang="ko"] body { word-break: keep-all; }
+  a { color: var(--red-deep); }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--red-deep); outline-offset: 2px; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 560px) { .wrap { padding: 0 24px; } }
+  .skip { position: absolute; left: -9999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 12px; border-radius: 6px; z-index: 50; }
+  .skip:focus { left: 8px; }
+  .u-display { font-family: var(--display); text-transform: uppercase; }
+  html[lang="ko"] .u-display, html[lang="zh-Hans"] .u-display { text-transform: none; }
+
+  /* Masthead */
+  .masthead { background: var(--surface); border-bottom: 1px solid var(--line); }
+  .doodle { height: 40px; background: #fff url("__DOODLE__") center / cover no-repeat; }
+  .brand { display: flex; align-items: center; gap: 14px; padding: 12px 0 10px; }
+  .brand img { width: 56px; height: 56px; border-radius: 50%; flex: none; }
+  .brand h1 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 28px; line-height: 30px; margin: 0; }
+  .brand p { margin: 2px 0 0; color: var(--muted); font-size: 14px; line-height: 20px; }
+  .lang { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 0 14px; }
+  .lang .row-label { align-self: center; font-size: 13px; font-weight: 600; color: var(--muted); margin-right: 2px; }
+
+  /* Controls */
+  .pill { display: inline-flex; align-items: center; min-height: 44px; border: 1px solid var(--control); background: var(--surface); border-radius: 999px; padding: 6px 14px; font-size: 14px; line-height: 20px; font-weight: 600; cursor: pointer; white-space: nowrap; color: var(--ink); text-decoration: none; }
+  .pill[aria-pressed="true"], .pill[aria-current] { background: var(--red-deep); color: #fff; border-color: var(--red-deep); }
+  .pill.ghost { border-color: var(--line); }
+
+  /* Sticky bar */
+  .bar { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: 0 1px 0 rgba(27,25,23,.04); }
+  .bar .wrap { display: grid; gap: 8px; padding-top: 8px; padding-bottom: 8px; }
+  .row { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
+  .row > * { flex: none; }
+  .row .sep { width: 1px; background: var(--line); align-self: stretch; margin: 6px 2px; }
+  .summary { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 14px; line-height: 20px; color: var(--body); }
+  .summary b { color: var(--red-deep); }
+  .linkbtn { background: none; border: 0; padding: 4px 2px; min-height: 32px; text-decoration: underline; cursor: pointer; color: var(--red-deep); font-size: 14px; font-weight: 600; }
+
+  /* Specials */
+  .specials { display: grid; gap: 12px; margin: 16px 0 0; grid-template-columns: 1fr; }
+  @media (min-width: 560px) { .specials { grid-template-columns: 1fr 1fr; } }
+  .special { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 14px; min-height: 128px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--red); border-radius: 8px; padding: 12px; color: inherit; text-decoration: none; }
+  .special img { width: 96px; height: 96px; object-fit: cover; border-radius: 6px; align-self: start; }
+  .special .eyebrow { font-family: var(--display); text-transform: uppercase; font-weight: 700; font-size: 13px; line-height: 16px; letter-spacing: .06em; color: var(--red-deep); }
+  .special h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 24px; line-height: 26px; margin: 2px 0 4px; text-wrap: balance; }
+  .special .price { font-size: 17px; line-height: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .special .price s { color: var(--muted); font-weight: 400; margin-left: 6px; }
+  .special .when { font-size: 14px; line-height: 20px; color: var(--body); margin: 2px 0 0; }
+  .special .terms { font-size: 13px; line-height: 19px; color: var(--muted); margin: 4px 0 0; }
+  .special .go { font-size: 14px; font-weight: 600; color: var(--red-deep); text-decoration: underline; margin-top: 6px; display: inline-block; }
+
+  /* Allergen panel */
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin: 12px 0 0; }
+  .panel h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 22px; line-height: 26px; margin: 0; }
+  .panel .hint { margin: 2px 0 10px; color: var(--body); font-size: 14px; line-height: 20px; }
+  .panel details > summary { cursor: pointer; font-weight: 600; font-size: 15px; color: var(--red-deep); padding: 6px 0; list-style: none; }
+  .panel details > summary::-webkit-details-marker { display: none; }
+  .panel details > summary::before { content: "▸ "; }
+  .panel details[open] > summary::before { content: "▾ "; }
+  .avoid { display: flex; flex-wrap: wrap; gap: 8px; padding: 6px 0 4px; }
+  .panel-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 8px; font-size: 14px; line-height: 20px; color: var(--body); }
+  .status { font-weight: 600; color: var(--ink); }
+  .draft { background: var(--amber-bg); border: 1px solid var(--amber-line); color: var(--amber); border-radius: 6px; padding: 10px 12px; margin-top: 12px; font-size: 14px; line-height: 20px; }
+  .draft b { display: block; font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; margin-bottom: 2px; }
+  html[lang="ko"] .draft b, html[lang="zh-Hans"] .draft b { text-transform: none; letter-spacing: 0; }
+
+  /* Sections and items */
+  section.menu { margin: 32px 0 0; scroll-margin-top: calc(var(--bar-h) + 8px); }
+  section.menu > header { border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
+  section.menu h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; color: var(--red); font-size: 28px; line-height: 31px; margin: 0; }
+  html[lang="ko"] section.menu h2, html[lang="zh-Hans"] section.menu h2 { text-transform: none; }
+  .intro { color: var(--body); margin: 10px 0 0; max-width: 62ch; }
+  .intro.small { font-size: 14px; line-height: 20px; color: var(--muted); margin-top: 4px; }
+  .items { list-style: none; margin: 0; padding: 0; }
+  .item { padding: 16px 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--bar-h) + 8px); }
+  .item.flagged { background: var(--flag-bg); box-shadow: inset 4px 0 0 var(--red-deep); margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+  @media (min-width: 560px) { .item.flagged { margin: 0 -24px; padding-left: 24px; padding-right: 24px; } }
+  .hide-flagged .item.flagged { display: none; }
+  .has-photos .item { display: grid; grid-template-columns: minmax(0, 1fr) 96px; gap: 14px; align-items: start; }
+  @media (min-width: 560px) { .has-photos .item { grid-template-columns: minmax(0, 1fr) 112px; } .thumb { width: 112px; height: 112px; } }
+  .item-body { min-width: 0; }
+  .thumb { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; background: var(--line); display: block; }
+  .thumb.cutout { object-fit: contain; background: transparent; border-radius: 0; }
+  .item-head { display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: 12px; align-items: baseline; }
+  .item h3 { font-family: var(--display); text-transform: uppercase; font-weight: 700; font-size: 22px; line-height: 25px; margin: 0; min-width: 0; }
+  html[lang="ko"] .item h3, html[lang="zh-Hans"] .item h3 { text-transform: none; font-size: 20px; line-height: 26px; }
+  .price { font-family: var(--text); font-weight: 700; font-size: 17px; line-height: 24px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .en-name { font-size: 13px; line-height: 19px; color: var(--muted); margin: 0; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; }
+  .badge { font-family: var(--display); text-transform: uppercase; font-weight: 700; font-size: 12px; line-height: 16px; letter-spacing: .06em; color: var(--red-deep); border: 1px solid var(--red-deep); border-radius: 4px; padding: 2px 6px; }
+  .badge.lunch { color: #fff; background: var(--red-deep); }
+  .badge.refill { color: var(--body); border-color: var(--control); }
+  html[lang="ko"] .badge, html[lang="zh-Hans"] .badge { text-transform: none; letter-spacing: 0; }
+  .tagline { margin: 4px 0 0; font-style: italic; color: var(--muted); font-size: 14px; line-height: 20px; }
+  .desc { margin: 4px 0 0; color: var(--body); max-width: 62ch; }
+  .variants { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
+  .variants li { display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: 12px; align-items: baseline; font-weight: 600; }
+  .variants .vplus { font-weight: 400; color: var(--body); font-size: 14px; }
+  .note { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: var(--body); padding-left: 10px; border-left: 2px solid var(--red-deep); }
+  .sides { margin: 10px 0 0; padding: 8px 0 0; border-top: 1px dotted var(--line); }
+  .lab { font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; line-height: 19px; font-weight: 700; color: var(--muted); }
+  html[lang="ko"] .lab, html[lang="zh-Hans"] .lab { text-transform: none; letter-spacing: 0; }
+  .al { margin: 8px 0 0; font-size: 13px; line-height: 19px; color: var(--body); }
+  .al b { font-weight: 600; color: var(--ink); }
+  .al mark { background: transparent; color: var(--red-deep); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 2px; }
+  .al .none { color: var(--muted); }
+  .addons { border: 2px solid var(--red); border-radius: 8px; padding: 10px 16px 4px; margin: 16px 0 0; }
+  .addons > h3 { font-family: var(--display); text-transform: uppercase; font-weight: 800; color: var(--red-deep); font-size: 18px; line-height: 22px; margin: 0 0 2px; }
+  html[lang="ko"] .addons > h3, html[lang="zh-Hans"] .addons > h3 { text-transform: none; }
+  .addons .item { padding: 10px 0; }
+  .addons .item:last-child { border-bottom: 0; }
+  .addons .item h3 { font-size: 18px; line-height: 22px; }
+  .empty { margin: 12px 0 0; font-size: 14px; line-height: 20px; color: var(--muted); font-style: italic; }
+  .compact .items { display: grid; grid-template-columns: 1fr; column-gap: 28px; }
+
+  /* Footer */
+  footer.end { margin: 36px 0 0; background: var(--surface); border-top: 1px solid var(--line); }
+  footer.end .wrap { padding-top: 22px; padding-bottom: 30px; }
+  .notice { font-size: 14px; line-height: 20px; color: var(--body); max-width: 66ch; margin: 0 0 14px; }
+  .notice b { display: block; font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; color: var(--ink); margin-bottom: 2px; }
+  html[lang="ko"] .notice b, html[lang="zh-Hans"] .notice b { text-transform: none; letter-spacing: 0; }
+  .locs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 0; padding-top: 16px; border-top: 2px solid var(--ink); }
+  .locs h3 { font-family: var(--display); text-transform: uppercase; font-weight: 800; color: var(--red); font-size: 20px; line-height: 24px; margin: 0 0 2px; }
+  .locs address { font-style: normal; font-size: 14px; line-height: 20px; color: var(--body); }
+  .locs a { text-decoration: none; }
+  .fine { margin: 18px 0 0; font-size: 13px; line-height: 19px; color: var(--muted); }
+  .pdfs { margin: 18px 0 0; font-size: 14px; line-height: 24px; color: var(--body); }
+  .pdfs a { font-weight: 600; }
+  @media print { .bar, .panel details, .panel-foot, .skip { display: none !important; } body { background: #fff; } }
+</style>
+
+<a class="skip" href="#main" data-t="ui.skip">Skip to menu</a>
+<header class="masthead">
+  <div class="doodle" role="presentation"></div>
+  <div class="wrap">
+    <div class="brand">
+      <img src="__LOGO__" alt="SUP Noodle Bar" width="56" height="56">
+      <div><h1 data-t="ui.brand">SUP Noodle Bar</h1><p data-t="ui.tagline"></p></div>
+    </div>
+    <div class="lang" id="langRow" role="group"><span class="row-label" data-t="ui.language"></span></div>
+  </div>
+</header>
+
+<nav class="bar" id="bar">
+  <div class="wrap">
+    <div class="row" id="jumpRow"></div>
+    <div class="summary" id="summary" hidden></div>
+  </div>
+</nav>
+
+<main class="wrap" id="main" tabindex="-1"></main>
+
+<footer class="end">
+  <div class="wrap" id="footer"></div>
+</footer>
+
+<script>
+const DATA = __DATA__;
+const LANGS = [
+  { code: "en", label: "English" }, { code: "es", label: "Español" }, { code: "vi", label: "Tiếng Việt" }, { code: "ko", label: "한국어" }, { code: "zh", label: "中文" }
+];
+const state = { lang: "en", avoid: new Set(), hide: false };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const S_EN = DATA.strings.en;
+const t = key => { const d = DATA.strings[state.lang] || {}; return d[key] !== undefined ? d[key] : (S_EN[key] !== undefined ? S_EN[key] : ""); };
+const has = key => S_EN[key] !== undefined;
+const money = (n, plus) => { const v = Math.round(n * 100) / 100; const s = Number.isInteger(v) ? String(v) : v.toFixed(2); return (plus ? "+" : "") + "$" + s; };
+const priceHTML = p => `<span class="price">${money(p.p, p.plus)}</span>`;
+function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function pickLang() {
+  const q = new URLSearchParams(location.search).get("lang");
+  if (q && DATA.strings[q]) return q;
+  const saved = load("sup-lang"); if (saved && DATA.strings[saved]) return saved;
+  const nav = (navigator.language || "en").slice(0, 2).toLowerCase();
+  return DATA.strings[nav] ? nav : "en";
+}
+const ORDER = DATA.structure.allergens;
+const merged = e => { const set = new Set([...(e.contains || []), ...(e.likely || [])]); return ORDER.filter(a => set.has(a)); };
+const allOf = it => { const set = new Set(merged(it)); (it.prices || []).forEach(p => (p.contains || []).forEach(a => set.add(a))); (it.addons || []).forEach(a => merged(a).forEach(x => set.add(x))); return ORDER.filter(a => set.has(a)); };
+const aName = a => state.avoid.has(a) ? `<mark>${esc(t("allergen." + a))}</mark>` : esc(t("allergen." + a));
+const listNames = arr => arr.map(aName).join(", ");
+
+function containsHTML(entry) {
+  const list = merged(entry);
+  if (!list.length) return "";
+  return `<p class="al"><b>${esc(t("ui.contains"))}:</b> ${listNames(list)}</p>`;
+}
+function nameBlock(k) {
+  const en = S_EN[k + ".name"], loc = t(k + ".name");
+  if (state.lang === "en" || loc === en) return { h3: esc(en), sub: "" };
+  return { h3: esc(loc), sub: `<p class="en-name" lang="en">${esc(en)}</p>` };
+}
+function badgesHTML(it) {
+  const b = [];
+  if (it.badge) b.push(`<span class="badge ${it.badge === "lunch" ? "lunch" : ""}">${esc(t("ui." + it.badge))}</span>`);
+  if (it.refill) b.push(`<span class="badge refill">${esc(t("ui.freeRefill"))}</span>`);
+  return b.length ? `<div class="badges">${b.join("")}</div>` : "";
+}
+function variantsHTML(k, it) {
+  return `<ul class="variants">${it.prices.map(p => {
+    const extra = (p.contains || []).length ? ` <span class="vplus">(+ ${listNames(p.contains)})</span>` : "";
+    return `<li><span>${esc(t(`${k}.price.${p.k}`))}${extra}</span>${priceHTML(p)}</li>`;
+  }).join("")}</ul>`;
+}
+function itemHTML(it, kind) {
+  const k = `${kind}.${it.id}`;
+  const keyed = it.prices.length && it.prices[0].k !== undefined;
+  const single = !keyed && it.prices.length === 1 ? priceHTML(it.prices[0]) : "";
+  const nm = nameBlock(k);
+  const tagline = has(k + ".tagline") ? `<p class="tagline">${esc(t(k + ".tagline"))}</p>` : "";
+  const desc = has(k + ".desc") ? `<p class="desc">${esc(t(k + ".desc"))}</p>` : "";
+  const note = has(k + ".note") ? `<p class="note">${esc(t(k + ".note"))}</p>` : "";
+  const variants = keyed ? variantsHTML(k, it) : "";
+  const sides = it.addons ? `<div class="sides"><span class="lab">${esc(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${esc(t("addon." + a.id + ".name"))}${merged(a).length ? ` <span class="vplus">(+ ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
+  const pf = kind === "item" ? DATA.photos[it.id] : null;
+  const photo = pf ? `<img class="thumb${pf.endsWith(".png") ? " cutout" : ""}" src="img/${pf}" alt="" loading="lazy" width="96" height="96">` : (kind === "item" ? `<span></span>` : "");
+  return `<li class="item" id="item-${it.id}" data-kind="${kind}" data-allergens="${allOf(it).join(" ")}">
+    <div class="item-body">
+      <div class="item-head"><h3>${nm.h3}</h3>${single}</div>
+      ${nm.sub}${badgesHTML(it)}${tagline}${desc}${variants}${note}${sides}${containsHTML(it)}
+    </div>${photo}
+  </li>`;
+}
+function specialsHTML() {
+  return `<div class="specials">${DATA.structure.specials.map(sp => {
+    const img = DATA.photos[sp.item] ? `<img src="img/${DATA.photos[sp.item]}" alt="" width="96" height="96">` : `<span></span>`;
+    if (sp.id === "lunch") return `<a class="special" href="#item-${sp.item}" data-target="item-${sp.item}"><div>${img}</div><div>
+      <div class="eyebrow">${esc(t("ui.lunchEyebrow"))}</div><h2>${esc(t("ui.lunchTitle"))}</h2>
+      <div class="price">${money(sp.offer)}<s>${money(sp.regular)}</s></div>
+      <p class="when">${esc(t("ui.lunchWhen"))}</p><p class="terms">${esc(t("ui.lunchTerms"))}</p><span class="go">${esc(t("ui.seeItem"))}</span></div></a>`;
+    return `<a class="special" href="#item-${sp.item}" data-target="item-${sp.item}"><div>${img}</div><div>
+      <div class="eyebrow">${esc(t("ui.kimchiEyebrow"))}</div><h2>${esc(t("ui.kimchiTitle"))}</h2>
+      <p class="when">${esc(t("ui.kimchiSub"))}</p><span class="go">${esc(t("ui.seeItem"))}</span></div></a>`;
+  }).join("")}</div>`;
+}
+function panelHTML() {
+  const chips = ORDER.map(a => `<button class="pill" type="button" data-avoid="${a}" aria-pressed="${state.avoid.has(a)}">${esc(t("allergen." + a))}</button>`).join("");
+  return `<section class="panel" id="panel" aria-labelledby="panelTitle">
+    <h2 id="panelTitle">${esc(t("ui.avoiding"))}</h2>
+    <p class="hint">${esc(t("ui.avoidHint"))} ${esc(t("ui.matchAny"))} ${esc(t("ui.noLineNote"))}</p>
+    <details id="avoidDetails"${state.avoid.size ? " open" : ""}><summary>${esc(t("ui.chooseAllergens"))}</summary><div class="avoid">${chips}</div></details>
+    <div class="panel-foot"><span class="status" id="status" role="status" aria-live="polite"></span>
+      <button class="pill ghost" type="button" id="hideBtn" aria-pressed="${state.hide}" hidden></button>
+      <button class="linkbtn" type="button" id="clearBtn" hidden>${esc(t("ui.clear"))}</button></div>
+    <div class="draft"><b>${esc(t("ui.draftLabel"))}</b>${esc(t("ui.draftNotice"))}</div>
+  </section>`;
+}
+function sectionHTML(sec) {
+  const compact = ["extras", "kids", "drinks"].includes(sec.id);
+  const hasPhotos = sec.items.some(it => DATA.photos[it.id]);
+  const intro = has(`sec.${sec.id}.intro`) ? `<p class="intro">${esc(t(`sec.${sec.id}.intro`))}</p>` : "";
+  const broth = has(`sec.${sec.id}.brothNote`) ? `<p class="intro small">${esc(t(`sec.${sec.id}.brothNote`))}</p>` : "";
+  const refills = sec.id === "drinks" ? `<p class="intro small">${esc(t("ui.refillsNote"))}</p>` : "";
+  const addons = sec.addons ? `<div class="addons"><h3>${esc(t("ui.addons"))}</h3><ul class="items">${sec.addons.map(a => itemHTML(a, "addon")).join("")}</ul></div>` : "";
+  return `<section class="menu${compact ? " compact" : ""}${hasPhotos ? " has-photos" : ""}" id="sec-${sec.id}" aria-labelledby="h-${sec.id}">
+    <header><h2 id="h-${sec.id}">${esc(t(`sec.${sec.id}.title`))}</h2></header>${intro}${broth}${refills}
+    <ul class="items">${sec.items.map(it => itemHTML(it, "item")).join("")}</ul><p class="empty" hidden>${esc(t("ui.sectionHidden"))}</p>${addons}
+  </section>`;
+}
+function footerHTML() {
+  return `<p class="notice"><b>${esc(t("ui.allergyTitle"))}</b>${esc(t("ui.allergyNotice"))}</p>
+  <p class="notice"><b>${esc(t("ui.rawTitle"))}</b>${esc(t("ui.rawNotice"))}</p>
+  <div class="locs">
+    <div><h3>${esc(t("ui.buenaPark"))}</h3><address>5141 Beach Blvd Unit B<br>Buena Park, CA 90621<br><a href="tel:+17145212444">714-521-2444</a></address></div>
+    <div><h3>${esc(t("ui.irvine"))}</h3><address>14370 Culver Dr Unit 2H<br>Irvine, CA 92604<br><a href="tel:+16573008420">657-300-8420</a></address></div>
+  </div>
+  <p class="pdfs"><b>${esc(t("ui.pdfMenu"))}:</b> ${LANGS.map(l => `<a href="pdf/SUP-Menu-${l.code}.pdf" lang="${l.code}">${l.label}</a>`).join(" · ")}</p>
+  <p class="fine" lang="en">${esc(S_EN["ui.photoNote"])}</p>
+  <p class="fine"><a href="https://www.supnoodlebar.com">supnoodlebar.com</a> · @supnoodlebar · <a href="mailto:info@supnoodlebar.com">info@supnoodlebar.com</a><br>${esc(t("ui.footer"))} ${esc(t("ui.revised"))} ${DATA.structure.revision}</p>`;
+}
+
+function render() {
+  document.documentElement.lang = state.lang === "zh" ? "zh-Hans" : state.lang;
+  document.title = t("ui.title");
+  document.querySelectorAll("[data-t]").forEach(el => { el.textContent = t(el.dataset.t); });
+  const lr = document.getElementById("langRow");
+  lr.setAttribute("aria-label", t("ui.language"));
+  lr.querySelectorAll("button").forEach(b => b.remove());
+  LANGS.forEach(l => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "pill"; b.textContent = l.label; b.lang = l.code; b.dataset.lang = l.code;
+    b.setAttribute("aria-pressed", String(l.code === state.lang));
+    b.addEventListener("click", () => setLang(l.code));
+    lr.appendChild(b);
+  });
+  const jr = document.getElementById("jumpRow");
+  jr.innerHTML = "";
+  document.getElementById("bar").setAttribute("aria-label", t("ui.jumpTo"));
+  const lb = document.createElement("button"); lb.type = "button"; lb.className = "pill ghost"; lb.textContent = t("ui.language");
+  lb.addEventListener("click", () => { document.getElementById("langRow").scrollIntoView({ block: "start" }); document.querySelector("#langRow button[aria-pressed='true']").focus(); });
+  const ab = document.createElement("button"); ab.type = "button"; ab.className = "pill ghost"; ab.textContent = t("ui.allergens");
+  ab.addEventListener("click", () => { const d = document.getElementById("avoidDetails"); d.open = true; document.getElementById("panel").scrollIntoView({ block: "start" }); d.querySelector("summary").focus(); });
+  jr.append(lb, ab); const sep = document.createElement("span"); sep.className = "sep"; jr.append(sep);
+  DATA.structure.sections.forEach(sec => {
+    const a = document.createElement("a"); a.className = "pill"; a.href = "#sec-" + sec.id; a.textContent = t(`sec.${sec.id}.title`); jr.appendChild(a);
+  });
+  document.getElementById("main").innerHTML = specialsHTML() + panelHTML() + DATA.structure.sections.map(sectionHTML).join("");
+  document.getElementById("footer").innerHTML = footerHTML();
+  document.querySelectorAll("[data-avoid]").forEach(b => b.addEventListener("click", () => toggleAvoid(b.dataset.avoid)));
+  document.getElementById("hideBtn").addEventListener("click", () => { state.hide = !state.hide; applyFilter(); });
+  document.getElementById("clearBtn").addEventListener("click", clearAvoid);
+  document.querySelectorAll(".special").forEach(a => a.addEventListener("click", () => {
+    const tgt = document.getElementById(a.dataset.target);
+    if (tgt && tgt.classList.contains("flagged") && state.hide) { state.hide = false; applyFilter(); }
+  }));
+  applyFilter();
+  observeSections();
+}
+function setLang(code) {
+  const y = window.scrollY;
+  state.lang = code; store("sup-lang", code);
+  const u = new URL(location.href); u.searchParams.set("lang", code); history.replaceState(null, "", u);
+  render();
+  window.scrollTo(0, y);
+  const b = document.querySelector(`#langRow button[data-lang="${code}"]`); if (b) b.focus({ preventScroll: true });
+}
+function toggleAvoid(a) {
+  state.avoid.has(a) ? state.avoid.delete(a) : state.avoid.add(a);
+  store("sup-avoid", [...state.avoid].join(","));
+  const y = window.scrollY; render(); window.scrollTo(0, y);
+  const b = document.querySelector(`[data-avoid="${a}"]`); if (b) b.focus({ preventScroll: true });
+}
+function clearAvoid() { state.avoid.clear(); state.hide = false; store("sup-avoid", ""); const y = window.scrollY; render(); window.scrollTo(0, y); }
+function applyFilter() {
+  let n = 0;
+  document.querySelectorAll(".item").forEach(el => {
+    const hits = (el.dataset.allergens || "").split(" ").filter(a => a && state.avoid.has(a));
+    el.classList.toggle("flagged", hits.length > 0);
+    if (hits.length && el.dataset.kind === "item") n++;
+  });
+  document.body.classList.toggle("hide-flagged", state.hide);
+  document.querySelectorAll("section.menu").forEach(sec => {
+    const items = [...sec.querySelectorAll(":scope > .items > .item")];
+    const allHidden = state.hide && items.length && items.every(i => i.classList.contains("flagged"));
+    sec.querySelector(".empty").hidden = !allHidden;
+  });
+  const active = state.avoid.size > 0;
+  document.getElementById("status").textContent = active ? t("ui.flaggedCount").replace("{n}", n) : "";
+  const hb = document.getElementById("hideBtn"); hb.hidden = !active; hb.textContent = t(state.hide ? "ui.showFlagged" : "ui.hideFlagged"); hb.setAttribute("aria-pressed", String(state.hide));
+  document.getElementById("clearBtn").hidden = !active;
+  const sm = document.getElementById("summary"); sm.hidden = !active;
+  if (active) sm.innerHTML = `<span><b>${esc(t("ui.avoiding"))}:</b> ${[...state.avoid].map(a => esc(t("allergen." + a))).join(", ")}</span><button class="linkbtn" type="button" id="summaryClear">${esc(t("ui.clear"))}</button>`;
+  const sc = document.getElementById("summaryClear"); if (sc) sc.addEventListener("click", clearAvoid);
+  syncBarHeight();
+}
+function syncBarHeight() { document.documentElement.style.setProperty("--bar-h", document.getElementById("bar").offsetHeight + "px"); }
+let io = null;
+function observeSections() {
+  if (io) io.disconnect();
+  if (!("IntersectionObserver" in window)) return;
+  io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      document.querySelectorAll("#jumpRow a").forEach(a => {
+        const on = a.getAttribute("href") === "#" + e.target.id;
+        if (on) { a.setAttribute("aria-current", "location"); a.scrollIntoView({ block: "nearest", inline: "nearest" }); } else a.removeAttribute("aria-current");
+      });
+    });
+  }, { rootMargin: "-35% 0px -60% 0px" });
+  document.querySelectorAll("section.menu").forEach(s => io.observe(s));
+}
+if ("ResizeObserver" in window) new ResizeObserver(syncBarHeight).observe(document.getElementById("bar"));
+state.lang = pickLang();
+(load("sup-avoid") || "").split(",").filter(a => ORDER.includes(a)).forEach(a => state.avoid.add(a));
+render();
+</script>

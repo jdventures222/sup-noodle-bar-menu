@@ -1,0 +1,825 @@
+{
+ "allergens": [
+  "milk",
+  "egg",
+  "fish",
+  "shellfish",
+  "peanut",
+  "treenut",
+  "wheat",
+  "soy",
+  "sesame"
+ ],
+ "sections": [
+  {
+   "id": "appetizers",
+   "items": [
+    {
+     "id": "bao",
+     "prices": [
+      {
+       "k": "three",
+       "p": 13
+      },
+      {
+       "k": "one",
+       "p": 4.5
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "fish",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "springroll",
+     "prices": [
+      {
+       "p": 9.5
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish",
+      "peanut",
+      "treenut",
+      "wheat",
+      "soy",
+      "sesame"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "eggrolls",
+     "prices": [
+      {
+       "k": "three",
+       "p": 10
+      },
+      {
+       "k": "extra",
+       "p": 2.5,
+       "plus": true
+      }
+     ],
+     "contains": [
+      "egg",
+      "fish",
+      "shellfish",
+      "wheat",
+      "soy",
+      "sesame"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "shakenfries",
+     "badge": "bestSeller",
+     "prices": [
+      {
+       "p": 20
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "fish",
+      "shellfish",
+      "wheat",
+      "soy",
+      "sesame"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "trufflefries",
+     "prices": [
+      {
+       "p": 13.5
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "parmfries",
+     "prices": [
+      {
+       "p": 13
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "wings",
+     "prices": [
+      {
+       "k": "garlic",
+       "p": 16
+      },
+      {
+       "k": "parmesan",
+       "p": 17
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "nuggets",
+     "prices": [
+      {
+       "p": 12.5
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    }
+   ]
+  },
+  {
+   "id": "pho",
+   "items": [
+    {
+     "id": "phoshortrib",
+     "prices": [
+      {
+       "p": 18
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "phoribbones",
+     "prices": [
+      {
+       "p": 19
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "phobeefbelly",
+     "badge": "lunch",
+     "prices": [
+      {
+       "p": 16
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "phofilet",
+     "prices": [
+      {
+       "p": 18.5
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "phocombo",
+     "badge": "chefsChoice",
+     "prices": [
+      {
+       "p": 20
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "phoveggie",
+     "prices": [
+      {
+       "p": 16.5
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "phobrisket",
+     "prices": [
+      {
+       "p": 18
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "phoshrimp",
+     "prices": [
+      {
+       "p": 17.5
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "phomeatballs",
+     "prices": [
+      {
+       "p": 16
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "phobourdain",
+     "prices": [
+      {
+       "p": 20
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "drynoodle",
+     "badge": "new",
+     "prices": [
+      {
+       "p": 15.5
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish",
+      "peanut",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    }
+   ],
+   "addons": [
+    {
+     "id": "shaken",
+     "prices": [
+      {
+       "p": 0.5,
+       "plus": true
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "sousvide",
+     "prices": [
+      {
+       "p": 2,
+       "plus": true
+      }
+     ],
+     "contains": [
+      "egg"
+     ],
+     "likely": []
+    },
+    {
+     "id": "mala",
+     "prices": [
+      {
+       "p": 1,
+       "plus": true
+      }
+     ],
+     "contains": [],
+     "likely": [
+      "sesame",
+      "peanut"
+     ]
+    },
+    {
+     "id": "spicy",
+     "prices": [
+      {
+       "p": 1,
+       "plus": true
+      }
+     ],
+     "contains": [],
+     "likely": [
+      "fish",
+      "shellfish"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "plates",
+   "items": [
+    {
+     "id": "lomo",
+     "prices": [
+      {
+       "k": "filet",
+       "p": 25,
+       "contains": [
+        "sesame"
+       ]
+      },
+      {
+       "k": "shrimp",
+       "p": 22,
+       "contains": [
+        "sesame"
+       ]
+      },
+      {
+       "k": "tofu",
+       "p": 17.5
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "addons": [
+      {
+       "id": "lomofriedegg",
+       "prices": [
+        {
+         "p": 2.5,
+         "plus": true
+        }
+       ],
+       "contains": [
+        "egg"
+       ],
+       "likely": []
+      },
+      {
+       "id": "lomosoftegg",
+       "prices": [
+        {
+         "p": 2,
+         "plus": true
+        }
+       ],
+       "contains": [
+        "egg"
+       ],
+       "likely": []
+      }
+     ],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "cajun",
+     "prices": [
+      {
+       "k": "shrimpsausage",
+       "p": 22
+      },
+      {
+       "k": "filet",
+       "p": 23,
+       "contains": [
+        "sesame"
+       ]
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "fish",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "friedrice",
+     "prices": [
+      {
+       "k": "shrimp",
+       "p": 22.5
+      },
+      {
+       "k": "spam",
+       "p": 20
+      },
+      {
+       "k": "wings",
+       "p": 24.5
+      },
+      {
+       "k": "filet",
+       "p": 23.5,
+       "contains": [
+        "sesame"
+       ]
+      },
+      {
+       "k": "softtofu",
+       "p": 15.5
+      },
+      {
+       "k": "friedtofu",
+       "p": 17
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "kimchi",
+     "badge": "new",
+     "prices": [
+      {
+       "k": "spam",
+       "p": 22.5
+      },
+      {
+       "k": "softtofu",
+       "p": 19.5
+      },
+      {
+       "k": "filet",
+       "p": 24.5
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "fish",
+      "shellfish",
+      "wheat",
+      "soy",
+      "sesame"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    }
+   ]
+  },
+  {
+   "id": "extras",
+   "items": [
+    {
+     "id": "sidenoodles",
+     "prices": [],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "sidebroth",
+     "prices": [
+      {
+       "p": 3
+      }
+     ],
+     "contains": [
+      "fish",
+      "shellfish"
+     ],
+     "likely": []
+    },
+    {
+     "id": "siderice",
+     "prices": [
+      {
+       "p": 2
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "friedegg",
+     "prices": [
+      {
+       "p": 2.5
+      }
+     ],
+     "contains": [
+      "egg"
+     ],
+     "likely": []
+    },
+    {
+     "id": "poachedegg",
+     "prices": [
+      {
+       "p": 2
+      }
+     ],
+     "contains": [
+      "egg"
+     ],
+     "likely": []
+    },
+    {
+     "id": "soybutter",
+     "prices": [
+      {
+       "p": 8.5
+      }
+     ],
+     "contains": [
+      "milk",
+      "egg",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    }
+   ]
+  },
+  {
+   "id": "kids",
+   "items": [
+    {
+     "id": "kidsbox",
+     "prices": [
+      {
+       "p": 8
+      }
+     ],
+     "contains": [
+      "egg",
+      "shellfish",
+      "wheat",
+      "soy"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    }
+   ]
+  },
+  {
+   "id": "drinks",
+   "items": [
+    {
+     "id": "yuzupeach",
+     "prices": [
+      {
+       "p": 5.5
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "herbaltea",
+     "refill": true,
+     "prices": [
+      {
+       "p": 4
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "thaitea",
+     "prices": [
+      {
+       "p": 5.5
+      }
+     ],
+     "contains": [],
+     "likely": [
+      "milk"
+     ]
+    },
+    {
+     "id": "lychee",
+     "prices": [
+      {
+       "p": 5.5
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "vietcoffee",
+     "prices": [
+      {
+       "p": 6
+      }
+     ],
+     "contains": [],
+     "likely": [
+      "milk"
+     ]
+    },
+    {
+     "id": "strawberrysoda",
+     "badge": "new",
+     "prices": [
+      {
+       "p": 6
+      }
+     ],
+     "contains": [
+      "milk"
+     ],
+     "likely": [],
+     "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+    },
+    {
+     "id": "watermelon",
+     "badge": "seasonal",
+     "prices": [
+      {
+       "p": 5.5
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "passionfruit",
+     "prices": [
+      {
+       "p": 5.5
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "fountain",
+     "refill": true,
+     "prices": [
+      {
+       "p": 4
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "shirley",
+     "refill": true,
+     "prices": [
+      {
+       "p": 4.5
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "royrogers",
+     "refill": true,
+     "prices": [
+      {
+       "p": 4.5
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "jasmineiced",
+     "refill": true,
+     "prices": [
+      {
+       "p": 4
+      }
+     ],
+     "contains": [],
+     "likely": []
+    },
+    {
+     "id": "jasminehot",
+     "refill": true,
+     "prices": [
+      {
+       "p": 2
+      }
+     ],
+     "contains": [],
+     "likely": []
+    }
+   ]
+  }
+ ],
+ "specials": [
+  {
+   "id": "lunch",
+   "item": "phobeefbelly",
+   "regular": 16,
+   "offer": 11.99
+  },
+  {
+   "id": "kimchi",
+   "item": "kimchi"
+  }
+ ],
+ "revision": "2026-09-12"
+}

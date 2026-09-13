@@ -1,0 +1,286 @@
+{
+  "summary": "Keep SUP’s red, condensed headings, food photography, and doodles. The biggest problems are functional: missing mobile viewport configuration, unverified allergen claims, fragile multilingual behavior, and broken print flow. Visually, reduce the promotional space, simplify allergen styling, and establish consistent price alignment. This audit inspected the supplied images, source, JSON, and generated HTML; references were opened during this run. External observations concern retrieved content and documented patterns, not independently tested interactions. No files were changed.",
+  "references": [
+    {
+      "name": "Momofuku Noodle Bar — archived East Village lunch menu",
+      "url": "https://noodlebar-ny.momofuku.com/wp-content/themes/noodlebarny/printPage.php?id=150",
+      "category": "Asian noodle restaurant / menu hierarchy",
+      "whatWorks": "Short sections such as Buns, Small, and Noodles organize a substantial menu. Ingredient fragments distinguish dishes economically, and a shared noodle explanation avoids repetition. Useful for tightening SUP’s descriptions while retaining ingredient information. This is explicitly a 2020 archive, suitable as a design reference rather than current pricing evidence."
+    },
+    {
+      "name": "IPPUDO — Yerba Buena menu",
+      "url": "https://www.ippudous.com/yerba-buena",
+      "category": "Asian noodle restaurant / product explanation",
+      "whatWorks": "Ramen entries consistently identify broth, noodle style, and toppings alongside individual bowl photography. Vegetarian bowls receive explicit descriptions of their bases. SUP can borrow this information structure to make beef broth, protein differences, and dry noodles immediately understandable."
+    },
+    {
+      "name": "Xi’an Famous Foods — menu",
+      "url": "https://www.xianfoods.com/menu",
+      "category": "Asian restaurant / bilingual navigation",
+      "whatWorks": "Category controls organize photographed dishes, while item codes connect Chinese names with English names. Nutrition and allergen documents are linked near the menu introduction. The bilingual pairing provides a useful model for helping diners identify the same dish when speaking with staff."
+    },
+    {
+      "name": "SUP Noodle Bar Irvine — Toast menu",
+      "url": "https://keiconcepts.toast.site/order/supnoodlebarirvine",
+      "category": "Digital menu / direct client comparison",
+      "whatWorks": "The page identifies the restaurant and location, exposes search, groups dishes under recognizable categories, and places prices with item names. Garlic and Parmesan wings appear as separate products, illustrating clearer variant identification. Its allergen statements combine ingredients and possible contact; they require reconciliation with SUP’s draft, not automatic copying."
+    },
+    {
+      "name": "Sweetgreen — menu",
+      "url": "https://www.sweetgreen.com/menu",
+      "category": "Digital menu / item information hierarchy",
+      "whatWorks": "Repeated item structures pair photography, names, ingredient descriptions, and a plain-language Contains statement. Major categories distinguish bowls, salads, plates, and children’s meals. This supports SUP’s required single allergen line without making every allergen resemble a button. Sweetgreen also includes dietary information such as meat; retain SUP’s own allergen vocabulary."
+    },
+    {
+      "name": "Square — QR code ordering documentation",
+      "url": "https://squareup.com/help/us/en/article/7142-set-up-self-serve-ordering-and-qr-codes-with-square-online",
+      "category": "QR entry / platform pattern",
+      "whatWorks": "Documents a direct journey from a table QR code to a mobile webpage, with location or station context carried by the link and configurable customer instructions. SUP can adopt direct menu access and a clear instruction to order with the server. Ordering, payment, and POS integration are outside this project."
+    },
+    {
+      "name": "Din Tai Fung US — menu",
+      "url": "https://dtf.com/en-us/menu",
+      "category": "Asian restaurant / section navigation",
+      "whatWorks": "A Most Popular grouping complements specific categories such as Noodles, Noodle Soups, and From the Wok. The allergen guide is linked near the menu entrance, with a shared-kitchen explanation before the dishes. This makes both navigation and dietary information easier to discover."
+    },
+    {
+      "name": "Din Tai Fung UK — Selfridges allergen guide, July 2026",
+      "url": "https://dintaifung-uk.com/wp-content/uploads/2026/07/Allergen-Menu-SF6July2026.pdf",
+      "category": "Allergen matrix / bilingual information",
+      "whatWorks": "English and Chinese dish names, repeated allergen headings, section groups, and an explicit symbol legend make the matrix interpretable across pages. Borrow consistent terminology and repeated context. Its multiple symbol meanings and wide matrix are unsuitable replacements for SUP’s single Contains line on phones."
+    },
+    {
+      "name": "Pho — linked 2026 allergen guide",
+      "url": "https://content.phocafe.co.uk/wp-content/uploads/2026/09/Pho-Allergen-Guide-2026_web.pdf",
+      "category": "Vietnamese restaurant / allergen documentation",
+      "whatWorks": "Defines the allergen categories with ingredient examples and explains that its information comes from supplier information and recipes. It also tells diners to disclose allergies even when their chosen meal has no corresponding entry. This is a strong model for documenting the basis and limits of SUP’s data; its 19-page format should remain a supporting reference."
+    },
+    {
+      "name": "Food Standards Agency — non-prepacked food allergen guidance",
+      "url": "https://www.gov.uk/government/publications/allergen-information-for-non-prepacked-foods-best-practice/allergen-information-for-non-prepacked-foods-best-practice",
+      "category": "Allergen communication / operational guidance",
+      "whatWorks": "Connects accessible written information with a staff conversation and explains how to maintain accurate information. This closely matches table dining. Use its communication principles as a reference; its UK legal scope and 14-allergen framework are not California menu requirements."
+    },
+    {
+      "name": "Food Standards Agency and Basis Social — allergen communication research",
+      "url": "https://science.food.gov.uk/article/123212-improving-allergen-communication-in-sme-food-businesses-in-out-of-home-settings",
+      "category": "Allergen presentation / user research",
+      "whatWorks": "Evaluates text, icons, menus, labels, and matrices. Findings identify problems with tiny disclosure messages, ambiguous ticks, and crowded information. Full allergen names and prominent disclosure prompts offer useful direction for SUP. Results concern the tested contexts; they do not establish that one presentation always performs best."
+    },
+    {
+      "name": "W3C — WCAG 2.2",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "category": "Digital accessibility / acceptance criteria",
+      "whatWorks": "Provides measurable criteria for contrast, reflow, keyboard access, language identification, focus visibility, and status announcements. These supply an objective review framework for SUP’s language controls, sticky navigation, filter feedback, and small allergen text."
+    }
+  ],
+  "critique": {
+    "web": [
+      "The foundation is sound: recognizable branding, actual text, section headings, native anchor links, aria-pressed filter buttons, visible keyboard focus styling, and reduced-motion handling. The explicit warning that veggie pho uses beef broth is particularly useful. Preserve these strengths.",
+      "Critical mobile defect: template.html and the generated sup-menu.html contain neither a viewport meta tag nor a doctype. Mobile browsers can therefore use a desktop-sized layout viewport. A narrow desktop-browser screenshot does not verify the actual QR experience.",
+      "The opening hierarchy delays the menu. Two specials each have a 220px minimum height, followed by the expanded allergen panel. The dark photographic overlays and shadows obscure the food more than the original promotional artwork. The first ordinary dish arrives too late.",
+      "The allergen data does not justify its presentation. Of 47 rendered dish/add-on entries, 31 have inferred allergens in the underlying likely array; mergedAllergens() presents those as Contains. Thirteen entries have empty arrays, and no entry has tree nuts assigned. The draft notice acknowledges uncertainty, but the individual labels and filter imply substantially greater completeness.",
+      "SUP’s live Toast descriptions reveal discrepancies worth investigating: Short Rib Pho includes shellfish in its combined ingredient/contact warning, while the draft shows only fish. Spring Rolls include tree nuts and sesame in Toast’s warning, absent from the draft. These are unresolved differences, not proof that those ingredients belong in Contains. [SUP’s Toast menu](https://keiconcepts.toast.site/order/supnoodlebarirvine).",
+      "Variant handling is misleading. Wings, lomo saltado, and fried rice receive one union of allergens across their alternatives. A shellfish selection can flag an entire multi-protein dish. Prose explanations partially qualify this, but the filter cannot represent the individual options.",
+      "The filter violates the single-line requirement when active: applyFilter() reveals a second Contains statement in .flagline above .al-row. Its count includes pho add-ons as dishes. Hiding matches leaves empty section headings and can hide the destination of a specials link. There is no live announcement of results, and saved avoidance selections lack a persistent reminder once the panel scrolls away.",
+      "Small-text contrast fails in identifiable places. Calculated from the CSS, #837A74 is approximately 3.77:1 on #F6F2ED and 4.20:1 on white; #E5342B is 4.32:1 against white. Muted hints and small red/white badges therefore miss the 4.5:1 normal-text threshold. Large red section headings can remain. [W3C contrast guidance](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).",
+      "Navigation is only partly discoverable. Hidden scrollbars conceal later category chips; the active section uses a CSS class without aria-current. Fixed 104px/110px anchor offsets cannot adapt to enlarged text or translated controls. Pills are approximately 32px tall: above the basic 24px target dimension, but below a more comfortable 44px design target. Small text-only filter actions need particular attention. [W3C target-size guidance](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html).",
+      "All five translation files have matching keys, and the current generated file includes all five. However, itemHTML() always places English in h3 and the selected language underneath. English headings lack language annotations, navigation aria-labels remain English, and rebuilding the controls discards keyboard focus. The shared font stack puts Korean before Simplified Chinese. Also, build.py defaults to bundling English alone.",
+      "Alignment drifts on wider screens because .variants stops at 420px while single prices align to the wider item edge. Condensed 21px headings use a tight 1.05 line-height, and badges depend on negative vertical offsets. Repeated black allergen chips compete with names and resemble controls. Decorative // prefixes consume space without explicitly identifying currency.",
+      "Content and delivery need tightening. ui.lunchTerms exists but is never rendered on the web, omitting the holiday exclusion. Promotional prices are hard-coded separately from structure.json. The generated HTML is approximately 552 KB before fonts, with embedded images and an initially empty main element. Font transfer and real-device performance were not measured; requesting CJK families does not mean every font subset downloads."
+    ],
+    "print": [
+      "The new print menu improves grouping and price alignment, but its typography is too small for comfortable table use: 8.6pt body, 7.4pt allergen text, and approximately 6.3pt badges. The large unused areas make this compression particularly difficult to justify.",
+      "The footer problem has a concrete structural cause. build_print.py closes .flow before creating .end. Consequently, column-span:all on .end cannot integrate it into those columns, while break-inside:avoid keeps the entire footer together. Page 3’s empty right-column space remains unused and the footer moves to page 4.",
+      "Continuations are poorly signposted. Page 1’s right column starts with Parmesan Fries without an Appetizers label; page 2 starts midway through Pho; Extras spans pages 2–3; Drinks continues into page 3’s right column. There are no page numbers or continuation headings.",
+      "The header reads Contains followed by all nine allergen names, which can be mistaken for a menu-wide declaration. The actual draft qualification is much quieter. Individual Contains lines repeat the web’s unverified claims, while grouped variants inherit the same ambiguity.",
+      "The specials occupy valuable space and contain tiny reversed type, dense tags, and a small crossed-out price. Large black/red fills are expensive to reproduce and less forgiving on ordinary printers. The original menu’s white field, strong category headings, and restrained decoration provide a better baseline for the main menu pages.",
+      "Footer hierarchy is confused: lunch-only restrictions appear as general fine print, while the important notices are separated from the food. The export script waits a fixed virtual-time budget and checks only that a PDF file exists with a PDF signature. It does not verify font readiness, missing glyphs, clipped content, item completeness, or pagination across languages."
+    ]
+  },
+  "recommendations": [
+    {
+      "surface": "web-ux",
+      "title": "Fix the actual mobile document",
+      "why": "The missing viewport configuration can undermine every responsive layout decision.",
+      "how": "Give template.html a complete standards-mode document with <!doctype html>, html/head/body, and <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">. Keep zoom enabled. Add a skip link to #main. Verify the generated page at 320px, 390px, and 430px using mobile emulation, plus enlarged text and keyboard navigation.",
+      "reference": "[WCAG 2.2](https://www.w3.org/TR/WCAG22/)",
+      "priority": "P1",
+      "effort": "S"
+    },
+    {
+      "surface": "web-ux",
+      "title": "Make allergen records accurate and specific to variants",
+      "why": "A polished filter cannot compensate for incomplete or inferred ingredient data. The same records drive both surfaces.",
+      "how": "Review recipes, sauces, garnishes, supplier labels, and variants with the kitchen. Replace the public merge of contains and likely with one reviewed contains array; retain provenance and review dates as internal metadata. Add contains data to keyed price variants and add-ons. Keep one Contains statement per dish, using qualified clauses for variant differences. Until a record is reviewed, show 'Contains: Not verified—ask your server'; keep that entry visible during hiding and exclude it from any implication of suitability. Keep cross-contact guidance separate from ingredient claims.",
+      "reference": "[FSA guidance](https://www.gov.uk/government/publications/allergen-information-for-non-prepacked-foods-best-practice/allergen-information-for-non-prepacked-foods-best-practice), [Pho’s recipe and supplier basis](https://content.phocafe.co.uk/wp-content/uploads/2026/09/Pho-Allergen-Guide-2026_web.pdf)",
+      "priority": "P1",
+      "effort": "L"
+    },
+    {
+      "surface": "web-ux",
+      "title": "Keep one allergen line and make filtering understandable",
+      "why": "The current selected state duplicates Contains, miscounts dishes, and can produce empty or unreachable content.",
+      "how": "Remove .flagline. Emphasize matching allergen names inside .al-row with bold text, an underline, and an accessible 'selected for avoidance' annotation. Default to flagging; retain an explicit hide toggle with aria-pressed. Count dishes separately from add-ons, explain that multiple selections match any selected allergen, and announce the result through one role=\"status\" element. Add per-section empty states and a persistent selection summary with Clear. If a specials target is hidden, offer to show flagged dishes before navigating to it.",
+      "reference": "[W3C status messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)",
+      "priority": "P1",
+      "effort": "M"
+    },
+    {
+      "surface": "web-visual",
+      "title": "Correct contrast and simplify allergen styling",
+      "why": "Small muted text fails contrast, while black allergen chips receive too much visual emphasis.",
+      "how": "Keep --red:#E5342B for branding and large headings. Use --red-deep:#B4231C for selected controls, small red labels, and links; change --ink-3 to #625B56. Render .al-row as one wrapping text statement at 13px/1.45 with a 600-weight Contains label and comma-separated names. Remove default black chip backgrounds. Use dark text and restrained emphasis for selected matches. Increase body copy to 16px/1.5 and ensure essential notes receive the normal body color.",
+      "reference": "[Sweetgreen’s inline Contains pattern](https://www.sweetgreen.com/menu), [W3C contrast guidance](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)",
+      "priority": "P1",
+      "effort": "M"
+    },
+    {
+      "surface": "web-ux",
+      "title": "Make each selected language primary and preserve interaction state",
+      "why": "Matching translation keys do not guarantee a usable multilingual interface.",
+      "how": "Render the selected-language dish name in h3; retain English beneath it as a smaller staff-reference name with lang=\"en\". Set Noto Sans KR first for Korean content and Noto Sans SC first for zh-Hans; use normal tracking and approximately 1.3 heading line-height for both. Localize navigation labels and filter announcements. Preserve the current item anchor and restore focus after setLang(). Make build.py include all five languages by default and retain key-parity checks. Apply the same language roles to print output.",
+      "reference": "[Xi’an bilingual identification](https://www.xianfoods.com/menu), [W3C language of parts](https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html)",
+      "priority": "P1",
+      "effort": "M"
+    },
+    {
+      "surface": "print",
+      "title": "Bring the footer into the available column space",
+      "why": "The fourth page is primarily a flow problem, not evidence that the menu needs smaller type.",
+      "how": "In build_print.py, move .end inside .flow. Set .end to column-span:none and break-inside:auto. Within that narrow footer, stack .notices and .locs instead of nesting their current two- and three-column grids. Keep each individual notice and location block intact. Retain break-inside:avoid on item blocks. Use the recovered page-3 space for readable notices and locations. Target three English pages, then assess every other language independently; do not force the count by shrinking essential text.",
+      "reference": null,
+      "priority": "P1",
+      "effort": "M"
+    },
+    {
+      "surface": "web-ux",
+      "title": "Centralize offers and resolve conflicting menu copy",
+      "why": "Missing restrictions and duplicated prices create preventable disagreements between the web, print, and promotions.",
+      "how": "Add a specials object to structure.json containing the linked item ID, regular and offer prices, schedule, restrictions, and applicable locations. Have both renderers use it. Render the holiday exclusion beside the lunch offer and its dish entry. Label those restrictions as lunch-offer terms in print. Resolve the original kimchi poster’s Classic option versus the item menu’s filet mignon option with the restaurant. Replace the customer-facing rebuild description with an accurately maintained menu revision date.",
+      "reference": "[SUP’s own live menu for reconciliation](https://keiconcepts.toast.site/order/supnoodlebarirvine)",
+      "priority": "P1",
+      "effort": "M"
+    },
+    {
+      "surface": "web-visual",
+      "title": "Turn the specials into compact food-led menu entries",
+      "why": "The current promotional stack overwhelms the QR menu and darkens appealing food photography.",
+      "how": "Replace .tile background images with explicit img elements beside solid text panels. On phones, use approximately 96px-wide crops and a 128px minimum card height that grows with translations; retain two columns only when space permits. Use concise headings, ordinary text prices, and immediately adjacent offer restrictions. Remove heavy shadows and the oversized price disc. Link clearly to the corresponding dish. Reduce the masthead doodle strip to 32–40px and keep decoration away from controls and text.",
+      "reference": "[IPPUDO’s dish photography and explanations](https://www.ippudous.com/yerba-buena), [Sweetgreen’s repeated item structure](https://www.sweetgreen.com/menu)",
+      "priority": "P2",
+      "effort": "M"
+    },
+    {
+      "surface": "web-visual",
+      "title": "Establish one item grid and one price convention",
+      "why": "A consistent name–price relationship improves scanning more than additional decoration.",
+      "how": "Use grid-template-columns:minmax(0,1fr) max-content on .item-head and variant rows, with baseline alignment and a 12px gap. Remove .variants’ 420px cap and web dotted leaders. Give headings min-width:0 and prices white-space:nowrap with tabular numerals. Replace decorative // prefixes with consistent prices such as $18, $18.50, and +$2.50. Move badges out of heading text and remove negative offsets. Trim promotional adjectives in descriptions while preserving ingredients, sauces, portions, and broth information.",
+      "reference": "[Momofuku’s compact menu descriptions](https://noodlebar-ny.momofuku.com/wp-content/themes/noodlebarny/printPage.php?id=150), [SUP Toast’s explicit prices](https://keiconcepts.toast.site/order/supnoodlebarirvine)",
+      "priority": "P2",
+      "effort": "M"
+    },
+    {
+      "surface": "web-ux",
+      "title": "Keep categories and allergen controls within reach",
+      "why": "Long scrolling is manageable when diners can understand their position and reach active controls.",
+      "how": "Move the initial language controls into the masthead. Keep a compact sticky category row with persistent Language and Allergens actions that expand in place. Give controls at least 44px height, show a visible scroll affordance, and scroll the active category chip into view horizontally. Set aria-current=\"location\" on the active anchor. Measure .bar with ResizeObserver and use its height in scroll-margin-top. Collapse the filter choices initially, but keep the disclosure message and any saved selections visible. Preserve the current food-section order and provide direct access to Drinks.",
+      "reference": "[Din Tai Fung’s category structure](https://dtf.com/en-us/menu), [W3C target-size guidance](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)",
+      "priority": "P2",
+      "effort": "M"
+    },
+    {
+      "surface": "web-ux",
+      "title": "Improve static delivery and resilience",
+      "why": "The current menu requires JavaScript to reveal its dishes, and embedded images cannot be cached independently.",
+      "how": "Have build.py emit initial English menu markup and progressively enhance it with language switching and filtering. Keep all translations available locally. Serve the existing photos and doodle as optimized static assets with explicit dimensions; use responsive image sources where useful. Retain font-display:swap, reduce unused weights, and load CJK resources according to the selected script while keeping system fallbacks. Measure transfer size, layout movement, and menu visibility on a throttled mobile connection before setting a performance budget.",
+      "reference": "[Square’s direct QR-to-web journey](https://squareup.com/help/us/en/article/7142-set-up-self-serve-ordering-and-qr-codes-with-square-online)",
+      "priority": "P2",
+      "effort": "M"
+    },
+    {
+      "surface": "print",
+      "title": "Use the recovered space for legibility and reliable monochrome output",
+      "why": "A table menu must survive ordinary printers, modest lighting, and reading without zoom.",
+      "how": "Raise body text to 9.5–10pt and Contains lines and notices to at least 8.5pt. Use dark text for all essential information. Replace the masthead’s nine-allergen declaration with a clearly labeled explanation of the Contains line and a short staff-disclosure prompt. Simplify the specials to bordered white panels with small photos and prominent text prices. Provide monochrome CSS that removes reversed badges, shadows, and solid promotional fills. Proof at actual size in grayscale and with background printing disabled.",
+      "reference": "[FSA presentation research](https://science.food.gov.uk/article/123212-improving-allergen-communication-in-sme-food-businesses-in-out-of-home-settings)",
+      "priority": "P2",
+      "effort": "M"
+    },
+    {
+      "surface": "print",
+      "title": "Control continuations and verify the exported document",
+      "why": "Readable columns still need context at every break, and successful file creation does not prove a successful menu export.",
+      "how": "After reflow, introduce deliberate section fragments in build_print.py where columns or pages split, repeating labels such as 'Pho — continued'. Keep section headers, introductory text, and the first item together; avoid opening Extras for only one item at a page bottom. Add page numbers through the PDF export options. Replace the fixed wait with explicit print-media font and image readiness. Check all five PDFs for US Letter dimensions, expected item and price coverage, clipped rows, missing glyphs, and footer placement.",
+      "reference": "[Din Tai Fung’s repeated allergen headings and section context](https://dintaifung-uk.com/wp-content/uploads/2026/07/Allergen-Menu-SF6July2026.pdf)",
+      "priority": "P2",
+      "effort": "M"
+    }
+  ],
+  "designTokens": {
+    "palette": [
+      {
+        "name": "brand",
+        "hex": "#E5342B",
+        "use": "Logo, large condensed section headings, and decorative accents. Avoid small white text on this color."
+      },
+      {
+        "name": "action",
+        "hex": "#B4231C",
+        "use": "Selected controls, small red labels, links, and filter emphasis; approximately 6.57:1 against white."
+      },
+      {
+        "name": "ink",
+        "hex": "#1B1917",
+        "use": "Dish names, prices, main rules, and primary text."
+      },
+      {
+        "name": "body",
+        "hex": "#4A4542",
+        "use": "Descriptions, allergen names, and supporting instructions."
+      },
+      {
+        "name": "muted",
+        "hex": "#625B56",
+        "use": "Secondary names and metadata; approximately 5.98:1 against the warm background."
+      },
+      {
+        "name": "ground",
+        "hex": "#F6F2ED",
+        "use": "Web page background."
+      },
+      {
+        "name": "surface",
+        "hex": "#FFFFFF",
+        "use": "Toolbar, filter panel, image-caption panels, and all printed pages."
+      },
+      {
+        "name": "divider",
+        "hex": "#D8D0C8",
+        "use": "Nonessential item separators; not the sole boundary for interactive controls."
+      },
+      {
+        "name": "controlBorder",
+        "hex": "#837A74",
+        "use": "Inactive control outlines; retain this existing color for boundaries rather than small text."
+      },
+      {
+        "name": "flagBackground",
+        "hex": "#FCEAE8",
+        "use": "Subtle selected-allergen row background, accompanied by explicit text emphasis."
+      },
+      {
+        "name": "reviewText",
+        "hex": "#9A5A0B",
+        "use": "Unverified-data disclosure text."
+      },
+      {
+        "name": "reviewBackground",
+        "hex": "#FFF3DE",
+        "use": "Background for the review disclosure; never a replacement for its written message."
+      }
+    ],
+    "typography": "Retain Google Fonts Barlow Condensed and Noto Sans. Web: brand 28/30px at 800; section headings 28/31px at 800; Latin dish names 22/25px at 700; body 16/24px at 400; prices Noto Sans 17/24px at 700 with tabular numerals; controls 14/20px at 600; Contains and secondary metadata 13/19px. Use uppercase for Latin display headings only, with minimal tracking. Korean uses Noto Sans KR first and Chinese uses Noto Sans SC first; use 20/26px item headings and normal tracking. Keep Vietnamese diacritics fully visible. English secondary names use 13/19px and lang=\"en\". Print: brand 22/24pt; sections 17/19pt; item names 12/13.5pt; body 9.5–10/13pt; prices 10/13pt; Contains and notices at least 8.5/11pt. Use script-specific fallbacks in print as well.",
+    "spacingAndGrid": "Web spacing scale: 4, 8, 12, 16, 24, 32px. Use 16px phone gutters, 24px on wider screens, and a 720px content maximum. Item padding: 16px vertically; name-to-description: 4px; description-to-Contains: 8px; section separation: 32px. Keep item rows flat with one divider. All price rows share the same right edge. Use at least 44px control height and 8px between adjacent controls. Cards use 8px radii and minimal shadow. Allow translations and allergen statements to wrap naturally without clipping. Print remains 8.5×11 inches with 0.5-inch margins, a 540pt content width, and a 24pt column gutter, giving two 258pt columns. Use 4/6/8/12pt spacing, 0.6–0.75pt item rules, and 1–1.5pt section rules. Keep each dish with its price and Contains statement; use deliberate continuation labels at breaks."
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "language": "Vietnamese — Orange County Vietnamese-American register",
+  "verdict": "publishable-after-fixes",
+  "summary": "Reviewed all 180 keys. Corrections are needed for allergen wording, egg preparation, ingredient identity, unsupported dish and drink claims, and several literal phrases. Keys, placeholders, numbers, times, and protected names are preserved.",
+  "corrections": [
+    {
+      "key": "ui.avoidHint",
+      "current": "Chạm vào một chất gây dị ứng để đánh dấu mọi món có chứa hoặc có thể chứa chất đó.",
+      "corrected": "Chạm vào một chất gây dị ứng để đánh dấu mọi món có chứa hoặc có nhiều khả năng chứa chất đó.",
+      "reason": "“Có thể chứa” weakens “likely to” to mere possibility. Preserve the source’s likelihood distinction in this allergen instruction.",
+      "severity": "critical"
+    },
+    {
+      "key": "ui.hideFlagged",
+      "current": "Ẩn các món đã đánh dấu",
+      "corrected": "Ẩn món đã đánh dấu",
+      "reason": "Shortens the control without losing meaning.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.showFlagged",
+      "current": "Hiện các món đã đánh dấu",
+      "corrected": "Hiện món đã đánh dấu",
+      "reason": "Shortens the control and keeps it parallel with the hide control.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.flaggedCount",
+      "current": "{n} món đã được đánh dấu",
+      "corrected": "{n} món đã đánh dấu",
+      "reason": "Removes an unnecessary passive construction while preserving {n} at the beginning.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.likely",
+      "current": "Có thể chứa",
+      "corrected": "Nhiều khả năng chứa",
+      "reason": "Preserves “likely contains” rather than weakening it to “may contain.”",
+      "severity": "critical"
+    },
+    {
+      "key": "ui.noneListed",
+      "current": "Không ghi nhận chất gây dị ứng chính nào",
+      "corrected": "Không liệt kê chất gây dị ứng chính",
+      "reason": "“Không ghi nhận” can suggest that no allergens were found or recorded through assessment. The source only says none are listed.",
+      "severity": "critical"
+    },
+    {
+      "key": "ui.legendTitle",
+      "current": "Cách đọc nhãn chất gây dị ứng",
+      "corrected": "Cách đọc nhãn dị ứng",
+      "reason": "A compact, understandable heading for the interface.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.draftLabel",
+      "current": "Bản nháp, đang chờ nhà bếp xem xét",
+      "corrected": "Bản nháp, chờ bếp xem xét",
+      "reason": "Shortens the label while retaining both draft status and pending kitchen review.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.addons",
+      "current": "Thêm theo ý bạn",
+      "corrected": "Thêm tùy thích",
+      "reason": "More idiomatic for an add-on heading and avoids switching to “bạn” amid customer-facing “quý khách” language.",
+      "severity": "major"
+    },
+    {
+      "key": "ui.lunch",
+      "current": "Đặc biệt buổi trưa",
+      "corrected": "Ưu đãi bữa trưa",
+      "reason": "The current fragment sounds translated. The replacement naturally identifies a lunch promotion.",
+      "severity": "major"
+    },
+    {
+      "key": "ui.lunchTitle",
+      "current": "Phở bò ba chỉ đặc biệt buổi trưa",
+      "corrected": "Ưu đãi bữa trưa: Phở bò ba chỉ",
+      "reason": "Clearly identifies the lunch offer; “phở … đặc biệt” can instead suggest a special combination or recipe.",
+      "severity": "major"
+    },
+    {
+      "key": "ui.lunchTerms",
+      "current": "Chỉ áp dụng khi dùng tại quán, không áp dụng ngày lễ. Có hiệu lực tại tất cả các chi nhánh SUP Noodle Bar. Món thêm và phần thêm tính phí riêng. Chỉ trong thời gian có hạn.",
+      "corrected": "Chỉ áp dụng khi dùng tại quán, không áp dụng vào ngày lễ. Áp dụng tại tất cả chi nhánh SUP Noodle Bar. Các món và phần gọi thêm tính phí riêng. Ưu đãi trong thời gian có hạn.",
+      "reason": "Replaces stiff promotional wording and the awkward “món thêm và phần thêm,” preserving every restriction.",
+      "severity": "major"
+    },
+    {
+      "key": "ui.allergyNotice",
+      "current": "Vui lòng báo cho nhân viên phục vụ về bất kỳ hạn chế ăn uống hoặc dị ứng thực phẩm nào. Chúng tôi đặc biệt khuyên quý khách bị dị ứng hoặc nhạy cảm nặng với thực phẩm hãy thận trọng khi dùng bữa tại SUP. Chúng tôi luôn cố gắng đáp ứng các trường hợp dị ứng thực phẩm và giữ an toàn cho quý khách, nhưng việc nhiễm chéo luôn có thể xảy ra và chúng tôi không thể bảo đảm một môi trường hoàn toàn không có chất gây dị ứng. Nếu có bất kỳ thắc mắc nào, vui lòng hỏi nhân viên phục vụ.",
+      "corrected": "Vui lòng báo cho nhân viên phục vụ về bất kỳ hạn chế nào trong ăn uống hoặc bất kỳ dị ứng thực phẩm nào. Chúng tôi đặc biệt khuyến cáo quý khách bị dị ứng hoặc nhạy cảm nặng với thực phẩm hãy thận trọng khi dùng bữa tại SUP. Chúng tôi cố gắng hết sức để đáp ứng nhu cầu của khách bị dị ứng thực phẩm và giữ an toàn cho quý khách, nhưng vẫn luôn có nguy cơ nhiễm chéo chất gây dị ứng và chúng tôi không thể bảo đảm một môi trường hoàn toàn không có chất gây dị ứng. Nếu có bất kỳ thắc mắc nào, vui lòng hỏi nhân viên phục vụ.",
+      "reason": "“Đáp ứng các trường hợp dị ứng” is unnatural, and “luôn cố gắng” does not fully express “make every effort.” The replacement preserves the strong caution, severe allergies and sensitivities, accommodation efforts, cross-contamination risk, and absence of a guarantee.",
+      "severity": "critical"
+    },
+    {
+      "key": "ui.rawNotice",
+      "current": "Ăn trứng, thịt, gia cầm, hải sản hoặc hải sản có vỏ còn sống hoặc chưa chín kỹ có thể làm tăng nguy cơ mắc bệnh do thực phẩm, đặc biệt đối với người có một số bệnh lý nhất định. Các món dùng trứng lòng đào, trứng chần, trứng ốp la một mặt hoặc ốp la lật nhẹ, cũng như bít tết tái hoặc tái vừa, có thể chưa chín kỹ. Vui lòng báo cho nhân viên phục vụ nếu quý khách có bất kỳ lo ngại nào.",
+      "corrected": "Ăn trứng, thịt, thịt gia cầm, hải sản hoặc hải sản có vỏ còn sống hoặc chưa chín kỹ có thể làm tăng nguy cơ mắc bệnh do thực phẩm gây ra, đặc biệt đối với người có một số bệnh lý nhất định. Các món dùng trứng luộc lòng đào, trứng chần, trứng ốp la một mặt hoặc trứng ốp la hai mặt còn lòng đào, cũng như bít tết tái hoặc tái vừa, có thể chưa chín kỹ. Vui lòng báo cho nhân viên phục vụ nếu quý khách có bất kỳ lo ngại nào.",
+      "reason": "“Ốp la lật nhẹ” describes flipping rather than over-easy doneness. Also restore “luộc” for soft-boiled eggs and complete the foodborne-illness wording.",
+      "severity": "critical"
+    },
+    {
+      "key": "sec.pho.intro",
+      "current": "Bánh phở mỏng trong nước dùng hầm xương bò, ăn kèm hành tây, hành lá và ngò. Thêm bánh phở không giới hạn, miễn phí khi dùng phở tại quán.",
+      "corrected": "Bánh phở sợi mảnh chan nước dùng hầm xương bò, rắc hành tây trắng, hành lá và ngò. Thêm bánh phở không giới hạn, miễn phí khi dùng phở tại quán.",
+      "reason": "Restores the specified white onions and describes the noodles and garnish more naturally. The free, unlimited, dine-in refill terms remain intact.",
+      "severity": "critical"
+    },
+    {
+      "key": "sec.plates.title",
+      "current": "Cơm và mì dĩa",
+      "corrected": "Cơm dĩa và mì",
+      "reason": "“Cơm dĩa” is the natural Southern menu expression; placing “dĩa” after “mì” produces an awkward heading.",
+      "severity": "major"
+    },
+    {
+      "key": "sec.kids.title",
+      "current": "Trẻ em",
+      "corrected": "Món cho bé",
+      "reason": "A more natural restaurant section heading than the bare demographic label.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.bao.desc",
+      "current": "Thịt vai heo xay, hành tây caramel, nấm và trứng luộc, gói trong vỏ bột nhà làm rồi chiên giòn.",
+      "corrected": "Thịt vai heo xay, hành tây xào vàng, nấm và trứng luộc chín kỹ, bọc trong vỏ bánh nhà làm rồi chiên giòn.",
+      "reason": "Restores hard-boiled doneness. “Hành tây caramel” and “vỏ bột” also need more natural culinary wording.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.springroll.desc",
+      "current": "Giá tươi, rau húng, xà lách và bún cuốn trong bánh tráng. Dùng kèm tương đậu phộng.",
+      "corrected": "Giá tươi, húng lủi, xà lách và bún cuốn trong bánh tráng. Dùng kèm tương đậu phộng.",
+      "reason": "“Rau húng” is ambiguous among several herbs. “Húng lủi” is the familiar Southern culinary term for mint in this context.",
+      "severity": "major"
+    },
+    {
+      "key": "item.shakenfries.desc",
+      "current": "Khoai tây chiên giòn cỡ lớn phủ bò ba chỉ lúc lắc, tỏi, hành tây caramel, phô mai cheddar đậm vị và sốt tartar cay.",
+      "corrected": "Khoai tây chiên giòn cỡ lớn phủ bò ba chỉ lúc lắc, tỏi, hành tây xào vàng, phô mai cheddar đậm vị và sốt tartar cay.",
+      "reason": "Replaces the awkward “hành tây caramel” with the same natural preparation term used in the bao description.",
+      "severity": "major"
+    },
+    {
+      "key": "item.nuggets.name",
+      "current": "Gà viên chiên và khoai tây",
+      "corrected": "Gà viên chiên kèm khoai tây chiên",
+      "reason": "Uses the complete, consistent term for fries and reads naturally as a meal name.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.phoribbones.desc",
+      "current": "Sườn bò hầm bốn tiếng, mềm rụng xương, vị đậm đà và ấm bụng.",
+      "corrected": "Sườn bò hầm bốn tiếng, thịt mềm rục, dễ róc xương, hương vị đậm đà.",
+      "reason": "“Mềm rụng xương” is a literal calque. The replacement naturally conveys tender meat separating from the bone and the hearty flavor.",
+      "severity": "major"
+    },
+    {
+      "key": "item.phobeefbelly.desc",
+      "current": "Bò ba chỉ vân mỡ thái mỏng.",
+      "corrected": "Bò ba chỉ có vân mỡ, thái lát mỏng.",
+      "reason": "Adds the missing grammatical connection and makes the sliced-meat description smoother.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.phobeefbelly.note",
+      "current": "Đặc biệt buổi trưa ngày thường: 11.99, chỉ dùng tại quán, 10 giờ sáng đến 4 giờ chiều.",
+      "corrected": "Ưu đãi bữa trưa từ thứ Hai đến thứ Sáu: 11.99, chỉ dùng tại quán, từ 10 giờ sáng đến 4 giờ chiều.",
+      "reason": "Replaces the unnatural opening and states weekdays explicitly, consistently with ui.lunchWhen. Price, hours, and dine-in restriction are preserved.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.phofilet.name",
+      "current": "Phở tái filet mignon",
+      "corrected": "Phở filet mignon",
+      "reason": "“Tái” adds a rare-doneness claim that neither the English name nor description establishes.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.phobrisket.desc",
+      "current": "Nạm bò hầm bốn tiếng, mềm mà vẫn hơi dai sần sật.",
+      "corrected": "Nạm bò hầm bốn tiếng, mềm mà vẫn dai nhẹ.",
+      "reason": "“Sần sật” suggests a crunchy or cartilaginous texture, stronger and different from the source’s slight chew.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.phobourdain.desc",
+      "current": "Hành lá, hành tím và tỏi băm xào lửa lớn cùng filet mignon và bánh phở bản to. Thơm khói và đậm đà hương vị.",
+      "corrected": "Hành lá, hành tây tím và tỏi băm xào lửa lớn cùng filet mignon và bánh phở sợi dẹp. Thơm mùi khói, đậm đà hương vị.",
+      "reason": "Red onions are “hành tây tím”; “hành tím” normally means shallots. Flat noodles are not necessarily wide noodles. The final sentence also needs a natural collocation.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.drynoodle.desc",
+      "current": "Bò ba chỉ xào sốt sả, dọn trên rau trộn tươi, rau củ và bánh phở bản to. Rắc đậu phộng rang, hành phi và rau thơm tươi. Dùng khô, không có nước dùng.",
+      "corrected": "Bò ba chỉ xào sốt sả, dọn trên hỗn hợp rau non tươi, rau củ và bánh phở sợi dẹp. Rắc đậu phộng rang, hành phi và rau thơm tươi. Dùng khô, không có nước dùng.",
+      "reason": "“Bản to” adds an unspecified noodle width. “Hỗn hợp rau non” also identifies spring mix more precisely than generic mixed salad.",
+      "severity": "critical"
+    },
+    {
+      "key": "addon.shaken.name",
+      "current": "Phở xào lúc lắc",
+      "corrected": "Phở kiểu lúc lắc",
+      "reason": "“Phở xào” names a stir-fried noodle dish. This add-on changes the preparation of soup pho’s aromatics.",
+      "severity": "critical"
+    },
+    {
+      "key": "addon.shaken.desc",
+      "current": "Tỏi, hành lá và hành tím xào lửa lớn trong dầu tủy bò. Thêm vị thơm khói đậm đà mang phong vị miền Bắc rất riêng.",
+      "corrected": "Tỏi, hành lá và hành tây tím xào lửa lớn trong dầu tủy xương. Tạo hương thơm khói đậm đà, mang phong vị miền Bắc rất riêng.",
+      "reason": "Corrects red onions versus shallots. “Dầu tủy xương” follows bone marrow oil without adding an animal species unspecified in this description.",
+      "severity": "critical"
+    },
+    {
+      "key": "addon.sousvide.desc",
+      "current": "Trứng chần chậm, làm nước dùng thêm béo ngậy.",
+      "corrected": "Trứng chần ở nhiệt độ thấp, giúp nước dùng thêm béo ngậy.",
+      "reason": "“Chần chậm” is an awkward literal rendering. The replacement describes the slow-poaching technique naturally without turning “milky richness” into a milk ingredient claim.",
+      "severity": "major"
+    },
+    {
+      "key": "item.lomo.desc",
+      "current": "Bò xào kiểu Peru: khoai tây chiên cắt dày, hành tím ngọt nướng cháy cạnh, cà chua và sốt xì dầu rượu vang trắng, chọn loại đạm tùy thích, kèm cơm trắng. Dùng kèm sốt aioli aji verde cay nhà làm.",
+      "corrected": "Chọn filet mignon, tôm hoặc đậu hũ, dùng cùng khoai tây chiên cắt dày, hành tây tím cháy cạnh có vị ngọt, cà chua, sốt xì dầu pha rượu vang trắng và cơm trắng. Dùng kèm sốt aioli aji verde cay nhà làm.",
+      "reason": "The opening incorrectly makes every variant a beef dish, including shrimp and tofu. Also corrects red onions, avoids an unsupported grilling method, and replaces nutrition-register “loại đạm” with the listed menu choices.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.cajun.desc",
+      "current": "Mì lúa mì trộn bơ và sốt tỏi Cajun, rắc hành lá tươi. Dùng kèm sốt aioli aji verde cay nhà làm.",
+      "corrected": "Sợi mì làm từ bột lúa mì, trộn với bơ và sốt tỏi Cajun, rắc hành lá tươi. Dùng kèm sốt aioli aji verde cay nhà làm.",
+      "reason": "“Mì lúa mì” sounds machine-translated. The replacement keeps wheat explicit and reads naturally.",
+      "severity": "major"
+    },
+    {
+      "key": "item.friedrice.desc",
+      "current": "Chọn loại đạm tùy thích, chiên cùng trứng và hành lá. Dùng kèm sốt aioli aji verde cay nhà làm để riêng.",
+      "corrected": "Cơm chiên với trứng chiên tơi, hành lá và phần thịt, tôm hoặc đậu hũ tùy chọn. Dùng kèm sốt aioli aji verde cay nhà làm để riêng.",
+      "reason": "“Loại đạm” belongs to nutrition language, not a natural menu description. Concrete options and an explicit rice preparation make the sentence clearer.",
+      "severity": "major"
+    },
+    {
+      "key": "item.kimchi.desc",
+      "current": "Cơm chiên nhà làm trộn kim chi, với trứng và hành lá. Dùng kèm sốt aioli aji verde cay nhà làm để riêng.",
+      "corrected": "Cơm chiên của quán trộn cùng kim chi, trứng chiên tơi và hành lá. Dùng kèm sốt aioli aji verde cay nhà làm để riêng.",
+      "reason": "Removes the awkward “trộn …, với …” construction, renders house fried rice naturally, and keeps scrambled-egg wording consistent.",
+      "severity": "major"
+    },
+    {
+      "key": "item.poachedegg.name",
+      "current": "Trứng chần chậm",
+      "corrected": "Trứng chần nhiệt độ thấp",
+      "reason": "Replaces a literal, unnatural technique name and matches the slow-poached egg description.",
+      "severity": "major"
+    },
+    {
+      "key": "item.yuzupeach.name",
+      "current": "Trà đào yuzu",
+      "corrected": "Đào yuzu",
+      "reason": "Adds tea even though the English supplies only the peach and yuzu flavors.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.thaitea.name",
+      "current": "Trà Thái",
+      "corrected": "Trà Thái đá",
+      "reason": "Restores the explicitly stated iced serving style.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.lychee.name",
+      "current": "Nước chanh hoặc soda vải",
+      "corrected": "Nước chanh vải hoặc soda vải",
+      "reason": "The current wording makes only the soda lychee-flavored. Both options contain lychee.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.lychee.desc",
+      "current": "Vải xay cùng nước chanh hoặc soda.",
+      "corrected": "Vải xay pha cùng nước chanh hoặc soda.",
+      "reason": "Naturally describes blended lychee combined with the chosen drink, avoiding the implication that the soda itself is put through a blender.",
+      "severity": "major"
+    },
+    {
+      "key": "item.vietcoffee.name",
+      "current": "Cà phê sữa đá",
+      "corrected": "Cà phê đá",
+      "reason": "Adds milk, an allergen not established by the English name. Confirm the recipe before labeling this as milk coffee.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.fountain.name",
+      "current": "Nước ngọt có ga",
+      "corrected": "Nước ngọt ly",
+      "reason": "“Có ga” incorrectly characterizes every option as carbonated, although lemonade is listed. “Nước ngọt ly” is a compact menu name for fountain drinks.",
+      "severity": "critical"
+    }
+  ],
+  "terminologyNotes": [
+    "Retain Southern community terms already used correctly: đậu phộng, mè, đậu hũ, ngò, dĩa, xì dầu, chanh dây, and trà lài. Đậu hũ non remains the standard for soft tofu.",
+    "Keep bò ba chỉ for beef belly and nạm for brisket; do not interchange those cuts. Filet mignon is a recognizable menu loan and is already consistent across descriptions and price labels. It does not establish tái doneness.",
+    "Standardize red onions as hành tây tím and reserve hành tím or hành phi for shallots. The bilingual product naming corroborates this distinction: [Lotte Mart red onion](https://www.lottemart.vn/en-bdh/product/hanh-tay-tim-ha-lan-koj-500g-8712924061433-p53267). Use hành tây xào vàng consistently for caramelized onions.",
+    "Use bánh phở sợi dẹp for flat noodles; flat describes shape, not an unspecified wide cut. Keep khoai tây chiên explicit when naming fries.",
+    "Retain recognizable sauce terms consistently: sốt aioli aji verde cay, sốt mayo cay, and sốt tartar cay. Do not replace aioli with wording that independently guarantees an egg-based recipe.",
+    "Use châm thêm for drink refills and thêm bánh phở for noodle refills. Keep dùng tại quán for dine-in and ưu đãi bữa trưa for the lunch promotion. Preserve free, unlimited, and eligibility conditions wherever the English states them.",
+    "Keep hạt cây distinct from đậu phộng and mè; shortening it to các loại hạt would blur separate allergen categories. The English Shellfish label is broader than the FDA category Crustacean shellfish. Hải sản có vỏ follows the supplied English; resolve that source distinction before narrowing the Vietnamese. [FDA major allergens](https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies).",
+    "Keep sentence-style capitalization with recognizable brand and proper-name spellings. Vietnamese diacritics are intact. Confirm actual drink recipes before restoring unsupported trà or sữa wording."
+  ]
+}

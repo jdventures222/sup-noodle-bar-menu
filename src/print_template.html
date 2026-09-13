@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="__LANG__">
+<head>
+<meta charset="utf-8">
+<title>__TITLE__</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap">
+<style>
+  @page { size: letter; margin: 0.5in; }
+  :root {
+    --red: #E5342B; --red-deep: #B4231C; --ink: #1B1917; --body: #4A4542; --muted: #625B56;
+    --line: #D8D0C8; --amber: #9A5A0B; --amber-bg: #FFF3DE; --amber-line: #F0D3A3;
+    --display: "Barlow Condensed", "Noto Sans", "Arial Narrow", Arial, sans-serif;
+    --text: "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  html[lang="ko"] { --display: "Noto Sans", "Noto Sans KR", sans-serif; --text: "Noto Sans", "Noto Sans KR", sans-serif; word-break: keep-all; }
+  html[lang="zh-Hans"] { --display: "Noto Sans", "Noto Sans SC", sans-serif; --text: "Noto Sans", "Noto Sans SC", sans-serif; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font-family: var(--text); font-size: 9.5pt; line-height: 13pt; color: var(--ink); background: #fff; }
+  p { margin: 0; }
+  h1, h2, h3 { margin: 0; font-family: var(--display); }
+  .caps { text-transform: uppercase; }
+  html[lang="ko"] .caps, html[lang="zh-Hans"] .caps { text-transform: none; letter-spacing: 0 !important; }
+
+  .masthead { display: flex; align-items: flex-start; justify-content: space-between; gap: 16pt; padding-bottom: 8pt; border-bottom: 2pt solid var(--ink); }
+  .brand { display: flex; align-items: center; gap: 10pt; flex: none; }
+  .brand img { width: 50pt; height: 50pt; border-radius: 50%; }
+  .brand h1 { font-size: 22pt; line-height: 24pt; font-weight: 800; }
+  .brand p { color: var(--muted); font-size: 8.5pt; line-height: 11pt; margin-top: 2pt; }
+  .key { max-width: 300pt; font-size: 8.5pt; line-height: 11pt; color: var(--body); }
+  .key b { display: block; font-family: var(--display); font-size: 9pt; letter-spacing: .05em; color: var(--ink); margin-bottom: 1pt; }
+  .key .prompt { margin-top: 3pt; color: var(--amber); }
+
+  .specials { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; margin: 10pt 0 0; break-inside: avoid; }
+  .special { display: grid; grid-template-columns: 54pt minmax(0, 1fr); gap: 9pt; border: 1pt solid var(--line); border-left: 3pt solid var(--red); border-radius: 4pt; padding: 8pt; }
+  .special img { width: 54pt; height: 54pt; object-fit: cover; border-radius: 3pt; }
+  .eyebrow { font-family: var(--display); font-weight: 700; letter-spacing: .06em; font-size: 7.5pt; line-height: 9pt; color: var(--red-deep); }
+  .special h2 { font-size: 13pt; line-height: 14pt; font-weight: 800; margin: 1pt 0 2pt; }
+  .special .price { font-size: 10pt; line-height: 13pt; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .special .price s { color: var(--muted); font-weight: 400; margin-left: 4pt; }
+  .special .when { font-size: 8.5pt; line-height: 11pt; color: var(--body); }
+  .special .terms { font-size: 7.5pt; line-height: 10pt; color: var(--muted); margin-top: 2pt; }
+
+  .flow { columns: 2; column-gap: 24pt; column-fill: auto; margin-top: 12pt; }
+  section { margin-bottom: 10pt; }
+  section > header { break-after: avoid; border-bottom: 1.5pt solid var(--ink); padding-bottom: 2pt; margin-bottom: 2pt; }
+  section h2 { font-size: 17pt; line-height: 19pt; font-weight: 800; color: var(--red); }
+  .intro { font-size: 8.5pt; line-height: 11pt; color: var(--body); margin: 3pt 0 2pt; break-after: avoid; break-inside: avoid; }
+  .intro.small { color: var(--muted); }
+  .item { break-inside: avoid; padding: 5pt 0 6pt; border-bottom: .6pt solid var(--line); }
+  .has-photos .item { display: grid; grid-template-columns: minmax(0, 1fr) 50pt; gap: 7pt; align-items: start; }
+  .item-body { min-width: 0; }
+  .thumb { width: 50pt; height: 50pt; object-fit: cover; border-radius: 3pt; }
+  .thumb.cutout { object-fit: contain; border-radius: 0; }
+  .head { display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: 8pt; align-items: baseline; }
+  .item h3 { font-size: 12pt; line-height: 13.5pt; font-weight: 700; }
+  html[lang="ko"] .item h3, html[lang="zh-Hans"] .item h3 { font-size: 11pt; line-height: 14pt; }
+  .price { font-family: var(--text); font-weight: 700; font-size: 10pt; line-height: 13pt; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .en-name { font-size: 7.5pt; line-height: 10pt; color: var(--muted); }
+  .badges { display: flex; flex-wrap: wrap; gap: 3pt; margin-top: 2pt; }
+  .badge { font-family: var(--display); font-weight: 700; font-size: 7pt; line-height: 9pt; letter-spacing: .06em; color: var(--red-deep); border: .75pt solid var(--red-deep); border-radius: 2pt; padding: .5pt 3pt; }
+  .badge.refill { color: var(--body); border-color: var(--muted); }
+  .tagline { font-style: italic; color: var(--muted); font-size: 8.5pt; line-height: 11pt; margin-top: 1pt; }
+  .desc { color: var(--body); margin-top: 2pt; }
+  .variants { list-style: none; margin: 3pt 0 0; padding: 0; }
+  .variants li { display: flex; align-items: baseline; gap: 5pt; font-weight: 600; font-size: 9pt; line-height: 13pt; }
+  .variants li .dots { flex: 1; border-bottom: .6pt dotted var(--muted); transform: translateY(-3pt); }
+  .variants .vplus { font-weight: 400; color: var(--body); font-size: 8pt; }
+  .note { margin-top: 3pt; font-size: 8.5pt; line-height: 11pt; color: var(--body); padding-left: 5pt; border-left: 1.2pt solid var(--red-deep); }
+  .sides { margin-top: 3pt; }
+  .lab { font-family: var(--display); font-weight: 700; letter-spacing: .05em; font-size: 7.5pt; color: var(--muted); }
+  .al { margin-top: 3pt; font-size: 8.5pt; line-height: 11pt; color: var(--body); }
+  .al b { font-weight: 600; color: var(--ink); }
+  .al .none { color: var(--muted); }
+  .addons { break-inside: avoid; border: 1.5pt solid var(--red); border-radius: 4pt; padding: 5pt 8pt 2pt; margin: 6pt 0 2pt; }
+  .addons h3.t { font-size: 10.5pt; line-height: 12pt; font-weight: 800; color: var(--red-deep); margin-bottom: 1pt; }
+  .addons .item { padding: 3.5pt 0 4pt; }
+  .addons .item h3 { font-size: 10pt; line-height: 12pt; }
+
+  .end { break-inside: auto; margin-top: 6pt; border-top: 2pt solid var(--ink); padding-top: 6pt; }
+  .notice { font-size: 8.5pt; line-height: 11pt; color: var(--body); margin-bottom: 6pt; break-inside: avoid; }
+  .notice b { display: block; font-family: var(--display); letter-spacing: .05em; font-size: 8.5pt; color: var(--ink); margin-bottom: 1pt; }
+  .loc { break-inside: avoid; margin-top: 4pt; }
+  .loc h3 { font-size: 11pt; line-height: 13pt; font-weight: 800; color: var(--red); }
+  .loc address, .loc .web { font-style: normal; font-size: 8.5pt; line-height: 11pt; color: var(--body); }
+  .fine { margin-top: 6pt; font-size: 7.5pt; line-height: 10pt; color: var(--muted); }
+</style>
+</head>
+<body>
+__BODY__
+</body>
+</html>

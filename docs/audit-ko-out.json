@@ -1,0 +1,275 @@
+{
+  "language": "ko",
+  "verdict": "publishable-after-fixes",
+  "summary": "Reviewed all 180 original pairs. A final reread found a newly added English key, ui.photoNote, without a Korean counterpart. The 37 corrections below address meaning, safety, menu phrasing, register, and spelling. The English shellfish category also needs clarification.",
+  "corrections": [
+    {
+      "key": "ui.avoidHint",
+      "current": "알레르기 유발 성분을 누르면 해당 성분이 들어 있거나 들어 있을 가능성이 있는 모든 메뉴가 표시됩니다.",
+      "corrected": "알레르기 유발 성분을 누르면 해당 성분이 들어 있거나 들어 있을 가능성이 높은 모든 메뉴가 표시됩니다.",
+      "reason": "The source says likely, not merely possible. Preserve that distinction in the allergen-filter explanation.",
+      "severity": "critical"
+    },
+    {
+      "key": "ui.likely",
+      "current": "포함 가능성 있음",
+      "corrected": "포함 가능성 높음",
+      "reason": "가능성 있음 weakens likely to possible; the allergen tag must preserve the stated likelihood.",
+      "severity": "critical"
+    },
+    {
+      "key": "ui.noneListed",
+      "current": "주요 알레르기 유발 성분 표기 없음",
+      "corrected": "주요 알레르겐 표기 없음",
+      "reason": "Shorter for a compact label while preserving 'none listed'; this must not become an allergen-free claim.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.legendLikely",
+      "current": "이 조리법에 일반적으로 들어가는 성분입니다. 직원에게 확인해 주세요.",
+      "corrected": "이 조리법에 일반적으로 들어가는 성분입니다. 직원에게 확인하시기 바랍니다.",
+      "reason": "Use the requested 합니다-style notice register instead of 해 주세요; the confirmation instruction is unchanged.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.draftNotice",
+      "current": "알레르기 표시는 메뉴 설명과 일반적인 조리법을 바탕으로 작성된 초안이며, 아직 주방의 확인을 거치지 않았습니다. 알레르기가 있으신 경우 주문 전에 반드시 직원에게 알려 주세요.",
+      "corrected": "알레르기 표시는 메뉴 설명과 일반적인 조리법을 바탕으로 작성된 초안이며, 아직 주방의 확인을 거치지 않았습니다. 알레르기가 있으신 경우 주문 전에 반드시 직원에게 알려 주시기 바랍니다.",
+      "reason": "Standardize the request ending to the specified notice register. All safety qualifications and the pre-order disclosure instruction remain intact.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.lunchWhen",
+      "current": "월요일부터 금요일, 오전 10시부터 오후 4시까지",
+      "corrected": "월~금, 오전 10시~오후 4시",
+      "reason": "Complete the weekday range and shorten the schedule label without changing the days or times.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.kimchiEyebrow",
+      "current": "신메뉴 출시",
+      "corrected": "지금 주문 가능",
+      "reason": "Now available states availability; 신메뉴 출시 adds a new-item launch claim.",
+      "severity": "critical"
+    },
+    {
+      "key": "ui.allergyNotice",
+      "current": "식이 제한이나 식품 알레르기가 있으시면 직원에게 알려 주세요. 심한 식품 알레르기나 민감 반응이 있는 고객께서는 SUP에서 식사하실 때 각별히 주의해 주시기 바랍니다. 저희는 식품 알레르기에 대응하고 고객의 안전을 지키기 위해 최선을 다하고 있지만, 교차 오염의 가능성은 언제나 존재하며 알레르기 유발 성분이 전혀 없는 환경을 보장할 수는 없습니다. 궁금한 점이 있으시면 직원에게 문의해 주세요.",
+      "corrected": "식이 제한이나 식품 알레르기가 있으시면 직원에게 알려 주시기 바랍니다. 심한 식품 알레르기나 민감 반응이 있는 고객께서는 SUP에서 식사하실 때 각별히 주의해 주시기 바랍니다. 저희는 식품 알레르기에 대응하고 고객의 안전을 지키기 위해 최선을 다하고 있지만, 교차 오염의 가능성은 언제나 존재하며 알레르기 유발 성분이 전혀 없는 환경을 보장할 수는 없습니다. 궁금한 점이 있으시면 직원에게 문의하시기 바랍니다.",
+      "reason": "Replace the two 해 주세요 endings with the requested formal notice register; retain every warning and limitation.",
+      "severity": "minor"
+    },
+    {
+      "key": "ui.rawNotice",
+      "current": "날것이거나 덜 익힌 달걀, 육류, 가금류, 해산물 또는 조개류를 드시면 식중독 위험이 높아질 수 있으며, 특정 질환이 있으신 분은 특히 주의가 필요합니다. 반숙 달걀, 수란, 서니사이드업이나 오버이지 달걀을 사용한 메뉴와 레어 또는 미디엄 레어 스테이크는 덜 익힌 상태일 수 있습니다. 우려되는 점이 있으시면 직원에게 알려 주세요.",
+      "corrected": "날것이거나 덜 익힌 달걀, 육류, 가금류, 해산물 또는 갑각류·조개류를 섭취하면 식중독 위험이 높아질 수 있으며, 특히 특정 질환이 있는 분은 위험이 더 높을 수 있습니다. 반숙 달걀, 수란, 서니사이드업 또는 오버이지 달걀 프라이를 사용한 메뉴와 레어 또는 미디엄 레어 스테이크는 덜 익힌 상태일 수 있습니다. 우려되는 점이 있으시면 직원에게 알려 주시기 바랍니다.",
+      "reason": "조개류 alone narrows shellfish and conflicts with the broader allergen label. Explicitly preserve the heightened risk for people with certain medical conditions and use formal notice endings.",
+      "severity": "critical"
+    },
+    {
+      "key": "sec.pho.intro",
+      "current": "소 사골 육수에 얇은 쌀국수 면을 넣고 양파, 파, 고수를 얹어 드립니다. 매장에서 쌀국수를 드시면 면을 무료로 무제한 리필해 드립니다.",
+      "corrected": "소뼈 육수에 가는 쌀국수 면을 넣고 흰 양파, 파, 고수를 얹어 드립니다. 매장에서 쌀국수를 드시면 면을 무료로 무제한 리필해 드립니다.",
+      "reason": "Restore white onions and use the source's general beef-bone wording, consistent with the broth-note correction. 가는 is more natural for thin noodles.",
+      "severity": "critical"
+    },
+    {
+      "key": "sec.pho.brothNote",
+      "current": "채소·두부 쌀국수를 포함한 모든 쌀국수는 소 사골 육수로 만듭니다.",
+      "corrected": "채소·두부 쌀국수를 포함한 모든 쌀국수는 소뼈 육수로 만듭니다.",
+      "reason": "사골 specifically identifies leg bones, which this safety statement does not establish. Preserve the universal beef-broth warning without adding a bone-cut claim. [National Institute of Korean Language](https://krdict.korean.go.kr/eng/dicSearch/SearchView?ParaWordNo=62018&nation=eng).",
+      "severity": "critical"
+    },
+    {
+      "key": "item.bao.name",
+      "current": "골든 바오 (돼지고기 튀김만두)",
+      "corrected": "골든 바오",
+      "reason": "Keep the dish name concise; the parenthetical is a glossary explanation already supplied by the tagline.",
+      "severity": "major"
+    },
+    {
+      "key": "item.bao.desc",
+      "current": "다진 돼지 목살, 캐러멜라이즈한 양파, 버섯, 삶은 달걀을 직접 만든 반죽으로 감싸 바삭하게 튀겼습니다.",
+      "corrected": "다진 돼지 어깨살, 캐러멜라이즈한 양파, 버섯, 완숙으로 삶은 달걀을 직접 만든 반죽으로 감싸 바삭하게 튀겼습니다.",
+      "reason": "Pork shoulder is narrowed to 목살 without source support, and 삶은 달걀 omits the specified hard-boiled doneness.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.eggrolls.name",
+      "current": "짜조 (베트남식 튀김 만두)",
+      "corrected": "짜조",
+      "reason": "Use the established menu name without an explanatory gloss beneath the English name.",
+      "severity": "major"
+    },
+    {
+      "key": "item.shakenfries.name",
+      "current": "볶음 우삼겹 감자튀김",
+      "corrected": "셰이큰 하우스 감자튀김",
+      "reason": "Preserve the signature dish's Shaken House identity. 볶음 우삼겹 is an awkward ingredient gloss.",
+      "severity": "major"
+    },
+    {
+      "key": "item.shakenfries.desc",
+      "current": "굵고 바삭한 감자튀김 위에 볶음 우삼겹, 마늘, 캐러멜라이즈한 양파, 샤프 체다 치즈, 매콤한 타르타르 소스를 얹었습니다.",
+      "corrected": "굵고 바삭한 감자튀김 위에 볶은 우삼겹, 마늘, 캐러멜라이즈한 양파, 샤프 체다 치즈, 매콤한 타르타르 소스를 얹었습니다.",
+      "reason": "Use the natural modifier 볶은 우삼겹 instead of the noun stack 볶음 우삼겹.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.phoribbones.tagline",
+      "current": "갈비뼈 2대",
+      "corrected": "갈비 2대",
+      "reason": "갈비 2대 is the natural menu serving expression; 갈비뼈 sounds like bare anatomical bones.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.phobeefbelly.note",
+      "current": "평일 런치 스페셜: 11.99, 매장 식사 전용, 오전 10시부터 오후 4시까지.",
+      "corrected": "평일 런치 스페셜: 11.99. 오전 10시부터 오후 4시까지 매장 식사 시에만 적용됩니다.",
+      "reason": "Give the notice a formal sentence ending while retaining the price, weekday restriction, hours, and dine-in-only condition.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.phocombo.desc",
+      "current": "우삼겹, 힘줄, 양지, 미트볼에 갈비뼈 1대까지 푸짐하게 담았습니다.",
+      "corrected": "우삼겹, 힘줄, 양지, 미트볼, 갈비 1대를 함께 담았습니다.",
+      "reason": "Use the same natural rib-serving term as the rib-bone dish and remove the unsupported portion-size flourish 푸짐하게.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.phoshrimp.desc",
+      "current": "담백하고 신선하게 데친 큼직한 새우.",
+      "corrected": "큼직한 새우를 데쳐 담백하고 산뜻한 맛을 냈습니다.",
+      "reason": "신선하게 데친 incorrectly makes freshness a manner of cooking; describe the shrimp's light, fresh taste naturally.",
+      "severity": "major"
+    },
+    {
+      "key": "item.drynoodle.desc",
+      "current": "레몬그라스 소스에 볶은 우삼겹을 신선한 어린잎 채소, 야채, 넓적한 면 위에 올렸습니다. 볶은 땅콩, 튀긴 샬롯, 신선한 허브를 얹어 드립니다. 국물 없이 비빔으로 드립니다.",
+      "corrected": "레몬그라스 소스에 볶은 우삼겹을 신선한 어린잎 채소와 각종 채소, 넓적한 면 위에 올렸습니다. 볶은 땅콩, 튀긴 샬롯, 신선한 허브를 얹어 드립니다. 국물 없이 제공합니다.",
+      "reason": "Standardize 야채 to 채소 and replace the unnatural 비빔으로 드립니다 with a direct statement that the dish has no soup.",
+      "severity": "major"
+    },
+    {
+      "key": "addon.shaken.name",
+      "current": "쌀국수 볶음 스타일로 변경",
+      "corrected": "셰이큰 스타일로 변경",
+      "reason": "볶음 스타일 suggests converting the pho to stir-fried noodles. The description instead adds wok-seared aromatics to pho.",
+      "severity": "critical"
+    },
+    {
+      "key": "addon.mala.name",
+      "current": "마라 얼얼한 맛 추가",
+      "corrected": "얼얼한 마라맛 추가",
+      "reason": "Reorder the modifiers into a natural Korean menu label.",
+      "severity": "major"
+    },
+    {
+      "key": "item.lomo.desc",
+      "current": "두툼한 감자튀김, 불에 그을린 달콤한 적양파, 토마토를 화이트 와인 간장 소스에 볶고, 원하는 단백질과 흰쌀밥을 곁들였습니다. 직접 만든 매콤한 aji verde 아이올리와 함께 드립니다.",
+      "corrected": "선택하신 재료에 두툼한 감자튀김, 불에 구운 달콤한 적양파, 토마토, 화이트 와인 간장 소스와 흰쌀밥을 곁들였습니다. 직접 만든 매콤한 aji verde 아이올리와 함께 드립니다.",
+      "reason": "원하는 단백질 is a literal nutritional term, not natural menu language for a choice of meat, seafood, or tofu. Use more appetizing culinary wording for the onions.",
+      "severity": "major"
+    },
+    {
+      "key": "item.lomo.note",
+      "current": "새우 메뉴에는 갑각류·조개류가 포함되어 있습니다. 아이올리는 보통 달걀로 만들므로 비건 두부 메뉴는 직원에게 문의해 주세요.",
+      "corrected": "새우 메뉴에는 갑각류·조개류가 포함되어 있습니다. 아이올리는 보통 달걀로 만들므로 비건 두부 메뉴에 대해서는 직원에게 확인하시기 바랍니다.",
+      "reason": "Use the formal notice register and make the subject of the server check explicit; preserve 보통 and the vegan-tofu caveat.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.cajun.desc",
+      "current": "밀면을 버터와 케이준 갈릭 소스에 버무리고 신선한 파로 마무리했습니다. 직접 만든 매콤한 aji verde 아이올리와 함께 드립니다.",
+      "corrected": "밀로 만든 면을 버터와 케이준 갈릭 소스에 버무리고 신선한 파를 올렸습니다. 직접 만든 매콤한 aji verde 아이올리와 함께 드립니다.",
+      "reason": "밀면 evokes the Korean cold-noodle dish. 밀로 만든 면 clearly describes generic wheat noodles; 파를 올렸습니다 is more natural than 파로 마무리했습니다.",
+      "severity": "major"
+    },
+    {
+      "key": "item.friedrice.desc",
+      "current": "원하는 단백질에 스크램블 에그와 파를 넣어 볶았습니다. 직접 만든 매콤한 aji verde 아이올리를 곁들여 드립니다.",
+      "corrected": "선택하신 재료와 스크램블 에그, 파를 넣은 볶음밥입니다. 직접 만든 매콤한 aji verde 아이올리를 따로 곁들여 드립니다.",
+      "reason": "Replace the machine-like 원하는 단백질 with menu wording and explicitly preserve that the aioli is served on the side.",
+      "severity": "major"
+    },
+    {
+      "key": "item.kimchi.desc",
+      "current": "저희 볶음밥에 김치를 넣고 스크램블 에그와 파를 곁들여 볶았습니다. 직접 만든 매콤한 aji verde 아이올리를 곁들여 드립니다.",
+      "corrected": "김치, 스크램블 에그, 파를 넣은 특제 볶음밥입니다. 직접 만든 매콤한 aji verde 아이올리를 따로 곁들여 드립니다.",
+      "reason": "저희 볶음밥 and 곁들여 볶았습니다 read awkwardly. Use a direct menu description and preserve the separately served aioli.",
+      "severity": "major"
+    },
+    {
+      "key": "item.kimchi.note",
+      "current": "김치는 보통 피시 소스와 새우젓으로 발효합니다. 순두부 메뉴에는 대두가 포함되어 있습니다.",
+      "corrected": "김치는 보통 피시 소스와 새우젓을 넣어 발효시킵니다. 순두부 메뉴에는 대두가 포함되어 있습니다.",
+      "reason": "넣어 발효시킵니다 naturally describes fermenting kimchi with these ingredients; preserve the usual-preparation qualification and all allergen information.",
+      "severity": "major"
+    },
+    {
+      "key": "item.sidenoodles.desc",
+      "current": "매장에서 쌀국수를 주문하시면 무제한입니다.",
+      "corrected": "매장에서 쌀국수를 주문하시면 면을 무제한으로 리필해 드립니다.",
+      "reason": "State what is unlimited and how it is provided; 무제한입니다 alone is an awkwardly incomplete service notice.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.siderice.name",
+      "current": "공기밥",
+      "corrected": "공깃밥",
+      "reason": "Correct the standard spelling, including 사이시옷. [National Institute of Korean Language](https://korean.go.kr/front/onlineQna/onlineQnaView.do?mn_id=216&pageIndex=1&qna_seq=314641).",
+      "severity": "minor"
+    },
+    {
+      "key": "item.kidsbox.desc",
+      "current": "바삭한 황금빛 치킨 너겟과 양념 감자튀김에 주스 팩까지 한 세트로 드립니다.",
+      "corrected": "노릇하고 바삭한 치킨 너겟과 양념 감자튀김에 팩 주스를 곁들인 세트입니다.",
+      "reason": "Use natural food wording for golden and the usual Korean word order 팩 주스 for a juice box.",
+      "severity": "minor"
+    },
+    {
+      "key": "item.yuzupeach.name",
+      "current": "yuzu 피치",
+      "corrected": "유자 피치",
+      "reason": "Translate the ordinary fruit name yuzu rather than leaving a lowercase English word in the Korean dish name.",
+      "severity": "major"
+    },
+    {
+      "key": "item.thaitea.name",
+      "current": "타이 밀크티",
+      "corrected": "타이 아이스티",
+      "reason": "Restore iced. 밀크티 also adds a milk claim absent from the source; a creamy description does not confirm the ingredient.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.vietcoffee.name",
+      "current": "베트남 연유 커피",
+      "corrected": "베트남식 아이스커피",
+      "reason": "Restore iced and remove the unsupported condensed-milk ingredient claim.",
+      "severity": "critical"
+    },
+    {
+      "key": "item.fountain.name",
+      "current": "탄산음료",
+      "corrected": "디스펜서 음료",
+      "reason": "Fountain describes dispensing, not carbonation. 탄산음료 incorrectly implies every option, including lemonade, is carbonated.",
+      "severity": "critical"
+    },
+    {
+      "key": "ui.photoNote",
+      "current": "",
+      "corrected": "음식 사진은 Buena Park와 Irvine 지점의 Yelp 이용자 사진과 SUP의 자체 홍보 이미지에서 가져온 임시 이미지입니다. 이 메뉴를 공개하기 전에 Yelp 이용자 사진을 식당이 소유한 사진으로 교체해야 합니다.",
+      "reason": "This key appeared in the English file during the audit and is absent from Korean; current is empty here to represent the missing key. Preserve the entire notice, including the required replacement before publication.",
+      "severity": "critical"
+    }
+  ],
+  "terminologyNotes": [
+    "Retain consistent menu terms: fries → 감자튀김; filet mignon → 안심; beef belly → 우삼겹; aioli → 아이올리; soft tofu → 순두부; dine-in → 매장 식사; refill → 리필.",
+    "Use 셰이큰 for the named Shaken preparation. Its description should explain the seared aromatics without implying that the pho noodles are stir-fried.",
+    "Use 채소 consistently. Translate a choice of protein as 선택하신 재료 rather than the nutritional noun 단백질.",
+    "Use 합니다-style statements and 바랍니다-style requests in notices. Register-only corrections are marked minor because their safety meaning is unchanged.",
+    "알레르겐 is a compact equivalent of 알레르기 유발 성분 for space-constrained labels. Keep 'not listed' distinct from 'does not contain'; retain separate 견과류 and 땅콩 tags.",
+    "Source-side safety issue: English Shellfish is broader than the FDA major-allergen category Crustacean shellfish, meaning 갑각류. The existing 갑각류·조개류 follows the broader English wording, so it has not been silently narrowed. Clarify the intended scope and update both languages together if the FDA category is intended. [FDA major-allergen definition](https://www.fda.gov/industry/fda-basics-industry/what-major-food-allergen).",
+    "Recognizable proper names and existing brand spellings can remain in English. Retain aji verde consistently. The {n} placeholder, numerical values, and price-option labels were checked; no corrections to those tokens are needed."
+  ]
+}

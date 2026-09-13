@@ -1,0 +1,259 @@
+{
+ "bao": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Three Golden Baos",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/X3At4G_6uRl_vhuX0fuqDA/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/three-golden-baos",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "springroll": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Spring Rolls",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/7rSv_uNmFrMR_06pqHHzSg/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/spring-rolls",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "eggrolls": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Egg Rolls",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/g7RBnf-bvVKmvjtL6aRt1w/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/egg-rolls",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "shakenfries": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Shaken House Fries",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/lfX5_Xmj7A7HAK4VaEaqCg/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/shaken-house-fries",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "trufflefries": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Truffle Fries",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/5nQfEev_-k277viny7Cxng/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/truffle-fries",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "parmfries": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Parmesan Fries",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/rQ7qbjNe2l9JmQX4hbz0YQ/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/parmesan-fries",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "wings": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Garlic Chicken Wings",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/CHLzlch6t4yGk7B_kD8-gw/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/garlic-chicken-wings",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "nuggets": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Chicken Nugget Basket",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/0D1uPxyGHR7ZPbseVbqLDw/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/chicken-nugget-basket",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "phoshortrib": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Short Rib Pho",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/Rm-XMZA-ydTnBh2QVc3Fgw/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/short-rib-pho",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "phofilet": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Filet Mignon Pho",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/k5X9Wj4VUb8cqWIJh2IuUg/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/filet-mignon-pho",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "phocombo": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Combination Pho",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/Q_piG2U4q5njSKF9cIR5AA/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/combination-pho",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "phoveggie": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Veggie & Tofu Pho",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/NYeLbrkReSXMch12lFUtEw/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/veggie-and-tofu-pho",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "phobrisket": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Brisket Pho",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/jIsapsyPc4p_atj5rjSlEg/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/brisket-pho",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "phoshrimp": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Shrimp Pho",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/2n_ViEqDuUT35J4RTLR7Vg/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/shrimp-pho",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "phomeatballs": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Meatball Pho",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/cb80qhz2ycOQkbIy18-XWQ/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/meatball-pho",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "phobourdain": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Anthony Bourdain Pho",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/UBNnmlotQcIdZxhLxviM2A/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/anthony-bourdain-pho",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "drynoodle": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Beef Belly Dry Noodle",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/1xKR_5OFSSm6R_vNp8Q1Eg/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/beef-belly-dry-noodle",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "lomo": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Filet Mignon Lomo Saltado",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/02sS05ISTnO5NWb_qMnGLw/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/filet-mignon-lomo-saltado",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "cajun": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Shrimp And Sausage Garlic Noodle",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/SMST8vDCKG1tOEPQupvxaw/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/shrimp-and-sausage-garlic-noodle",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "friedrice": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Shrimp Fried Rice",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/wr_QKYo899rC-mQ7q7aoeg/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/shrimp-fried-rice",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "poachedegg": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Slow Poached Egg",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/SRdWj5SFyDsqJfJ3iId7sw/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/slow-poached-egg",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "soybutter": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Soy And Butter Noodle",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/idM-9i5tbnV9JndWZw3BJA/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/soy-and-butter-noodle",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "siderice": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Side of Rice",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/KdldfuX-uHn_s-UihajiTQ/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/side-of-rice",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "yuzupeach": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Party Jug Yuzu Peach",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/KrQ-OP1YkHlzoPqbCcGTnA/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/party-jug-yuzu-peach",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "herbaltea": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Party Jug Herbal Iced Tea",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/-1kDhgbq0_Wgao50Abhuwg/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/party-jug-herbal-iced-tea",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "thaitea": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Party Jug Thai Iced Tea",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/FHSJtxCWtA2Av5V6ZaT8-Q/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/party-jug-thai-iced-tea",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "lychee": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Party Jug Lychee Lemonade/Soda",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/Q_UjqSF2lZdz-GLNeJNVoA/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/party-jug-lychee-lemonade-soda",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "vietcoffee": {
+  "source": "yelp-reviewer",
+  "location": "Irvine",
+  "yelpItem": "Party Jug Vietnamese Iced Coffee",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/_AVTMwKWePObvEDyh0tswQ/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/party-jug-vietnamese-iced-coffee",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "watermelon": {
+  "source": "yelp-reviewer",
+  "location": "Buena Park",
+  "yelpItem": "Watermelon Refresher",
+  "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/MdxgEcQnbk2rOVuVwUackg/o.jpg",
+  "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-buena-park-buena-park-22/item/watermelon-refresher",
+  "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+ },
+ "phobeefbelly": {
+  "source": "restaurant-owned",
+  "note": "Restaurant promo photo (printed menu, July 2026)",
+  "rights": "Owned by SUP Noodle Bar / Kei Concepts."
+ },
+ "kimchi": {
+  "source": "restaurant-owned",
+  "note": "Restaurant promo photo (printed menu, July 2026)",
+  "rights": "Owned by SUP Noodle Bar / Kei Concepts."
+ },
+ "phoribbones": {
+  "source": "restaurant-owned",
+  "note": "Restaurant marketing photo from keiconcepts.info/brands/sup",
+  "rights": "Owned by SUP Noodle Bar / Kei Concepts."
+ },
+ "kidsbox": {
+  "source": "restaurant-owned",
+  "note": "Cut out (background removed with Vision) from the printed menu (July 2026), page 5",
+  "rights": "Owned by SUP Noodle Bar / Kei Concepts."
+ },
+ "hero": {
+  "source": "restaurant-owned",
+  "note": "Overhead spread from keiconcepts.info/brands/sup (1-1.png)",
+  "rights": "Owned by SUP Noodle Bar / Kei Concepts."
+ }
+}
