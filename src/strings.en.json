@@ -17,8 +17,6 @@
   "ui.legendTitle": "Reading the allergen tags",
   "ui.legendStated": "Named in the dish description.",
   "ui.legendLikely": "Usual for this preparation. Ask your server to confirm.",
-  "ui.draftNotice": "Allergen tags combine SUP's published allergen statements from its online ordering menu, which cover ingredients and possible cross-contact in a shared kitchen, with the printed menu descriptions. They have not yet been reviewed by the kitchen for this menu. Always tell your server about any allergy before ordering.",
-  "ui.draftLabel": "Draft, pending kitchen review",
   "ui.addons": "Make it yours",
   "ui.sides": "Add a side",
   "ui.new": "New",
@@ -203,5 +201,7 @@
   "ui.langName.ko": "Korean",
   "ui.langName.zh": "Chinese (Simplified)",
   "ui.hide": "Hide",
-  "ui.show": "Show"
+  "ui.show": "Show",
+  "ui.autoDetected": "Shown in your device's language.",
+  "ui.chooseLanguage": "Choose a language"
 }

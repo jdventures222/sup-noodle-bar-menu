@@ -86,7 +86,7 @@ def build(lang):
     body = f'''
 <div class="masthead">
   <div class="brand"><img src="{IMG["logo"]}" alt=""><div><h1 class="caps">{esc(t("ui.brand"))}</h1><p>{esc(t("ui.tagline"))}</p></div></div>
-  <div class="key"><b class="caps">{esc(t("ui.legendTitle"))}</b>{esc(t("ui.printKey"))} {esc(t("ui.noLineNote"))}<div class="prompt">{esc(t("ui.draftNotice"))}</div></div>
+  <div class="key"><b class="caps">{esc(t("ui.legendTitle"))}</b>{esc(t("ui.printKey"))} {esc(t("ui.noLineNote"))}</div>
 </div>
 {specials()}
 <div class="flow">

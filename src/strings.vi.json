@@ -17,8 +17,6 @@
   "ui.legendTitle": "Cách đọc nhãn dị ứng",
   "ui.legendStated": "Được nêu tên trong phần mô tả món ăn.",
   "ui.legendLikely": "Thường có trong cách chế biến này. Vui lòng hỏi nhân viên phục vụ để xác nhận.",
-  "ui.draftNotice": "Các nhãn dị ứng kết hợp thông tin về chất gây dị ứng mà SUP công bố trên thực đơn đặt món trực tuyến, bao gồm nguyên liệu và khả năng nhiễm chéo trong bếp dùng chung, với mô tả trong thực đơn in. Nhà bếp chưa rà soát các nhãn này cho thực đơn này. Quý khách luôn phải báo cho nhân viên phục vụ về bất kỳ dị ứng nào trước khi gọi món.",
-  "ui.draftLabel": "Bản nháp, chờ bếp xem xét",
   "ui.addons": "Thêm tùy thích",
   "ui.sides": "Thêm món ăn kèm",
   "ui.new": "Món mới",
@@ -202,5 +200,7 @@
   "ui.langName.ko": "Tiếng Hàn",
   "ui.langName.zh": "Tiếng Trung (giản thể)",
   "ui.hide": "Ẩn",
-  "ui.show": "Hiện"
+  "ui.show": "Hiện",
+  "ui.autoDetected": "Hiển thị theo ngôn ngữ trên thiết bị của bạn.",
+  "ui.chooseLanguage": "Chọn ngôn ngữ"
 }

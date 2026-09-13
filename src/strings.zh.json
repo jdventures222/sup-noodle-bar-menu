@@ -17,8 +17,6 @@
   "ui.legendTitle": "过敏原标签说明",
   "ui.legendStated": "菜品描述中明确提及。",
   "ui.legendLikely": "此类做法通常含有，请向服务员确认。",
-  "ui.draftNotice": "过敏原标注综合了 SUP 在其在线点餐菜单上公布的过敏原声明（涵盖配料以及共用厨房可能的交叉接触）与印刷菜单的描述。厨房尚未针对本菜单进行审核。点餐前请务必告知服务员您的任何过敏情况。",
-  "ui.draftLabel": "草稿，待厨房审核",
   "ui.addons": "自选加料",
   "ui.sides": "加点配菜",
   "ui.new": "新品",
@@ -202,5 +200,7 @@
   "ui.langName.ko": "韩语",
   "ui.langName.zh": "简体中文",
   "ui.hide": "隐藏",
-  "ui.show": "显示"
+  "ui.show": "显示",
+  "ui.autoDetected": "已按您设备的语言显示。",
+  "ui.chooseLanguage": "选择语言"
 }

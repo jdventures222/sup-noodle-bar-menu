@@ -17,8 +17,6 @@
   "ui.legendTitle": "Cómo leer las etiquetas de alérgenos",
   "ui.legendStated": "Mencionado en la descripción del platillo.",
   "ui.legendLikely": "Habitual en esta preparación. Pide a tu mesero que lo confirme.",
-  "ui.draftNotice": "Las etiquetas de alérgenos combinan las declaraciones de alérgenos que SUP publica en su menú de pedidos en línea, que cubren ingredientes y posible contacto cruzado en una cocina compartida, con las descripciones del menú impreso. La cocina aún no las ha revisado para este menú. Siempre informa a tu mesero sobre cualquier alergia antes de ordenar.",
-  "ui.draftLabel": "Borrador: por revisar en cocina",
   "ui.addons": "Hazlo a tu gusto",
   "ui.sides": "Agrega un acompañamiento",
   "ui.new": "Nuevo",
@@ -202,5 +200,7 @@
   "ui.langName.ko": "Coreano",
   "ui.langName.zh": "Chino (simplificado)",
   "ui.hide": "Ocultar",
-  "ui.show": "Mostrar"
+  "ui.show": "Mostrar",
+  "ui.autoDetected": "Se muestra en el idioma de tu dispositivo.",
+  "ui.chooseLanguage": "Elige un idioma"
 }

@@ -44,6 +44,15 @@
   .brand h1 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 26px; line-height: 28px; margin: 0; }
   .brand p { margin: 1px 0 0; color: var(--muted); font-size: 13px; line-height: 18px; }
 
+  /* Language switcher: every language visible in its own script, scrolls only if a narrow screen forces it. */
+  .langbar { display: flex; gap: 4px; margin: 0 -16px 2px; padding: 3px 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .langbar::-webkit-scrollbar { display: none; }
+  @media (min-width: 560px) { .langbar { margin: 0 -24px 2px; padding: 3px 24px; } }
+  .seg { flex: 1 1 auto; min-width: max-content; display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 12px; border: 1px solid var(--line); background: var(--surface); color: var(--body); border-radius: 999px; font-size: 13.5px; line-height: 18px; font-weight: 600; white-space: nowrap; cursor: pointer; }
+  .seg[aria-checked="true"] { background: var(--red-deep); border-color: var(--red-deep); color: #fff; font-weight: 700; }
+  .autodetect { margin: 0 0 10px; font-size: 12.5px; line-height: 17px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+  .autodetect svg { width: 14px; height: 14px; flex: none; color: var(--control); }
+
   /* Sticky bar */
   .bar { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); }
   .bar .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding-top: 4px; padding-bottom: 4px; }
@@ -154,9 +163,6 @@
   .notice { font-size: 14px; line-height: 20px; color: var(--body); max-width: 66ch; margin: 0 0 14px; }
   .notice b { display: block; font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; color: var(--ink); margin-bottom: 2px; }
   html[lang="ko"] .notice b, html[lang="zh-Hans"] .notice b { text-transform: none; letter-spacing: 0; }
-  .draft { background: var(--amber-bg); border: 1px solid var(--amber-line); color: var(--amber); border-radius: 10px; padding: 10px 12px; font-size: 13px; line-height: 19px; }
-  .draft b { display: block; font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; margin-bottom: 2px; }
-  html[lang="ko"] .draft b, html[lang="zh-Hans"] .draft b { text-transform: none; letter-spacing: 0; }
   .locs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 0; padding-top: 16px; border-top: 2px solid var(--ink); }
   .locs h3 { font-family: var(--display); text-transform: uppercase; font-weight: 800; color: var(--red); font-size: 20px; line-height: 24px; margin: 0 0 2px; }
   .locs address { font-style: normal; font-size: 14px; line-height: 20px; color: var(--body); }
@@ -200,7 +206,6 @@
   .avoid { display: flex; flex-wrap: wrap; gap: 8px; }
   .sheet-status { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin: 14px 0 0; font-size: 14px; line-height: 20px; color: var(--body); }
   .sheet-status .status { font-weight: 600; color: var(--ink); }
-  .sheet .draft { margin: 14px 0 0; }
   .sheet-foot { position: sticky; bottom: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; padding: 12px 0 0; margin-top: 16px; background: var(--surface); box-shadow: 0 -12px 12px -6px var(--surface); }
   .sheet-foot .btn.quiet { padding: 0 16px; }
 
@@ -245,6 +250,8 @@
       <img src="__LOGO__" alt="" width="48" height="48">
       <div><h1 data-t="ui.brand">SUP Noodle Bar</h1><p data-t="ui.tagline"></p></div>
     </div>
+    <div class="langbar" id="langbar" role="radiogroup"></div>
+    <p class="autodetect" id="autodetect" hidden></p>
   </div>
 </header>
 
@@ -286,7 +293,7 @@ const ICON = {
   check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
   x: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>'
 };
-const state = { lang: "en", avoid: new Set(), hide: false };
+const state = { lang: "en", avoid: new Set(), hide: false, detected: false };
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const S_EN = DATA.strings.en;
@@ -298,12 +305,18 @@ const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+/* Language: an explicit choice in the URL wins, then a remembered one, then the device's own preference list.
+   Region subtags are dropped, so es-MX, vi-VN, ko-KR and zh-TW all reach the menu language they read. */
 function pickLang() {
   const q = new URLSearchParams(location.search).get("lang");
   if (q && DATA.strings[q]) return q;
   const saved = load("sup-lang"); if (saved && DATA.strings[saved]) return saved;
-  const nav = (navigator.language || "en").slice(0, 2).toLowerCase();
-  return DATA.strings[nav] ? nav : "en";
+  const prefs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"]);
+  for (const p of prefs) {
+    const base = String(p).toLowerCase().split(/[-_]/)[0];
+    if (DATA.strings[base]) { state.detected = base !== "en"; return base; }
+  }
+  return "en";
 }
 const ORDER = DATA.structure.allergens;
 const merged = e => { const set = new Set([...(e.contains || []), ...(e.likely || [])]); return ORDER.filter(a => set.has(a)); };
@@ -392,11 +405,9 @@ function sectionHTML(sec) {
     <ul class="items">${sec.items.map(it => itemHTML(it, "item")).join("")}</ul><p class="empty" hidden>${esc(t("ui.sectionHidden"))}</p>${addons}
   </section>`;
 }
-function draftHTML() { return `<div class="draft"><b>${esc(t("ui.draftLabel"))}</b>${esc(t("ui.draftNotice"))}</div>`; }
 function footerHTML() {
   return `<p class="notice"><b>${esc(t("ui.allergyTitle"))}</b>${esc(t("ui.allergyNotice"))}</p>
-  ${draftHTML()}
-  <p class="notice" style="margin-top:14px"><b>${esc(t("ui.rawTitle"))}</b>${esc(t("ui.rawNotice"))}</p>
+  <p class="notice"><b>${esc(t("ui.rawTitle"))}</b>${esc(t("ui.rawNotice"))}</p>
   <div class="locs">
     <div><h3>${esc(t("ui.buenaPark"))}</h3><address>5141 Beach Blvd Unit B<br>Buena Park, CA 90621<br><a href="tel:+17145212444">714-521-2444</a></address></div>
     <div><h3>${esc(t("ui.irvine"))}</h3><address>14370 Culver Dr Unit 2H<br>Irvine, CA 92604<br><a href="tel:+16573008420">657-300-8420</a></address></div>
@@ -416,11 +427,19 @@ function filterSheetHTML() {
     <p class="sheet-hint">${esc(t("ui.avoidHint"))} ${esc(t("ui.noLineNote"))}</p>
     <div class="avoid" role="group" aria-labelledby="filterTitle">${chips}</div>
     <div class="sheet-status" id="statusRow" hidden><span class="status" id="status" role="status" aria-live="polite"></span><button class="pill ghost" type="button" id="hideBtn" aria-pressed="${state.hide}" hidden></button></div>
-    ${draftHTML()}
     <div class="sheet-foot"><button class="btn quiet" type="button" id="clearBtn">${esc(t("ui.clear"))}</button><button class="btn" type="button" data-close>${esc(t("ui.done"))}</button></div>
   </div>`;
 }
 
+function renderLangbar() {
+  const lb = $("langbar");
+  lb.setAttribute("aria-label", t("ui.chooseLanguage"));
+  lb.innerHTML = LANGS.map(l => `<button class="seg" type="button" role="radio" lang="${l.code}" data-lang="${l.code}" aria-checked="${l.code === state.lang}">${l.label}</button>`).join("");
+  lb.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => { if (b.dataset.lang !== state.lang) setLang(b.dataset.lang); }));
+  const ad = $("autodetect");
+  ad.hidden = !state.detected;
+  if (state.detected) ad.innerHTML = `${ICON.globe}<span>${esc(t("ui.autoDetected"))}</span>`;
+}
 function renderBar() {
   const jr = $("jumpRow");
   jr.innerHTML = "";
@@ -449,6 +468,7 @@ function render() {
   document.documentElement.lang = state.lang === "zh" ? "zh-Hans" : state.lang;
   document.title = t("ui.title");
   document.querySelectorAll("[data-t]").forEach(el => { el.textContent = t(el.dataset.t); });
+  renderLangbar();
   renderBar();
   renderMain();
   $("footer").innerHTML = footerHTML();
@@ -462,7 +482,7 @@ function render() {
 function syncUrl() { const u = new URL(location.href); u.searchParams.set("lang", state.lang); history.replaceState(history.state, "", u); }
 function setLang(code) {
   const y = window.scrollY;
-  state.lang = code; store("sup-lang", code);
+  state.lang = code; state.detected = false; store("sup-lang", code);
   render();
   window.scrollTo(0, y);
 }
@@ -709,7 +729,12 @@ function lbExit() {
     const dy = LB.exit.drag;
     z.animate([{ transform: z.style.transform, opacity: 1 }, { transform: `translate(0, ${dy + Math.sign(dy || 1) * 180}px) scale(.8)`, opacity: 0 }], { duration: 220, easing: "ease-out", fill: "forwards" });
     ms = 220;
-  } else if (r0 && r0.width && r0.bottom > 0 && r0.top < vh() && LB.s <= 1.01) {
+  } else if (LB.exit && LB.exit.swipe !== undefined) {
+    const dx = LB.exit.swipe;
+    LB.track.style.transition = "none";
+    z.animate([{ transform: "none", opacity: 1 }, { transform: `translate(${dx + Math.sign(dx || 1) * 200}px, 0) scale(.85)`, opacity: 0 }], { duration: 220, easing: "ease-out", fill: "forwards" });
+    ms = 220;
+  } else if (!LB.exit && r0 && r0.width && r0.bottom > 0 && r0.top < vh() && LB.s <= 1.01) {
     const f = LB.fit[i]; const dx = (r0.left + r0.width / 2) - vw() / 2, dy = (r0.top + r0.height / 2) - vh() / 2;
     z.animate([{ width: f.w + "px", height: f.h + "px", transform: "none", borderRadius: "0px" }, { width: r0.width + "px", height: r0.height + "px", transform: `translate(${dx}px, ${dy}px)`, borderRadius: "12px" }], { duration: 280, easing: "cubic-bezier(.2,.8,.2,1)", fill: "forwards" });
     ms = 280;
@@ -797,13 +822,16 @@ function lbPointerEnd(e) {
   const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
   const v = lbVelocity(g, now, e.clientX, e.clientY);
   if (g.mode === "drag") {
-    if (e.type === "pointerup" && (Math.abs(dy) > 140 || Math.abs(dy + v.vy * .25) > 620)) { LB.exit = { drag: dy }; closeDialog(LB.dlg); }
+    if (e.type === "pointerup" && (Math.abs(dy) > 90 || Math.abs(dy + v.vy * .25) > 420)) { LB.exit = { drag: dy }; closeDialog(LB.dlg); }
     else lbSpringBack();
     return;
   }
   if (g.mode === "page") {
-    if (e.type === "pointerup" && (dx < -vw() * .2 || v.vx < -400) && LB.index < PHOTOS.length - 1) lbGoto(LB.index + 1, true);
-    else if (e.type === "pointerup" && (dx > vw() * .2 || v.vx > 400) && LB.index > 0) lbGoto(LB.index - 1, true);
+    const up = e.type === "pointerup";
+    const fwd = up && (dx < -vw() * .2 || v.vx < -400), back = up && (dx > vw() * .2 || v.vx > 400);
+    if (fwd && LB.index < PHOTOS.length - 1) lbGoto(LB.index + 1, true);
+    else if (back && LB.index > 0) lbGoto(LB.index - 1, true);
+    else if (fwd || back) { LB.exit = { swipe: dx }; closeDialog(LB.dlg); }
     else lbPlaceTrack(true);
     return;
   }
