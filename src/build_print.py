@@ -1,7 +1,7 @@
 import json, base64, html, pathlib, subprocess, sys
 root = pathlib.Path(__file__).parent
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-LANGS = [("en","English"),("es","Español"),("vi","Tiếng Việt"),("ko","한국어"),("zh","中文")]
+LANGS = [("en","English"),("es","Español"),("vi","Tiếng Việt"),("ko","한국어"),("zh","简体中文"),("zh-Hant","繁體中文"),("tl","Tagalog")]
 structure = json.load(open(root/"structure.json"))
 S = {l: json.load(open(root/f"strings.{l}.json")) for l,_ in LANGS}
 ORDER = structure["allergens"]

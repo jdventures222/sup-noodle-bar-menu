@@ -100,6 +100,7 @@
   "item.phofilet.desc": "Filet mignon magro, suave y lleno de sabor.",
   "item.phocombo.name": "Pho combinado",
   "item.phocombo.desc": "Una mezcla de panceta de res, tendón, pecho de res, albóndiga y una costilla con hueso.",
+  "item.phocombo.note": "No se permiten sustituciones de carne.",
   "item.phoveggie.name": "Pho de verduras y tofu",
   "item.phoveggie.desc": "Tofu, brócoli, zanahoria y col napa en un sustancioso caldo de res.",
   "item.phoveggie.note": "Se prepara con caldo de res, por lo que este plato no es vegetariano.",
@@ -171,7 +172,7 @@
   "item.passionfruit.name": "Té verde con maracuyá",
   "item.passionfruit.desc": "Té verde de jazmín con puré de maracuyá.",
   "item.fountain.name": "Bebida de fuente de soda",
-  "item.fountain.desc": "Coke, Diet Coke, Fanta Strawberry, Ginger Ale, Barq's Root Beer, Sprite o limonada.",
+  "item.fountain.desc": "Coke, Diet Coke, Coke Zero, Fanta Strawberry, Ginger Ale, Barq's Root Beer, Sprite o limonada.",
   "item.shirley.name": "Shirley Temple",
   "item.royrogers.name": "Roy Rogers",
   "item.jasmineiced.name": "Té helado de jazmín",
@@ -200,5 +201,7 @@
   "ui.hide": "Ocultar",
   "ui.show": "Mostrar",
   "ui.autoDetected": "Se muestra en el idioma de tu dispositivo.",
-  "ui.chooseLanguage": "Elige un idioma"
+  "ui.chooseLanguage": "Elige un idioma",
+  "ui.langName.zh-Hant": "Chino (tradicional)",
+  "ui.langName.tl": "Tagalo"
 }

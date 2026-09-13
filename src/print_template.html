@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>__TITLE__</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap">
 <style>
   @page { size: letter; margin: 0.5in; }
   :root {
@@ -14,13 +14,14 @@
   }
   html[lang="ko"] { --display: "Noto Sans", "Noto Sans KR", sans-serif; --text: "Noto Sans", "Noto Sans KR", sans-serif; word-break: keep-all; }
   html[lang="zh-Hans"] { --display: "Noto Sans", "Noto Sans SC", sans-serif; --text: "Noto Sans", "Noto Sans SC", sans-serif; }
+  html[lang="zh-Hant"] { --display: "Noto Sans", "Noto Sans TC", sans-serif; --text: "Noto Sans", "Noto Sans TC", sans-serif; }
   * { box-sizing: border-box; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body { margin: 0; font-family: var(--text); font-size: 9.5pt; line-height: 13pt; color: var(--ink); background: #fff; }
   p { margin: 0; }
   h1, h2, h3 { margin: 0; font-family: var(--display); }
   .caps { text-transform: uppercase; }
-  html[lang="ko"] .caps, html[lang="zh-Hans"] .caps { text-transform: none; letter-spacing: 0 !important; }
+  html[lang="ko"] .caps, html[lang^="zh"] .caps { text-transform: none; letter-spacing: 0 !important; }
 
   .masthead { display: flex; align-items: flex-start; justify-content: space-between; gap: 16pt; padding-bottom: 8pt; border-bottom: 2pt solid var(--ink); }
   .brand { display: flex; align-items: center; gap: 10pt; flex: none; }
@@ -53,7 +54,7 @@
   .thumb.cutout { object-fit: contain; border-radius: 0; }
   .head { display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: 8pt; align-items: baseline; }
   .item h3 { font-size: 12pt; line-height: 13.5pt; font-weight: 700; }
-  html[lang="ko"] .item h3, html[lang="zh-Hans"] .item h3 { font-size: 11pt; line-height: 14pt; }
+  html[lang="ko"] .item h3, html[lang^="zh"] .item h3 { font-size: 11pt; line-height: 14pt; }
   .price { font-family: var(--text); font-weight: 700; font-size: 10pt; line-height: 13pt; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .en-name { font-size: 7.5pt; line-height: 10pt; color: var(--muted); }
   .badges { display: flex; flex-wrap: wrap; gap: 3pt; margin-top: 2pt; }

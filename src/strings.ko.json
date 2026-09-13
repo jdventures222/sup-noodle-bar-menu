@@ -100,6 +100,7 @@
   "item.phofilet.desc": "기름기 적고 부드러우며 풍미 가득한 안심.",
   "item.phocombo.name": "모둠 쌀국수",
   "item.phocombo.desc": "우삼겹, 힘줄, 양지, 미트볼, 갈비 1대를 함께 담았습니다.",
+  "item.phocombo.note": "고기 종류 변경은 불가합니다.",
   "item.phoveggie.name": "채소·두부 쌀국수",
   "item.phoveggie.desc": "진한 소고기 육수에 두부, 브로콜리, 당근, 배추를 넣었습니다.",
   "item.phoveggie.note": "소고기 육수로 만들기 때문에 채식 메뉴가 아닙니다.",
@@ -171,7 +172,7 @@
   "item.passionfruit.name": "패션프루트 녹차",
   "item.passionfruit.desc": "재스민 녹차와 패션프루트 퓌레.",
   "item.fountain.name": "디스펜서 음료",
-  "item.fountain.desc": "Coke, Diet Coke, Fanta Strawberry, Ginger Ale, Barq's Root Beer, Sprite 또는 레모네이드.",
+  "item.fountain.desc": "Coke, Diet Coke, Coke Zero, Fanta Strawberry, Ginger Ale, Barq's Root Beer, Sprite 또는 레모네이드.",
   "item.shirley.name": "Shirley Temple",
   "item.royrogers.name": "Roy Rogers",
   "item.jasmineiced.name": "재스민 아이스티",
@@ -200,5 +201,7 @@
   "ui.hide": "숨기기",
   "ui.show": "보기",
   "ui.autoDetected": "기기 언어에 맞춰 표시하고 있습니다.",
-  "ui.chooseLanguage": "언어 선택"
+  "ui.chooseLanguage": "언어 선택",
+  "ui.langName.zh-Hant": "중국어(번체)",
+  "ui.langName.tl": "타갈로그어"
 }

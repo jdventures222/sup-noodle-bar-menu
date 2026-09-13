@@ -5,7 +5,7 @@
 <title>SUP Noodle Bar Menu</title>
 <link rel="icon" href="__ICON__">
 <link rel="apple-touch-icon" href="__ICON__">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap">
 <style>
   :root {
     --red: #E5342B; --red-deep: #B4231C;
@@ -18,6 +18,7 @@
   }
   html[lang="ko"] { --display: "Noto Sans", "Noto Sans KR", sans-serif; --text: "Noto Sans", "Noto Sans KR", sans-serif; }
   html[lang="zh-Hans"] { --display: "Noto Sans", "Noto Sans SC", sans-serif; --text: "Noto Sans", "Noto Sans SC", sans-serif; }
+  html[lang="zh-Hant"] { --display: "Noto Sans", "Noto Sans TC", sans-serif; --text: "Noto Sans", "Noto Sans TC", sans-serif; }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
   html { scroll-behavior: smooth; background: var(--ground); }
@@ -34,7 +35,7 @@
   .skip { position: absolute; left: -9999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 12px; border-radius: 6px; z-index: 50; }
   .skip:focus { left: 8px; }
   .caps { font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; }
-  html[lang="ko"] .caps, html[lang="zh-Hans"] .caps { text-transform: none; letter-spacing: 0; }
+  html[lang="ko"] .caps, html[lang^="zh"] .caps { text-transform: none; letter-spacing: 0; }
 
   /* Masthead */
   .masthead { background: var(--surface); }
@@ -88,9 +89,9 @@
   .special:active { background: var(--ground); }
   .special img { width: 84px; height: 84px; object-fit: cover; border-radius: 10px; display: block; }
   .special .eyebrow { font-family: var(--display); text-transform: uppercase; font-weight: 700; font-size: 12px; line-height: 14px; letter-spacing: .06em; color: var(--red-deep); }
-  html[lang="ko"] .special .eyebrow, html[lang="zh-Hans"] .special .eyebrow { text-transform: none; letter-spacing: 0; }
+  html[lang="ko"] .special .eyebrow, html[lang^="zh"] .special .eyebrow { text-transform: none; letter-spacing: 0; }
   .special h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 21px; line-height: 23px; margin: 2px 0 3px; text-wrap: balance; }
-  html[lang="ko"] .special h2, html[lang="zh-Hans"] .special h2 { text-transform: none; font-size: 18px; line-height: 24px; }
+  html[lang="ko"] .special h2, html[lang^="zh"] .special h2 { text-transform: none; font-size: 18px; line-height: 24px; }
   .special .price { font-size: 16px; line-height: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
   .special .price s { color: var(--muted); font-weight: 400; margin-left: 6px; }
   .special .when { font-size: 13px; line-height: 18px; color: var(--body); margin: 1px 0 0; }
@@ -111,7 +112,7 @@
   section.menu { margin: 28px 0 0; scroll-margin-top: calc(var(--bar-h) + 8px); }
   section.menu > header { border-bottom: 2px solid var(--ink); padding-bottom: 5px; }
   section.menu h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; color: var(--red); font-size: 28px; line-height: 30px; margin: 0; }
-  html[lang="ko"] section.menu h2, html[lang="zh-Hans"] section.menu h2 { text-transform: none; font-size: 24px; line-height: 30px; }
+  html[lang="ko"] section.menu h2, html[lang^="zh"] section.menu h2 { text-transform: none; font-size: 24px; line-height: 30px; }
   .intro { color: var(--body); margin: 10px 0 0; max-width: 62ch; font-size: 15px; line-height: 22px; }
   .intro.small { font-size: 13px; line-height: 19px; color: var(--muted); margin-top: 4px; }
   .items { list-style: none; margin: 0; padding: 0; }
@@ -128,14 +129,14 @@
   .thumb.cutout { object-fit: contain; background: transparent; border-radius: 0; box-shadow: none; }
   .item-head { display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: 10px; align-items: baseline; }
   .item h3 { font-family: var(--display); text-transform: uppercase; font-weight: 700; font-size: 21px; line-height: 24px; margin: 0; min-width: 0; }
-  html[lang="ko"] .item h3, html[lang="zh-Hans"] .item h3 { text-transform: none; font-size: 18px; line-height: 24px; }
+  html[lang="ko"] .item h3, html[lang^="zh"] .item h3 { text-transform: none; font-size: 18px; line-height: 24px; }
   .price { font-family: var(--text); font-weight: 700; font-size: 16px; line-height: 22px; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .en-name { font-size: 13px; line-height: 18px; color: var(--muted); margin: 0; }
   .badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 5px 0 0; }
   .badge { font-family: var(--display); text-transform: uppercase; font-weight: 700; font-size: 12px; line-height: 16px; letter-spacing: .06em; color: var(--red-deep); border: 1px solid var(--red-deep); border-radius: 4px; padding: 2px 6px; }
   .badge.lunch { color: #fff; background: var(--red-deep); }
   .badge.refill { color: var(--body); border-color: var(--control); }
-  html[lang="ko"] .badge, html[lang="zh-Hans"] .badge { text-transform: none; letter-spacing: 0; }
+  html[lang="ko"] .badge, html[lang^="zh"] .badge { text-transform: none; letter-spacing: 0; }
   .tagline { margin: 3px 0 0; font-style: italic; color: var(--muted); font-size: 14px; line-height: 20px; }
   .desc { margin: 4px 0 0; color: var(--body); max-width: 62ch; font-size: 15px; line-height: 22px; }
   @media (min-width: 560px) { .desc { font-size: 16px; line-height: 24px; } }
@@ -145,7 +146,7 @@
   .note { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: var(--body); padding-left: 10px; border-left: 2px solid var(--red-deep); }
   .sides { margin: 10px 0 0; padding: 8px 0 0; border-top: 1px dotted var(--line); }
   .lab { font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; line-height: 19px; font-weight: 700; color: var(--muted); }
-  html[lang="ko"] .lab, html[lang="zh-Hans"] .lab { text-transform: none; letter-spacing: 0; }
+  html[lang="ko"] .lab, html[lang^="zh"] .lab { text-transform: none; letter-spacing: 0; }
   .al { margin: 7px 0 0; font-size: 13px; line-height: 19px; color: var(--body); }
   /* The photo column is too narrow to hold the line, so it takes its own row and
      shrinks to fit against the right edge, sitting under the photo. */
@@ -154,7 +155,7 @@
   .al mark { background: transparent; color: var(--red-deep); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 2px; }
   .addons { border: 2px solid var(--red); border-radius: 12px; padding: 10px 14px 4px; margin: 16px 0 0; }
   .addons > h3 { font-family: var(--display); text-transform: uppercase; font-weight: 800; color: var(--red-deep); font-size: 18px; line-height: 22px; margin: 0 0 2px; }
-  html[lang="ko"] .addons > h3, html[lang="zh-Hans"] .addons > h3 { text-transform: none; }
+  html[lang="ko"] .addons > h3, html[lang^="zh"] .addons > h3 { text-transform: none; }
   .addons .item { padding: 10px 0; }
   /* Nothing in this block has a photo, so it must not reserve the photo column. */
   .has-photos .addons .item { grid-template-columns: minmax(0, 1fr); }
@@ -169,7 +170,7 @@
   footer.end .wrap { padding-top: 22px; padding-bottom: calc(30px + env(safe-area-inset-bottom)); }
   .notice { font-size: 14px; line-height: 20px; color: var(--body); max-width: 66ch; margin: 0 0 14px; }
   .notice b { display: block; font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; color: var(--ink); margin-bottom: 2px; }
-  html[lang="ko"] .notice b, html[lang="zh-Hans"] .notice b { text-transform: none; letter-spacing: 0; }
+  html[lang="ko"] .notice b, html[lang^="zh"] .notice b { text-transform: none; letter-spacing: 0; }
   .locs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 22px; padding-top: 16px; border-top: 2px solid var(--ink); }
   .locs h3 { font-family: var(--display); text-transform: uppercase; font-weight: 800; color: var(--red); font-size: 20px; line-height: 24px; margin: 0 0 2px; }
   .locs address { font-style: normal; font-size: 14px; line-height: 20px; color: var(--body); }
@@ -196,7 +197,7 @@
   .sheet-head::before { content: ""; position: absolute; top: 8px; left: 50%; width: 36px; height: 4px; margin-left: -18px; border-radius: 2px; background: var(--line); }
   @media (min-width: 720px) { .sheet-head::before { display: none; } }
   .sheet-head h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 24px; line-height: 28px; margin: 6px 0 0; }
-  html[lang="ko"] .sheet-head h2, html[lang="zh-Hans"] .sheet-head h2 { text-transform: none; font-size: 20px; }
+  html[lang="ko"] .sheet-head h2, html[lang^="zh"] .sheet-head h2 { text-transform: none; font-size: 20px; }
   .x { width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; border-radius: 50%; cursor: pointer; color: var(--body); }
   .x span { width: 32px; height: 32px; border-radius: 50%; background: var(--ground); display: grid; place-items: center; }
   .x svg { width: 16px; height: 16px; }
@@ -291,7 +292,8 @@
 <script>
 const DATA = __DATA__;
 const LANGS = [
-  { code: "en", label: "English" }, { code: "es", label: "Español" }, { code: "vi", label: "Tiếng Việt" }, { code: "ko", label: "한국어" }, { code: "zh", label: "中文" }
+  { code: "en", label: "English" }, { code: "es", label: "Español" }, { code: "vi", label: "Tiếng Việt" }, { code: "ko", label: "한국어" },
+  { code: "zh", label: "简体中文" }, { code: "zh-Hant", label: "繁體中文" }, { code: "tl", label: "Tagalog" }
 ];
 const ICON = {
   globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>',
@@ -320,8 +322,11 @@ function pickLang() {
   const saved = load("sup-lang"); if (saved && DATA.strings[saved]) return saved;
   const prefs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"]);
   for (const p of prefs) {
-    const base = String(p).toLowerCase().split(/[-_]/)[0];
-    if (DATA.strings[base]) { state.detected = base !== "en"; return base; }
+    const tag = String(p).toLowerCase();
+    // Chinese must be matched on script before it is reduced to "zh"; Filipino and
+    // Tagalog are the same menu.
+    const hit = /^zh\b.*(hant|tw|hk|mo)/.test(tag) ? "zh-Hant" : /^(fil|tl)\b/.test(tag) ? "tl" : tag.split(/[-_]/)[0];
+    if (DATA.strings[hit]) { state.detected = hit !== "en"; return hit; }
   }
   return "en";
 }

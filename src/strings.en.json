@@ -100,6 +100,7 @@
   "item.phofilet.desc": "Lean filet mignon, tender and flavorful.",
   "item.phocombo.name": "Pho Combination",
   "item.phocombo.desc": "A mix of beef belly, tendon, brisket, meatball, and one rib bone.",
+  "item.phocombo.note": "No meat substitutions.",
   "item.phoveggie.name": "Pho Veggie and Tofu",
   "item.phoveggie.desc": "Tofu, broccoli, carrots, and napa cabbage in a rich beef broth.",
   "item.phoveggie.note": "Made with beef broth, so this bowl is not vegetarian.",
@@ -171,7 +172,7 @@
   "item.passionfruit.name": "Passionfruit Green Tea",
   "item.passionfruit.desc": "Jasmine green tea and passionfruit purée.",
   "item.fountain.name": "Fountain Drink",
-  "item.fountain.desc": "Coke, Diet Coke, Fanta Strawberry, Ginger Ale, Barq's Root Beer, Sprite, or Lemonade.",
+  "item.fountain.desc": "Coke, Diet Coke, Coke Zero, Fanta Strawberry, Ginger Ale, Barq's Root Beer, Sprite, or Lemonade.",
   "item.shirley.name": "Shirley Temple",
   "item.royrogers.name": "Roy Rogers",
   "item.jasmineiced.name": "Jasmine Iced Tea",
@@ -200,5 +201,7 @@
   "ui.hide": "Hide",
   "ui.show": "Show",
   "ui.autoDetected": "Shown in your device's language.",
-  "ui.chooseLanguage": "Choose a language"
+  "ui.chooseLanguage": "Choose a language",
+  "ui.langName.zh-Hant": "Chinese (Traditional)",
+  "ui.langName.tl": "Tagalog"
 }

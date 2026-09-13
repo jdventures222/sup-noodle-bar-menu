@@ -100,6 +100,7 @@
   "item.phofilet.desc": "精瘦菲力牛柳，鲜嫩多汁。",
   "item.phocombo.name": "什锦牛肉河粉",
   "item.phocombo.desc": "牛五花、牛筋、牛腩、牛肉丸和一根牛肋排的组合。",
+  "item.phocombo.note": "肉类不可更换。",
   "item.phoveggie.name": "蔬菜豆腐河粉",
   "item.phoveggie.desc": "豆腐、西兰花、胡萝卜和大白菜，配浓郁牛骨汤。",
   "item.phoveggie.note": "以牛骨汤制作，因此本品并非素食。",
@@ -171,7 +172,7 @@
   "item.passionfruit.name": "百香果绿茶",
   "item.passionfruit.desc": "茉莉绿茶配百香果果泥。",
   "item.fountain.name": "现调饮料",
-  "item.fountain.desc": "Coke、Diet Coke、Fanta Strawberry、Ginger Ale、Barq's Root Beer、Sprite 或柠檬水。",
+  "item.fountain.desc": "Coke、Diet Coke、Coke Zero、Fanta Strawberry、Ginger Ale、Barq's Root Beer、Sprite 或柠檬水。",
   "item.shirley.name": "Shirley Temple",
   "item.royrogers.name": "Roy Rogers",
   "item.jasmineiced.name": "茉莉冰茶",
@@ -200,5 +201,7 @@
   "ui.hide": "隐藏",
   "ui.show": "显示",
   "ui.autoDetected": "已按您设备的语言显示。",
-  "ui.chooseLanguage": "选择语言"
+  "ui.chooseLanguage": "选择语言",
+  "ui.langName.zh-Hant": "繁体中文",
+  "ui.langName.tl": "他加禄语"
 }

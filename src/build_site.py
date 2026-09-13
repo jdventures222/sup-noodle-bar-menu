@@ -12,14 +12,14 @@ for p in (root / "assets" / "items").glob("*"):
     if p.suffix in (".jpg", ".png"): shutil.copy(p, site / "img" / p.name)
 for p in (root / "assets" / "full").glob("*"):
     if p.suffix in (".jpg", ".png"): shutil.copy(p, site / "img" / "full" / p.name)
-for l in ["en", "es", "vi", "ko", "zh"]:
+for l in ["en", "es", "vi", "ko", "zh", "zh-Hant", "tl"]:
     shutil.copy(root / "pdf" / f"SUP-Menu-{l}.pdf", site / "pdf" / f"SUP-Menu-{l}.pdf")
 (site / ".nojekyll").write_text("")
 # sources for future edits
 src = site / "src"; src.mkdir()
 for name in ["structure.json", "template.html", "print_template.html", "build.py", "build_print.py", "verify_pdfs.py", "build_site.py", "merge_toast.py", "qr.swift", "qrread.swift", "qrcard.html"]:
     shutil.copy(root / name, src / name)
-for l in ["en", "es", "vi", "ko", "zh"]: shutil.copy(root / f"strings.{l}.json", src / f"strings.{l}.json")
+for l in ["en", "es", "vi", "ko", "zh", "zh-Hant", "tl"]: shutil.copy(root / f"strings.{l}.json", src / f"strings.{l}.json")
 (src / "assets").mkdir(); 
 for n in ["logo.png", "icon.png", "doodle.jpg", "bowl.jpg", "kimchi.jpg"]: shutil.copy(root / "assets" / n, src / "assets" / n)
 shutil.copytree(root / "assets" / "items", src / "assets" / "items")

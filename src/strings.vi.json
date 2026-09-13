@@ -100,6 +100,7 @@
   "item.phofilet.desc": "Thăn bò filet mignon nạc, mềm và đậm vị.",
   "item.phocombo.name": "Phở đặc biệt",
   "item.phocombo.desc": "Gồm bò ba chỉ, gân, nạm, bò viên và một khúc sườn.",
+  "item.phocombo.note": "Không đổi loại thịt.",
   "item.phoveggie.name": "Phở rau củ và đậu hũ",
   "item.phoveggie.desc": "Đậu hũ, bông cải xanh, cà rốt và cải thảo trong nước dùng bò đậm đà.",
   "item.phoveggie.note": "Nấu bằng nước dùng bò nên tô này không phải món chay.",
@@ -171,7 +172,7 @@
   "item.passionfruit.name": "Trà xanh chanh dây",
   "item.passionfruit.desc": "Trà xanh lài và chanh dây xay nhuyễn.",
   "item.fountain.name": "Nước ngọt ly",
-  "item.fountain.desc": "Coke, Diet Coke, Fanta Strawberry, Ginger Ale, Barq's Root Beer, Sprite hoặc nước chanh.",
+  "item.fountain.desc": "Coke, Diet Coke, Coke Zero, Fanta Strawberry, Ginger Ale, Barq's Root Beer, Sprite hoặc nước chanh.",
   "item.shirley.name": "Shirley Temple",
   "item.royrogers.name": "Roy Rogers",
   "item.jasmineiced.name": "Trà lài đá",
@@ -200,5 +201,7 @@
   "ui.hide": "Ẩn",
   "ui.show": "Hiện",
   "ui.autoDetected": "Hiển thị theo ngôn ngữ trên thiết bị của bạn.",
-  "ui.chooseLanguage": "Chọn ngôn ngữ"
+  "ui.chooseLanguage": "Chọn ngôn ngữ",
+  "ui.langName.zh-Hant": "Tiếng Trung (phồn thể)",
+  "ui.langName.tl": "Tiếng Tagalog"
 }
