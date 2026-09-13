@@ -5,7 +5,8 @@
     "dish": "Three Golden Baos",
     "photoUrl": "https://media-cdn.grubhub.com/image/upload/e4v27w3f7w5ppaptoru6",
     "itemPage": "https://www.grubhub.com/restaurant/sup-noodle-bar-14370-culver-dr-h-irvine/2179680",
-    "rights": "Restaurant-supplied menu photography from SUP Noodle Bar's own Grubhub storefront. Confirm with Kei Concepts before wide distribution."
+    "rights": "Restaurant-supplied menu photography from SUP Noodle Bar's own Grubhub storefront. Confirm with Kei Concepts before wide distribution.",
+    "note": "Padded to a square with the studio background so the full tray fits; the ground is flat red so the padding is invisible."
   },
   "springroll": {
     "source": "restaurant-studio",
@@ -192,12 +193,13 @@
     "rights": "Restaurant-supplied menu photography from SUP Noodle Bar's own Grubhub storefront. Confirm with Kei Concepts before wide distribution."
   },
   "herbaltea": {
-    "source": "yelp-reviewer",
-    "location": "Irvine",
-    "yelpItem": "Party Jug Herbal Iced Tea",
-    "photoUrl": "https://s3-media0.fl.yelpcdn.com/bphoto/-1kDhgbq0_Wgao50Abhuwg/o.jpg",
-    "itemPage": "https://www.yelp.com/menu/sup-noodle-bar-irvine-irvine-25/item/party-jug-herbal-iced-tea",
-    "rights": "Reviewer photo hosted by Yelp. Placeholder only: replace with restaurant-owned photography or obtain the reviewer's permission before publishing."
+    "source": "restaurant-studio",
+    "location": "Irvine (Grubhub storefront)",
+    "dish": "Party Jug Herbal Iced Tea",
+    "note": "The storefront has no single-cup herbal tea photo; James chose the party jug as the only official image.",
+    "photoUrl": "https://media-cdn.grubhub.com/image/upload/fjfkhe8emlw55odaaefv",
+    "itemPage": "https://www.grubhub.com/restaurant/sup-noodle-bar-14370-culver-dr-h-irvine/2179680",
+    "rights": "Restaurant-supplied menu photography from SUP Noodle Bar's own Grubhub storefront. Confirm with Kei Concepts before wide distribution."
   },
   "thaitea": {
     "source": "restaurant-studio",
