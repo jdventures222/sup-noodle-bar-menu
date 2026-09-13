@@ -45,9 +45,9 @@
   .brand p { margin: 1px 0 0; color: var(--muted); font-size: 13px; line-height: 18px; }
 
   /* Language switcher: every language visible in its own script, scrolls only if a narrow screen forces it. */
-  .langbar { display: flex; gap: 3px; margin: 0 -16px 2px; padding: 3px 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .langbar { display: flex; gap: 3px; margin: 0 -16px; padding: 5px 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .langbar::-webkit-scrollbar { display: none; }
-  @media (min-width: 560px) { .langbar { margin: 0 -24px 2px; padding: 3px 24px; } }
+  @media (min-width: 560px) { .langbar { margin: 0 -24px; padding: 5px 24px; } }
   .seg { flex: 1 1 auto; min-width: max-content; display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 9px; border: 1px solid var(--line); background: var(--surface); color: var(--body); border-radius: 999px; font-size: 13px; line-height: 17px; font-weight: 600; white-space: nowrap; cursor: pointer; }
   @media (min-width: 420px) { .seg { padding: 0 14px; font-size: 14px; } }
   .seg[aria-checked="true"] { background: var(--red-deep); border-color: var(--red-deep); color: #fff; font-weight: 700; }
@@ -147,12 +147,18 @@
   .lab { font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; line-height: 19px; font-weight: 700; color: var(--muted); }
   html[lang="ko"] .lab, html[lang="zh-Hans"] .lab { text-transform: none; letter-spacing: 0; }
   .al { margin: 7px 0 0; font-size: 13px; line-height: 19px; color: var(--body); }
+  /* The photo column is too narrow to hold the line, so it takes its own row and
+     shrinks to fit against the right edge, sitting under the photo. */
+  .has-photos .item > .al { grid-column: 1 / -1; justify-self: end; text-align: right; max-width: 100%; margin-top: 2px; }
   .al b { font-weight: 600; color: var(--ink); }
   .al mark { background: transparent; color: var(--red-deep); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 2px; }
   .addons { border: 2px solid var(--red); border-radius: 12px; padding: 10px 14px 4px; margin: 16px 0 0; }
   .addons > h3 { font-family: var(--display); text-transform: uppercase; font-weight: 800; color: var(--red-deep); font-size: 18px; line-height: 22px; margin: 0 0 2px; }
   html[lang="ko"] .addons > h3, html[lang="zh-Hans"] .addons > h3 { text-transform: none; }
   .addons .item { padding: 10px 0; }
+  /* Nothing in this block has a photo, so it must not reserve the photo column. */
+  .has-photos .addons .item { grid-template-columns: minmax(0, 1fr); }
+  .has-photos .addons .item > .al { justify-self: stretch; text-align: left; margin-top: 7px; }
   .addons .item.flagged { margin: 2px -8px; padding-left: 10px; padding-right: 8px; }
   .addons .item:last-child { border-bottom: 0; }
   .addons .item h3 { font-size: 18px; line-height: 22px; }
@@ -194,7 +200,7 @@
   .x { width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; border-radius: 50%; cursor: pointer; color: var(--body); }
   .x span { width: 32px; height: 32px; border-radius: 50%; background: var(--ground); display: grid; place-items: center; }
   .x svg { width: 16px; height: 16px; }
-  .sheet-body { overflow-y: auto; overscroll-behavior: contain; padding: 0 20px calc(20px + env(safe-area-inset-bottom)); flex: 1 1 auto; }
+  .sheet-body { overflow-y: auto; overscroll-behavior: contain; padding: 6px 20px calc(20px + env(safe-area-inset-bottom)); flex: 1 1 auto; }
   .sheet-hint { margin: 0 0 12px; font-size: 14px; line-height: 20px; color: var(--body); }
   .opts { display: grid; margin: 0 -8px; }
   .opt { display: grid; grid-template-columns: minmax(0, 1fr) 24px; align-items: center; gap: 12px; width: 100%; text-align: left; min-height: 56px; padding: 8px 12px; border: 0; background: none; border-radius: 12px; cursor: pointer; }
@@ -375,8 +381,8 @@ function itemHTML(it, kind) {
   return `<li class="item" id="item-${it.id}" data-kind="${kind}" data-allergens="${allOf(it).join(" ")}">
     <div class="item-body">
       <div class="item-head"><h3>${nm.h3}</h3>${single}</div>
-      ${nm.sub}${badgesHTML(it)}${tagline}${desc}${variants}${note}${sides}${containsHTML(it)}
-    </div>${photo}
+      ${nm.sub}${badgesHTML(it)}${tagline}${desc}${variants}${note}${sides}
+    </div>${photo}${containsHTML(it)}
   </li>`;
 }
 function specialsHTML() {
@@ -532,21 +538,28 @@ function applyFilter() {
   syncBarHeight();
 }
 function syncBarHeight() { document.documentElement.style.setProperty("--bar-h", $("bar").offsetHeight + "px"); }
-let io = null;
-function observeSections() {
-  if (io) io.disconnect();
-  if (!("IntersectionObserver" in window)) return;
-  io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      document.querySelectorAll("#jumpRow a").forEach(a => {
-        const on = a.getAttribute("href") === "#" + e.target.id;
-        if (on) { a.setAttribute("aria-current", "location"); a.scrollIntoView({ block: "nearest", inline: "center" }); } else a.removeAttribute("aria-current");
-      });
-    });
-  }, { rootMargin: "-35% 0px -60% 0px" });
-  document.querySelectorAll("section.menu").forEach(s => io.observe(s));
+/* The current section is read straight from the layout on every scroll frame rather than
+   watched with an IntersectionObserver: a thin observer band can be crossed entirely between
+   two samples during a flick, which leaves the previous chip highlighted. */
+let spyRaf = 0;
+function currentSection() {
+  const line = innerHeight * .38;
+  let cur = null;
+  document.querySelectorAll("section.menu").forEach(s => { if (s.getBoundingClientRect().top <= line) cur = s.id; });
+  return cur;
 }
+function observeSections() {
+  spyRaf = 0;
+  const cur = currentSection();
+  document.querySelectorAll("#jumpRow a").forEach(a => {
+    if (a.getAttribute("href") === "#" + cur) {
+      if (!a.hasAttribute("aria-current")) { a.setAttribute("aria-current", "location"); a.scrollIntoView({ block: "nearest", inline: "center" }); }
+    } else a.removeAttribute("aria-current");
+  });
+}
+function scheduleSpy() { if (!spyRaf) spyRaf = requestAnimationFrame(observeSections); }
+addEventListener("scroll", scheduleSpy, { passive: true });
+addEventListener("resize", scheduleSpy);
 
 /* Modal dialogs: at most one history entry exists for whatever dialog is open, so the phone's back gesture
    closes it. Swapping one dialog for another reuses that entry instead of popping it, so an open request never
@@ -681,6 +694,16 @@ function lbDrag(dy) {
   LB.bg.style.transition = "none"; LB.bg.style.opacity = Math.max(1 - Math.abs(dy) / 420, .4);
   LB.chrome.style.transition = "none"; LB.chrome.style.opacity = Math.max(1 - Math.abs(dy) / 130, 0) * (LB.chromeOn ? 1 : 0);
 }
+/* The axis is chosen from the first 14px of travel, which is too little to tell a
+   downward drag from a diagonal page swipe, so the choice stays revisable until the
+   stroke has committed at 34px. Paging needs the horizontal to clearly win; anything
+   else is a dismissal. */
+function lbAxis(dx, dy) { return Math.abs(dx) > Math.abs(dy) * 1.2 ? "page" : "drag"; }
+function lbDragReset() {
+  const z = LB.zooms[LB.index]; z.style.transition = "none"; z.style.transform = "";
+  LB.bg.style.transition = "none"; LB.bg.style.opacity = 1;
+  LB.chrome.style.transition = "none"; LB.chrome.style.opacity = LB.chromeOn ? 1 : 0;
+}
 function lbSpringBack() {
   const z = LB.zooms[LB.index]; z.style.transition = "transform .34s cubic-bezier(.3, 1.25, .5, 1)"; z.style.transform = "";
   LB.bg.style.transition = "opacity .3s"; LB.bg.style.opacity = 1;
@@ -799,7 +822,14 @@ LB.track.addEventListener("pointermove", e => {
     if (!g.mode) { if (Math.hypot(dx, dy) < 6) return; g.mode = "pan"; lbCancelTap(); }
     const bd = lbBounds(LB.s); lbSetZoom(LB.index, LB.s, clamp(g.tx0 + dx, -bd.x, bd.x), clamp(g.ty0 + dy, -bd.y, bd.y), false); return;
   }
-  if (!g.mode) { if (Math.hypot(dx, dy) < 14) return; g.mode = Math.abs(dy) >= Math.abs(dx) ? "drag" : "page"; lbCancelTap(); }
+  if (!g.mode) { if (Math.hypot(dx, dy) < 14) return; g.mode = lbAxis(dx, dy); lbCancelTap(); }
+  else if (!g.locked && (g.mode === "drag" || g.mode === "page")) {
+    if (Math.hypot(dx, dy) >= 34) g.locked = 1;
+    else {
+      const want = lbAxis(dx, dy);
+      if (want !== g.mode) { if (g.mode === "drag") lbDragReset(); else lbPlaceTrack(false); g.mode = want; }
+    }
+  }
   if (g.mode === "drag") lbDrag(dy);
   else if (g.mode === "page") {
     const atEnd = (dx > 0 && LB.index === 0) || (dx < 0 && LB.index === PHOTOS.length - 1);
@@ -824,7 +854,7 @@ function lbPointerEnd(e) {
   const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
   const v = lbVelocity(g, now, e.clientX, e.clientY);
   if (g.mode === "drag") {
-    if (e.type === "pointerup" && (Math.abs(dy) > 90 || Math.abs(dy + v.vy * .25) > 420)) { LB.exit = { drag: dy }; closeDialog(LB.dlg); }
+    if (e.type === "pointerup" && (Math.abs(dy) > 60 || Math.abs(dy + v.vy * .25) > 300)) { LB.exit = { drag: dy }; closeDialog(LB.dlg); }
     else lbSpringBack();
     return;
   }
