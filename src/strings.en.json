@@ -184,7 +184,7 @@
   "ui.chooseAllergens": "Choose allergens to avoid",
   "ui.sectionHidden": "Every dish in this section is hidden by your allergen filter.",
   "ui.revised": "Menu revised",
-  "ui.printKey": "Each dish lists the major allergens it contains: milk, egg, fish, shellfish, peanut, tree nuts, wheat, soy, and sesame. Options that add an allergen show it next to the option.",
+  "ui.printKey": "Each dish lists the major allergens it contains: milk, egg, fish, shellfish, peanut, tree nuts, gluten, soy, and sesame. Options that add an allergen show it next to the option.",
   "ui.noLineNote": "Dishes with no major allergen listed show no Contains line.",
   "ui.pdfMenu": "Printable menu (PDF)",
   "ui.filterCta": "Avoiding an allergen?",

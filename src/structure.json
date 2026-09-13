@@ -45,16 +45,14 @@
             }
           ],
           "contains": [
-            "fish",
             "shellfish",
             "peanut",
-            "treenut",
             "gluten",
             "soy",
             "sesame"
           ],
           "likely": [],
-          "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+          "source": "SUP Top 9 Allergen Chart (01/2026)"
         },
         {
           "id": "eggrolls",
@@ -164,14 +162,13 @@
             }
           ],
           "contains": [
-            "milk",
             "egg",
             "shellfish",
             "gluten",
             "soy"
           ],
           "likely": [],
-          "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+          "source": "SUP Top 9 Allergen Chart (01/2026)"
         }
       ]
     },
@@ -410,17 +407,11 @@
           "prices": [
             {
               "k": "filet",
-              "p": 25,
-              "contains": [
-                "sesame"
-              ]
+              "p": 25
             },
             {
               "k": "shrimp",
-              "p": 22,
-              "contains": [
-                "sesame"
-              ]
+              "p": 22
             },
             {
               "k": "tofu",
@@ -432,7 +423,8 @@
             "egg",
             "shellfish",
             "gluten",
-            "soy"
+            "soy",
+            "sesame"
           ],
           "likely": [],
           "addons": [
@@ -463,7 +455,7 @@
               "likely": []
             }
           ],
-          "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+          "source": "SUP Top 9 Allergen Chart (01/2026)"
         },
         {
           "id": "cajun",
@@ -550,7 +542,6 @@
             }
           ],
           "contains": [
-            "milk",
             "egg",
             "fish",
             "shellfish",
@@ -559,7 +550,7 @@
             "sesame"
           ],
           "likely": [],
-          "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+          "source": "SUP Top 9 Allergen Chart (01/2026)"
         }
       ]
     },
@@ -629,11 +620,13 @@
           "contains": [
             "milk",
             "egg",
+            "fish",
+            "shellfish",
             "gluten",
             "soy"
           ],
           "likely": [],
-          "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+          "source": "SUP Top 9 Allergen Chart (01/2026)"
         }
       ]
     },
@@ -648,13 +641,12 @@
             }
           ],
           "contains": [
-            "egg",
             "shellfish",
             "gluten",
             "soy"
           ],
           "likely": [],
-          "source": "SUP Toast allergen statements (Irvine + Buena Park) merged with menu descriptions"
+          "source": "SUP Top 9 Allergen Chart (01/2026)"
         }
       ]
     },
