@@ -48,10 +48,11 @@
   .brand p { margin: 1px 0 0; color: var(--muted); font-size: 13px; line-height: 18px; }
 
   /* Language switcher: every language visible in its own script, scrolls only if a narrow screen forces it. */
-  .langbar { display: flex; gap: 4px; margin: 0 -16px 2px; padding: 3px 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .langbar { display: flex; gap: 3px; margin: 0 -16px 2px; padding: 3px 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .langbar::-webkit-scrollbar { display: none; }
   @media (min-width: 560px) { .langbar { margin: 0 -24px 2px; padding: 3px 24px; } }
-  .seg { flex: 1 1 auto; min-width: max-content; display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 12px; border: 1px solid var(--line); background: var(--surface); color: var(--body); border-radius: 999px; font-size: 13.5px; line-height: 18px; font-weight: 600; white-space: nowrap; cursor: pointer; }
+  .seg { flex: 1 1 auto; min-width: max-content; display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 9px; border: 1px solid var(--line); background: var(--surface); color: var(--body); border-radius: 999px; font-size: 13px; line-height: 17px; font-weight: 600; white-space: nowrap; cursor: pointer; }
+  @media (min-width: 420px) { .seg { padding: 0 14px; font-size: 14px; } }
   .seg[aria-checked="true"] { background: var(--red-deep); border-color: var(--red-deep); color: #fff; font-weight: 700; }
   .autodetect { margin: 0 0 10px; font-size: 12.5px; line-height: 17px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
   .autodetect svg { width: 14px; height: 14px; flex: none; color: var(--control); }
@@ -487,6 +488,7 @@ function syncUrl() { const u = new URL(location.href); u.searchParams.set("lang"
 function setLang(code) {
   const y = window.scrollY;
   state.lang = code; state.detected = false; store("sup-lang", code);
+  if (!openDlg() && modal.backs === 0) syncUrl();
   render();
   window.scrollTo(0, y);
 }
@@ -865,7 +867,13 @@ $("main").addEventListener("click", e => {
 if ("ResizeObserver" in window) new ResizeObserver(syncBarHeight).observe($("bar"));
 state.lang = pickLang();
 (load("sup-avoid") || "").split(",").filter(a => ORDER.includes(a)).forEach(a => state.avoid.add(a));
+/* A menu always opens at the top. A leftover fragment from a tapped special, or a scroll position the browser
+   restores, would otherwise drop a diner into the middle of the menu. */
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+if (location.hash) { const u = new URL(location.href); u.hash = ""; history.replaceState(history.state, "", u); }
 render();
+window.scrollTo(0, 0);
+addEventListener("pageshow", e => { if (e.persisted) window.scrollTo(0, 0); });
 </script>
 </body>
 </html>
