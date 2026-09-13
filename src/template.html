@@ -120,11 +120,13 @@
   .item.flagged { background: var(--flag-bg); box-shadow: inset 3px 0 0 var(--red-deep); border-radius: 10px; margin: 2px -10px; padding-left: 12px; padding-right: 10px; border-bottom-color: transparent; }
   .hide-flagged .item.flagged { display: none; }
   .has-photos .item { display: grid; grid-template-columns: minmax(0, 1fr) var(--thumb); gap: 12px; align-items: start; }
+  .has-photos .item.no-photo { grid-template-columns: minmax(0, 1fr); }
   .compact { --thumb: 72px; }
   @media (min-width: 560px) { section.menu { --thumb: 112px; } .compact { --thumb: 88px; } .has-photos .item { gap: 16px; } }
   .item-body { min-width: 0; }
   .thumb-btn { display: block; width: var(--thumb); height: var(--thumb); padding: 0; border: 0; background: none; border-radius: 12px; cursor: zoom-in; transition: transform .15s var(--ease); }
   .thumb-btn:active { transform: scale(.95); }
+  .pointer-focus:focus-visible { outline: 0; }
   .thumb { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; background: var(--line-soft); display: block; box-shadow: inset 0 0 0 1px rgba(27, 25, 23, .06); }
   .thumb.cutout { object-fit: contain; background: transparent; border-radius: 0; box-shadow: none; }
   .item-head { display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: 10px; align-items: baseline; }
@@ -160,6 +162,7 @@
   /* The photo column is too narrow to hold the line, so it takes its own row and
      shrinks to fit against the right edge, sitting under the photo. */
   .has-photos .item > .al { grid-column: 1 / -1; justify-self: end; text-align: right; max-width: 100%; margin-top: 2px; }
+  .has-photos .item.no-photo > .al { justify-self: start; text-align: left; }
   .al b { font-weight: 600; color: var(--ink); }
   .al mark { background: transparent; color: var(--red-deep); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 2px; }
   .addons { border: 2px solid var(--red); border-radius: 12px; padding: 10px 14px 4px; margin: 16px 0 0; }
@@ -227,14 +230,14 @@
   .sheet-foot .btn.quiet { padding: 0 16px; }
 
   /* Photo viewer */
-  dialog.lb { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: #fff; overflow: hidden; display: none; }
+  dialog.lb { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: #fff; overflow: hidden; display: none; touch-action: none; }
   dialog.lb[open] { display: block; }
   dialog.lb::backdrop { background: transparent; }
   .lb-bg { position: absolute; inset: 0; background: #000; opacity: 0; }
-  .lb-track { position: absolute; inset: 0; display: flex; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
+  .lb-track { position: absolute; inset: 0; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
   .lb-track.zoomed { cursor: move; }
-  .lb-slide { flex: 0 0 100%; width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden; }
-  .lb-zoom { position: relative; transform-origin: center; background-position: center; background-size: cover; overflow: hidden; }
+  .lb-slide { position: absolute; inset: 0; width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden; touch-action: none; }
+  .lb-zoom { position: relative; transform-origin: center; background-position: center; background-size: cover; overflow: hidden; touch-action: none; }
   .lb-zoom img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .25s; pointer-events: none; -webkit-user-drag: none; }
   .lb-zoom img.in { opacity: 1; }
   .lb-zoom.cutout { background-image: none !important; }
@@ -348,11 +351,13 @@ const listNames = arr => arr.map(aName).join(", ");
 /* Photos, in menu order. */
 const PHOTOS = []; const PHOTO_INDEX = {}; const VARIANT_INDEX = {};
 DATA.structure.sections.forEach(sec => sec.items.forEach(it => {
-  const f = DATA.photos[it.id]; if (!f) return;
-  const full = DATA.full[it.id];
-  PHOTO_INDEX[it.id] = PHOTOS.length;
-  PHOTOS.push({ id: it.id, thumb: "img/" + f, full: full ? "img/full/" + full.f : "img/" + f, w: full ? full.w : 1, h: full ? full.h : 1, cutout: f.endsWith(".png"), single: it.prices.length === 1 && it.prices[0].k === undefined ? it.prices[0] : null });
-  (DATA.variants[it.id] || []).forEach(v => {
+  const f = DATA.photos[it.id], rows = DATA.variants[it.id] || [];
+  if (f && rows.length < 2) {
+    const full = DATA.full[it.id];
+    PHOTO_INDEX[it.id] = PHOTOS.length;
+    PHOTOS.push({ id: it.id, thumb: "img/" + f, full: full ? "img/full/" + full.f : "img/" + f, w: full ? full.w : 1, h: full ? full.h : 1, cutout: f.endsWith(".png"), single: it.prices.length === 1 && it.prices[0].k === undefined ? it.prices[0] : null });
+  }
+  (rows.length >= 2 ? rows : []).forEach(v => {
     VARIANT_INDEX[it.id + "/" + v.k] = PHOTOS.length;
     const price = (it.prices || []).find(x => x.k === v.k && !x.plus);
     PHOTOS.push({ id: it.id, vk: v.k, thumb: "img/var/" + v.t, full: "img/var/" + v.f, w: v.w, h: v.h, cutout: false, single: price || null });
@@ -392,12 +397,12 @@ function itemHTML(it, kind) {
   const variants = keyed ? variantsHTML(k, it) : "";
   const sides = it.addons ? `<div class="sides"><span class="lab">${esc(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${esc(t("addon." + a.id + ".name"))}${merged(a).length ? ` <span class="vplus">(+ ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
   const pi = kind === "item" ? PHOTO_INDEX[it.id] : undefined;
-  let photo = kind === "item" ? "<span></span>" : "";
+  let photo = "";
   if (pi !== undefined) {
     const p = PHOTOS[pi];
     photo = `<button class="thumb-btn" type="button" data-photo="${pi}" aria-label="${esc(t("ui.photoOf").replace("{name}", t(k + ".name")))}" aria-haspopup="dialog"><img class="thumb${p.cutout ? " cutout" : ""}" src="${p.thumb}" alt="" loading="lazy" width="84" height="84"></button>`;
   }
-  return `<li class="item" id="item-${it.id}" data-kind="${kind}" data-allergens="${allOf(it).join(" ")}">
+  return `<li class="item${kind === "item" && pi === undefined ? " no-photo" : ""}" id="item-${it.id}" data-kind="${kind}" data-allergens="${allOf(it).join(" ")}">
     <div class="item-body">
       <div class="item-head"><h3>${nm.h3}</h3>${single}</div>
       ${nm.sub}${badgesHTML(it)}${tagline}${desc}${variants}${note}${sides}
@@ -484,10 +489,10 @@ function renderBar() {
   const cur = LANGS.find(l => l.code === state.lang);
   const lb = document.createElement("button"); lb.type = "button"; lb.className = "chip tool"; lb.id = "langBtn"; lb.setAttribute("aria-haspopup", "dialog");
   lb.innerHTML = `${ICON.globe}<span lang="${cur.code}">${cur.label}</span>`; lb.setAttribute("aria-label", t("ui.language") + ": " + cur.label);
-  lb.addEventListener("click", () => openSheet("langSheet", langSheetHTML()));
+  lb.addEventListener("click", e => openSheet("langSheet", langSheetHTML(), e.detail === 0));
   const ab = document.createElement("button"); ab.type = "button"; ab.className = "chip tool"; ab.id = "filterBtn"; ab.setAttribute("aria-haspopup", "dialog");
   ab.innerHTML = `${ICON.shield}<span>${esc(t("ui.allergens"))}</span><b class="count" hidden></b>`;
-  ab.addEventListener("click", () => openSheet("filterSheet", filterSheetHTML()));
+  ab.addEventListener("click", e => openSheet("filterSheet", filterSheetHTML(), e.detail === 0));
   jr.append(lb, ab); const sep = document.createElement("span"); sep.className = "sep"; jr.append(sep);
   DATA.structure.sections.forEach(sec => {
     const a = document.createElement("a"); a.className = "chip"; a.href = "#sec-" + sec.id; a.textContent = t(`sec.${sec.id}.title`); jr.appendChild(a);
@@ -495,7 +500,7 @@ function renderBar() {
 }
 function renderMain() {
   $("main").innerHTML = specialsHTML() + ctaHTML() + DATA.structure.sections.map(sectionHTML).join("");
-  $("ctaFilter").addEventListener("click", () => openSheet("filterSheet", filterSheetHTML()));
+  $("ctaFilter").addEventListener("click", e => openSheet("filterSheet", filterSheetHTML(), e.detail === 0));
   document.querySelectorAll(".special").forEach(a => a.addEventListener("click", () => {
     const tgt = $(a.dataset.target);
     if (tgt && tgt.classList.contains("flagged") && state.hide) { state.hide = false; applyFilter(); }
@@ -554,7 +559,7 @@ function applyFilter() {
   const sm = $("summary"); sm.hidden = !active;
   if (active) {
     sm.innerHTML = `<button class="grow" type="button" id="summaryEdit" aria-haspopup="dialog"><b>${esc(t("ui.avoiding"))}:</b> ${names} · ${esc(count)}</button><button class="linkbtn" type="button" id="summaryHide" aria-pressed="${state.hide}">${esc(t(state.hide ? "ui.show" : "ui.hide"))}</button><button class="linkbtn" type="button" id="summaryClear">${esc(t("ui.clear"))}</button>`;
-    $("summaryEdit").addEventListener("click", () => openSheet("filterSheet", filterSheetHTML()));
+    $("summaryEdit").addEventListener("click", e => openSheet("filterSheet", filterSheetHTML(), e.detail === 0));
     $("summaryHide").addEventListener("click", () => { state.hide = !state.hide; applyFilter(); });
     $("summaryClear").addEventListener("click", clearAvoid);
   }
@@ -634,9 +639,10 @@ function closeDialog(dlg, fromPop, instant) {
   const ms = (reduced || instant) ? 0 : (dlg.id === "lb" ? lbExit() : 320);
   dlg.classList.add("closing");
   setTimeout(() => {
+    const back = dlg.__returnFocus; dlg.__returnFocus = null;
+    if (back) back.classList.toggle("pointer-focus", !dlg.__keyboardOpen);
     dlg.classList.remove("closing"); dlg.close(); syncModalClass();
     if (dlg.id === "lb") lbAfterClose();
-    const back = dlg.__returnFocus; dlg.__returnFocus = null;
     if (back && back.isConnected && !openDlg() && !modal.next) back.focus({ preventScroll: true });
     const after = dlg.__afterClose; dlg.__afterClose = null; if (after) after();
     runNext();
@@ -659,18 +665,18 @@ document.querySelectorAll("dialog").forEach(dlg => {
     if (e.target.closest("#clearBtn")) { clearAvoid(); return; }
   });
 });
-function openSheet(id, html) { requestOpen(adopt => openSheetNow(id, html, adopt)); }
-function openSheetNow(id, html, adopt) {
+function openSheet(id, html, keyboard) { requestOpen(adopt => openSheetNow(id, html, adopt, keyboard)); }
+function openSheetNow(id, html, adopt, keyboard) {
   const dlg = $(id); if (dlg.open) return;
-  dlg.innerHTML = html; dlg.__returnFocus = document.activeElement;
+  dlg.innerHTML = html; dlg.__returnFocus = document.activeElement; dlg.__keyboardOpen = keyboard;
   openDialog(dlg, adopt);
   if (id === "filterSheet") applyFilter();
-  const first = dlg.querySelector(id === "langSheet" ? '[role="radio"][aria-checked="true"]' : "[data-avoid]"); if (first) first.focus({ preventScroll: true });
+  const first = dlg.querySelector(id === "langSheet" ? '[role="radio"][aria-checked="true"]' : "[data-avoid]");
+  if (first) { first.classList.toggle("pointer-focus", !keyboard); first.focus({ preventScroll: true }); }
 }
 
-/* Photo viewer. Gesture model mirrors the Fyt app's photo carousel: black backdrop, pinch to four times fit,
-   double-tap to two and a half times at the tap point, vertical drag to dismiss with the photo shrinking and the
-   backdrop dimming as it moves, a single tap toggling the chrome, and horizontal swipes paging between photos. */
+/* Photo viewer: pinch to four times fit, double-tap to zoom, and drag in any direction to dismiss.
+   A single tap toggles the chrome; arrows and the keyboard page between photos. */
 const LB = { dlg: $("lb"), track: $("lbTrack"), bg: $("lbBg"), chrome: $("lbChrome"), cap: $("lbCap"), index: 0, s: 1, tx: 0, ty: 0, fit: [], zooms: [], pointers: new Map(), gest: null, chromeOn: true, tapT: 0, tapX: 0, tapY: 0, tapTimer: 0, exit: null, opener: null, session: 0 };
 LB.track.innerHTML = PHOTOS.map((p, i) => `<figure class="lb-slide" data-i="${i}" style="margin:0"><div class="lb-zoom${p.cutout ? " cutout" : ""}" style="background-image:url('${p.thumb}')"><img alt="" draggable="false"></div></figure>`).join("");
 LB.zooms = [...LB.track.querySelectorAll(".lb-zoom")];
@@ -701,8 +707,11 @@ function lbSetZoom(i, s, tx, ty, animate) {
 }
 function lbBounds(s) { const f = LB.fit[LB.index]; return { x: Math.max(0, (f.w * s - vw()) / 2), y: Math.max(0, (f.h * s - vh()) / 2) }; }
 function lbPlaceTrack(animate) {
-  LB.track.style.transition = animate && !reduced ? "transform .3s var(--ease)" : "none";
-  LB.track.style.transform = `translateX(${-LB.index * vw()}px)`;
+  /* Keep the track's touch region on screen in iOS WebKit. */
+  LB.zooms.forEach((z, i) => {
+    z.parentElement.style.transition = animate && !reduced ? "transform .3s var(--ease)" : "none";
+    z.parentElement.style.transform = `translateX(${(i - LB.index) * vw()}px)`;
+  });
 }
 function lbCancelTap() { clearTimeout(LB.tapTimer); LB.tapTimer = 0; LB.tapT = 0; LB.tapGen = (LB.tapGen || 0) + 1; }
 function lbCancelGesture() {
@@ -718,10 +727,6 @@ function lbGoto(i, animate) {
   lbPlaceTrack(animate);
 }
 function lbChrome(on) { LB.chromeOn = on; LB.chrome.style.transition = "opacity .2s ease-in-out"; LB.chrome.style.opacity = on ? 1 : 0; LB.chrome.classList.toggle("off", !on); }
-/* A swipe in ANY direction dismisses. Splitting the axis into drag-to-dismiss and
-   swipe-to-page meant a sideways swipe paged instead of closing on every photo except
-   the first, where there was no neighbour to page to. Paging lives on the arrows and
-   the keyboard now. */
 function lbDrag(dx, dy) {
   const z = LB.zooms[LB.index], d = Math.hypot(dx, dy); z.style.transition = "none";
   z.style.transform = `translate(${dx}px, ${dy}px) scale(${1 - Math.min(d / 1400, .14)})`;
@@ -751,14 +756,15 @@ function lbDoubleTap(x, y) {
   const s = 2.5, px = x - vw() / 2, py = y - vh() / 2, b = lbBounds(s);
   lbSetZoom(LB.index, s, clamp(px - px * s, -b.x, b.x), clamp(py - py * s, -b.y, b.y), true);
 }
-function lbOpen(i, btn) { requestOpen(adopt => lbOpenNow(i, btn, adopt)); }
-function lbOpenNow(i, btn, adopt) {
+function lbOpen(i, btn, keyboard) { requestOpen(adopt => lbOpenNow(i, btn, adopt, keyboard)); }
+function lbOpenNow(i, btn, adopt, keyboard) {
   if (LB.dlg.open) return;
   LB.session++; lbCancelGesture();
   LB.opener = btn; LB.index = i; LB.exit = null;
   LB.zooms.forEach(z => { z.getAnimations().forEach(a => a.cancel()); z.style.transition = "none"; z.style.transform = ""; z.style.opacity = ""; });
   LB.s = 1; LB.tx = 0; LB.ty = 0; LB.track.classList.remove("zoomed");
   LB.dlg.__returnFocus = btn;
+  LB.dlg.__keyboardOpen = keyboard;
   openDialog(LB.dlg, adopt);
   lbLayout(); lbLoad(i); lbCaption(i); lbPlaceTrack(false); lbChrome(true);
   $("lbClose").focus({ preventScroll: true });
@@ -878,7 +884,9 @@ LB.track.addEventListener("pointercancel", lbPointerEnd);
 $("lbClose").addEventListener("click", () => closeDialog(LB.dlg));
 $("lbPrev").addEventListener("click", () => lbGoto(LB.index - 1, true));
 $("lbNext").addEventListener("click", () => lbGoto(LB.index + 1, true));
-LB.dlg.addEventListener("keydown", e => {
+document.addEventListener("keydown", e => {
+  document.querySelectorAll(".pointer-focus").forEach(b => b.classList.remove("pointer-focus"));
+  if (!LB.dlg.open || LB.dlg.classList.contains("closing")) return;
   if (e.key === "ArrowRight") { e.preventDefault(); lbGoto(LB.index + 1, true); }
   else if (e.key === "ArrowLeft") { e.preventDefault(); lbGoto(LB.index - 1, true); }
 });
@@ -891,7 +899,7 @@ window.addEventListener("resize", () => {
 $("main").addEventListener("click", e => {
   const b = e.target.closest("[data-photo]"); if (!b) return;
   if (navigator.vibrate) navigator.vibrate(10);
-  lbOpen(+b.dataset.photo, b);
+  lbOpen(+b.dataset.photo, b, e.detail === 0);
 });
 
 if ("ResizeObserver" in window) new ResizeObserver(syncBarHeight).observe($("bar"));
