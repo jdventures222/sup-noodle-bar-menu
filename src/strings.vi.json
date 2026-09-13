@@ -204,5 +204,11 @@
   "ui.chooseLanguage": "Chọn ngôn ngữ",
   "ui.langName.zh-Hant": "Tiếng Trung (phồn thể)",
   "ui.langName.tl": "Tiếng Tagalog",
-  "ui.eachOption": "Từng lựa chọn"
+  "ui.eachOption": "Từng lựa chọn",
+  "ui.langName.fa": "Tiếng Ba Tư",
+  "ui.langName.ar": "Tiếng Ả Rập",
+  "ui.langName.ja": "Tiếng Nhật",
+  "ui.langName.ru": "Tiếng Nga",
+  "ui.langName.hi": "Tiếng Hindi",
+  "ui.langName.ur": "Tiếng Urdu"
 }

@@ -204,5 +204,11 @@
   "ui.chooseLanguage": "Choose a language",
   "ui.langName.zh-Hant": "Chinese (Traditional)",
   "ui.langName.tl": "Tagalog",
-  "ui.eachOption": "Each option"
+  "ui.eachOption": "Each option",
+  "ui.langName.fa": "Persian (Farsi)",
+  "ui.langName.ar": "Arabic",
+  "ui.langName.ja": "Japanese",
+  "ui.langName.ru": "Russian",
+  "ui.langName.hi": "Hindi",
+  "ui.langName.ur": "Urdu"
 }

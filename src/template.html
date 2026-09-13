@@ -1,3 +1,6 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FFFFFF">
@@ -5,7 +8,7 @@
 <title>SUP Noodle Bar Menu</title>
 <link rel="icon" href="__ICON__">
 <link rel="apple-touch-icon" href="__ICON__">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap">
 <style>
   :root {
     --red: #E5342B; --red-deep: #B4231C;
@@ -19,6 +22,16 @@
   html[lang="ko"] { --display: "Noto Sans", "Noto Sans KR", sans-serif; --text: "Noto Sans", "Noto Sans KR", sans-serif; }
   html[lang="zh-Hans"] { --display: "Noto Sans", "Noto Sans SC", sans-serif; --text: "Noto Sans", "Noto Sans SC", sans-serif; }
   html[lang="zh-Hant"] { --display: "Noto Sans", "Noto Sans TC", sans-serif; --text: "Noto Sans", "Noto Sans TC", sans-serif; }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"]) { --display: "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif; --text: "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif; }
+  html[lang="ja"] { --display: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; --text: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; }
+  html[lang="hi"] { --display: "Noto Sans Devanagari", "Kohinoor Devanagari", Mangal, sans-serif; --text: "Noto Sans Devanagari", "Kohinoor Devanagari", Mangal, sans-serif; }
+  html[lang="ru"] { --display: "Noto Sans", Arial, sans-serif; }
+  [lang="fa"], [lang="ar"], [lang="ur"] { font-family: "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif; }
+  [lang="ja"] { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; }
+  [lang="hi"] { font-family: "Noto Sans Devanagari", "Kohinoor Devanagari", Mangal, sans-serif; }
+  [lang="ru"] { font-family: "Noto Sans", Arial, sans-serif; }
+  bdi, .en-name, address[dir], .web[dir] { unicode-bidi: isolate; }
+  .en-name { text-align: start; }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
   html { scroll-behavior: smooth; background: var(--ground); }
@@ -32,8 +45,8 @@
   :focus-visible { outline: 3px solid var(--red-deep); outline-offset: 2px; }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 16px; }
   @media (min-width: 560px) { .wrap { padding: 0 24px; } }
-  .skip { position: absolute; left: -9999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 12px; border-radius: 6px; z-index: 50; }
-  .skip:focus { left: 8px; }
+  .skip { position: absolute; inset-inline-start: -9999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 12px; border-radius: 6px; z-index: 50; }
+  .skip:focus { inset-inline-start: 8px; }
   .caps { font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; }
   html[lang="ko"] .caps, html[lang^="zh"] .caps { text-transform: none; letter-spacing: 0; }
 
@@ -72,7 +85,7 @@
   .chip .count { display: inline-grid; place-items: center; min-width: 19px; height: 19px; padding: 0 5px; border-radius: 10px; background: #fff; color: var(--red-deep); font-size: 12px; font-weight: 700; }
   .summary { display: flex; align-items: flex-start; gap: 8px; min-width: 0; font-size: 13px; line-height: 18px; color: var(--body); padding-bottom: 2px; }
   .summary b { color: var(--red-deep); }
-  .summary .grow { flex: 1; min-width: 0; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: inherit; }
+  .summary .grow { flex: 1; min-width: 0; text-align: start; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: inherit; }
   .linkbtn { background: none; border: 0; padding: 0 2px; min-height: 18px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; color: var(--red-deep); font-size: 13px; font-weight: 600; white-space: nowrap; }
 
   /* Buttons and pills */
@@ -93,13 +106,13 @@
   .special h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 21px; line-height: 23px; margin: 2px 0 3px; text-wrap: balance; }
   html[lang="ko"] .special h2, html[lang^="zh"] .special h2 { text-transform: none; font-size: 18px; line-height: 24px; }
   .special .price { font-size: 16px; line-height: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
-  .special .price s { color: var(--muted); font-weight: 400; margin-left: 6px; }
+  .special .price s { color: var(--muted); font-weight: 400; margin-inline-start: 6px; }
   .special .when { font-size: 13px; line-height: 18px; color: var(--body); margin: 1px 0 0; }
   .special .terms { font-size: 12px; line-height: 16px; color: var(--muted); margin: 3px 0 0; }
   .special svg { width: 20px; height: 20px; color: var(--control); }
 
   /* Allergen call-to-action strip */
-  .cta { display: grid; grid-template-columns: 24px minmax(0, 1fr) 20px; gap: 12px; align-items: center; width: 100%; text-align: left; margin: 12px 0 0; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 12px 12px 14px; cursor: pointer; }
+  .cta { display: grid; grid-template-columns: 24px minmax(0, 1fr) 20px; gap: 12px; align-items: center; width: 100%; text-align: start; margin: 12px 0 0; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding-block: 12px; padding-inline: 14px 12px; cursor: pointer; }
   .cta:active { background: var(--ground); }
   .cta > svg:first-child { width: 24px; height: 24px; color: var(--red-deep); }
   .cta > svg:last-child { width: 20px; height: 20px; color: var(--control); }
@@ -117,7 +130,7 @@
   .intro.small { font-size: 13px; line-height: 19px; color: var(--muted); margin-top: 4px; }
   .items { list-style: none; margin: 0; padding: 0; }
   .item { padding: 14px 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--bar-h) + 8px); }
-  .item.flagged { background: var(--flag-bg); box-shadow: inset 3px 0 0 var(--red-deep); border-radius: 10px; margin: 2px -10px; padding-left: 12px; padding-right: 10px; border-bottom-color: transparent; }
+  .item.flagged { background: var(--flag-bg); box-shadow: inset 3px 0 0 var(--red-deep); border-radius: 10px; margin: 2px -10px; padding-inline-start: 12px; padding-inline-end: 10px; border-bottom-color: transparent; }
   .hide-flagged .item.flagged { display: none; }
   .has-photos .item { display: grid; grid-template-columns: minmax(0, 1fr) var(--thumb); gap: 12px; align-items: start; }
   .has-photos .item.no-photo { grid-template-columns: minmax(0, 1fr); }
@@ -145,7 +158,7 @@
   .variants { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
   .variants li { display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: 10px; align-items: baseline; font-weight: 600; font-size: 15px; line-height: 22px; }
   .variants .vplus { font-weight: 400; color: var(--body); font-size: 13px; }
-  .note { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: var(--body); padding-left: 10px; border-left: 2px solid var(--red-deep); }
+  .note { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: var(--body); padding-inline-start: 10px; border-inline-start: 2px solid var(--red-deep); }
   .sides { margin: 10px 0 0; padding: 8px 0 0; border-top: 1px dotted var(--line); }
   .lab { font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; line-height: 19px; font-weight: 700; color: var(--muted); }
   html[lang="ko"] .lab, html[lang^="zh"] .lab { text-transform: none; letter-spacing: 0; }
@@ -160,9 +173,9 @@
   .shot:active img { transform: scale(.95); }
   .al { margin: 7px 0 0; font-size: 13px; line-height: 19px; color: var(--body); }
   /* The photo column is too narrow to hold the line, so it takes its own row and
-     shrinks to fit against the right edge, sitting under the photo. */
-  .has-photos .item > .al { grid-column: 1 / -1; justify-self: end; text-align: right; max-width: 100%; margin-top: 2px; }
-  .has-photos .item.no-photo > .al { justify-self: start; text-align: left; }
+     shrinks to fit against the inline-end edge, sitting under the photo. */
+  .has-photos .item > .al { grid-column: 1 / -1; justify-self: end; text-align: end; max-width: 100%; margin-top: 2px; }
+  .has-photos .item.no-photo > .al { justify-self: start; text-align: start; }
   .al b { font-weight: 600; color: var(--ink); }
   .al mark { background: transparent; color: var(--red-deep); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 2px; }
   .addons { border: 2px solid var(--red); border-radius: 12px; padding: 10px 14px 4px; margin: 16px 0 0; }
@@ -172,7 +185,7 @@
   /* Nothing in this block has a photo, so it must not reserve the photo column. */
   .has-photos .addons .item { grid-template-columns: minmax(0, 1fr); }
   .has-photos .addons .item > .al { margin-top: 7px; }
-  .addons .item.flagged { margin: 2px -8px; padding-left: 10px; padding-right: 8px; }
+  .addons .item.flagged { margin: 2px -8px; padding-inline-start: 10px; padding-inline-end: 8px; }
   .addons .item:last-child { border-bottom: 0; }
   .addons .item h3 { font-size: 18px; line-height: 22px; }
   .empty { margin: 12px 0 0; font-size: 14px; line-height: 20px; color: var(--muted); font-style: italic; }
@@ -205,8 +218,8 @@
     dialog.sheet.closing { transform: translateY(16px) scale(.98); opacity: 0; }
     @starting-style { dialog.sheet[open] { transform: translateY(16px) scale(.98); opacity: 0; } }
   }
-  .sheet-head { display: grid; grid-template-columns: minmax(0, 1fr) 44px; align-items: center; gap: 8px; padding: 14px 8px 8px 20px; flex: none; }
-  .sheet-head::before { content: ""; position: absolute; top: 8px; left: 50%; width: 36px; height: 4px; margin-left: -18px; border-radius: 2px; background: var(--line); }
+  .sheet-head { display: grid; grid-template-columns: minmax(0, 1fr) 44px; align-items: center; gap: 8px; padding-block: 14px 8px; padding-inline: 20px 8px; flex: none; }
+  .sheet-head::before { content: ""; position: absolute; top: 8px; inset-inline-start: 50%; width: 36px; height: 4px; margin-inline-start: -18px; border-radius: 2px; background: var(--line); }
   @media (min-width: 720px) { .sheet-head::before { display: none; } }
   .sheet-head h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 24px; line-height: 28px; margin: 6px 0 0; }
   html[lang="ko"] .sheet-head h2, html[lang^="zh"] .sheet-head h2 { text-transform: none; font-size: 20px; }
@@ -216,7 +229,7 @@
   .sheet-body { overflow-y: auto; overscroll-behavior: contain; padding: 6px 20px calc(20px + env(safe-area-inset-bottom)); flex: 1 1 auto; }
   .sheet-hint { margin: 0 0 12px; font-size: 14px; line-height: 20px; color: var(--body); }
   .opts { display: grid; margin: 0 -8px; }
-  .opt { display: grid; grid-template-columns: minmax(0, 1fr) 24px; align-items: center; gap: 12px; width: 100%; text-align: left; min-height: 56px; padding: 8px 12px; border: 0; background: none; border-radius: 12px; cursor: pointer; }
+  .opt { display: grid; grid-template-columns: minmax(0, 1fr) 24px; align-items: center; gap: 12px; width: 100%; text-align: start; min-height: 56px; padding: 8px 12px; border: 0; background: none; border-radius: 12px; cursor: pointer; }
   .opt:active { background: var(--ground); }
   .opt .native { display: block; font-size: 17px; line-height: 22px; font-weight: 600; }
   .opt .eng { display: block; font-size: 13px; line-height: 18px; color: var(--muted); }
@@ -234,7 +247,7 @@
   dialog.lb[open] { display: block; }
   dialog.lb::backdrop { background: transparent; }
   .lb-bg { position: absolute; inset: 0; background: #000; opacity: 0; }
-  .lb-track { position: absolute; inset: 0; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
+  .lb-track { direction: ltr; position: absolute; inset: 0; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
   .lb-track.zoomed { cursor: move; }
   .lb-slide { position: absolute; inset: 0; width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden; touch-action: none; }
   .lb-zoom { position: relative; transform-origin: center; background-position: center; background-size: cover; overflow: hidden; touch-action: none; }
@@ -244,23 +257,34 @@
   .lb-zoom.cutout img { object-fit: contain; }
   .lb-chrome { position: absolute; inset: 0; pointer-events: none; transition: opacity .2s ease-in-out; }
   .lb-chrome.off > * { pointer-events: none !important; }
-  .lb-close { pointer-events: auto; position: absolute; top: calc(10px + env(safe-area-inset-top)); left: calc(10px + env(safe-area-inset-left)); width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; cursor: pointer; }
+  .lb-close { pointer-events: auto; position: absolute; top: calc(10px + env(safe-area-inset-top)); inset-inline-start: calc(10px + env(safe-area-inset-left)); width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; cursor: pointer; }
   .lb-close span { width: 34px; height: 34px; border-radius: 50%; background: rgba(0, 0, 0, .35); display: grid; place-items: center; }
   .lb-close svg { width: 14px; height: 14px; }
-  .lb-cap { position: absolute; left: 16px; right: 16px; bottom: calc(24px + env(safe-area-inset-bottom)); display: flex; justify-content: center; }
+  .lb-cap { position: absolute; inset-inline: 16px; bottom: calc(24px + env(safe-area-inset-bottom)); display: flex; justify-content: center; }
   .lb-cap span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: rgba(0, 0, 0, .55); border-radius: 999px; padding: 7px 14px; font-size: 14px; line-height: 20px; font-weight: 600; }
-  .lb-cap span b { font-weight: 700; margin-left: 8px; font-variant-numeric: tabular-nums; }
+  .lb-cap span b { font-weight: 700; margin-inline-start: 8px; font-variant-numeric: tabular-nums; }
   .lb-nav { display: none; pointer-events: auto; position: absolute; top: 50%; width: 44px; height: 44px; margin-top: -22px; place-items: center; background: none; border: 0; cursor: pointer; }
   .lb-nav span { width: 38px; height: 38px; border-radius: 50%; background: rgba(0, 0, 0, .35); display: grid; place-items: center; }
   .lb-nav svg { width: 18px; height: 18px; }
-  .lb-nav.prev { left: 12px; } .lb-nav.next { right: 12px; }
+  .lb-nav.prev { inset-inline-start: 12px; } .lb-nav.next { inset-inline-end: 12px; }
   .lb-nav[disabled] { opacity: .3; cursor: default; }
   @media (hover: hover) and (pointer: fine) { .lb-nav { display: grid; } }
   .lb-close:focus-visible span, .lb-nav:focus-visible span { outline: 3px solid #fff; outline-offset: 2px; }
   .lb-close:focus-visible, .lb-nav:focus-visible { outline: 0; }
 
+  html[dir="rtl"] .item.flagged { box-shadow: inset -3px 0 0 var(--red-deep); }
+  html[dir="rtl"] .lb-close { inset-inline-start: calc(10px + env(safe-area-inset-right)); }
+  html[dir="rtl"] :is(.lb-nav svg, .special > svg, .cta > svg:last-child) { transform: scaleX(-1); }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"], [lang="ja"], [lang="hi"]) :is(.caps, h1, h2, h3, .eyebrow, .badge, .lab, .notice b) { text-transform: none; letter-spacing: 0; }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"]) * { letter-spacing: 0; }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"], [lang="hi"]) :is(h1, h2, h3, .eyebrow, .badge, .lab, .opt .native, .shot span) { line-height: 1.6; }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"]) :is(.desc, .note, .notice, .intro, .when, .terms, .al, .sheet-hint, .variants li, .lb-cap span) { line-height: 1.8; }
+  .native:is([lang="fa"], [lang="ar"], [lang="ur"], [lang="hi"]) { line-height: 1.7; }
+
   @media print { .bar, .cta, .skip, dialog { display: none !important; } body { background: #fff; } .thumb-btn { pointer-events: none; } }
 </style>
+</head>
+<body>
 
 <a class="skip" href="#main" data-t="ui.skip">Skip to menu</a>
 <header class="masthead">
@@ -305,7 +329,8 @@
 const DATA = __DATA__;
 const LANGS = [
   { code: "en", label: "English" }, { code: "es", label: "Español" }, { code: "vi", label: "Tiếng Việt" }, { code: "ko", label: "한국어" },
-  { code: "zh", label: "简体中文" }, { code: "zh-Hant", label: "繁體中文" }, { code: "tl", label: "Tagalog" }
+  { code: "zh", label: "简体中文" }, { code: "zh-Hant", label: "繁體中文" }, { code: "tl", label: "Tagalog" },
+  { code: "fa", label: "فارسی" }, { code: "ar", label: "العربية" }, { code: "ja", label: "日本語" }, { code: "ru", label: "Русский" }, { code: "hi", label: "हिन्दी" }, { code: "ur", label: "اردو" }
 ];
 const ICON = {
   globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>',
@@ -321,7 +346,19 @@ const S_EN = DATA.strings.en;
 const t = key => { const d = DATA.strings[state.lang] || {}; return d[key] !== undefined ? d[key] : (S_EN[key] !== undefined ? S_EN[key] : ""); };
 const has = key => S_EN[key] !== undefined;
 const money = (n, plus) => { const v = Math.round(n * 100) / 100; const s = Number.isInteger(v) ? String(v) : v.toFixed(2); return (plus ? "+" : "") + "$" + s; };
-const priceHTML = p => `<span class="price">${money(p.p, p.plus)}</span>`;
+const dirFor = code => ["fa", "ar", "ur"].includes(code) ? "rtl" : "ltr";
+const isRTL = () => dirFor(state.lang) === "rtl";
+const latinRun = /\+?\$[0-9]+(?:\.[0-9]+)?|[\p{Script=Latin}0-9][\p{Script=Latin}\p{M}0-9]*(?:[ .,:/@+&'’–−-]+[\p{Script=Latin}0-9][\p{Script=Latin}\p{M}0-9]*)*/gu;
+const ltr = s => `<bdi dir="ltr">${esc(s)}</bdi>`;
+function prose(s) {
+  if (!isRTL()) return esc(s);
+  let out = "", end = 0;
+  for (const m of String(s).matchAll(latinRun)) { out += esc(String(s).slice(end, m.index)) + ltr(m[0]); end = m.index + m[0].length; }
+  return out + esc(String(s).slice(end));
+}
+const plain = s => isRTL() ? String(s).replace(latinRun, m => "\u2066" + m + "\u2069") : s;
+const nativeName = l => `<bdi lang="${l.code}" dir="${dirFor(l.code)}">${esc(l.label)}</bdi>`;
+const priceHTML = p => `<span class="price">${ltr(money(p.p, p.plus))}</span>`;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
@@ -345,7 +382,7 @@ function pickLang() {
 const ORDER = DATA.structure.allergens;
 const merged = e => { const set = new Set([...(e.contains || []), ...(e.likely || [])]); return ORDER.filter(a => set.has(a)); };
 const allOf = it => { const set = new Set(merged(it)); (it.prices || []).forEach(p => (p.contains || []).forEach(a => set.add(a))); (it.addons || []).forEach(a => merged(a).forEach(x => set.add(x))); return ORDER.filter(a => set.has(a)); };
-const aName = a => state.avoid.has(a) ? `<mark>${esc(t("allergen." + a))}</mark>` : esc(t("allergen." + a));
+const aName = a => state.avoid.has(a) ? `<mark>${prose(t("allergen." + a))}</mark>` : prose(t("allergen." + a));
 const listNames = arr => arr.map(aName).join(", ");
 
 /* Photos, in menu order. */
@@ -367,23 +404,23 @@ DATA.structure.sections.forEach(sec => sec.items.forEach(it => {
 function containsHTML(entry) {
   const list = merged(entry);
   if (!list.length) return "";
-  return `<p class="al"><b>${esc(t("ui.contains"))}:</b> ${listNames(list)}</p>`;
+  return `<p class="al"><b>${prose(t("ui.contains"))}:</b> ${listNames(list)}</p>`;
 }
 function nameBlock(k) {
   const en = S_EN[k + ".name"], loc = t(k + ".name");
-  if (state.lang === "en" || loc === en) return { h3: esc(en), sub: "" };
-  return { h3: esc(loc), sub: `<p class="en-name" lang="en">${esc(en)}</p>` };
+  if (state.lang === "en" || loc === en) return { h3: prose(en), sub: "" };
+  return { h3: prose(loc), sub: `<p class="en-name" lang="en" dir="ltr">${esc(en)}</p>` };
 }
 function badgesHTML(it) {
   const b = [];
-  if (it.badge) b.push(`<span class="badge ${it.badge === "lunch" ? "lunch" : ""}">${esc(t("ui." + it.badge))}</span>`);
-  if (it.refill) b.push(`<span class="badge refill">${esc(t("ui.freeRefill"))}</span>`);
+  if (it.badge) b.push(`<span class="badge ${it.badge === "lunch" ? "lunch" : ""}">${prose(t("ui." + it.badge))}</span>`);
+  if (it.refill) b.push(`<span class="badge refill">${prose(t("ui.freeRefill"))}</span>`);
   return b.length ? `<div class="badges">${b.join("")}</div>` : "";
 }
 function variantsHTML(k, it) {
   return `<ul class="variants">${it.prices.map(p => {
     const extra = (p.contains || []).length ? ` <span class="vplus">(+ ${listNames(p.contains)})</span>` : "";
-    return `<li><span>${esc(t(`${k}.price.${p.k}`))}${extra}</span>${priceHTML(p)}</li>`;
+    return `<li><span>${prose(t(`${k}.price.${p.k}`))}${extra}</span>${priceHTML(p)}</li>`;
   }).join("")}</ul>`;
 }
 function itemHTML(it, kind) {
@@ -391,16 +428,16 @@ function itemHTML(it, kind) {
   const keyed = it.prices.length && it.prices[0].k !== undefined;
   const single = !keyed && it.prices.length === 1 ? priceHTML(it.prices[0]) : "";
   const nm = nameBlock(k);
-  const tagline = has(k + ".tagline") ? `<p class="tagline">${esc(t(k + ".tagline"))}</p>` : "";
-  const desc = has(k + ".desc") ? `<p class="desc">${esc(t(k + ".desc"))}</p>` : "";
-  const note = has(k + ".note") ? `<p class="note">${esc(t(k + ".note"))}</p>` : "";
+  const tagline = has(k + ".tagline") ? `<p class="tagline">${prose(t(k + ".tagline"))}</p>` : "";
+  const desc = has(k + ".desc") ? `<p class="desc">${prose(t(k + ".desc"))}</p>` : "";
+  const note = has(k + ".note") ? `<p class="note">${prose(t(k + ".note"))}</p>` : "";
   const variants = keyed ? variantsHTML(k, it) : "";
-  const sides = it.addons ? `<div class="sides"><span class="lab">${esc(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${esc(t("addon." + a.id + ".name"))}${merged(a).length ? ` <span class="vplus">(+ ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
+  const sides = it.addons ? `<div class="sides"><span class="lab">${prose(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${prose(t("addon." + a.id + ".name"))}${merged(a).length ? ` <span class="vplus">(+ ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
   const pi = kind === "item" ? PHOTO_INDEX[it.id] : undefined;
   let photo = "";
   if (pi !== undefined) {
     const p = PHOTOS[pi];
-    photo = `<button class="thumb-btn" type="button" data-photo="${pi}" aria-label="${esc(t("ui.photoOf").replace("{name}", t(k + ".name")))}" aria-haspopup="dialog"><img class="thumb${p.cutout ? " cutout" : ""}" src="${p.thumb}" alt="" loading="lazy" width="84" height="84"></button>`;
+    photo = `<button class="thumb-btn" type="button" data-photo="${pi}" aria-label="${esc(plain(t("ui.photoOf").replace("{name}", t(k + ".name"))))}" aria-haspopup="dialog"><img class="thumb${p.cutout ? " cutout" : ""}" src="${p.thumb}" alt="" loading="lazy" width="84" height="84"></button>`;
   }
   return `<li class="item${kind === "item" && pi === undefined ? " no-photo" : ""}" id="item-${it.id}" data-kind="${kind}" data-allergens="${allOf(it).join(" ")}">
     <div class="item-body">
@@ -417,20 +454,20 @@ function optionShotsHTML(it, k) {
   const shots = rows.map(v => {
     const i = VARIANT_INDEX[it.id + "/" + v.k];
     const label = t(`${k}.price.${v.k}`);
-    return `<li><button class="shot" type="button" data-photo="${i}" aria-label="${esc(t("ui.photoOf").replace("{name}", t(k + ".name") + " — " + label))}" aria-haspopup="dialog"><img src="img/var/${v.t}" alt="" loading="lazy" width="76" height="76"><span>${esc(label)}</span></button></li>`;
+    return `<li><button class="shot" type="button" data-photo="${i}" aria-label="${esc(plain(t("ui.photoOf").replace("{name}", t(k + ".name") + " — " + label)))}" aria-haspopup="dialog"><img src="img/var/${v.t}" alt="" loading="lazy" width="76" height="76"><span>${prose(label)}</span></button></li>`;
   }).join("");
-  return `<div class="shots"><span class="lab">${esc(t("ui.eachOption"))}</span><ul>${shots}</ul></div>`;
+  return `<div class="shots"><span class="lab">${prose(t("ui.eachOption"))}</span><ul>${shots}</ul></div>`;
 }
 function specialsHTML() {
   return `<div class="specials">${DATA.structure.specials.map(sp => {
     const img = DATA.photos[sp.item] ? `<img src="img/${DATA.photos[sp.item]}" alt="" width="84" height="84">` : `<span></span>`;
     if (sp.id === "lunch") return `<a class="special" href="#item-${sp.item}" data-target="item-${sp.item}">${img}<div>
-      <div class="eyebrow">${esc(t("ui.lunchEyebrow"))}</div><h2>${esc(t("ui.lunchTitle"))}</h2>
-      <div class="price">${money(sp.offer)}<s>${money(sp.regular)}</s></div>
-      <p class="when">${esc(t("ui.lunchWhen"))}</p><p class="terms">${esc(t("ui.lunchTerms"))}</p></div>${ICON.chevron}</a>`;
+      <div class="eyebrow">${prose(t("ui.lunchEyebrow"))}</div><h2>${prose(t("ui.lunchTitle"))}</h2>
+      <div class="price">${ltr(money(sp.offer))}<s>${ltr(money(sp.regular))}</s></div>
+      <p class="when">${prose(t("ui.lunchWhen"))}</p><p class="terms">${prose(t("ui.lunchTerms"))}</p></div>${ICON.chevron}</a>`;
     return `<a class="special" href="#item-${sp.item}" data-target="item-${sp.item}">${img}<div>
-      <div class="eyebrow">${esc(t("ui.kimchiEyebrow"))}</div><h2>${esc(t("ui.kimchiTitle"))}</h2>
-      <p class="when">${esc(t("ui.kimchiSub"))}</p></div>${ICON.chevron}</a>`;
+      <div class="eyebrow">${prose(t("ui.kimchiEyebrow"))}</div><h2>${prose(t("ui.kimchiTitle"))}</h2>
+      <p class="when">${prose(t("ui.kimchiSub"))}</p></div>${ICON.chevron}</a>`;
   }).join("")}</div>`;
 }
 function ctaHTML() {
@@ -439,48 +476,48 @@ function ctaHTML() {
 function sectionHTML(sec) {
   const compact = ["extras", "kids", "drinks"].includes(sec.id);
   const hasPhotos = sec.items.some(it => DATA.photos[it.id]);
-  const intro = has(`sec.${sec.id}.intro`) ? `<p class="intro">${esc(t(`sec.${sec.id}.intro`))}</p>` : "";
-  const broth = has(`sec.${sec.id}.brothNote`) ? `<p class="intro small">${esc(t(`sec.${sec.id}.brothNote`))}</p>` : "";
-  const refills = sec.id === "drinks" ? `<p class="intro small">${esc(t("ui.refillsNote"))}</p>` : "";
-  const addons = sec.addons ? `<div class="addons"><h3>${esc(t("ui.addons"))}</h3><ul class="items">${sec.addons.map(a => itemHTML(a, "addon")).join("")}</ul></div>` : "";
+  const intro = has(`sec.${sec.id}.intro`) ? `<p class="intro">${prose(t(`sec.${sec.id}.intro`))}</p>` : "";
+  const broth = has(`sec.${sec.id}.brothNote`) ? `<p class="intro small">${prose(t(`sec.${sec.id}.brothNote`))}</p>` : "";
+  const refills = sec.id === "drinks" ? `<p class="intro small">${prose(t("ui.refillsNote"))}</p>` : "";
+  const addons = sec.addons ? `<div class="addons"><h3>${prose(t("ui.addons"))}</h3><ul class="items">${sec.addons.map(a => itemHTML(a, "addon")).join("")}</ul></div>` : "";
   return `<section class="menu${compact ? " compact" : ""}${hasPhotos ? " has-photos" : ""}" id="sec-${sec.id}" aria-labelledby="h-${sec.id}">
-    <header><h2 id="h-${sec.id}">${esc(t(`sec.${sec.id}.title`))}</h2></header>${intro}${broth}${refills}
-    <ul class="items">${sec.items.map(it => itemHTML(it, "item")).join("")}</ul><p class="empty" hidden>${esc(t("ui.sectionHidden"))}</p>${addons}
+    <header><h2 id="h-${sec.id}">${prose(t(`sec.${sec.id}.title`))}</h2></header>${intro}${broth}${refills}
+    <ul class="items">${sec.items.map(it => itemHTML(it, "item")).join("")}</ul><p class="empty" hidden>${prose(t("ui.sectionHidden"))}</p>${addons}
   </section>`;
 }
 function footerHTML() {
   return `<div class="locs">
-    <div><h3>${esc(t("ui.buenaPark"))}</h3><address>5141 Beach Blvd Unit B<br>Buena Park, CA 90621<br><a href="tel:+17145212444">714-521-2444</a></address></div>
-    <div><h3>${esc(t("ui.irvine"))}</h3><address>14370 Culver Dr Unit 2H<br>Irvine, CA 92604<br><a href="tel:+16573008420">657-300-8420</a></address></div>
+    <div><h3>${prose(t("ui.buenaPark"))}</h3><address dir="ltr">5141 Beach Blvd Unit B<br>Buena Park, CA 90621<br><a href="tel:+17145212444"><bdi dir="ltr">714-521-2444</bdi></a></address></div>
+    <div><h3>${prose(t("ui.irvine"))}</h3><address dir="ltr">14370 Culver Dr Unit 2H<br>Irvine, CA 92604<br><a href="tel:+16573008420"><bdi dir="ltr">657-300-8420</bdi></a></address></div>
   </div>
-  <p class="notice"><b>${esc(t("ui.allergyTitle"))}</b>${esc(t("ui.allergyNotice"))}</p>
-  <p class="notice"><b>${esc(t("ui.rawTitle"))}</b>${esc(t("ui.rawNotice"))}</p>
-  <p class="pdfs"><b>${esc(t("ui.pdfMenu"))}:</b> ${LANGS.map(l => `<a href="pdf/SUP-Menu-${l.code}.pdf" lang="${l.code}">${l.label}</a>`).join(" · ")}</p>
-  <p class="fine"><a href="https://www.supnoodlebar.com">supnoodlebar.com</a> · @supnoodlebar · <a href="mailto:info@supnoodlebar.com">info@supnoodlebar.com</a></p>`;
+  <p class="notice"><b>${prose(t("ui.allergyTitle"))}</b>${prose(t("ui.allergyNotice"))}</p>
+  <p class="notice"><b>${prose(t("ui.rawTitle"))}</b>${prose(t("ui.rawNotice"))}</p>
+  <p class="pdfs"><b>${prose(t("ui.pdfMenu"))}:</b> ${LANGS.map(l => `<a href="pdf/SUP-Menu-${l.code}.pdf" lang="${l.code}">${nativeName(l)}</a>`).join(" · ")}</p>
+  <p class="fine"><bdi dir="ltr"><a href="https://www.supnoodlebar.com">supnoodlebar.com</a></bdi> · <bdi dir="ltr">@supnoodlebar</bdi> · <bdi dir="ltr"><a href="mailto:info@supnoodlebar.com">info@supnoodlebar.com</a></bdi></p>`;
 }
 function langSheetHTML() {
-  return `<div class="sheet-head"><h2 id="langTitle">${esc(t("ui.language"))}</h2><button class="x" type="button" data-close aria-label="${esc(t("ui.close"))}"><span>${ICON.x}</span></button></div>
-  <div class="sheet-body"><div class="opts" role="radiogroup" aria-labelledby="langTitle">${LANGS.map(l => `<button class="opt" type="button" role="radio" aria-checked="${l.code === state.lang}" data-lang="${l.code}"><span><span class="native" lang="${l.code}">${l.label}</span><span class="eng">${esc(t("ui.langName." + l.code))}</span></span>${ICON.check}</button>`).join("")}</div></div>`;
+  return `<div class="sheet-head"><h2 id="langTitle">${prose(t("ui.language"))}</h2><button class="x" type="button" data-close aria-label="${esc(t("ui.close"))}"><span>${ICON.x}</span></button></div>
+  <div class="sheet-body"><div class="opts" role="radiogroup" aria-labelledby="langTitle">${LANGS.map(l => `<button class="opt" type="button" role="radio" aria-checked="${l.code === state.lang}" data-lang="${l.code}"><span><span class="native" lang="${l.code}">${nativeName(l)}</span><span class="eng">${prose(t("ui.langName." + l.code))}</span></span>${ICON.check}</button>`).join("")}</div></div>`;
 }
 function filterSheetHTML() {
-  const chips = ORDER.map(a => `<button class="pill" type="button" data-avoid="${a}" aria-pressed="${state.avoid.has(a)}">${esc(t("allergen." + a))}</button>`).join("");
-  return `<div class="sheet-head"><h2 id="filterTitle">${esc(t("ui.avoiding"))}</h2><button class="x" type="button" data-close aria-label="${esc(t("ui.close"))}"><span>${ICON.x}</span></button></div>
+  const chips = ORDER.map(a => `<button class="pill" type="button" data-avoid="${a}" aria-pressed="${state.avoid.has(a)}">${prose(t("allergen." + a))}</button>`).join("");
+  return `<div class="sheet-head"><h2 id="filterTitle">${prose(t("ui.avoiding"))}</h2><button class="x" type="button" data-close aria-label="${esc(t("ui.close"))}"><span>${ICON.x}</span></button></div>
   <div class="sheet-body">
-    <p class="sheet-hint">${esc(t("ui.avoidHint"))} ${esc(t("ui.noLineNote"))}</p>
+    <p class="sheet-hint">${prose(t("ui.avoidHint"))} ${prose(t("ui.noLineNote"))}</p>
     <div class="avoid" role="group" aria-labelledby="filterTitle">${chips}</div>
     <div class="sheet-status" id="statusRow" hidden><span class="status" id="status" role="status" aria-live="polite"></span><button class="pill ghost" type="button" id="hideBtn" aria-pressed="${state.hide}" hidden></button></div>
-    <div class="sheet-foot"><button class="btn quiet" type="button" id="clearBtn">${esc(t("ui.clear"))}</button><button class="btn" type="button" data-close>${esc(t("ui.done"))}</button></div>
+    <div class="sheet-foot"><button class="btn quiet" type="button" id="clearBtn">${prose(t("ui.clear"))}</button><button class="btn" type="button" data-close>${prose(t("ui.done"))}</button></div>
   </div>`;
 }
 
 function renderLangbar() {
   const lb = $("langbar");
   lb.setAttribute("aria-label", t("ui.chooseLanguage"));
-  lb.innerHTML = LANGS.map(l => `<button class="seg" type="button" role="radio" lang="${l.code}" data-lang="${l.code}" aria-checked="${l.code === state.lang}">${l.label}</button>`).join("");
+  lb.innerHTML = LANGS.map(l => `<button class="seg" type="button" role="radio" lang="${l.code}" data-lang="${l.code}" aria-checked="${l.code === state.lang}">${nativeName(l)}</button>`).join("");
   lb.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => { if (b.dataset.lang !== state.lang) setLang(b.dataset.lang); }));
   const ad = $("autodetect");
   ad.hidden = !state.detected;
-  if (state.detected) ad.innerHTML = `${ICON.globe}<span>${esc(t("ui.autoDetected"))}</span>`;
+  if (state.detected) ad.innerHTML = `${ICON.globe}<span>${prose(t("ui.autoDetected"))}</span>`;
 }
 function renderBar() {
   const jr = $("jumpRow");
@@ -488,14 +525,14 @@ function renderBar() {
   $("bar").setAttribute("aria-label", t("ui.jumpTo"));
   const cur = LANGS.find(l => l.code === state.lang);
   const lb = document.createElement("button"); lb.type = "button"; lb.className = "chip tool"; lb.id = "langBtn"; lb.setAttribute("aria-haspopup", "dialog");
-  lb.innerHTML = `${ICON.globe}<span lang="${cur.code}">${cur.label}</span>`; lb.setAttribute("aria-label", t("ui.language") + ": " + cur.label);
+  lb.innerHTML = `${ICON.globe}${nativeName(cur)}`; lb.setAttribute("aria-label", t("ui.language") + ": " + cur.label);
   lb.addEventListener("click", e => openSheet("langSheet", langSheetHTML(), e.detail === 0));
   const ab = document.createElement("button"); ab.type = "button"; ab.className = "chip tool"; ab.id = "filterBtn"; ab.setAttribute("aria-haspopup", "dialog");
-  ab.innerHTML = `${ICON.shield}<span>${esc(t("ui.allergens"))}</span><b class="count" hidden></b>`;
+  ab.innerHTML = `${ICON.shield}<span>${prose(t("ui.allergens"))}</span><b class="count" hidden></b>`;
   ab.addEventListener("click", e => openSheet("filterSheet", filterSheetHTML(), e.detail === 0));
   jr.append(lb, ab); const sep = document.createElement("span"); sep.className = "sep"; jr.append(sep);
   DATA.structure.sections.forEach(sec => {
-    const a = document.createElement("a"); a.className = "chip"; a.href = "#sec-" + sec.id; a.textContent = t(`sec.${sec.id}.title`); jr.appendChild(a);
+    const a = document.createElement("a"); a.className = "chip"; a.href = "#sec-" + sec.id; a.innerHTML = prose(t(`sec.${sec.id}.title`)); jr.appendChild(a);
   });
 }
 function renderMain() {
@@ -508,8 +545,9 @@ function renderMain() {
 }
 function render() {
   document.documentElement.lang = state.lang === "zh" ? "zh-Hans" : state.lang;
-  document.title = t("ui.title");
-  document.querySelectorAll("[data-t]").forEach(el => { el.textContent = t(el.dataset.t); });
+  document.documentElement.dir = dirFor(state.lang);
+  document.title = plain(t("ui.title"));
+  document.querySelectorAll("[data-t]").forEach(el => { el.innerHTML = prose(t(el.dataset.t)); });
   renderLangbar();
   renderBar();
   renderMain();
@@ -550,22 +588,22 @@ function applyFilter() {
     sec.querySelector(".empty").hidden = !allHidden;
   });
   const active = state.avoid.size > 0;
-  const names = [...state.avoid].map(a => esc(t("allergen." + a))).join(", ");
+  const names = [...state.avoid].map(a => prose(t("allergen." + a))).join(", ");
   const count = t("ui.flaggedCount").replace("{n}", n);
   const fb = $("filterBtn"); fb.classList.toggle("on", active); const fc = fb.querySelector(".count"); fc.hidden = !active; fc.textContent = state.avoid.size;
   const cta = $("ctaFilter"); cta.classList.toggle("on", active);
-  $("ctaTitle").innerHTML = active ? `${esc(t("ui.avoiding"))}: ${names}` : esc(t("ui.filterCta"));
-  $("ctaSub").textContent = active ? count : t("ui.filterCtaSub");
+  $("ctaTitle").innerHTML = active ? `${prose(t("ui.avoiding"))}: ${names}` : prose(t("ui.filterCta"));
+  $("ctaSub").innerHTML = prose(active ? count : t("ui.filterCtaSub"));
   const sm = $("summary"); sm.hidden = !active;
   if (active) {
-    sm.innerHTML = `<button class="grow" type="button" id="summaryEdit" aria-haspopup="dialog"><b>${esc(t("ui.avoiding"))}:</b> ${names} · ${esc(count)}</button><button class="linkbtn" type="button" id="summaryHide" aria-pressed="${state.hide}">${esc(t(state.hide ? "ui.show" : "ui.hide"))}</button><button class="linkbtn" type="button" id="summaryClear">${esc(t("ui.clear"))}</button>`;
+    sm.innerHTML = `<button class="grow" type="button" id="summaryEdit" aria-haspopup="dialog"><b>${prose(t("ui.avoiding"))}:</b> ${names} · ${prose(count)}</button><button class="linkbtn" type="button" id="summaryHide" aria-pressed="${state.hide}">${prose(t(state.hide ? "ui.show" : "ui.hide"))}</button><button class="linkbtn" type="button" id="summaryClear">${prose(t("ui.clear"))}</button>`;
     $("summaryEdit").addEventListener("click", e => openSheet("filterSheet", filterSheetHTML(), e.detail === 0));
     $("summaryHide").addEventListener("click", () => { state.hide = !state.hide; applyFilter(); });
     $("summaryClear").addEventListener("click", clearAvoid);
   }
   const fs = $("filterSheet");
   if (fs.open) {
-    $("statusRow").hidden = !active; $("status").textContent = active ? count : "";
+    $("statusRow").hidden = !active; $("status").innerHTML = prose(active ? count : "");
     const hb = $("hideBtn"); hb.hidden = !active; hb.textContent = t(state.hide ? "ui.showFlagged" : "ui.hideFlagged"); hb.setAttribute("aria-pressed", String(state.hide));
     fs.querySelectorAll("[data-avoid]").forEach(b => b.setAttribute("aria-pressed", String(state.avoid.has(b.dataset.avoid))));
     $("clearBtn").disabled = !active;
@@ -696,7 +734,7 @@ function lbLoad(i) {
 function lbCaption(i) {
   const p = PHOTOS[i];
   const vn = p.vk ? " · " + t(`item.${p.id}.price.${p.vk}`) : "";
-  LB.cap.innerHTML = `<span>${esc(t(`item.${p.id}.name`) + vn)}${p.single ? `<b>${money(p.single.p)}</b>` : ""}</span>`;
+  LB.cap.innerHTML = `<span>${prose(t(`item.${p.id}.name`) + vn)}${p.single ? `<b>${ltr(money(p.single.p))}</b>` : ""}</span>`;
   $("lbPrev").disabled = i === 0; $("lbNext").disabled = i === PHOTOS.length - 1;
 }
 function lbSetZoom(i, s, tx, ty, animate) {
@@ -887,8 +925,8 @@ $("lbNext").addEventListener("click", () => lbGoto(LB.index + 1, true));
 document.addEventListener("keydown", e => {
   document.querySelectorAll(".pointer-focus").forEach(b => b.classList.remove("pointer-focus"));
   if (!LB.dlg.open || LB.dlg.classList.contains("closing")) return;
-  if (e.key === "ArrowRight") { e.preventDefault(); lbGoto(LB.index + 1, true); }
-  else if (e.key === "ArrowLeft") { e.preventDefault(); lbGoto(LB.index - 1, true); }
+  if (e.key === "ArrowRight") { e.preventDefault(); lbGoto(LB.index + (isRTL() ? -1 : 1), true); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); lbGoto(LB.index + (isRTL() ? 1 : -1), true); }
 });
 window.addEventListener("resize", () => {
   if (!LB.dlg.open) return;
@@ -913,3 +951,6 @@ render();
 window.scrollTo(0, 0);
 addEventListener("pageshow", e => { if (e.persisted) window.scrollTo(0, 0); });
 </script>
+
+</body>
+</html>

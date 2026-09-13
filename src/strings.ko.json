@@ -204,5 +204,11 @@
   "ui.chooseLanguage": "언어 선택",
   "ui.langName.zh-Hant": "중국어(번체)",
   "ui.langName.tl": "타갈로그어",
-  "ui.eachOption": "옵션별 사진"
+  "ui.eachOption": "옵션별 사진",
+  "ui.langName.fa": "페르시아어",
+  "ui.langName.ar": "아랍어",
+  "ui.langName.ja": "일본어",
+  "ui.langName.ru": "러시아어",
+  "ui.langName.hi": "힌디어",
+  "ui.langName.ur": "우르두어"
 }

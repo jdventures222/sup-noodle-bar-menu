@@ -1,0 +1,32 @@
+{
+  "bao": [
+    "three",
+    "one"
+  ],
+  "wings": [
+    "garlic",
+    "parmesan"
+  ],
+  "lomo": [
+    "filet",
+    "shrimp",
+    "tofu"
+  ],
+  "cajun": [
+    "shrimpsausage",
+    "filet"
+  ],
+  "friedrice": [
+    "shrimp",
+    "spam",
+    "wings",
+    "filet",
+    "softtofu",
+    "friedtofu"
+  ],
+  "kimchi": [
+    "spam",
+    "softtofu",
+    "filet"
+  ]
+}

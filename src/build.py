@@ -8,6 +8,8 @@ for l in langs:
     strings[l] = json.load(open(p))
 en = set(strings["en"])
 for l, s in strings.items():
+    missing = en - set(s)
+    assert not missing, f"{l}: missing keys {missing}"
     extra = set(s) - en
     assert not extra, f"{l}: unknown keys {extra}"
 structure = json.load(open(root / "structure.json"))

@@ -204,5 +204,11 @@
   "ui.chooseLanguage": "Pumili ng wika",
   "ui.langName.zh-Hant": "Tsino (Tradisyonal)",
   "ui.langName.tl": "Tagalog",
-  "ui.eachOption": "Bawat opsyon"
+  "ui.eachOption": "Bawat opsyon",
+  "ui.langName.fa": "Persiyano (Farsi)",
+  "ui.langName.ar": "Arabe",
+  "ui.langName.ja": "Hapones",
+  "ui.langName.ru": "Ruso",
+  "ui.langName.hi": "Hindi",
+  "ui.langName.ur": "Urdu"
 }

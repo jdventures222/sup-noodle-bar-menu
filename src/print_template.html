@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="__LANG__">
+<html lang="__LANG__" dir="__DIR__">
 <head>
 <meta charset="utf-8">
 <title>__TITLE__</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap">
 <style>
   @page { size: letter; margin: 0.5in; }
   :root {
@@ -15,6 +15,16 @@
   html[lang="ko"] { --display: "Noto Sans", "Noto Sans KR", sans-serif; --text: "Noto Sans", "Noto Sans KR", sans-serif; word-break: keep-all; }
   html[lang="zh-Hans"] { --display: "Noto Sans", "Noto Sans SC", sans-serif; --text: "Noto Sans", "Noto Sans SC", sans-serif; }
   html[lang="zh-Hant"] { --display: "Noto Sans", "Noto Sans TC", sans-serif; --text: "Noto Sans", "Noto Sans TC", sans-serif; }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"]) { --display: "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif; --text: "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif; }
+  html[lang="ja"] { --display: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; --text: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; }
+  html[lang="hi"] { --display: "Noto Sans Devanagari", "Kohinoor Devanagari", Mangal, sans-serif; --text: "Noto Sans Devanagari", "Kohinoor Devanagari", Mangal, sans-serif; }
+  html[lang="ru"] { --display: "Noto Sans", Arial, sans-serif; }
+  [lang="fa"], [lang="ar"], [lang="ur"] { font-family: "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif; }
+  [lang="ja"] { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; }
+  [lang="hi"] { font-family: "Noto Sans Devanagari", "Kohinoor Devanagari", Mangal, sans-serif; }
+  [lang="ru"] { font-family: "Noto Sans", Arial, sans-serif; }
+  bdi, .en-name, address[dir], .web[dir] { unicode-bidi: isolate; }
+  .en-name { text-align: start; }
   * { box-sizing: border-box; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body { margin: 0; font-family: var(--text); font-size: 9.5pt; line-height: 13pt; color: var(--ink); background: #fff; }
@@ -32,12 +42,12 @@
   .key b { display: block; font-family: var(--display); font-size: 9pt; letter-spacing: .05em; color: var(--ink); margin-bottom: 1pt; }
 
   .specials { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; margin: 10pt 0 0; break-inside: avoid; }
-  .special { display: grid; grid-template-columns: 54pt minmax(0, 1fr); gap: 9pt; border: 1pt solid var(--line); border-left: 3pt solid var(--red); border-radius: 4pt; padding: 8pt; }
+  .special { display: grid; grid-template-columns: 54pt minmax(0, 1fr); gap: 9pt; border: 1pt solid var(--line); border-inline-start: 3pt solid var(--red); border-radius: 4pt; padding: 8pt; }
   .special img { width: 54pt; height: 54pt; object-fit: cover; border-radius: 3pt; }
   .eyebrow { font-family: var(--display); font-weight: 700; letter-spacing: .06em; font-size: 7.5pt; line-height: 9pt; color: var(--red-deep); }
   .special h2 { font-size: 13pt; line-height: 14pt; font-weight: 800; margin: 1pt 0 2pt; }
   .special .price { font-size: 10pt; line-height: 13pt; font-weight: 700; font-variant-numeric: tabular-nums; }
-  .special .price s { color: var(--muted); font-weight: 400; margin-left: 4pt; }
+  .special .price s { color: var(--muted); font-weight: 400; margin-inline-start: 4pt; }
   .special .when { font-size: 8.5pt; line-height: 11pt; color: var(--body); }
   .special .terms { font-size: 7.5pt; line-height: 10pt; color: var(--muted); margin-top: 2pt; }
 
@@ -66,7 +76,7 @@
   .variants li { display: flex; align-items: baseline; gap: 5pt; font-weight: 600; font-size: 9pt; line-height: 13pt; }
   .variants li .dots { flex: 1; border-bottom: .6pt dotted var(--muted); transform: translateY(-3pt); }
   .variants .vplus { font-weight: 400; color: var(--body); font-size: 8pt; }
-  .note { margin-top: 3pt; font-size: 8.5pt; line-height: 11pt; color: var(--body); padding-left: 5pt; border-left: 1.2pt solid var(--red-deep); }
+  .note { margin-top: 3pt; font-size: 8.5pt; line-height: 11pt; color: var(--body); padding-inline-start: 5pt; border-inline-start: 1.2pt solid var(--red-deep); }
   .sides { margin-top: 3pt; }
   .lab { font-family: var(--display); font-weight: 700; letter-spacing: .05em; font-size: 7.5pt; color: var(--muted); }
   .al { margin-top: 3pt; font-size: 8.5pt; line-height: 11pt; color: var(--body); }
@@ -84,6 +94,11 @@
   .loc h3 { font-size: 11pt; line-height: 13pt; font-weight: 800; color: var(--red); }
   .loc address, .loc .web { font-style: normal; font-size: 8.5pt; line-height: 11pt; color: var(--body); }
   .fine { margin-top: 6pt; font-size: 7.5pt; line-height: 10pt; color: var(--muted); }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"], [lang="ja"], [lang="hi"]) :is(.caps, .key b, .eyebrow, .badge, .lab, .notice b) { text-transform: none; letter-spacing: 0 !important; }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"]) * { letter-spacing: 0 !important; }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"], [lang="hi"]) :is(h1, h2, h3, .eyebrow, .badge, .lab) { line-height: 1.6; }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"]) :is(body, .desc, .note, .notice, .intro, .when, .terms, .al, .variants li, .key, .brand p) { line-height: 1.8; }
+  html[lang="ru"] :is(.item h3, .special h2) { line-height: 1.3; }
 </style>
 </head>
 <body>

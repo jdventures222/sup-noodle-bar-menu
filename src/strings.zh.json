@@ -204,5 +204,11 @@
   "ui.chooseLanguage": "选择语言",
   "ui.langName.zh-Hant": "繁体中文",
   "ui.langName.tl": "他加禄语",
-  "ui.eachOption": "各款选择"
+  "ui.eachOption": "各款选择",
+  "ui.langName.fa": "波斯语",
+  "ui.langName.ar": "阿拉伯语",
+  "ui.langName.ja": "日语",
+  "ui.langName.ru": "俄语",
+  "ui.langName.hi": "印地语",
+  "ui.langName.ur": "乌尔都语"
 }
