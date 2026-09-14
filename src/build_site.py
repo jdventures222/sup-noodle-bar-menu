@@ -1,47 +1,47 @@
-import pathlib, shutil, re
+"""Package public assets only; release.py is the verified publishing entry point."""
+import json
+import pathlib
+import shutil
+import subprocess
+import tempfile
+from build_common import LANGS, revision
+from sup_sw import generate
+
 root = pathlib.Path(__file__).parent
-site = root / "site"
-if site.exists(): shutil.rmtree(site)
-(site / "img" / "full").mkdir(parents=True); (site / "pdf").mkdir()
-html = (root / "sup-menu.html").read_text()
-doc = html
-(site / "index.html").write_text(doc)
-for p in (root / "assets" / "items").glob("*"):
-    if p.suffix in (".jpg", ".png"): shutil.copy(p, site / "img" / p.name)
-for p in (root / "assets" / "full").glob("*"):
-    if p.suffix in (".jpg", ".png"): shutil.copy(p, site / "img" / "full" / p.name)
-(site / "img" / "var").mkdir(parents=True, exist_ok=True)
-for p in (root / "assets" / "variants").glob("*.jpg"):
-    shutil.copy(p, site / "img" / "var" / p.name)
-for l in ['en', 'es', 'vi', 'ko', 'zh', 'zh-Hant', 'tl', 'fa', 'ar', 'ja', 'ru', 'hi', 'ur']:
-    shutil.copy(root / "pdf" / f"SUP-Menu-{l}.pdf", site / "pdf" / f"SUP-Menu-{l}.pdf")
-(site / ".nojekyll").write_text("")
-# sources for future edits
-src = site / "src"; src.mkdir()
-for name in ["structure.json", "template.html", "print_template.html", "build.py", "build_print.py", "verify_pdfs.py", "build_site.py", "merge_toast.py", "qr.swift", "qrread.swift", "qrcard.html"]:
-    shutil.copy(root / name, src / name)
-for l in ['en', 'es', 'vi', 'ko', 'zh', 'zh-Hant', 'tl', 'fa', 'ar', 'ja', 'ru', 'hi', 'ur']: shutil.copy(root / f"strings.{l}.json", src / f"strings.{l}.json")
-(src / "assets").mkdir(); 
-for n in ["logo.png", "icon.png", "doodle.jpg", "bowl.jpg", "kimchi.jpg"]: shutil.copy(root / "assets" / n, src / "assets" / n)
-shutil.copytree(root / "assets" / "items", src / "assets" / "items")
-shutil.copytree(root / "assets" / "full", src / "assets" / "full")
-shutil.copytree(root / "assets" / "variants", src / "assets" / "variants")
-docs = site / "docs"; docs.mkdir()
-for n in ["research-out.json", "toast-out.json", "audit-es-out.json", "audit-vi-out.json", "audit-ko-out.json", "audit-zh-out.json"]:
-    shutil.copy(root / "research" / n, docs / n)
-(site / "README.md").write_text("""# SUP Noodle Bar menu
+site = root / 'site'
+if site.exists():
+    shutil.rmtree(site)
+(site / 'img' / 'full').mkdir(parents=True)
+(site / 'img' / 'var').mkdir()
+(site / 'pdf').mkdir()
+(site / 'index.html').write_text((root / 'sup-menu.html').read_text())
+for source, target in [('items', 'img'), ('full', 'img/full'), ('variants', 'img/var')]:
+    for path in (root / 'assets' / source).iterdir():
+        if path.suffix in ('.jpg', '.png'):
+            shutil.copy2(path, site / target / path.name)
+for lang in LANGS:
+    shutil.copy2(root / 'pdf' / f'SUP-Menu-{lang}.pdf', site / 'pdf')
+shutil.copy2(root / 'assets' / 'logo.png', site / 'img' / 'logo.png')
+shutil.copy2(root / 'assets' / 'logo.png', site / 'img' / 'social-logo.png')
 
-Static, thirteen-language QR menu for SUP Noodle Bar (Buena Park and Irvine) with dish photos, one "Contains" allergen line per dish, an allergen avoid filter, and printable PDFs.
-
-- `index.html` — the menu. `?lang=en|es|vi|ko|zh|zh-Hant|tl|fa|ar|ja|ru|hi|ur` preselects a language.
-- `img/` — dish thumbnails; `img/full/` — the larger versions shown in the full-screen photo viewer. Community photos from Yelp are placeholders; see `src/assets/items/manifest.json` for each source and replace them with restaurant-owned photography before wide release.
-- `pdf/` — printable US Letter menus, one per language.
-- `src/` — data and templates. Rebuild with `python3 build.py en es vi ko zh zh-Hant tl fa ar ja ru hi ur` (web), `python3 build_print.py` (PDFs, needs Google Chrome), then `python3 build_site.py`.
-- `docs/` — design research, translation audits, and SUP's published Toast allergen statements used for the allergen data.
-- `src/qr.swift` — QR generator for the menu link (`swiftc -O -o qr qr.swift && ./qr <url> out.png 2048 assets/logo.png`); `src/qrread.swift` decodes a PNG to check it scans; `src/qrcard.html` is the printable table card.
-
-Languages: English, Spanish, Vietnamese, Korean, Simplified Chinese, Traditional Chinese, Tagalog, Persian (Farsi), Arabic, Japanese, Russian, Hindi, and Urdu. Persian, Arabic, and Urdu use right-to-left layouts.
-
-Allergen lines combine SUP's published statements (ingredients and possible cross-contact) with the menu descriptions and are marked pending kitchen review.
-""")
-print("site built:", sum(1 for _ in site.rglob("*") if _.is_file()), "files;", round(sum(p.stat().st_size for p in site.rglob("*") if p.is_file())/1e6, 1), "MB")
+# Compile and run by exact executable path; all tools/intermediate files stay in tests/.
+(root / 'tests').mkdir(exist_ok=True)
+with tempfile.TemporaryDirectory(prefix='qr-build-', dir=root / 'tests') as work:
+    work = pathlib.Path(work)
+    for name in ('qr', 'qrread'):
+        subprocess.run(['swiftc', '-O', '-module-cache-path', str(work / 'modules'), '-o', str(work / name), str(root / f'{name}.swift')], check=True)
+    qr = root / 'assets' / 'qr-menu.png'
+    url = 'https://menu.fyt.life/'
+    subprocess.run([str(work / 'qr'), url, str(qr), '2048', str(root / 'assets' / 'logo.png')], check=True)
+    decoded = subprocess.check_output([str(work / 'qrread'), str(qr)], text=True).strip()
+    if not decoded.endswith(f'1 code(s) -> ["{url}"]'):
+        raise ValueError(f'QR decode mismatch: {decoded}')
+    print(decoded, flush=True)
+    shutil.copy2(qr, site / 'img' / 'qr-menu.png')
+card = (root / 'qrcard.html').read_text().replace('assets/logo.png', 'img/logo.png').replace('assets/qr-menu.png', 'img/qr-menu.png')
+(site / 'qrcard.html').write_text(card)
+(site / 'revision.json').write_text(json.dumps(revision(root), indent=2) + '\n')
+(site / '.nojekyll').write_text('')
+shutil.copytree(root / 'assets/sup-fonts', site / 'sup-fonts')
+generate(root, site, revision(root))
+print(f'site built: {sum(p.is_file() for p in site.rglob("*"))} public files', flush=True)

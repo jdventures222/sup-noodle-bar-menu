@@ -211,5 +211,13 @@
   "ui.langName.ja": "Japanese",
   "ui.langName.ru": "Russian",
   "ui.langName.hi": "Hindi",
-  "ui.langName.ur": "Urdu"
+  "ui.langName.ur": "Urdu",
+  "ui.sections": "Menu sections",
+  "ui.pdfPage": "Page {page} of {pages}",
+  "ui.revision": "Revised {date}",
+  "ui.search": "Search dishes",
+  "ui.searchHint": "Search by dish, option or add-on name.",
+  "ui.searchCount": "Dishes found: {n}",
+  "ui.searchNone": "No dishes found. Try another name.",
+  "ui.offlineSaved": "Offline — showing menu saved {date}"
 }

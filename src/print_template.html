@@ -3,9 +3,12 @@
 <head>
 <meta charset="utf-8">
 <title>__TITLE__</title>
+<meta name="menu-revision" content="__REVISION__">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap">
 <style>
-  @page { size: letter; margin: 0.5in; }
+  @page { size: letter; margin: 0.5in;
+    @bottom-center { content: __PAGE_FOOTER__; font-family: var(--text); font-size: 7pt; line-height: 2.6; color: #625B56; }
+  }
   :root {
     --red: #E5342B; --red-deep: #B4231C; --ink: #1B1917; --body: #4A4542; --muted: #625B56;
     --line: #D8D0C8; --amber: #9A5A0B; --amber-bg: #FFF3DE; --amber-line: #F0D3A3;
@@ -87,6 +90,7 @@
   .addons .item { padding: 3.5pt 0 4pt; }
   .addons .item h3 { font-size: 10pt; line-height: 12pt; }
 
+  .closing-notices { break-inside: avoid; }
   .end { break-inside: auto; margin-top: 6pt; border-top: 2pt solid var(--ink); padding-top: 6pt; }
   .notice { font-size: 8.5pt; line-height: 11pt; color: var(--body); margin-bottom: 6pt; break-inside: avoid; }
   .notice b { display: block; font-family: var(--display); letter-spacing: .05em; font-size: 8.5pt; color: var(--ink); margin-bottom: 1pt; }
@@ -104,6 +108,11 @@
   html[lang="ur"] :is(h1, h2, h3, b, strong) { font-weight: 700; }
   html[lang="ur"] :is(body, h1, h2, h3, .eyebrow, .badge, .lab, .desc, .note, .notice, .intro, .when, .terms, .al, .variants li, .key, .brand p, .tagline) { line-height: 2.6; }
 
+  html[lang="ja"] { line-break: strict; word-break: normal; }
+  @supports (word-break: auto-phrase) { html[lang="ja"] { word-break: auto-phrase; } }
+  html[lang="ja"] .head { display: flex; flex-wrap: wrap; gap: 2pt 8pt; }
+  html[lang="ja"] .head h3 { flex: 1 1 auto; max-width: 100%; }
+  html[lang="ja"] .head .price { flex: none; }
   html[lang="ru"] :is(.item h3, .special h2) { line-height: 1.3; }
 </style>
 </head>

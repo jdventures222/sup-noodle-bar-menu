@@ -1,18 +1,18 @@
-import json, base64, sys, pathlib
+import json, base64, sys, pathlib, html as html_lib
+from build_common import LANGS, read_strings, revision
+from sup_nojs import markup
+from sup_fonts import glyph_hash
 root = pathlib.Path(__file__).parent
-langs = sys.argv[1:] or ["en"]
-strings = {}
-for l in langs:
-    p = root / f"strings.{l}.json"
-    assert p.exists(), f"missing {p}"
-    strings[l] = json.load(open(p))
-en = set(strings["en"])
-for l, s in strings.items():
-    optional = {"ui.halalNote"} if l not in ("en", "fa", "ar", "ur") else set()
-    missing = en - set(s) - optional
-    assert not missing, f"{l}: missing keys {missing}"
-    extra = set(s) - en
-    assert not extra, f"{l}: unknown keys {extra}"
+langs = sys.argv[1:] or LANGS
+all_strings = read_strings(root)
+if 'en' not in langs or any(l not in LANGS for l in langs):
+    raise ValueError('Language arguments must include en and use supported language codes')
+strings = {l: all_strings[l] for l in langs}
+rev = revision(root)
+font_manifest = json.loads((root / 'assets/sup-fonts/sup-manifest.json').read_text())
+for lang in langs:
+    if font_manifest['languages'][lang]['glyph_hash'] != glyph_hash(all_strings, lang):
+        raise ValueError('Font subset is stale for ' + lang + '; run python3 sup_fonts.py')
 structure = json.load(open(root / "structure.json"))
 photos = {p.stem: p.name for p in sorted((root / "assets" / "items").glob("*")) if p.suffix in (".jpg", ".png")}
 import subprocess
@@ -36,11 +36,15 @@ if vdir.exists():
             w, h = dims(f)
             rows.append({"k": k, "t": t.name, "f": f.name, "w": w, "h": h})
         if len(rows) > 1: variants[item] = rows
-data = json.dumps({"structure": structure, "strings": strings, "photos": photos, "full": full, "variants": variants}, ensure_ascii=False, separators=(",", ":"))
+data = json.dumps({"structure": structure, "strings": strings, "photos": photos, "full": full, "variants": variants, "revision": rev}, ensure_ascii=False, separators=(",", ":"))
 def uri(name, mime):
     return f"data:{mime};base64," + base64.b64encode((root / "assets" / name).read_bytes()).decode()
 html = (root / "template.html").read_text()
+html = html.replace("__DESCRIPTION__", html_lib.escape(all_strings['en']['ui.tagline'], quote=True)).replace("__PREVIEW_TITLE__", html_lib.escape(all_strings['en']['ui.title'], quote=True)).replace("__REVISION__", rev['stamp'])
 html = html.replace("__DATA__", data.replace("</", "<\\/"))
+fallback = markup(structure, all_strings['en'])
+html = html.replace('__NOJS__', fallback)
+print('No-JS markup:', len(fallback.encode()), 'bytes')
 html = html.replace("__ICON__", uri("icon.png", "image/png")).replace("__LOGO__", uri("logo.png", "image/png")).replace("__DOODLE__", uri("doodle.jpg", "image/jpeg"))
 html = html.replace("__BOWL__", uri("bowl.jpg", "image/jpeg")).replace("__KIMCHI__", uri("kimchi.jpg", "image/jpeg"))
 out = root / "sup-menu.html"
