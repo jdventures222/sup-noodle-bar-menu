@@ -1,0 +1,225 @@
+{
+  "languages": {
+    "en": {
+      "glyph_hash": "0d3db6a61c55ebeb1e683f05274670d24a04e76105c60b5df0ee1aa12180f1e0",
+      "families": [
+        "Barlow Condensed",
+        "Noto Sans"
+      ]
+    },
+    "es": {
+      "glyph_hash": "61ce3f9dff0462ccad5bec774a9861ccc5795680aec0187ccfc1b78b3f2dec12",
+      "families": [
+        "Barlow Condensed",
+        "Noto Sans"
+      ]
+    },
+    "vi": {
+      "glyph_hash": "02c6789b1d9fbd01b1898178926994580652d39076b971756baefa9b12f12499",
+      "families": [
+        "Barlow Condensed",
+        "Noto Sans"
+      ]
+    },
+    "ko": {
+      "glyph_hash": "aab0d2626a07f8a02995ba4193c0d01cb5568e0e635044321e39e28d1b738bdd",
+      "families": [
+        "Noto Sans KR"
+      ]
+    },
+    "zh": {
+      "glyph_hash": "a60e0299984d2b3691565a94d3b8d797e33a459d18847d0cfe073159ac34c7c0",
+      "families": [
+        "Noto Sans SC"
+      ]
+    },
+    "zh-Hant": {
+      "glyph_hash": "ced002004724a4e41cf2670f9605f026aa4ef4dd8dc8e692427245a1aee507a3",
+      "families": [
+        "Noto Sans TC"
+      ]
+    },
+    "tl": {
+      "glyph_hash": "14d624b695473ed4821ba64ea1fc27e075552bcbd7a604e833834056151407a6",
+      "families": [
+        "Barlow Condensed",
+        "Noto Sans"
+      ]
+    },
+    "fa": {
+      "glyph_hash": "d379e25db346253cc0d365cefe17634c1a6416443363e88e120d9bd92b968aae",
+      "families": [
+        "Noto Sans Arabic"
+      ]
+    },
+    "ar": {
+      "glyph_hash": "5ff687cf9cbf64c786a304b9586ffa8027030001e9d9da59b86b92b823d1adf3",
+      "families": [
+        "Noto Sans Arabic"
+      ]
+    },
+    "ja": {
+      "glyph_hash": "4faece2be77d49c0ba57a72b64507912e928956f9553fb773a299948ccf290ba",
+      "families": [
+        "Noto Sans JP"
+      ]
+    },
+    "ru": {
+      "glyph_hash": "af80d5fe55a7f084e79c241c1dda042e6a0744995f7e0b639426c13d76fa3bc6",
+      "families": [
+        "Noto Sans"
+      ]
+    },
+    "hi": {
+      "glyph_hash": "bc102684bff7dfca7a4ea343e169e737fd5b2a2d8456c58810f060e93ba33316",
+      "families": [
+        "Noto Sans Devanagari"
+      ]
+    },
+    "ur": {
+      "glyph_hash": "b4477094fae65ac95fd235cc900f37559d1553f78ca1b0b40d6c00329f8fe29c",
+      "families": [
+        "Noto Nastaliq Urdu"
+      ]
+    }
+  },
+  "fonts": {
+    "sup-4ccbc553beb8ac6b.woff2": {
+      "family": "Barlow Condensed",
+      "url": "https://fonts.gstatic.com/l/font?kit=HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2_3TEGagjS55r77ET03kvkuTn_M8iIatslfToex-_v4Fh8AiXHn6tLFJkXZml69mPUAZCNSGdAOQLqgHYexjHsaoeU51LtepyOHJP-aA05hA3xohrrb5q9m20jw5zS25Ldw6PIguibMkSAU5S_1A-G8iZfwCDTi5LmKGVk8RVeyLBv6TimG1xDamn47i-QRYQ6VOif2Sfa3q4Yhe3r0_hv9FfLibnTjn1J3Y&skey=f7328bd78d9d4b7c&v=v13",
+      "bytes": 15116,
+      "sha256": "4ccbc553beb8ac6be0d89b2404eede7c41a1c9b55d0b9b0ee932984a148997bc"
+    },
+    "sup-20d145661b130ae1.woff2": {
+      "family": "Barlow Condensed",
+      "url": "https://fonts.gstatic.com/l/font?kit=HTxwL3I-JCGChYJ8VI-L6OO_au7B47b1_3TEGagjS55r77ET03kvkuTn_M8iIatslfToex-_v4Fh8AiXHn6tLFJkXZml69mPUAZCNSGdAOQLqgHYexjHsaoeU51LtepyOHJP-aA05hA3xohrrb5q9m20jw5zS25Ldw6PIguibMkSAU5S_1A-G8iZfwCDTi5LmKGVk8RVeyLBv6TimG1xDamn47i-QRYQ6VOif2Sfa3q4Yhe3r0_hv9FfLibnTjn1J3Y&skey=1e5e3992d4d63cf5&v=v13",
+      "bytes": 15220,
+      "sha256": "20d145661b130ae172edebe5ca7db04bb8e0b16fe146fbd50dd836a992a8bdf3"
+    },
+    "sup-2aeb0e695e8d95ff.woff2": {
+      "family": "Noto Sans",
+      "url": "https://fonts.gstatic.com/l/font?kit=o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc1azPG1KDFglaowkebNJz5mfD_1Bt-4WZzqKvVykjqcarX_Tgt9bOoDYxK8AQwPufh5-Xmol6QdUEo6rtrGPwVm8iz2lasCPB4XDYgfpYS7xkYnZSE6cffE6-Z5_Lj8ocFJBUilX1_bFFD5gJzanJHW_7i7THZCVCauWgKRzovwerr-r1LjYwhFzczmCSe5D_AJe8yVh48XeDy1Va-3BaIE1m9sHWMZj9EtU&skey=2b960fe17823056f&v=v42",
+      "bytes": 24312,
+      "sha256": "2aeb0e695e8d95ffc55b05e36ac050d301868f1cafc80157a48c1e1ffde3b91a"
+    },
+    "sup-e6aa521caa6054fe.woff2": {
+      "family": "Barlow Condensed",
+      "url": "https://fonts.gstatic.com/l/font?kit=HTxwL3I-JCGChYJ8VI-L6OO_au7B47b1_3TEXKgjS55r77ET03kvkuTn_M8iIatslfToex-_v4Fh8AiXHn6tLFJkXZml69qOVwdBNC-eO-cKrQDbehfGsqsZUp5KqutxOXVO-qE75xM2wDcexf0evRX7814xEi4VPWzBSFnMPLlEeBcsphVbX6_jEnnrDloM7vblxbsMA32Cwuac9x0ffNzigfHcPCI0xSfWAkC7SADxHiqTrx-6wud5IWmEAinPKwO5hOLPwHHk0mtV8ZkU-0ywLm8ZOEDJUe0mAGRSAgWaa-X5p6r4thOl8EDNpGqJndTSys7mRwix2Tf_7Q&skey=1e5e3992d4d63cf5&v=v13",
+      "bytes": 16152,
+      "sha256": "e6aa521caa6054fe378fd28dab49da3f24fc7882a6e475384fba5f3f1edf8a53"
+    },
+    "sup-594d47f416dfad0b.woff2": {
+      "family": "Barlow Condensed",
+      "url": "https://fonts.gstatic.com/l/font?kit=HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2_3TEXKgjS55r77ET03kvkuTn_M8iIatslfToex-_v4Fh8AiXHn6tLFJkXZml69qOVwdBNC-eO-cKrQDbehfGsqsZUp5KqutxOXVO-qE75xM2wDcexf0evRX7814xEi4VPWzBSFnMPLlEeBcsphVbX6_jEnnrDloM7vblxbsMA32Cwuac9x0ffNzigfHcPCI0xSfWAkC7SADxHiqTrx-6wud5IWmEAinPKwO5hOLPwHHk0mtV8ZkU-0ywLm8ZOEDJUe0mAGRSAgWaa-X5p6r4thOl8EDNpGqJndTSys7mRwix2Tf_7Q&skey=f7328bd78d9d4b7c&v=v13",
+      "bytes": 16060,
+      "sha256": "594d47f416dfad0be7e29b60db6c07fb7ea1fffbc720ee9073605a8c3994fff4"
+    },
+    "sup-c138a49a9e8ef31f.woff2": {
+      "family": "Noto Sans",
+      "url": "https://fonts.gstatic.com/l/font?kit=o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc1azPXlKDFglaowkebNJz5mfD_1Bt-4WZzqKvVykjqcarX_Tgt9bOoDYxK8AQwPiegJ6Um4d5etYFpKvurWzxVW4lzmpbryLC4HfZgvtXSr9lZMkne-RrNzbxG8-J1opCXvIa4AebrcETdsF3lOysWQiB5s2vJFEFHLLQf2Oxx1jo0qiLQUZe9SmZrCnwBqTbLOPItHxc0g3Kt2h--yABXXtA-Y61fYjHHqDqbVOQAk_hTnymQypxhtC105hWCSipKt7C3UF3i_SUG7g6rC_LiyCEWU4_MslBOccdKXR2rZ82ccWkHg&skey=2b960fe17823056f&v=v42",
+      "bytes": 26100,
+      "sha256": "c138a49a9e8ef31f8e9414fccfcb6d64a580e07942b224826e1ef110526a0673"
+    },
+    "sup-d8c92bedadf1989d.woff2": {
+      "family": "Barlow Condensed",
+      "url": "https://fonts.gstatic.com/l/font?kit=HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2_3TEE6wjS55r77ET03kvkuTn_M8iIatslfToex-_v4Fh8AiXHn6tLFJkXZml69qOVwdBNC-fONwJrAfaeRbJs6gYVZ9Jq_RwOnRJ-6I66BI1wTGhrIhq_224jx9zUm5edyaPAQuDbPcSNU5--EQ5D8-0eC-FVChVnq6Tm8JvfRjHpKL7nHF1EaaM-JicVGVfklOAdRnNEHGabkDv1WDDvpADUCfBTW6RY2XFvMf-tQCY_U55iu1p62mUZxBkM2XUAKlbEEFCf0jnesD03v6GjTaltiKynE695bqs5urIO3D00RDjvDRgjZfiXnlY4QXrG3QFb68Hp6p3ePaoqlRv2KyUrg0f1pZYgds2XxilHo1TUDCHG28OA4AV1faF6s7PNpB7RhT8S3MY0DNFeFycQ57gRkkwwQ9P70ZOJ06eljfYekParQfKDMQIpkjANfpLIz3lzNa-vvrjT7R3c2mIz6qtpkSVJYNOPgg5ezY9EddcVVP7OFis-ajpE24TiRhapwGXnka7YF1p1KXdHJiR0bSbGT1dpycGBuuYmJuu1aO6fOmRYO-_krK7UGhF3hJwLkuT6hTEQTfLstyP3NqAbWjs09rKh80FWL_ymXbWjogcm_2FgFhK0-ByRJ5CQJC6KdgbDNe--fuFf2uosCYhW8hzjY8olmeBOSOOB6iBtZN9JjviXRrtNywm3-zQNupMyUswv_Ljq5anGdPaxXVh3IV3Zg_9X9mRM_mBoH2p84EnJDC3EdGa9WwD6n2s_R05LocG0mh_QF6O3JjOO7CKyUd5_A9eectcXSpGmvdjI--Ea_t19L4gkzQvyh73jRV1rsIZd_JOsVWA6Ofut7a-v4frbJz9EfBDp09jZ0BB896XVMBj41rfa7_ZqRGfRvrt8gORLo8abAPFFsTj_XqqvZNEB2Q&skey=f7328bd78d9d4b7c&v=v13",
+      "bytes": 19932,
+      "sha256": "d8c92bedadf1989d6d3f195536f120ebf79e6fc0a26afceb42a482ed1dcf44aa"
+    },
+    "sup-acd3814222dcceb2.woff2": {
+      "family": "Barlow Condensed",
+      "url": "https://fonts.gstatic.com/l/font?kit=HTxwL3I-JCGChYJ8VI-L6OO_au7B47b1_3TEE6wjS55r77ET03kvkuTn_M8iIatslfToex-_v4Fh8AiXHn6tLFJkXZml69qOVwdBNC-fONwJrAfaeRbJs6gYVZ9Jq_RwOnRJ-6I66BI1wTGhrIhq_224jx9zUm5edyaPAQuDbPcSNU5--EQ5D8-0eC-FVChVnq6Tm8JvfRjHpKL7nHF1EaaM-JicVGVfklOAdRnNEHGabkDv1WDDvpADUCfBTW6RY2XFvMf-tQCY_U55iu1p62mUZxBkM2XUAKlbEEFCf0jnesD03v6GjTaltiKynE695bqs5urIO3D00RDjvDRgjZfiXnlY4QXrG3QFb68Hp6p3ePaoqlRv2KyUrg0f1pZYgds2XxilHo1TUDCHG28OA4AV1faF6s7PNpB7RhT8S3MY0DNFeFycQ57gRkkwwQ9P70ZOJ06eljfYekParQfKDMQIpkjANfpLIz3lzNa-vvrjT7R3c2mIz6qtpkSVJYNOPgg5ezY9EddcVVP7OFis-ajpE24TiRhapwGXnka7YF1p1KXdHJiR0bSbGT1dpycGBuuYmJuu1aO6fOmRYO-_krK7UGhF3hJwLkuT6hTEQTfLstyP3NqAbWjs09rKh80FWL_ymXbWjogcm_2FgFhK0-ByRJ5CQJC6KdgbDNe--fuFf2uosCYhW8hzjY8olmeBOSOOB6iBtZN9JjviXRrtNywm3-zQNupMyUswv_Ljq5anGdPaxXVh3IV3Zg_9X9mRM_mBoH2p84EnJDC3EdGa9WwD6n2s_R05LocG0mh_QF6O3JjOO7CKyUd5_A9eectcXSpGmvdjI--Ea_t19L4gkzQvyh73jRV1rsIZd_JOsVWA6Ofut7a-v4frbJz9EfBDp09jZ0BB896XVMBj41rfa7_ZqRGfRvrt8gORLo8abAPFFsTj_XqqvZNEB2Q&skey=1e5e3992d4d63cf5&v=v13",
+      "bytes": 20128,
+      "sha256": "acd3814222dcceb242402d3771d61078ec5fbd4916924e74f2a39212a49dac79"
+    },
+    "sup-de39a5966b6668e0.woff2": {
+      "family": "Noto Sans",
+      "url": "https://fonts.gstatic.com/l/font?kit=o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc1azPEVaDFglaowkebNJz5mfD_1Bt-4WZzqKvVykjqcarX_Tgt9bOoDYxK8AQwPiegJ6Um4d4ee0Gpazvrm3-VG0kyWtYrj3D43beg_hWRb5mZc-YEpEfdU6yZ47LlsoJFLhUqVXU_Y9FO5glyr3OCWjWjJvBfiNcbOqmIRrSuT2ttOzsKio0mFP31UCwbuOwe5eewyUqinyhxwICgV94IQw6iMDwMs-ZVsaWVXahdz6dYVmKOF4MlvWRmucrAg20e5q_zWRn9rnpCp031Xu1sAWEHyxACu11QaljBVBY0edzeeK4T3X7ihvue8UdkPLstxlMmVlNaS5GcZ3jRjm6wLZ-OcTgP2YiEpJUCGDtXy_ydT-B1t1tMF4I0NG-miMXkXIq4WcoXtMKN1McLquXtNdjdt1kbpJ_fOab9XwQc4VoOKAcld1EQtmLSV2WAUK55HeldNMnt66IhOu0ylB_WafM8OIk1amxKI0FfPvEODNXxllqlSft6YzfvkLfHlQZlWSekvWG5pKEvIXFfO44uQOin3t-NUVpRsqcIdfBhyXPhbOtQwMBHR7BDk5miEwkNuIFzW-pIhygJz7tSK4NHYibIcezATktLhlvBHfMiVXENQp_ihXKakYAvZE0uj4lRLj-Q_ZTLv02RaWmq-ymE8zQjrVSI1IKMTlhzls3PsWUrRCY4MOwoz9SQI6RXJvFZRqIBhlfjdS_J4BAQtkmu_OTTa0oWGY5eCl-ys2xSA8AMDx1CRxAvNpJU8K6oPlWAx8Hbjt5tNfsjuHcQbMmZ7DHhPyqpPl5iV1ijmasDpz_la4XYnWp-0ZrwlhNadX8MKhQLLjQ4PpvwTaFddMgjqnTB_1IRmcGSv4zctZ9k_8beXpTl8924QMh-qNFsYwO5AdgsBZmNBZgFrylinFDk0DpzQQ&skey=2b960fe17823056f&v=v42",
+      "bytes": 40544,
+      "sha256": "de39a5966b6668e036e696f22ba2831faa4201ed19b33624c7b6f2ef26490034"
+    },
+    "sup-7112c2e2f3776dcc.woff2": {
+      "family": "Noto Sans KR",
+      "url": "https://fonts.gstatic.com/l/font?kit=PbykFmXiEBPT4ITbgNA5Cgm202xp4rI1nUAb5wlddZrvxEcSVtTNVmNwjnSs-_29at4_2Fb_ukIoCzKqm2AEQXYdKiZJ8DmDAImGzWX1Qum2GKqjEUzvBo44alALWIfPNHE7wTh7evekie7K1FEzksYZ4HSBTFqc0RTtDqVZRioJXdl0vw_RUgvy7L_bW2feHeulvHF_vdMHRZOvmuWnPknrZNJ3zet7SRpOYpJinLG3RGl9IgSG61PTF_4DMpVOuqH_uYW--S6TPKqQhU7W3uvu3yrcms1fLhJoIaZVBW0XGa6TGQppuI0t3fhnbzTM4LlOF2ZwhLUIq-G3VN3sZ0wL1EPbx0Ih1G3kshm3CLRsZQBTt0fXBqvL3-kx0WDXdRr4fGo2INWSTcnjpGeNlbRhANcMVeK5jcfQHf9QwbY5DMrxUjvt9alTHoh_CHbMk_Un-0NrLIcUnt7YOmRClDZLBhrH7Et_sAsacpzb-mHiBxPlOFwzm5retfRQMZ9vw889JqIYZgb6NRkbRkdNu63VLvBPVxt4VxuimLD97h3NrduEi9GNEAMlpPI7BlQJUamCRKLSl7Xfy2OgR0BLGkMvLzI4zj29tOuimCDHh8UguAMoI41kOKio6MArvr1hstX-Say9VH4Z-7bmShIkbwY9vVZCtopzMB1BkYzq0_kQdsdxIQk_Fn7Sq21EhYCYsKst9YvpxBgNNw-jNf6-73XUX7ZkqCpXlwYMa3pJWuhAx0iFYYkWMsHscUZcQnToevT0mwYpaCLow1Lj0S192Cayh0jIkMObFz-dNAiQAwGrbmVBa-hp_o_RGDsShUTru5vPaLjI5xoAcMTjBQoSs3mfjDfoAHfNZ-60NBkocuw75McXkEXq4vgtaAeJdekxu607-kd9EygJf6ozTdqVS6AZm7Y3kkzv7Ox9tBlinjDzb0FXoGzd0xnyx_eE8rwZh7gr4m0Sk2qHTmAuoNln-fNLb8W-r7Qo7XRThBXYM9V-mhdVWaseTd32vy3CTa0DzYHLYozwYpUqKWyMUzfaoPhNr5xvyejyurfLZEZ0uPhaE_teRGjLFGJKrrsLWHQ5oWkcTfibXbTqexziqH3FDjdH5KAaUZJhvOzXdcFXkf3CN9NdLVuke1D96-HLI_LOzs1qZ4s5Yxkf9vPrfRR39x9PLRNOcgNslX_QLGjidefdKy4IzvCvaLKt0W24-gIxUrcI7HOtEf35bJVP722zZK1GFyyhHHJX8WuQgNVEyj-Xqc0V2XJxuQpSZ-oymqHGDq1FoD9JbiOC8O7KjpzdcCaGVdofQGjMo1QuJpeQVDWUI2JqEOinaWUgjAOTkZNnUdQ-tV86IxDh103w5UC69WhiJmmsVre-NWY-MKDxBEpnj0ouwTifkPcNEPco9Hs3V7FpAXqlI0lJpLhlc44pPyV6prrwlAwMux2y80ugHzNmrnETz4YVhubw7yjkMz9-yUFoJ_17fXZVbASX6RbE8_09h7I9ulPfm3htKOkZ6i_wzv2CKa6g8ofKoayBzQw2pe-vEuWUQTs8HhJ52HC-vzcqhFZZhfQtkOJF4XoFnKM8h4VZZQf8O5iiKHU59hl8SbSIi-RVvUqRX03huXNZ9_dkcnd5GGicBkAp5kVCFvp_rtqFOcjp-H0wxYtX4n1nQ5m8wdNj5PmRIzD8XQxkXW7csSpv5l7QXDL33fSGWdV08C8qpWZYdW2WIqNU8Sn-ckaSZAFHmw&skey=87e7ee645936e2c7&v=v39",
+      "bytes": 67492,
+      "sha256": "7112c2e2f3776dcc62ad18b1f7aa5783a0d1f708b27a2558333b360ca5b392ff"
+    },
+    "sup-1bda7f7d8c89ce90.woff2": {
+      "family": "Noto Sans SC",
+      "url": "https://fonts.gstatic.com/l/font?kit=k3kXo84MPvpLmixcA63oeALhLJBH_S_f1ouyMjyqkKJIWMXhz0R8xgBUFnDRa4QQYixR_xp3nyZYROvEF9cQiScF10RIg8dI1T-4i0PhQUdojJoS85npr8dlK6Q3E2S8xvEw-b1HTAjX2N9e5opiL9ml-nXtxywD1p0IB-9LGArIK0S6hBsVQ6i05RFt3huuXicG3i6POlyKa_WjjhTpYg3P28QMlp101qRjnEflzvyd94B_bW70PQQupYpRx-3uLaSly1w5CL_SAPX-hj6HqGiW7AnC9KCfkoVeQPD2iRkl-LzUdrOW8UJndR2kFCkzOM08_InTPBNw1pMFubhunWOwr33rHasKhW8WjjSDS_uisSo6Yb_4jvp5CdX4sc-qL3nm7jDLZAbFAy8qmUx-cL8IldjFJDfiwjG6P1EJnRruSuQOqlXjSPzcJdWC-T8qVz_7kfttLihSGmSHpINHbprd9PLEWaGA0ZeR_-F_hserEMVHDhOqK1c6W0RgytlIAXZB3YJ0mFnkjLxgi4P0QNvn3LMzlFCtKYAEcEG2XV08_JddaHjAZwq94wlwxUt-_KjlvymZLqGyqgI4vwdIvKWgwMkbfF9WOt5Ng19EyPoHyr-GxrjgfS8tS7ftNaik_g4uUcr_Z2y3u83Zashn9tn01HnDnm4iQ4D8idQebp39qccHKh8mdrf-nB6PPxQ9IQuEsM7rL8D_oqZTW-cXNN4IrI7xzZsy34A8gsTccBARDYem2o8XkQZuAr4nuEl0vAkFSaFt1T2AjsdBNoBVnUVA3F2w5TLiMU4ATWynpBvprsrp2-o6MR8__LuWV4ftGY8Da-6vw1BwkZa3WxLQUShfpuaAg-O11IQryOb8yKLHbzr-3Xs5RoBGZlZoSrIfc54P3eg-GKxtIySM-Mrtb2-YKTn7xmwWhGT3XUyvuXRsWfnKajVwlYJMPrQN6UuATsDWsMf4299Ks7DjJrm4rWrybW5-SgWuOwO6BeaMVVulPVXG0gumrcWKJel5KTe6mqVESrjuURiZB1YT_FJn4eRGQsjlMUYUFev1dT9BeWFpIlgqxAAOSwLOqMAbJpDvZHlQFDDUKoewivIaKbuTKhR9N_6GemSZ1sBMohvZSofK84EN6FFA1AxKLj2lU4rz9JBJipUJ6rLJ7MG8Ha6GM6JRQ5-9f7ZW8E4wRa18OGY5Y0Yfd89xT00VY73u19aQO4snzjt_X4fPoRKy33jLDdvc2-WxwLzsGK5I9qcPup6v-ESrkto3ZmGjktfplN4ALf1sjeJ2ot80ov-YCzstbAcetRw6Z9H9Di3Q_m33_H2Uccwj1QKlu0z8hSWSDw8EOD34Mx8OMd5vIUxOZwNRPV8Ueq0UzQqg_R-ARFb1TEr1Yq1Vq_4PYevZJROboaXilOCTsDlFVDTkd8EqkrgQWJOpIy7hTC5rbkv9_TrOyr2HwhxedOGFnQgrkeXloBoxCbkLfLxBZ0N7OjVjpajiYqSE7-0C6H2ejpY3UcJ3QoVy8nPljS2_R94OypXdstMIgp1qTCNi0tTz2JGeOLHUgFE7nsSQHdvcgDctarrhqrJLN4zBMW-vbrt-UahBK2U3mbP4Orap7VNNRK8zyuYkfzJ43SyaxL8D95ODaC4-0jhcqo2YkmdI6-sUaEmTIYBX1WY_GJd3QOXCuCtaw6ZDHtW6Fzte31Jrni5-68yLcXb8x3GXsRbdHP8pZrGq5AhNHtI1jMqQS6Ei_S2mBBTFMSVNEIt1u5xEie5bPoqjg3P-TM4-ud2evhuNXuBobTm1slPWqf7WLn-t-0wea6mP1e0UTAxsfkAYkn-2X24b7frw2SZKOfbd1ZQK9pudhu-fOyvgl1aprA81IrkmjcElSWMotVQoCb3hYMcY0ZYre0B1cIXzHBzkxrU6pGwuO5i2r2w2zixiYlw6iJSn3u9I-PE0iHtGbEpATCKQC0rUDDcdkyURHdHHMFo8DIjE-OPQH9rurQMZyognEGAvjbO59zA95VYoiI4Z4zhUyCOSPXwUTUGCMe6JpHw0cEFbtHoiJdt3-l-_1gub3nldMCL8_S5fkz-ZFzWRaDl6BTHbXvknlxxBwnNq70iY0ZNgGbR5hXv1M0VXrxvj2C0QYHSBO6MdinQhj1Mf0hi-WX9OTUJsXpC9mx27FnMRIP7J9ZrL&skey=cf0bb10b5602fdc3&v=v40",
+      "bytes": 164424,
+      "sha256": "1bda7f7d8c89ce907983c42e4dbf81608b592cd3fcdad94e490123b7a027cc65"
+    },
+    "sup-e7e6aa6ede5d397f.woff2": {
+      "family": "Noto Sans TC",
+      "url": "https://fonts.gstatic.com/l/font?kit=-nF7OG829Oofr2wohFbTp9iFOjPtB9dw8_fbxkPd8QRLgl-Ek-H-ngsk22Trd_nN6zDnk0Cr3VMygIf0Eb3DhUo0ADNAr3nf2y3v-waQf7semRIvec4vFbCs0TwulNs2wUe8eQXCFZRSo8Xl18O8Z5jjBFUnaHrP_u_8Mzk_fH43Ca9rX5ENMGnO54DejfrxZNWq8vIh16gAZKZpbMwamP_W-P3lzG1O4cFn2XS3xIKy15IQQiTuxPRLumlrVM9tfhR1r1z-f-iC1SL4XV_4k749EI4r-4djouod9oCGM7j2dI1g5Ga7jqnIio6zwNgXsV-lGL8tJWBHJuDW_F_W2IbYH_RD3oPxhyd_QSv6Ok6ef9wIAeHgs3q_gjw9tgfEORP5G2eH2qNn3uOCw08eXqwx8YowPjj167eMDFOdEyLZIL4QcDRP1tcjwPZgnWWZQmPcRUs3P5CfAGm4orjLI9CjHREljM77cB1Y7rVzAEJo2mQPqjEIYJzWaQOT3ifjB18vc6XLaFzDXZL-ya1-6ccCW5zkyvogNrD1bvNO0rxAqK-AZhQmFnJjvMUYdqDmvHhZEdHApkwKigZctRMDxjION_eQw1R1TW76ataNoGPY4PlMx3r-0dj74FtUc5MABf3prS4H5vq0gTxpxjQnrdexcPfW2yIz90-yhNrVX32rVAKUyVfWVmQzMyLaaNw0I7czZJtqGRcTkBfPMBllSlR8zPH7b-95onzNq87cuDw210VT0uerjI-sWe-FmW4uztyvQivvFfQzYBJoBDThvP6uhoq5oKileJ_1i5HZAfy7mXaldi7AXWL9lY9gt8XnOkVy_af3inRaeDMyT_N8dnjl_f6f5O4fEbXAJC_dBcHHtOabGgdLx1M0y9Ws9C8aSuPL0LUdoxxOSGcfXpXJayc1ZAz_LVDtWM0RAV9o8vHTBzthjvk2gRBxcDUi8uJZPyaRA1iIi92FmubWp-tc-oeD1Une-FmgvNEr3oD0f7ZxoPuEs4Nl1ao0n49KVgz99ksP0edK5CRETWJfCmnvyO58KUQjAk8-Cmm_LK-dW6_dCNKL0uLJBHGlkPIn1f70UoWynDT6XNduSx4sBaCGO8WthNlUiOmmXLZ0vvldyGE6IbKUxmf55DkG38WK9OAScjWFg2lJTkRW2JHsRHY0-7xVsdYGBhDUKvvxmYnm0_ed8O6dpGRlNnhm_uufHw8_AP1ubBBs52bR4Bv3KiPKt_5DjR4pX7JRTjYXkqzycejaibfFmKoojwAA6GE4N2r3HZInVvTjUmpqqPsB79---UY35RYTFlb-hZNDUtZ2NvVsPT5GUfsnpU1MWDzp2TJr-l6kBNwkResR07RgfXaeBwYZ638J_BwrqH0wrDLc3JRUtMpF7ztT5RFCxnzRhIb_IrcOCsjpxKj8-Zij_9u3b8iGpleZycSG3_Or8JqjaI2LB7rbmsxE0RH7blaRggzX5bVfwmWtakQFWM7DzQ8MUUVEYQCU3kzzW0nuoWx9bi0p59gKE0Pkidq9weDoJK0kqCxT3QecPGC0_BXgiWzOPYYD9ufz8A3MDDemnv9bRUideGK0X51UkVFEEtR_xikwFcwb_ALPKyW6W9DRC1jNwi6wydP6mwFteVfwBwefU__cVipuDQX-CYZN4XyeMtssXAqzmNEFab2N0mAHCs72xAw-AbAIXZKZpmLAzUZgIhH79IZymr9XVGuZJzTS7UqGthk6az4WQpExVFoZMhIsN1BOPkcfeUvbuHz0EyUr6U9m_HKlczSAjI0biMkR5XSTRi72yqYJ-9357v_mskGfzI_a6E6gxx5GYYs0htDwxgGbXxhXZqGNDD5hauAH-dQhJlLACiPoz07jPRiys8MMWKf8nc8F84j4aO7BACbVEVfn1cGdWhjzstsqS46QnfNQchSGzS9__7Gw5l1a7kcuMozD-MH53_clPtQ9l6Md-tUsee-o4gVtpLOvHUVYnPN9PDakmm24ywq5E1g8BSqJJ9RJE6Vb-N-LOVYdyhbIrecxztliDQwHFdbmFEhAncM3-eaRmj-zSxCFbE9oEBW6ubmPWBC6PzXxUZEHqrmLFY0oD1Unv7oNhj6tQytbdvMx9XkpYlcqAFeH_pdwMshxbz3zqn4JURugPcrbywIHyO_Mvszf6_o4C8ZMZmTjm5UQ0IZ8D39sO2IgiJFtEQT2CaUlRixuT4ab&skey=3904269dc8bdd0a1&v=v39",
+      "bytes": 182156,
+      "sha256": "e7e6aa6ede5d397f22c22a734bd78cb0ce1c5cc29d804f73ba5170259158a6f9"
+    },
+    "sup-f8e1740e6713d65f.woff2": {
+      "family": "Barlow Condensed",
+      "url": "https://fonts.gstatic.com/l/font?kit=HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2_3TESagjS55r77ET03kvkuTn_M8iIatslfToex-_v4Fh8AiXHn6tLFJkXZml69mPUAZCNSGdAOQLqgHYexjHsaoeU51LtepyOHJP-aA05hA3xohrrb5q_W2wjxdzXG5YdzyPHwuVbOESJk5O-HQ5Nc-KeBeFYyh8noGTvMJ0fQTAgKXfm1FyMaG6_6mbXWJUlVaHch7HF3-cWEbS007FkJYkUT7AUm-KYlbEgcbBtCeZ1U9XicxqwmGIbwx4IEDIdO0nCWRTBQWbaOX5jqr7oROl8UDNm2qJsNTT487nWguL7zTFx0gfmrPwCzQm3SLfTSNATYgw_vEyXw&skey=f7328bd78d9d4b7c&v=v13",
+      "bytes": 15972,
+      "sha256": "f8e1740e6713d65fdb6378c950d6cacc0ec89b251aef340b1df94de64d75136c"
+    },
+    "sup-792dc05d1cf5ca94.woff2": {
+      "family": "Barlow Condensed",
+      "url": "https://fonts.gstatic.com/l/font?kit=HTxwL3I-JCGChYJ8VI-L6OO_au7B47b1_3TESagjS55r77ET03kvkuTn_M8iIatslfToex-_v4Fh8AiXHn6tLFJkXZml69mPUAZCNSGdAOQLqgHYexjHsaoeU51LtepyOHJP-aA05hA3xohrrb5q_W2wjxdzXG5YdzyPHwuVbOESJk5O-HQ5Nc-KeBeFYyh8noGTvMJ0fQTAgKXfm1FyMaG6_6mbXWJUlVaHch7HF3-cWEbS007FkJYkUT7AUm-KYlbEgcbBtCeZ1U9XicxqwmGIbwx4IEDIdO0nCWRTBQWbaOX5jqr7oROl8UDNm2qJsNTT487nWguL7zTFx0gfmrPwCzQm3SLfTSNATYgw_vEyXw&skey=1e5e3992d4d63cf5&v=v13",
+      "bytes": 16012,
+      "sha256": "792dc05d1cf5ca941f2b091de2d94313930fa4b69daac3d88ea718a16ec13fd6"
+    },
+    "sup-b985b8527cdc42e0.woff2": {
+      "family": "Noto Sans",
+      "url": "https://fonts.gstatic.com/l/font?kit=o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc1azPS1KDFglaowkebNJz5mfD_1Bt-4WZzqKvVykjqcarX_Tgt9bOoDYxK8AQwPufh5-Xmol6QdUEo6rtrGPwVm8iz2lasCPB4XDYgfpYS7xkYnZSE6cfd066Z4bLmMoPFKJUt1XC_ZlFKJgVyo3OM2jojKPBSSN1bMWmBhrJuSGqkOvILQozuFTB0nG3Z-S7fJKZxCIgjXKn8QQ_h3F-DwodidnxLc6CV_WXaHeedhmcSVikO38Pv_2Nkvs3ESioD97D1EF2jPSVGLg6hS_InCCEWE4_DclBFMccAHR3sJwMR8aeNAmEnT_8LohjrNXY4U4Ju356MHUDVg&skey=2b960fe17823056f&v=v42",
+      "bytes": 25880,
+      "sha256": "b985b8527cdc42e0a3b5559057f58bceb73ca6df1e8db797fde36a847e51cccb"
+    },
+    "sup-e41b01cde4531232.woff2": {
+      "family": "Noto Sans Arabic",
+      "url": "https://fonts.gstatic.com/l/font?kit=nwpCtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlg43rQ3C5RvsmRi2KwOilXW1LDHxv2NgQm_oW61HdTrXLSHpaPCkr-o1lCgrMc4r7uAuUE-mQyJnjKroUeZaVJfO1PSpOwgQebGzxteOxrCgj5-6hBkvtb1gYMCy6vo_dE7hm6ygOyCYhQ14FBmz1fL-T55hQYjQtUevAPtM95Sv2tqVdrC6_hOFcsRwcNHUsG-F4qlZkBDosjCbp7R6uyUqvis8L5aUXbooA-Ne2F4qZVjNZPwaWgswUqIlvqJsAy8nH7xNoOPw-sQPnlbPfclna0U2AKp-5fUKLd8Qc4dsSuFD_5m1bB-DcwQRMcHGO8AyuQL48MFdJu_rXV0U32cVOeN5K6XF&skey=f979c51db865377e&v=v33",
+      "bytes": 50588,
+      "sha256": "e41b01cde4531232f67a704a98b38141ee778db038dd45f1eb4d1609e190059c"
+    },
+    "sup-e911946a6321ad66.woff2": {
+      "family": "Noto Sans Arabic",
+      "url": "https://fonts.gstatic.com/l/font?kit=nwpCtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlg43rQ7C5RvsmRi2KwOilXW1LDHxv2NgQm_oW61HdTrXLSHpaPCkr-o1lCgrMc4r7uAuUE-mQyJnjKroUeZaVJfO1PSpOwgQebGzxteOxrCgj5-6hBkvtb1gYMCy6vo_dE7hm6ygOyCYhQ14FBmz1fL-T55hQYjQtUevAPtM95Sv2tqVdrC6_hOFcsRwcNHUsG-B4pdZkBDosjCbpLR7uyoqvCs5L5GUWLorA_5ex143ZVvNYfwdWg4wUaIovq1sDi4eHodMnuP0-sAPmlbDfcZnZkU-ALJ-__UULeoTe4R7SdlAw5utVDLSKgxBaMiZYsZs4ASNqOwpfsCIBmV2h2R7W_AISbE&skey=f979c51db865377e&v=v33",
+      "bytes": 49828,
+      "sha256": "e911946a6321ad6600f052700643c246fa37a56893595d40fb89ab7ba55258da"
+    },
+    "sup-fcb5dc2dd597d35b.woff2": {
+      "family": "Noto Sans JP",
+      "url": "https://fonts.gstatic.com/l/font?kit=-F62fjtqLzI2JPCgQBnw7HFowxrl2HdEo809PfJM4rXd5oUNi_SiV4lefJ12HxxRHi8KuD1nj4gmRPMr8BI7WIo8AMWUFxHJzJ7W3tegckn4FylOgRzTTCmINaw5JuKeOGyAh1qNqMUG_uwUmv1-AkVRUaJ-xblBh93_Xh8h_QtHD1Vi4rEJ_clCU7fCwLdiGN6WOrkd8vFj1hF7eCE3RFiPyQ5X_7VW7-z9lwGch-7zbCHGYi5VNSeCiEMzD6-VfjWeMuDBYAyamCLvzfQt0j4Qeh8C2Q-9F9srgkwFT5SFvEbRz_NbgrIjcB-23FRyVC_rD-UwmhVtCXue4QZirf9C02vAyA7KXObj4ogKoN977kvENDATNLjP9B-wz-UfgNy-ylAi_JTVVkwp8UZArMtvQaE6bpziJZivEOAQOq9uQgHiNmPB6GJx3skvFpfVKskMIeC7-XGvnFm7OvuDj6id2hAv7KMteapCIz3emyA-vWAzT5bOiN3sXS1iBkH7r953HWfEefgJXRG9CZSAdtqDXIo62PKfZk6HKk_3T9mEepo8pThBwvvlky21nFlKcF0ADuOTZnjpEgCvwi5JVd9PFqIqGvIrDzhHdEkwyGb3m_Hx1v55Njfmx67YI9KlSqv68dCbJPdXDdO-lvH5rb4oqSNN9xRK3qboyTYZKZ158Y2t-G6JosPD-4dkpCoo5DxoP427hLZnIieqCibSSXJuVD4P2m-rqNI4Th3SzX5lmNoMneWtMIy4eCc0zbmbkdrzd8L04dPeTdCbHpVE4yt4hYFK5Zus8ylDNjtXQTPZhxXH1xEWmp2Zi_-nAeVkJmmq7RVXMSU72jSCmo6CyAA2fxsJst-cgwkL6i3ujBJanz6fJl7zCkqOi8KQQr-0yNyFXxWw8_4dJSrhKQZIIf9dNpNUDUzYeUNG29xKM3wWlufQjKs_x9gQoLrx3g3IS8q0H46zI-IRXrjfv38YUSglSqUlE2tgQGUB5QAsBtg_Y4pYNSehKW8y2UeCdObSvCLyjOPNzol7qDrfuPVncWxze_dbc2gXML_G1RGfRJPMwTs0r9v_j18ifF2un3cUwy3ApJrvBXI7pN1zfznyPdCDcBxBdRKX9B_6-wF8r2Qu-nKxFzaNrz3zcTBWkEbYp-7mMQl8Er41cXYXeHiNWX2TDi4UtMa9-FWLlfEk5Zrcklsd8_TraOoLBG6ATjbggVTyRjZOy6a_z6cK-K3GklrId0FCXV8rkoEJL8gZU0va23HCK6J-dABbO-H6eTL7-m-2ge7qPKj5iBxToCQL35Jw-g5ipbtzI_DAU3vhYc_92lv8PIMqc24oXox1fdvbakTUjlaLjQslZGDnZd6ZrGnNzcCe2I6noOYaAOkvB9kNYAOxAsMvzQGDXAqviLSYOkbOWNuOd0vuXdgPt8wPAk4LkW2uYjIZ6V72QZhtyRIsPRyvyRCLBsZSXdJIrQAfSvhri8sqZjG0qu5z3AW-A_NHQh_0Cdq-elVZ8cOhnEusgtEoqwAZHpcn_gySLle18fe-p3FK29Zfdvi8bjZfkvLLshRzW3mM9VnkGkItXeBhNZ0ZazR9Kb7qU-XysQbmEIK6PlZdbaHslYltcTumFramk2D3H-sTdAVLwb7vXt9vphBh_35jMn5abQAz8-XgB-6NiJjB9NdWC-_eVOPOvQHH7wE7m6KaBmYAS2w66VtGlJFjBUfg20fjHDEPNDo39rxm37__cZ6I9UI30z-RhvaSHMkLojd_8R_PPi251A0VtbmfttL09OPY57r-WmJ96rLpTd_anwGpynFfQv_L6JgtYhmrVt6G86A2tRGfG4wCnqrQD61fLU9zzgVhvCa2sIBG6_YLqxhYdT6PIXuxsop_1-DP&skey=72472b0eb8793570&v=v56",
+      "bytes": 168352,
+      "sha256": "fcb5dc2dd597d35b86cf61c34aaedc82133461972460bcaec8e780628a9426a8"
+    },
+    "sup-57f8e640a53be2f1.woff2": {
+      "family": "Noto Sans",
+      "url": "https://fonts.gstatic.com/l/font?kit=o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc1azPD1CDFglaowkebNJz5mfD_1Bt-4WZzqKvVykjqcarX_Tgt9bOoDYxK8AQwPufh5-Xmol6QdUEo6rtrGPwVm8iz2lasCPB4XDYgfpYS7xkYnZOEpEeTk6yZ4jLnMoKFLxUrFXL_ZRFL5goyrLOO2jmjKfBTCNrbN6mDxrEuSatquzyKj0zs1Te0mq3ROSKfLOZ7yIGjWSm3wUChl9-GQoDiczxPs6LV9SXR3ezdgKcXVimOXINsPabmeEoKQ6lc76342xG4pT9JIkPwUChmRGvCj1VHfhvVLN2B0VaxOVme_e-WnPuvg7abvcIouf4og1ZjUxZfDNTbovkUDCswqBgLt_3OnErBZlIO3zYQxjuQCOwyuxxEkIR2OaPnndL-Ukb5jpJN986DSZ-R4qnibYEH-tUXvEXFd6rwRt8GrxYD89s_PF0Z4r0I1-kOhfIjmGXX4xV3bW6qqzJoFhNfu6ymt0Wydj2Qok3aYSIUi5lzjI__yvf6eiy5keYRlJfzWPRyc3IvavV57-VJ9Vn4jP8xEsLbmwdHeH_ev-j3Ayq3qnJGBhtRga3VVcp01Jqbsd3lUnc&skey=2b960fe17823056f&v=v42",
+      "bytes": 42016,
+      "sha256": "57f8e640a53be2f1ab236ba2904fc28c9a31bd004d1b18bc45ebd7007f2b0141"
+    },
+    "sup-f305d0f9d163cf18.woff2": {
+      "family": "Noto Sans Devanagari",
+      "url": "https://fonts.gstatic.com/l/font?kit=TuG7UUFzXI5FBtUq5a8bjKYTZjtRU6Sgv3NaV_SNmI0b8QQCQmH95ieYzItR3H0ovJdKxs42lGMly9ku4bG9lZEEYec-e0CP9go5_Uu6tRstzydcPedGPuBrO6XF1FKFBjGNwPXpzvH7nFe8p1iDmdy6kA3PWmqkbVravXpX38d2FQGUQAcKqp_0cmqi9z5-r_FFMw4AQyiwnVRQUw1TYQBmshgkCuSDrNvmP_UBuiDsCCB4TeThNim26RwrdVePYHeu6QuShlvi6EMqXHl8nRgtyeBphkB-Kg9caPecN2rjz-sIV7dXRh225Y05PPr0QF7HlR7NoCsWsWAGFqzwj2EpUd8qJ6SzemH5hosavw7U3E_jkP5hpJrgcyTVGBwkBC7H4vU_ch-1IKXUTsIgEdn9TeQfrZE4IR_O7zPnwhhZCD8HGLhF2GJSuS_wPgqMAeTq9sxmHKoURDAWU_qn-YiMebYSykOEek1JQfTLxgF32w1YtNRSPKP9DmodGDosTpnxwQti21Ui81Fxaw&skey=c202a598b7d2afc7&v=v30",
+      "bytes": 95292,
+      "sha256": "f305d0f9d163cf18023fa9769c90ef13573ef386b5b195d7c29c333c81a3aeae"
+    },
+    "sup-7e521dfab4630087.woff2": {
+      "family": "Noto Nastaliq Urdu",
+      "url": "https://fonts.gstatic.com/l/font?kit=LhW4MUPbN-oZdNFcBy1-DJYsEoTq5puHTeicMffcHXJfazyRAYOa79bPs3mZ69VM8sSSDdgg0URrXzwKYlCkad-24tz67D1Ep-6e1vo5seYnCHQHKbWU9JRVyEdHJNs9Xkz_OJU2HnGLAIWhZQw_ymPllJfiHmRi37p6gB5Bq539BfMTf5CRWhXxFxCReMtM4Vwke9wvNxYMX7zRpiTzMxSyUmcmo980KxBSA0ZcuM5lUNSL8QlUBoBXUJngIwjpq29MYBq98Sb2CdbWBHUEz3cF8bvFlpdKnh3gdUqH3vTSn7mmf4exoHapJrIqxFjuZMa1CTIuDHOm7uIH7SY7KCQUTWPhBL5hNI1Ea_ziutJNNDCuPytDfvykxJKcsVUR6bwkORLX58bjMnDXm9T2dQM&skey=25e2fc271bc7cedc&v=v23",
+      "bytes": 199320,
+      "sha256": "7e521dfab46300879172aecd5021e0f46323a3183565faa9bc76065dd62baa3c"
+    }
+  },
+  "licenses": [
+    "sup-barlowcondensed-OFL.txt",
+    "sup-notonastaliqurdu-OFL.txt",
+    "sup-notosans-OFL.txt",
+    "sup-notosansarabic-OFL.txt",
+    "sup-notosansdevanagari-OFL.txt",
+    "sup-notosansjp-OFL.txt",
+    "sup-notosanskr-OFL.txt",
+    "sup-notosanssc-OFL.txt",
+    "sup-notosanstc-OFL.txt"
+  ]
+}

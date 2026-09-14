@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(sup-d8c92bedadf1989d.woff2) format('woff2');
+  unicode-range: U+20-21, U+24, U+27-29, U+2b-3b, U+3f-5a, U+61-7b, U+7d, U+b7, U+c0-c3, U+c8-ca, U+cc-ce, U+d1-d5, U+d9-db, U+dd, U+e0-e3, U+e8-ea, U+ec-ee, U+f1-f5, U+f9-fb, U+fd, U+102-103, U+106-109, U+110-111, U+114-115, U+11c-11f, U+124-125, U+128-129, U+12c-12d, U+134-135, U+139-13a, U+143-144, U+14e-14f, U+154-155, U+15a-15d, U+168-169, U+16c-16d, U+174-177, U+179-17a, U+1a0-1a1, U+1af-1b0, U+1f4-1f5, U+1f8-1f9, U+300-303, U+306, U+309, U+31b, U+323, U+60c, U+1e04-1e05, U+1e0c-1e0d, U+1e24-1e25, U+1e30-1e33, U+1e36-1e37, U+1e3e-1e3f, U+1e42-1e43, U+1e46-1e47, U+1e4c-1e4d, U+1e54-1e55, U+1e5a-1e5b, U+1e62-1e63, U+1e6c-1e6d, U+1e78-1e79, U+1e7c-1e83, U+1e88-1e89, U+1e90-1e93, U+1ea0-1ef9, U+2013-2014;
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(sup-acd3814222dcceb2.woff2) format('woff2');
+  unicode-range: U+20-21, U+24, U+27-29, U+2b-3b, U+3f-5a, U+61-7b, U+7d, U+b7, U+c0-c3, U+c8-ca, U+cc-ce, U+d1-d5, U+d9-db, U+dd, U+e0-e3, U+e8-ea, U+ec-ee, U+f1-f5, U+f9-fb, U+fd, U+102-103, U+106-109, U+110-111, U+114-115, U+11c-11f, U+124-125, U+128-129, U+12c-12d, U+134-135, U+139-13a, U+143-144, U+14e-14f, U+154-155, U+15a-15d, U+168-169, U+16c-16d, U+174-177, U+179-17a, U+1a0-1a1, U+1af-1b0, U+1f4-1f5, U+1f8-1f9, U+300-303, U+306, U+309, U+31b, U+323, U+60c, U+1e04-1e05, U+1e0c-1e0d, U+1e24-1e25, U+1e30-1e33, U+1e36-1e37, U+1e3e-1e3f, U+1e42-1e43, U+1e46-1e47, U+1e4c-1e4d, U+1e54-1e55, U+1e5a-1e5b, U+1e62-1e63, U+1e6c-1e6d, U+1e78-1e79, U+1e7c-1e83, U+1e88-1e89, U+1e90-1e93, U+1ea0-1ef9, U+2013-2014;
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(sup-de39a5966b6668e0.woff2) format('woff2');
+  unicode-range: U+20-21, U+24, U+27-29, U+2b-3b, U+3f-5a, U+61-7b, U+7d, U+b7, U+c0-c3, U+c8-ca, U+cc-ce, U+d1-d5, U+d9-db, U+dd, U+e0-e3, U+e8-ea, U+ec-ee, U+f1-f5, U+f9-fb, U+fd, U+102-103, U+106-109, U+110-111, U+114-115, U+11c-11f, U+124-125, U+128-129, U+12c-12d, U+134-135, U+139-13a, U+143-144, U+14e-14f, U+154-155, U+15a-15d, U+168-169, U+16c-16d, U+174-177, U+179-17a, U+1a0-1a1, U+1af-1b0, U+1f4-1f5, U+1f8-1f9, U+300-303, U+306, U+309, U+31b, U+323, U+60c, U+1e04-1e05, U+1e0c-1e0d, U+1e24-1e25, U+1e30-1e33, U+1e36-1e37, U+1e3e-1e3f, U+1e42-1e43, U+1e46-1e47, U+1e4c-1e4d, U+1e54-1e55, U+1e5a-1e5b, U+1e62-1e63, U+1e6c-1e6d, U+1e78-1e79, U+1e7c-1e83, U+1e88-1e89, U+1e90-1e93, U+1ea0-1ef9, U+2013-2014;
+}
