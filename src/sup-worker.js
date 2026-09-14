@@ -7,7 +7,9 @@ const supPath = url => SUP.aliases[url.pathname] || url.pathname;
 const supFull = path => path.startsWith('/img/full/') || (path.startsWith('/img/var/') && !path.endsWith('-thumb.jpg'));
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
-    if (SUP.enabled) await (await caches.open(SUP_CACHE)).addAll(SUP.precache.map(p => new Request(p, {cache:'reload'})));
+    // No cache:'reload': the page downloaded these seconds ago and they are still fresh,
+    // so reloading re-fetched the whole document while the diner was scrolling.
+    if (SUP.enabled) await (await caches.open(SUP_CACHE)).addAll(SUP.precache);
     await self.skipWaiting();
   })());
 });

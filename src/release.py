@@ -56,7 +56,8 @@ def verify(work):
     if data['structure'] != json.loads((work / 'structure.json').read_text()):
         raise ValueError('Built structure/prices differ from source')
     expected = {'index.html', 'qrcard.html', 'revision.json', '.nojekyll',
-                'img/logo.png', 'img/social-logo.png', 'img/qr-menu.png'}
+                'img/logo.png', 'img/social-logo.png', 'img/qr-menu.png',
+                'img/icon.png', 'img/doodle.jpg'}
     for source, target in [('items', 'img'), ('full', 'img/full'), ('variants', 'img/var')]:
         expected.update(f'{target}/{p.name}' for p in (work / 'assets' / source).iterdir() if p.suffix in ('.jpg', '.png'))
     expected.update(f'pdf/SUP-Menu-{lang}.pdf' for lang in LANGS)

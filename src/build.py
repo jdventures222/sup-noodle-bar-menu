@@ -45,7 +45,9 @@ html = html.replace("__DATA__", data.replace("</", "<\\/"))
 fallback = markup(structure, all_strings['en'])
 html = html.replace('__NOJS__', fallback)
 print('No-JS markup:', len(fallback.encode()), 'bytes')
-html = html.replace("__ICON__", uri("icon.png", "image/png")).replace("__LOGO__", uri("logo.png", "image/png")).replace("__DOODLE__", uri("doodle.jpg", "image/jpeg"))
+# Referenced as files, not inlined: base64 of these three was 62% of the gzipped
+# document, and every byte of the document blocks first paint.
+html = html.replace("__ICON__", "img/icon.png").replace("__LOGO__", "img/logo.png").replace("__DOODLE__", "img/doodle.jpg")
 html = html.replace("__BOWL__", uri("bowl.jpg", "image/jpeg")).replace("__KIMCHI__", uri("kimchi.jpg", "image/jpeg"))
 out = root / "sup-menu.html"
 out.write_text(html)
