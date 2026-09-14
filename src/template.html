@@ -340,10 +340,16 @@
 
   /* Phase 2: font subsets, search and cached-menu status. */
   .langbar bdi, .opt .native, .opt .native bdi, .pdfs bdi, #sup-nojs bdi[lang] { font-family: system-ui, sans-serif; }
-  .bar .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .bar .wrap { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
   #jumpRow, #summary, #supOffline { grid-column: 1 / -1; }
   #searchBtn { justify-self: end; }
   #searchBtn, #sectionBtn { max-width: 100%; white-space: normal; }
+  /* The masthead logo scrolls away, so the bar carries it. It keeps its grid cell at
+     the top of the page and hides by visibility, so it is never a clickable or
+     focusable target while invisible, and revealing it cannot change the bar height. */
+  .bar-logo { justify-self: center; display: flex; align-items: center; min-height: 44px; padding: 0 8px; border: 0; background: none; cursor: pointer; opacity: 0; visibility: hidden; transition: opacity .18s ease; }
+  .bar.scrolled .bar-logo { opacity: 1; visibility: visible; }
+  .bar-logo img { display: block; width: 32px; height: 32px; border-radius: 50%; }
   .fine bdi { overflow-wrap: anywhere; }
   .search-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
   .search-controls input { flex: 1 1 180px; min-width: 0; width: 100%; padding: 10px; font: inherit; border: 1px solid var(--control); border-radius: 8px; }
@@ -618,10 +624,15 @@ function renderBar() {
   ab.addEventListener("click", e => openSheet("filterSheet", filterSheetHTML(), e.detail === 0));
   const sections = document.createElement("button"); sections.type = "button"; sections.className = "section-btn"; sections.id = "sectionBtn"; sections.textContent = t("ui.sections"); sections.setAttribute("aria-haspopup", "dialog");
   sections.addEventListener("click", e => openSheet("sectionSheet", sectionSheetHTML(), e.detail === 0));
-  $("sectionBtn")?.remove(); $("searchBtn")?.remove();
+  $("sectionBtn")?.remove(); $("searchBtn")?.remove(); $("barLogo")?.remove();
   const search = document.createElement("button"); search.id = "searchBtn"; search.className = "section-btn"; search.type = "button"; search.textContent = t("ui.search"); search.setAttribute("aria-haspopup", "dialog");
   search.addEventListener("click", e => openSearch(e.detail === 0));
-  jr.before(sections, search);
+  const logo = document.createElement("button"); logo.type = "button"; logo.id = "barLogo"; logo.className = "bar-logo"; logo.setAttribute("aria-label", t("ui.brand"));
+  const mark = document.createElement("img"); mark.src = document.querySelector(".masthead .brand img").src; mark.alt = ""; mark.width = 32; mark.height = 32;
+  logo.append(mark);
+  // html{scroll-behavior:smooth} carries the animation and already flips to auto under reduced motion.
+  logo.addEventListener("click", () => window.scrollTo({ top: 0 }));
+  jr.before(sections, logo, search);
   jr.append(lb, ab); const sep = document.createElement("span"); sep.className = "sep"; jr.append(sep);
   DATA.structure.sections.forEach(sec => {
     const a = document.createElement("a"); a.className = "chip"; a.href = "#sec-" + sec.id; a.innerHTML = prose(t(`sec.${sec.id}.title`)); jr.appendChild(a);
@@ -777,6 +788,9 @@ function currentSection() {
 }
 function observeSections() {
   spyRaf = 0;
+  // The bar shows the logo only once the masthead's own copy has left the viewport.
+  const brand = document.querySelector(".masthead .brand");
+  $("bar").classList.toggle("scrolled", brand.getBoundingClientRect().bottom <= 0);
   const cur = currentSection();
   document.querySelectorAll("#jumpRow a").forEach(a => {
     if (a.getAttribute("href") === "#" + cur) {
