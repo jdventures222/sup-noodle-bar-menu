@@ -23,6 +23,8 @@ for lang in LANGS:
     shutil.copy2(root / 'pdf' / f'SUP-Menu-{lang}.pdf', site / 'pdf')
 shutil.copy2(root / 'assets' / 'logo.png', site / 'img' / 'logo.png')
 shutil.copy2(root / 'assets' / 'logo.png', site / 'img' / 'social-logo.png')
+shutil.copy2(root / 'assets' / 'icon.png', site / 'img' / 'icon.png')
+shutil.copy2(root / 'assets' / 'doodle.jpg', site / 'img' / 'doodle.jpg')
 
 # Compile and run by exact executable path; all tools/intermediate files stay in tests/.
 (root / 'tests').mkdir(exist_ok=True)
