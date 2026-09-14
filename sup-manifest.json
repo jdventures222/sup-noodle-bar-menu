@@ -1,14 +1,15 @@
 {
   "revision": {
     "date": "2026-09-14",
-    "hash": "ff1a8a7d",
-    "stamp": "2026-09-14 ff1a8a7d"
+    "hash": "dd9671dd",
+    "stamp": "2026-09-14 dd9671dd"
   },
   "enabled": true,
   "files": [
     "/.nojekyll",
     "/img/bao.jpg",
     "/img/cajun.jpg",
+    "/img/doodle.jpg",
     "/img/drynoodle.jpg",
     "/img/eggrolls.jpg",
     "/img/friedegg.jpg",
@@ -54,6 +55,7 @@
     "/img/full/wings.jpg",
     "/img/full/yuzupeach.jpg",
     "/img/herbaltea.jpg",
+    "/img/icon.png",
     "/img/jasmineiced.jpg",
     "/img/kidsbox.jpg",
     "/img/kimchi.jpg",
