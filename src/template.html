@@ -144,7 +144,7 @@
   .items { list-style: none; margin: 0; padding: 0; }
   .item { padding: 14px 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--bar-h) + 8px); }
   .item.flagged { background: var(--flag-bg); box-shadow: inset 3px 0 0 var(--red-deep); border-radius: 10px; margin: 2px -10px; padding-inline-start: 12px; padding-inline-end: 10px; border-bottom-color: transparent; }
-  .hide-flagged .item.flagged { display: none; }
+  .hide-flagged :is(.item, .special).flagged { display: none; }
   .has-photos .item { display: grid; grid-template-columns: minmax(0, 1fr) var(--thumb); gap: 12px; align-items: start; }
   .has-photos .item.no-photo { grid-template-columns: minmax(0, 1fr); }
   .compact { --thumb: 72px; }
@@ -473,8 +473,9 @@ const listSeparator = () => isRTL() ? "، " : ", ";
 const listNames = arr => arr.map(aName).join(listSeparator());
 
 /* Photos, in menu order. */
-const PHOTOS = []; const PHOTO_INDEX = {}; const VARIANT_INDEX = {};
+const PHOTOS = []; const PHOTO_INDEX = {}; const VARIANT_INDEX = {}; const ITEM_BY_ID = {};
 DATA.structure.sections.forEach(sec => sec.items.forEach(it => {
+  ITEM_BY_ID[it.id] = it;
   const f = DATA.photos[it.id], rows = DATA.variants[it.id] || [];
   if (f && rows.length < 2) {
     const full = DATA.full[it.id];
@@ -548,11 +549,15 @@ function optionShotsHTML(it, k) {
 function specialsHTML() {
   return `<div class="specials">${DATA.structure.specials.map(sp => {
     const img = DATA.photos[sp.item] ? `<img src="img/${DATA.photos[sp.item]}" alt="" width="84" height="84">` : `<span></span>`;
-    if (sp.id === "lunch") return `<a class="special" href="#item-${sp.item}" data-target="item-${sp.item}">${img}<div>
+    // The card carries its dish's allergens so "hide flagged" takes it away with the dish.
+    // It shows no warning of its own: tapping it lands on the dish, which states them.
+    const promoted = ITEM_BY_ID[sp.item];
+    const attrs = `class="special" href="#item-${sp.item}" data-allergens="${promoted ? allOf(promoted).join(" ") : ""}"`;
+    if (sp.id === "lunch") return `<a ${attrs}>${img}<div>
       <div class="eyebrow">${prose(t("ui.lunchEyebrow"))}</div><h2>${prose(t("ui.lunchTitle"))}</h2>
       <div class="price">${ltr(money(sp.offer))}<s>${ltr(money(sp.regular))}</s></div>
       <p class="when">${prose(t("ui.lunchWhen"))}</p><p class="terms">${prose(t("ui.lunchTerms"))}</p></div>${ICON.chevron}</a>`;
-    return `<a class="special" href="#item-${sp.item}" data-target="item-${sp.item}">${img}<div>
+    return `<a ${attrs}>${img}<div>
       <div class="eyebrow">${prose(t("ui.kimchiEyebrow"))}</div><h2>${prose(t("ui.kimchiTitle"))}</h2>
       <p class="when">${prose(t("ui.kimchiSub"))}</p></div>${ICON.chevron}</a>`;
   }).join("")}</div>`;
@@ -641,10 +646,6 @@ function renderBar() {
 function renderMain() {
   $("main").innerHTML = specialsHTML() + ctaHTML() + DATA.structure.sections.map(sectionHTML).join("");
   $("ctaFilter").addEventListener("click", e => openSheet("filterSheet", filterSheetHTML(), e.detail === 0));
-  document.querySelectorAll(".special").forEach(a => a.addEventListener("click", () => {
-    const tgt = $(a.dataset.target);
-    if (tgt && tgt.classList.contains("flagged") && state.hide) { state.hide = false; applyFilter(); }
-  }));
 }
 function render() {
   document.documentElement.lang = state.lang === "zh" ? "zh-Hans" : state.lang;
@@ -733,7 +734,7 @@ function toggleAvoid(a) {
 function clearAvoid() { state.avoid.clear(); state.hide = false; store("sup-avoid", ""); const y = window.scrollY; renderMain(); applyFilter(); window.scrollTo(0, y); }
 function applyFilter() {
   let n = 0;
-  document.querySelectorAll(".item").forEach(el => {
+  document.querySelectorAll(".item, .special").forEach(el => {
     const hits = (el.dataset.allergens || "").split(" ").filter(a => a && state.avoid.has(a));
     el.classList.toggle("flagged", hits.length > 0);
     if (hits.length && el.dataset.kind === "item") n++;
