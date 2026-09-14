@@ -780,7 +780,13 @@ function observeSections() {
   const cur = currentSection();
   document.querySelectorAll("#jumpRow a").forEach(a => {
     if (a.getAttribute("href") === "#" + cur) {
-      if (!a.hasAttribute("aria-current")) { a.setAttribute("aria-current", "location"); a.scrollIntoView({ block: "nearest", inline: "center" }); }
+      if (!a.hasAttribute("aria-current")) {
+        a.setAttribute("aria-current", "location");
+        // Scroll only the chip row. scrollIntoView also scrolls the page and can
+        // undo a just-completed sheet jump in iOS Safari.
+        const row = $("jumpRow"), r = a.getBoundingClientRect(), box = row.getBoundingClientRect();
+        row.scrollBy({ left: r.left + r.width / 2 - box.left - box.width / 2, behavior: "instant" });
+      }
     } else a.removeAttribute("aria-current");
   });
 }
@@ -853,7 +859,7 @@ document.querySelectorAll("dialog").forEach(dlg => {
     const c = e.target.closest("[data-close]"); if (c) { closeDialog(dlg); return; }
     const l = e.target.closest("[data-lang]"); if (l) { const code = l.dataset.lang; dlg.__afterClose = syncUrl; closeDialog(dlg); if (code !== state.lang) setLang(code); return; }
     const section = e.target.closest("[data-section]");
-    if (section) { e.preventDefault(); const target = $(section.dataset.section); dlg.__afterClose = () => { target.setAttribute("tabindex", "-1"); target.focus({ preventScroll: true }); target.scrollIntoView({ block: "start", behavior: "instant" }); }; closeDialog(dlg); return; }
+    if (section) { e.preventDefault(); const target = $(section.dataset.section); dlg.__afterClose = () => { target.setAttribute("tabindex", "-1"); target.focus({ preventScroll: true }); window.scrollTo({ top: scrollY + target.getBoundingClientRect().top - $("bar").offsetHeight - 8, behavior: "instant" }); }; closeDialog(dlg); return; }
     const a = e.target.closest("[data-avoid]"); if (a) { toggleAvoid(a.dataset.avoid); return; }
     if (e.target.closest("#hideBtn")) { state.hide = !state.hide; applyFilter(); return; }
     if (e.target.closest("#clearBtn")) { clearAvoid(); return; }
@@ -929,7 +935,7 @@ $('searchSheet').addEventListener('click', e => {
     // Match section navigation: account for the sticky bar, then leave focus on the dish.
     target.setAttribute('tabindex', '-1');
     target.focus({preventScroll:true});
-    target.scrollIntoView({block:'start', behavior:'instant'});
+    window.scrollTo({top: scrollY + target.getBoundingClientRect().top - $('bar').offsetHeight - 8, behavior:'instant'});
     clearTimeout(searchHighlightTimer);
     document.querySelector('.search-highlight')?.classList.remove('search-highlight');
     // A brief static tint adds no animation, including with reduced motion enabled.
