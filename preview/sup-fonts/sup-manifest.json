@@ -22,19 +22,19 @@
       ]
     },
     "ko": {
-      "glyph_hash": "aab0d2626a07f8a02995ba4193c0d01cb5568e0e635044321e39e28d1b738bdd",
+      "glyph_hash": "c3d423d4677cd274353275241c302f9ea18989ce5c4bcd8831745bcb16bbe489",
       "families": [
         "Noto Sans KR"
       ]
     },
     "zh": {
-      "glyph_hash": "a60e0299984d2b3691565a94d3b8d797e33a459d18847d0cfe073159ac34c7c0",
+      "glyph_hash": "47c88babfa1f7865a6ff90bd7a26142cf8ccf6a9b8553e81f196ee7e913873ed",
       "families": [
         "Noto Sans SC"
       ]
     },
     "zh-Hant": {
-      "glyph_hash": "ced002004724a4e41cf2670f9605f026aa4ef4dd8dc8e692427245a1aee507a3",
+      "glyph_hash": "cf9711130f098ea6533a89508d13ee18717f4aaf673e40ca688d741c50ce44e4",
       "families": [
         "Noto Sans TC"
       ]
@@ -59,7 +59,7 @@
       ]
     },
     "ja": {
-      "glyph_hash": "4faece2be77d49c0ba57a72b64507912e928956f9553fb773a299948ccf290ba",
+      "glyph_hash": "78e94a65d06888d7dddcc4966de7b293888e3152361ba37276674dfef027c7ce",
       "families": [
         "Noto Sans JP"
       ]
