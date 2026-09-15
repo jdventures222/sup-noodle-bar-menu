@@ -194,7 +194,7 @@
      shrinks to fit against the inline-end edge, sitting under the photo. */
   .has-photos .item > .al { grid-column: 1 / -1; justify-self: end; text-align: end; max-width: 100%; margin-top: 2px; }
   .al b { font-weight: 600; color: var(--ink); }
-  .al mark { background: transparent; color: var(--red-deep); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 2px; }
+  .al mark { background: transparent; color: var(--red-deep); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-skip-ink: none; }
   .addons { border: 2px solid var(--red); border-radius: 12px; padding: 10px 14px 4px; margin: 16px 0 0; }
   .addons > h3 { font-family: var(--display); text-transform: uppercase; font-weight: 800; color: var(--red-deep); font-size: 1.125rem; line-height: 1.375rem; margin: 0 0 2px; }
   html[lang="ko"] .addons > h3, html[lang^="zh"] .addons > h3 { text-transform: none; }
@@ -648,10 +648,11 @@ function renderBar() {
     if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
   });
   /* "Menu sections" and "Search dishes" are switched off at the owner's request.
-     Flip MENU_TOOLS back to true to restore them; nothing else was removed. */
+     The whole top row goes with them — the bar logo shared it, and leaving the row
+     in place held 44px of empty height above the section chips. Flip MENU_TOOLS
+     back to true to restore all three; nothing else was removed. */
   const MENU_TOOLS = false;
   if (MENU_TOOLS) jr.before(sections, logo, search);
-  else jr.before(document.createElement("span"), logo, document.createElement("span"));
   jr.append(lb, ab); const sep = document.createElement("span"); sep.className = "sep"; jr.append(sep);
   DATA.structure.sections.forEach(sec => {
     const a = document.createElement("a"); a.className = "chip"; a.href = "#sec-" + sec.id; a.innerHTML = prose(t(`sec.${sec.id}.title`)); jr.appendChild(a);
@@ -817,8 +818,11 @@ function observeSections() {
         a.setAttribute("aria-current", "location");
         // Scroll only the chip row. scrollIntoView also scrolls the page and can
         // undo a just-completed sheet jump in iOS Safari.
+        // Gliding rather than jumping: scrolling past several sections fires this
+        // once per section, and instant hops read as the row flickering.
         const row = $("jumpRow"), r = a.getBoundingClientRect(), box = row.getBoundingClientRect();
-        row.scrollBy({ left: r.left + r.width / 2 - box.left - box.width / 2, behavior: "instant" });
+        const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        row.scrollBy({ left: r.left + r.width / 2 - box.left - box.width / 2, behavior: still ? "instant" : "smooth" });
       }
     } else a.removeAttribute("aria-current");
   });
