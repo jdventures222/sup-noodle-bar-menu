@@ -632,11 +632,17 @@ function renderBar() {
   $("sectionBtn")?.remove(); $("searchBtn")?.remove(); $("barLogo")?.remove();
   const search = document.createElement("button"); search.id = "searchBtn"; search.className = "section-btn"; search.type = "button"; search.textContent = t("ui.search"); search.setAttribute("aria-haspopup", "dialog");
   search.addEventListener("click", e => openSearch(e.detail === 0));
-  const logo = document.createElement("button"); logo.type = "button"; logo.id = "barLogo"; logo.className = "bar-logo"; logo.setAttribute("aria-label", t("ui.brand"));
+  const logo = document.createElement("button"); logo.type = "button"; logo.id = "barLogo"; logo.className = "bar-logo"; logo.setAttribute("aria-label", plain(t("ui.jumpTo") + ": " + t("ui.brand")));
   const mark = document.createElement("img"); mark.src = document.querySelector(".masthead .brand img").src; mark.alt = ""; mark.width = 32; mark.height = 32;
   logo.append(mark);
   // html{scroll-behavior:smooth} carries the animation and already flips to auto under reduced motion.
-  logo.addEventListener("click", () => window.scrollTo({ top: 0 }));
+  // Focus moves to the masthead heading: this button hides itself on arrival, so leaving focus
+  // on it would drop a keyboard user back to the top of the document with no destination.
+  logo.addEventListener("click", () => {
+    window.scrollTo({ top: 0 });
+    const h = document.querySelector(".masthead h1");
+    if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+  });
   jr.before(sections, logo, search);
   jr.append(lb, ab); const sep = document.createElement("span"); sep.className = "sep"; jr.append(sep);
   DATA.structure.sections.forEach(sec => {
@@ -1001,7 +1007,7 @@ function lbCaption(i) {
   const p = PHOTOS[i];
   const vn = p.vk ? " · " + t(`item.${p.id}.price.${p.vk}`) : "";
   LB.cap.innerHTML = `<span><span class="lb-name">${prose(t(`item.${p.id}.name`) + vn)}</span>${p.single ? `<b>${ltr(money(p.single.p))}</b>` : ""}</span>`;
-  $("lbPrev").disabled = i === 0; $("lbNext").disabled = i === PHOTOS.length - 1;
+  $("lbPrev").disabled = lbSeek(i - 1, -1) < 0; $("lbNext").disabled = lbSeek(i + 1, 1) < 0;
 }
 function lbSetZoom(i, s, tx, ty, animate) {
   const z = LB.zooms[i];
@@ -1024,8 +1030,20 @@ function lbCancelGesture() {
   LB.pointers.clear(); LB.gest = null; lbCancelTap();
   if (g && g.mode === "drag") lbSpringBack();
 }
+/* The viewer walks PHOTOS directly. Without this a diner who hid an allergen could swipe
+   from a visible dish straight onto a hidden one, which the caption never warns about. */
+const lbEligible = i => {
+  if (!state.hide) return true;
+  const el = $("item-" + PHOTOS[i].id);
+  return !el || !el.classList.contains("flagged");
+};
+const lbSeek = (from, step) => {
+  for (let i = from; i >= 0 && i < PHOTOS.length; i += step) if (lbEligible(i)) return i;
+  return -1;
+};
 function lbGoto(i, animate) {
   i = clamp(i, 0, PHOTOS.length - 1);
+  if (!lbEligible(i)) { const j = lbSeek(i, i < LB.index ? -1 : 1); if (j < 0) return; i = j; }
   if (LB.gest) lbCancelGesture(); else lbCancelTap();
   if (i !== LB.index) { lbSetZoom(LB.index, 1, 0, 0, false); LB.index = i; LB.s = 1; LB.tx = 0; LB.ty = 0; LB.track.classList.remove("zoomed"); lbCaption(i); lbLoad(i); }
   lbPlaceTrack(animate);
