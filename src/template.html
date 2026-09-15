@@ -412,6 +412,7 @@
     <button class="lb-nav next" type="button" id="lbNext"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></span></button>
     <div class="lb-cap" id="lbCap"></div>
   </div>
+  <p class="sr-only" id="lbStatus" role="status" aria-live="polite" aria-atomic="true"></p>
 </dialog>
 
 <script>
@@ -731,6 +732,18 @@ document.addEventListener("keydown", e => {
     inSheet.innerHTML = langSheetHTML();
     inSheet.querySelector('[aria-checked="true"]').focus({ preventScroll: true });
     inSheet.querySelector('[aria-checked="true"]').scrollIntoView({ block: "nearest" });
+  } else {
+    /* renderLangbar() replaces the strip, so focus has to be restored onto the
+       new chip or a second arrow press has nothing to act on. The row is scrolled
+       directly: scrollIntoView here would move the page as well. */
+    const strip = $("langbar");
+    const chip = strip.querySelector(`[data-lang="${next.dataset.lang}"]`);
+    if (chip) {
+      chip.focus({ preventScroll: true });
+      const lead = chip.offsetLeft - strip.offsetLeft, trail = lead + chip.offsetWidth;
+      if (lead < strip.scrollLeft) strip.scrollLeft = Math.max(0, lead - 16);
+      else if (trail > strip.scrollLeft + strip.clientWidth) strip.scrollLeft = trail - strip.clientWidth + 16;
+    }
   }
 });
 
@@ -1011,6 +1024,9 @@ function lbCaption(i) {
   const p = PHOTOS[i];
   const vn = p.vk ? " · " + t(`item.${p.id}.price.${p.vk}`) : "";
   LB.cap.innerHTML = `<span><span class="lb-name">${prose(t(`item.${p.id}.name`) + vn)}</span>${p.single ? `<b>${ltr(money(p.single.p))}</b>` : ""}</span>`;
+  /* Paging is silent to a screen reader otherwise. Digits carry the position in
+     every language, so this needs no translated string. */
+  $("lbStatus").textContent = plain(t(`item.${p.id}.name`) + vn) + " · " + (i + 1) + " / " + PHOTOS.length;
   $("lbPrev").disabled = lbSeek(i - 1, -1) < 0; $("lbNext").disabled = lbSeek(i + 1, 1) < 0;
 }
 function lbSetZoom(i, s, tx, ty, animate) {
@@ -1052,7 +1068,9 @@ function lbGoto(i, animate) {
   if (i !== LB.index) { lbSetZoom(LB.index, 1, 0, 0, false); LB.index = i; LB.s = 1; LB.tx = 0; LB.ty = 0; LB.track.classList.remove("zoomed"); lbCaption(i); lbLoad(i); }
   lbPlaceTrack(animate);
 }
-function lbChrome(on) { LB.chromeOn = on; LB.chrome.style.transition = "opacity .2s ease-in-out"; LB.chrome.style.opacity = on ? 1 : 0; LB.chrome.classList.toggle("off", !on); }
+/* Faded-out chrome is invisible but would still take keyboard focus, so it is
+   also made inert; the caption stays readable to assistive technology. */
+function lbChrome(on) { LB.chromeOn = on; LB.chrome.style.transition = "opacity .2s ease-in-out"; LB.chrome.style.opacity = on ? 1 : 0; LB.chrome.classList.toggle("off", !on); LB.chrome.inert = !on; }
 function lbDrag(dx, dy) {
   const z = LB.zooms[LB.index], d = Math.hypot(dx, dy); z.style.transition = "none";
   z.style.transform = `translate(${dx}px, ${dy}px) scale(${1 - Math.min(d / 1400, .14)})`;
