@@ -647,7 +647,11 @@ function renderBar() {
     const h = document.querySelector(".masthead h1");
     if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
   });
-  jr.before(sections, logo, search);
+  /* "Menu sections" and "Search dishes" are switched off at the owner's request.
+     Flip MENU_TOOLS back to true to restore them; nothing else was removed. */
+  const MENU_TOOLS = false;
+  if (MENU_TOOLS) jr.before(sections, logo, search);
+  else jr.before(document.createElement("span"), logo, document.createElement("span"));
   jr.append(lb, ab); const sep = document.createElement("span"); sep.className = "sep"; jr.append(sep);
   DATA.structure.sections.forEach(sec => {
     const a = document.createElement("a"); a.className = "chip"; a.href = "#sec-" + sec.id; a.innerHTML = prose(t(`sec.${sec.id}.title`)); jr.appendChild(a);
@@ -677,17 +681,11 @@ function render() {
 }
 function syncUrl() { const u = new URL(location.href); u.searchParams.set("lang", state.lang); history.replaceState(history.state, "", u); }
 // Use stable content IDs, never the previous language's pixel offset.
-function readingPlace() {
-  const line = $("bar").getBoundingClientRect().bottom + 8;
-  const items = [...document.querySelectorAll(".item")].filter(e => e.getClientRects().length);
-  const crossing = items.find(e => { const r = e.getBoundingClientRect(); return r.top <= line + 2 && r.bottom > line; });
-  if (crossing) return { id: crossing.id };
-  const next = [...document.querySelectorAll("section.menu, .item")].filter(e => e.getClientRects().length).find(e => e.getBoundingClientRect().top >= line - 2);
-  if (next && next.getBoundingClientRect().top < innerHeight) return { id: next.id };
-  return { y: scrollY };
-}
 let langRestore = 0;
-async function restorePlace(place, token) {
+/* A new language is read from the beginning, so the menu returns to the top rather
+   than to the dish that was on screen. The font wait still matters: scrolling before
+   the new faces load lets a late swap move the page under the reader. */
+async function scrollToMenuStart(token) {
   // Reading layout forces the new language's font faces to be requested before ready.
   document.body.getBoundingClientRect();
   await window.supFontReady;
@@ -695,12 +693,10 @@ async function restorePlace(place, token) {
   await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
   if (token !== langRestore) return;
   syncBarHeight();
-  const target = place.id && $(place.id);
-  window.scrollTo({ top: target ? scrollY + target.getBoundingClientRect().top - $("bar").offsetHeight - 8 : place.y || 0, behavior: "instant" });
+  window.scrollTo({ top: 0, behavior: "instant" });
 }
 function setLang(code) {
   const dlg = openDlg();
-  const place = dlg?.__readingPlace || readingPlace();
   const active = document.activeElement;
   const returnId = dlg?.__returnFocus?.id;
   const barRadio = active?.closest("#langbar") && active.dataset.lang;
@@ -714,8 +710,8 @@ function setLang(code) {
     equivalent.classList.toggle("pointer-focus", !!wasPointer); equivalent.focus({ preventScroll: true });
   }
   const token = ++langRestore;
-  restorePlace(place, token);
-  if (dlg) dlg.__afterClose = () => { syncUrl(); restorePlace(place, token); };
+  scrollToMenuStart(token);
+  if (dlg) dlg.__afterClose = () => { syncUrl(); scrollToMenuStart(token); };
 }
 // APG radio pattern: arrows select and keep focus in the group; Space uses button activation.
 document.addEventListener("keydown", e => {
@@ -905,7 +901,6 @@ document.querySelectorAll("dialog").forEach(dlg => {
 function openSheet(id, html, keyboard) { requestOpen(adopt => openSheetNow(id, html, adopt, keyboard)); }
 function openSheetNow(id, html, adopt, keyboard) {
   const dlg = $(id); if (dlg.open) return;
-  dlg.__readingPlace = readingPlace();
   dlg.innerHTML = html; dlg.__returnFocus = document.activeElement; dlg.__keyboardOpen = keyboard;
   openDialog(dlg, adopt);
   if (id === "filterSheet") { $("statusRow").hidden = false; applyFilter(); }
@@ -1259,5 +1254,19 @@ startOffline();
 addEventListener("pageshow", e => { if (e.persisted) window.scrollTo(0, 0); });
 </script>
 
+<script>
+/* Aggregate, cookieless visit counts (Cloudflare Web Analytics). Inert while the
+   token is empty: no token means no third-party request is made at all. Paste the
+   site token here to switch counting on for every language and location. */
+(() => {
+  const ANALYTICS_TOKEN = "";
+  if (!ANALYTICS_TOKEN) return;
+  const s = document.createElement("script");
+  s.defer = true;
+  s.src = "https://static.cloudflareinsights.com/beacon.min.js";
+  s.setAttribute("data-cf-beacon", JSON.stringify({ token: ANALYTICS_TOKEN }));
+  document.head.appendChild(s);
+})();
+</script>
 </body>
 </html>

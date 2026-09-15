@@ -23,6 +23,15 @@
         ],
         "createdAt": "2026-09-14T23:49:08.454Z",
         "reason": "user confirmed: lightbox <img> whose src is assigned lazily in JS when a photo opens, from commit 05430e3"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/template.html"
+        ],
+        "createdAt": "2026-09-15T01:02:19.938Z",
+        "reason": "user confirmed 2026-09-14: the only side-tab in this file is .search-result.flagged, the allergen-avoidance indicator (commit 063f1fa) - carries safety meaning, not decoration"
       }
     ]
   }
