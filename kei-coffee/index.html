@@ -18,7 +18,7 @@
     --flag-bg: #FCEAE8; --amber: #9A5A0B; --amber-bg: #FFF3DE; --amber-line: #F0D3A3;
     --display: "Barlow Condensed", "Noto Sans", "Arial Narrow", Arial, sans-serif;
     --text: "Noto Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
-    --maxw: 720px; --bar-h: 52px; --thumb: 84px; --ease: cubic-bezier(.2, .8, .2, 1);
+    --maxw: 720px; --bar-h: 52px; --logo-band: 44px; --thumb: 84px; --ease: cubic-bezier(.2, .8, .2, 1);
   }
   html[lang="ko"] { --display: "Noto Sans", "Noto Sans KR", sans-serif; --text: "Noto Sans", "Noto Sans KR", sans-serif; }
   html[lang="zh-Hans"] { --display: "Noto Sans", "Noto Sans SC", sans-serif; --text: "Noto Sans", "Noto Sans SC", sans-serif; }
@@ -384,7 +384,12 @@
   #jumpRow, #summary { grid-column: 1 / -1; min-width: 0; }
   .bar .wrap > button { min-width: 0; min-height: 44px; max-width: 100%; }
   #sectionBtn, #searchBtn { white-space: normal; }
-  .bar-logo { justify-self: center; display: flex; align-items: center; justify-content: center; min-width: 64px; min-height: 44px; padding: 4px 8px; border: 0; background: none; cursor: pointer; opacity: 0; visibility: hidden; transition: opacity .18s ease; }
+  /* The masthead logo scrolls away, so the bar carries it. The band hangs above the
+     bar rather than sitting inside it: out of flow it reserves no height at the top
+     of the page, and the bar drops by exactly its height as it appears, so no content
+     below ever moves. Hidden by visibility, so it is never a focusable target. */
+  .bar-logo { position: absolute; inset-inline: 0; bottom: 100%; height: var(--logo-band); display: flex; align-items: center; justify-content: center; border: 0; background: var(--surface); cursor: pointer; opacity: 0; visibility: hidden; transition: opacity .18s ease; }
+  .bar.scrolled { top: var(--logo-band); }
   .bar.scrolled .bar-logo { opacity: 1; visibility: visible; }
   .bar-logo img { display: block; width: 48px; height: 36px; object-fit: contain; }
   .brand h1:focus-visible { outline: 0; }
@@ -681,7 +686,8 @@ function renderBar() {
   /* Sections and Search are switched off at the owner's request. Flip MENU_TOOLS
      back to true to restore them; nothing else was removed. */
   const MENU_TOOLS = false;
-  if (MENU_TOOLS) jr.before(sections, logo, search);
+  jr.before(logo);
+  if (MENU_TOOLS) jr.before(sections, search);
   else jr.before(document.createElement("span"), logo, document.createElement("span"));
   jr.append(ab);
   const sep = document.createElement("span"); sep.className = "sep"; sep.setAttribute("aria-hidden", "true"); jr.append(sep);
@@ -767,7 +773,9 @@ function applyFilter() {
   if ($("searchSheet").open) searchResults();
   syncBarHeight();
 }
-function syncBarHeight() { document.documentElement.style.setProperty("--bar-h", $("bar").offsetHeight + "px"); }
+function bandHeight() { return $("barLogo")?.offsetHeight || 0; }
+// The band sits outside the bar's own box, so an anchor has to clear both.
+function syncBarHeight() { document.documentElement.style.setProperty("--bar-h", ($("bar").offsetHeight + bandHeight()) + "px"); }
 /* The current section is read straight from the layout on every scroll frame rather than
    watched with an IntersectionObserver: a thin observer band can be crossed entirely between
    two samples during a flick, which leaves the previous chip highlighted. */
@@ -781,7 +789,9 @@ function currentSection() {
 function observeSections() {
   spyRaf = 0;
   const brand = document.querySelector(".masthead .brand");
-  $("bar").classList.toggle("scrolled", brand.getBoundingClientRect().bottom <= 0);
+  // The band appears exactly as the masthead passes under it, so it never paints over
+  // the masthead's own copy of the logo and the bar's top edge never jumps.
+  $("bar").classList.toggle("scrolled", document.querySelector(".masthead").getBoundingClientRect().bottom <= bandHeight());
   const cur = currentSection();
   document.querySelectorAll("#jumpRow a").forEach(a => {
     if (a.getAttribute("href") === "#" + cur) {
