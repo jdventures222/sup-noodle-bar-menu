@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F6F2ED">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex, nofollow">
+<title>Kei Concepts · Menus</title>
+<link rel="icon" href="../img/icon.png">
+<link rel="apple-touch-icon" href="../img/icon.png">
+<style>
+  :root {
+    --ground: #F6F2ED; --surface: #FFFFFF; --ink: #1B1917; --body: #4A4542;
+    --muted: #625B56; --line: #D8D0C8; --line-soft: #E9E3DC; --red: #B4231C;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem; line-height: 1.5; -webkit-tap-highlight-color: transparent;
+  }
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 0 16px; }
+
+  header { padding-block: 40px 22px; }
+  .eyebrow {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--red); margin: 0 0 6px;
+  }
+  h1 { font-size: 2rem; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+  header p { margin: 8px 0 0; color: var(--muted); font-size: 0.9375rem; max-width: 34rem; }
+
+  .grid { display: grid; gap: 10px; padding-bottom: 8px; }
+  @media (min-width: 40rem) { .grid { grid-template-columns: 1fr 1fr; } }
+
+  .card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--surface); border: 1px solid var(--line-soft);
+    border-radius: 14px; padding: 14px; min-height: 84px;
+    text-decoration: none; color: inherit;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .card:hover { border-color: var(--line); transform: translateY(-1px); }
+  .card:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+
+  /* the flagship reads first and spans the row on wide screens */
+  .card.lead { grid-column: 1 / -1; background: var(--ink); border-color: var(--ink); }
+  .card.lead .name, .card.lead .sub, .card.lead .where { color: #fff; }
+  .card.lead .sub { color: #D9D2CC; }
+  .card.lead .where { color: #A9A099; }
+  .card.lead .mark { background: #fff; }
+
+  .mark {
+    flex: 0 0 auto; width: 54px; height: 54px; border-radius: 12px;
+    background: var(--ground); display: grid; place-items: center; overflow: hidden;
+  }
+  .mark img { width: 100%; height: 100%; object-fit: contain; padding: 6px; display: block; }
+  /* QUA's wordmark is white on transparency; it needs its own dark ground to be seen */
+  .mark.on-dark { background: #051B13; }
+
+  .text { min-width: 0; }
+  .name { display: block; font-weight: 700; font-size: 1.0625rem; line-height: 1.25; overflow-wrap: anywhere; }
+  .sub { display: block; color: var(--body); font-size: 0.875rem; line-height: 1.35; margin-top: 2px; }
+  .where { display: block; color: var(--muted); font-size: 0.8125rem; line-height: 1.35; margin-top: 4px; }
+  .badge {
+    display: inline-block; margin-top: 6px; padding: 2px 8px; border-radius: 999px;
+    background: rgba(255,255,255,.14); color: #fff; font-size: 0.75rem; font-weight: 600;
+  }
+
+  footer { padding-block: 24px 48px; color: var(--muted); font-size: 0.8125rem; }
+  footer p { margin: 0 0 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Kei Concepts</p>
+    <h1>Menus</h1>
+    <p>Every restaurant’s live menu, in one place. Each opens the same page a guest sees after scanning the QR code at the table.</p>
+  </header>
+
+  <main class="grid">
+
+    <a class="card lead" href="../">
+      <span class="mark"><img src="../img/logo.png" alt="" width="54" height="54"></span>
+      <span class="text">
+        <span class="name">SUP Noodle Bar</span>
+        <span class="sub">Vietnamese noodle bar</span>
+        <span class="where">Buena Park · Irvine</span>
+        <span class="badge">13 languages</span>
+      </span>
+    </a>
+
+    <a class="card" href="../vox/">
+      <span class="mark"><img src="../vox/assets/logo.png" alt="" width="54" height="54"></span>
+      <span class="text">
+        <span class="name">VOX Kitchen</span>
+        <span class="sub">Many flavors. One voice.</span>
+        <span class="where">Costa Mesa · Aliso Viejo · Fountain Valley</span>
+      </span>
+    </a>
+
+    <a class="card" href="../nep/">
+      <span class="mark"><img src="../nep/assets/brand/logo.png" alt="" width="54" height="54"></span>
+      <span class="text">
+        <span class="name">NEP Cafe</span>
+        <span class="sub">A snapshot of Vietnamese dining.</span>
+        <span class="where">Fountain Valley · Irvine</span>
+      </span>
+    </a>
+
+    <a class="card" href="../rol/">
+      <span class="mark"><img src="../rol/assets/logo.png" alt="" width="54" height="54"></span>
+      <span class="text">
+        <span class="name">ROL Hand Roll Bar</span>
+        <span class="sub">The freshest seat in the house.</span>
+        <span class="where">Fountain Valley · Irvine · La Habra</span>
+      </span>
+    </a>
+
+    <a class="card" href="../kin/">
+      <span class="mark"><img src="../kin/assets/logo.png" alt="" width="54" height="54"></span>
+      <span class="text">
+        <span class="name">KIN Craft Ramen &amp; Izakaya</span>
+        <span class="sub">Ramen and izakaya plates.</span>
+        <span class="where">Fountain Valley</span>
+      </span>
+    </a>
+
+    <a class="card" href="../ini/">
+      <span class="mark"><img src="../ini/assets/logo.png" alt="" width="54" height="54"></span>
+      <span class="text">
+        <span class="name">INI Ristorante</span>
+        <span class="sub">Italian cooking. Japanese point of view.</span>
+        <span class="where">Fountain Valley</span>
+      </span>
+    </a>
+
+    <a class="card" href="../qua/">
+      <span class="mark on-dark"><img src="../qua/assets/logo.png" alt="" width="54" height="54"></span>
+      <span class="text">
+        <span class="name">QUA</span>
+        <span class="sub">Contemporary Chinese cuisine.</span>
+        <span class="where">Fountain Valley</span>
+      </span>
+    </a>
+
+    <a class="card" href="../kei-coffee/">
+      <span class="mark"><img src="../kei-coffee/assets/logo.png" alt="" width="54" height="54"></span>
+      <span class="text">
+        <span class="name">Kei Coffee House</span>
+        <span class="sub">Start your day with intention.</span>
+        <span class="where">Westminster</span>
+      </span>
+    </a>
+
+  </main>
+
+  <footer>
+    <p>These pages are not listed in search engines. Share the link directly.</p>
+    <p>Prices and availability follow each restaurant’s published menu. Ask your server about allergens.</p>
+  </footer>
+
+</div>
+</body>
+</html>
