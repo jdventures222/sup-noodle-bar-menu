@@ -63,6 +63,17 @@
   .name { display: block; font-weight: 700; font-size: 1.0625rem; line-height: 1.25; overflow-wrap: anywhere; }
   .sub { display: block; color: var(--body); font-size: 0.875rem; line-height: 1.35; margin-top: 2px; }
   .where { display: block; color: var(--muted); font-size: 0.8125rem; line-height: 1.35; margin-top: 4px; }
+  /* Where a brand prices its locations differently, each one is its own menu. */
+  .group { display: grid; gap: 6px; }
+  .locs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0; padding: 0 2px; font-size: 0.8125rem; }
+  .locs .lead-in { color: var(--muted); }
+  .locs a {
+    display: inline-flex; align-items: center; min-height: 34px; padding: 4px 12px;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: var(--surface); color: var(--ink); text-decoration: none;
+    transition: border-color .15s ease;
+  }
+  .locs a:hover, .locs a:focus-visible { border-color: var(--red); }
   .badge {
     display: inline-block; margin-top: 6px; padding: 2px 8px; border-radius: 999px;
     background: rgba(255,255,255,.14); color: #fff; font-size: 0.75rem; font-weight: 600;
@@ -102,23 +113,36 @@
       </span>
     </a>
 
-    <a class="card" href="../nep/">
-      <span class="mark"><img src="../nep/assets/brand/logo.png" alt="" width="54" height="54"></span>
-      <span class="text">
-        <span class="name">NEP Cafe</span>
-        <span class="sub">A snapshot of Vietnamese dining.</span>
-        <span class="where">Fountain Valley · Irvine</span>
-      </span>
-    </a>
+    <div class="group">
+      <a class="card" href="../nep/">
+        <span class="mark"><img src="../nep/assets/brand/logo.png" alt="" width="54" height="54"></span>
+        <span class="text">
+          <span class="name">NEP Cafe</span>
+          <span class="sub">A snapshot of Vietnamese dining.</span>
+          <span class="where">Fountain Valley · Irvine</span>
+        </span>
+      </a>
+      <p class="locs"><span class="lead-in">Menu by location:</span>
+        <a href="../nep/fv.html">Fountain Valley</a>
+        <a href="../nep/irvine.html">Irvine</a>
+      </p>
+    </div>
 
-    <a class="card" href="../rol/">
-      <span class="mark"><img src="../rol/assets/logo.png" alt="" width="54" height="54"></span>
-      <span class="text">
-        <span class="name">ROL Hand Roll Bar</span>
-        <span class="sub">The freshest seat in the house.</span>
-        <span class="where">Fountain Valley · Irvine · La Habra</span>
-      </span>
-    </a>
+    <div class="group">
+      <a class="card" href="../rol/">
+        <span class="mark"><img src="../rol/assets/logo.png" alt="" width="54" height="54"></span>
+        <span class="text">
+          <span class="name">ROL Hand Roll Bar</span>
+          <span class="sub">The freshest seat in the house.</span>
+          <span class="where">Fountain Valley · Irvine · La Habra</span>
+        </span>
+      </a>
+      <p class="locs"><span class="lead-in">Menu by location:</span>
+        <a href="../rol/fv.html">Fountain Valley</a>
+        <a href="../rol/irvine.html">Irvine</a>
+        <a href="../rol/la-habra.html">La Habra</a>
+      </p>
+    </div>
 
     <a class="card" href="../kin/">
       <span class="mark"><img src="../kin/assets/logo.png" alt="" width="54" height="54"></span>
