@@ -69,6 +69,9 @@
   .brand { display: flex; align-items: center; gap: 12px; padding: 12px 0 12px; }
   .brand img { width: 48px; height: 48px; border-radius: 50%; flex: none; }
   .brand h1 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 1.625rem; line-height: 1.75rem; margin: 0; }
+  /* The bar logo parks focus here so a keyboard user lands somewhere real. The heading is
+     not interactive, so it takes focus for assistive tech without drawing a ring round it. */
+  .brand h1:focus-visible { outline: 0; }
   .brand p { margin: 1px 0 0; color: var(--muted); font-size: 0.8125rem; line-height: 1.125rem; }
 
   /* Language switcher: every language visible in its own script, scrolls only if a narrow screen forces it. */
