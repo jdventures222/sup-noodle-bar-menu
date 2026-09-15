@@ -30,7 +30,7 @@
     --flag-bg: #FCEAE8; --amber: #9A5A0B; --amber-bg: #FFF3DE; --amber-line: #F0D3A3;
     --display: "Barlow Condensed", "Noto Sans", "Arial Narrow", Arial, sans-serif;
     --text: "Noto Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
-    --maxw: 720px; --bar-h: 52px; --thumb: 84px; --ease: cubic-bezier(.2, .8, .2, 1);
+    --maxw: 720px; --bar-h: 52px; --logo-band: 44px; --thumb: 84px; --ease: cubic-bezier(.2, .8, .2, 1);
   }
   html[lang="ko"] { --display: "Noto Sans", "Noto Sans KR", sans-serif; --text: "Noto Sans", "Noto Sans KR", sans-serif; }
   html[lang="zh-Hans"] { --display: "Noto Sans", "Noto Sans SC", sans-serif; --text: "Noto Sans", "Noto Sans SC", sans-serif; }
@@ -347,11 +347,14 @@
   #jumpRow, #summary, #supOffline { grid-column: 1 / -1; }
   #searchBtn { justify-self: end; }
   #searchBtn, #sectionBtn { max-width: 100%; white-space: normal; }
-  /* The masthead logo scrolls away, so the bar carries it. It keeps its grid cell at
-     the top of the page and hides by visibility, so it is never a clickable or
-     focusable target while invisible, and revealing it cannot change the bar height. */
-  .bar-logo { justify-self: center; display: flex; align-items: center; min-height: 44px; padding: 0 8px; border: 0; background: none; cursor: pointer; opacity: 0; visibility: hidden; transition: opacity .18s ease; }
+  /* The masthead logo scrolls away, so the bar carries it. The band hangs above the
+     bar rather than sitting inside it: out of flow it reserves no height at the top
+     of the page, and the bar drops by exactly its height as it appears, so no content
+     below ever moves. Hidden by visibility, so it is never a focusable target. */
+  .bar-logo { position: absolute; inset-inline: 0; bottom: 100%; height: var(--logo-band); display: flex; align-items: center; justify-content: center; border: 0; background: var(--surface); cursor: pointer; opacity: 0; visibility: hidden; transition: opacity .18s ease; }
+  .bar.scrolled { top: var(--logo-band); }
   .bar.scrolled .bar-logo { opacity: 1; visibility: visible; }
+  @media (prefers-reduced-motion: reduce) { .bar-logo { transition: none; } }
   .bar-logo img { display: block; width: 32px; height: 32px; border-radius: 50%; }
   .fine bdi { overflow-wrap: anywhere; }
   .search-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
@@ -648,11 +651,11 @@ function renderBar() {
     if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
   });
   /* "Menu sections" and "Search dishes" are switched off at the owner's request.
-     The whole top row goes with them — the bar logo shared it, and leaving the row
-     in place held 44px of empty height above the section chips. Flip MENU_TOOLS
-     back to true to restore all three; nothing else was removed. */
+     Flip MENU_TOOLS back to true to restore them; nothing else was removed. The logo
+     is not part of that row any more — it is a band above the bar (see .bar-logo). */
   const MENU_TOOLS = false;
-  if (MENU_TOOLS) jr.before(sections, logo, search);
+  jr.before(logo);
+  if (MENU_TOOLS) jr.before(sections, search);
   jr.append(lb, ab); const sep = document.createElement("span"); sep.className = "sep"; jr.append(sep);
   DATA.structure.sections.forEach(sec => {
     const a = document.createElement("a"); a.className = "chip"; a.href = "#sec-" + sec.id; a.innerHTML = prose(t(`sec.${sec.id}.title`)); jr.appendChild(a);
@@ -795,7 +798,9 @@ function applyFilter() {
   if ($("searchSheet").open) searchResults();
   syncBarHeight();
 }
-function syncBarHeight() { document.documentElement.style.setProperty("--bar-h", $("bar").offsetHeight + "px"); }
+function bandHeight() { return $("barLogo")?.offsetHeight || 0; }
+// The band sits outside the bar's own box, so an anchor has to clear both.
+function syncBarHeight() { document.documentElement.style.setProperty("--bar-h", ($("bar").offsetHeight + bandHeight()) + "px"); }
 /* The current section is read straight from the layout on every scroll frame rather than
    watched with an IntersectionObserver: a thin observer band can be crossed entirely between
    two samples during a flick, which leaves the previous chip highlighted. */
@@ -808,9 +813,10 @@ function currentSection() {
 }
 function observeSections() {
   spyRaf = 0;
-  // The bar shows the logo only once the masthead's own copy has left the viewport.
-  const brand = document.querySelector(".masthead .brand");
-  $("bar").classList.toggle("scrolled", brand.getBoundingClientRect().bottom <= 0);
+  // The band appears exactly as the masthead passes under it, so it never paints over
+  // the masthead's own copy of the logo and the bar's top edge never jumps.
+  const mast = document.querySelector(".masthead");
+  $("bar").classList.toggle("scrolled", mast.getBoundingClientRect().bottom <= bandHeight());
   const cur = currentSection();
   document.querySelectorAll("#jumpRow a").forEach(a => {
     if (a.getAttribute("href") === "#" + cur) {
