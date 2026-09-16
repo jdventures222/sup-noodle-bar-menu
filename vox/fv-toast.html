@@ -172,8 +172,7 @@
   @media (min-width: 560px) { .shots ul { margin: 6px -24px 0; padding: 2px 24px 4px; } }
   .shots li { flex: 0 0 auto; }
   /* A dish with no photo of its own but one per option shows those where its photo
-     would be, beside the text, rather than leaving that column empty. Up to three
-     options stack there; a longer strip would tower over the text, so it stays a row. */
+     would be, beside the text, rather than leaving that column empty. */
   .has-photos .item.no-photo > .shots.side { grid-column: 2; grid-row: 1; margin: 0; justify-self: end; width: var(--thumb); }
   .has-photos .item.no-photo > .shots.side ul { flex-direction: column; align-items: center; gap: 10px; margin: 6px 0 0; padding: 0; overflow: visible; }
   .has-photos .item.no-photo > .shots.side .shot { width: 76px; max-width: 76px; }
@@ -654,7 +653,7 @@ function optionShotsHTML(it, k) {
     const label = t(`${k}.price.${v.k}`);
     return `<li><button class="shot" type="button" data-photo="${i}" aria-label="${esc(plain(t("ui.photoOf").replace("{name}", t(k + ".name") + " — " + label)))}" aria-haspopup="dialog"><span class="photo-frame" style="${framingStyle(v.t)}"><img src="${v.t}" alt="" loading="lazy" decoding="async" width="76" height="76"></span><span>${prose(label)}</span></button></li>`;
   }).join("");
-  return `<div class="shots${rows.length <= 3 ? " side" : ""}"><span class="lab">${prose(t("ui.eachOption"))}</span><ul>${shots}</ul></div>`;
+  return `<div class="shots side"><span class="lab">${prose(t("ui.eachOption"))}</span><ul>${shots}</ul></div>`;
 }
 function specialsHTML() {
  const m=DATA.activeMenu;
