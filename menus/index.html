@@ -55,6 +55,8 @@
   }
   .mark img { display: block; width: 100%; height: 100%; object-fit: contain; }
   /* Keep the original wordmark colours; QUA needs a dark ground. */
+  /* SUP's mark is a disc that fills its square file; clip to the disc. */
+  .mark.round { border-radius: 50%; }
   .mark.on-dark { background: #051B13; }
   .mark.on-dark img { padding: 5px; }
   .text { min-width: 0; }
@@ -118,7 +120,7 @@
 
       <li class="entry">
         <a class="card" href="../">
-          <span class="mark"><img src="../img/logo.png" alt="" width="54" height="54"></span>
+          <span class="mark round"><img src="../img/logo.png" alt="" width="54" height="54"></span>
           <div class="text">
             <h2 class="name" id="sup-name">SUP Noodle Bar</h2>
             <span class="sub">Vietnamese noodle bar</span>
