@@ -64,23 +64,8 @@
   .arrow { width: 16px; height: 16px; color: var(--red); }
   .arrow svg { display: block; width: 100%; height: 100%; }
 
-  /* The flagship opens the directory; the other brands use quiet, ruled rows. */
-  .flagship { grid-column: 1 / -1; border: 0; padding-bottom: 12px; }
-  .lead {
-    grid-template-columns: 64px minmax(0, 1fr) 16px; gap: 12px;
-    min-height: 160px; padding: 22px 16px;
-    border-radius: 8px; background: var(--ink); color: var(--ground);
-  }
-  .lead .mark { width: 64px; height: 64px; border-radius: 50%; background: var(--surface); }
-  .lead .name { font-family: var(--display); font-size: 1.5rem; font-weight: 800; line-height: 1.1; letter-spacing: -.025em; }
-  .lead .sub { color: #E9E3DC; }
-  .lead .where { color: #D8D0C8; }
-  .lead .arrow { color: var(--ground); }
-  .badge {
-    display: inline-block; margin-top: 12px; padding: 3px 7px;
-    border: 1px solid #837A74; border-radius: 4px; color: var(--ground);
-    font-size: 0.6875rem; font-weight: 600; line-height: 1.5; letter-spacing: .04em;
-  }
+  /* Every restaurant reads as one row in the same directory. The house brand is simply
+     the first of them, not a different kind of thing. */
 
   /* Location menus stay attached to their brand, outside its main link. */
   .group .card { padding-bottom: 16px; }
@@ -106,22 +91,14 @@
     h1 { font-size: 4.5rem; }
     .intro { margin: 0; }
     .directory { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
-    .flagship { padding-bottom: 16px; }
-    .lead { grid-template-columns: 80px minmax(0, 1fr) 36px; gap: 24px; min-height: 180px; padding: 28px; }
-    .lead .mark { width: 80px; height: 80px; }
-    .lead .name { font-size: 2rem; }
-    .lead .arrow { width: 36px; height: 36px; padding: 8px; border: 1px solid #837A74; border-radius: 50%; }
-    .lead .sub, .lead .where { font-size: 0.875rem; }
     footer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 32px; border-top: 1px solid var(--line); padding-top: 20px; }
   }
   @media (hover: hover) {
     .card:hover { background: var(--surface); }
     .card:hover .name { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-    .lead:hover { background: #302A26; }
     .locs a:hover { border-color: var(--red); background: var(--ground); }
   }
   .card:active { background: var(--surface); }
-  .lead:active { background: #302A26; }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; animation: none !important; }
   }
@@ -139,29 +116,36 @@
   <main aria-labelledby="menu-title">
     <ul class="directory" role="list">
 
-      <li class="entry flagship">
-        <a class="card lead" href="../">
+      <li class="entry">
+        <a class="card" href="../">
           <span class="mark"><img src="../img/logo.png" alt="" width="54" height="54"></span>
           <div class="text">
-            <h2 class="name">SUP Noodle Bar</h2>
+            <h2 class="name" id="sup-name">SUP Noodle Bar</h2>
             <span class="sub">Vietnamese noodle bar</span>
             <span class="where">Buena Park · Irvine</span>
-            <span class="badge">13 languages</span>
           </div>
           <span class="arrow" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M3 10h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
       </li>
 
-      <li class="entry">
+      <li class="entry group">
         <a class="card" href="../vox/">
           <span class="mark"><img src="../vox/assets/logo.png" alt="" width="54" height="54"></span>
           <div class="text">
-            <h2 class="name">VOX Kitchen</h2>
+            <h2 class="name" id="vox-name">VOX Kitchen</h2>
             <span class="sub">Many flavors. One voice.</span>
             <span class="where">Costa Mesa · Aliso Viejo · Fountain Valley</span>
           </div>
           <span class="arrow" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M3 10h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
+        <div class="locs" role="group" aria-labelledby="vox-name vox-locations">
+          <span class="lead-in" id="vox-locations">Menu by location:</span>
+          <div class="location-links">
+            <a href="../vox/scp-table.html" id="vox-scp" aria-labelledby="vox-name vox-scp">Costa Mesa</a>
+            <a href="../vox/av-table.html" id="vox-av" aria-labelledby="vox-name vox-av">Aliso Viejo</a>
+            <a href="../vox/fv-toast.html" id="vox-fv" aria-labelledby="vox-name vox-fv">Fountain Valley</a>
+          </div>
+        </div>
       </li>
 
       <li class="entry group">
