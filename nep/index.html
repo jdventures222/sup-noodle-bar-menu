@@ -307,10 +307,7 @@
   .brand img { width:64px; height:64px; border-radius:0; }
   .brand h1 { font-weight:650; text-transform:none; font-size:1.75rem; letter-spacing:-.8px; }
   .brand p { font-size:0.8125rem; }
-  .control-group { display:flex; gap:8px; margin-bottom:9px; }
-  .control-group .seg { min-width:0; flex:1; border-radius:5px; height:44px; }
   .seg[aria-pressed="true"] { background:#003440; color:white; border-color:#003440; }
-  .dayparts{display:flex;justify-content:center;gap:5px;padding:4px 0}
   .draft-note { font-size:0.75rem; color:var(--body); margin:12px 0 16px; line-height:1.5; }
   .menu-context { padding-top:18px; }
   .menu-context span { font-size:0.75rem; color:#003440; font-weight:700; letter-spacing:.07em; text-transform:uppercase; }
@@ -331,7 +328,7 @@
   @media print {
     @page { size:letter; margin:12mm; }
     html,body { background:white; font-size:0.625rem; }
-    .hero, #menuControls, #langbar, .bar, .cta, dialog, .skip, .pdfs, .option-detail, .locs + .fine { display:none !important; }
+    .hero, #langbar, .bar, .cta, dialog, .skip, .pdfs, .option-detail, .locs + .fine { display:none !important; }
     .wrap { max-width:none; padding:0; }
     .brand { padding:0 0 6px; }
     .brand img { width:42px; height:42px; }
@@ -416,6 +413,11 @@
 
   /* SUP interaction vocabulary, with this restaurant's own mark and palette. */
   #jumpRow, #summary, #dayparts { grid-column: 1 / -1; min-width: 0; }
+  /* Daypart tabs: a menu chooser above the section chips, not another chip row. Text with an
+     underline in the brand accent; 44px tall like every other control. */
+  .dayparts { display: flex; justify-content: center; gap: 0; padding: 0; border-bottom: 1px solid var(--line); }
+  .dayparts .pill { min-height: 44px; padding: 0 18px; border: 0; border-radius: 0; background: transparent; color: var(--muted); font-size: 0.9375rem; font-weight: 600; box-shadow: inset 0 -2px 0 transparent; }
+  .dayparts .pill[aria-pressed="true"] { background: transparent; color: var(--red-deep); box-shadow: inset 0 -2px 0 var(--red-deep); }
   .bar .wrap > button { min-width: 0; min-height: 44px; max-width: 100%; }
   #sectionBtn, #searchBtn { white-space: normal; }
   /* The masthead logo scrolls away, so the bar carries it. The band hangs above the
@@ -435,7 +437,6 @@
   .item .al + .al { margin-top: 4px; }
   .seg, .dayparts button, .owner-nav select, #locationSelect { min-height: 44px; height: auto; }
   .seg { min-width: 0; white-space: normal; padding-block: 8px; }
-  .control-group { min-width: 0; flex-wrap: wrap; }
   .sheet-body { overscroll-behavior: contain; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
   .search-result .variants { margin-block: 6px; padding: 0; list-style: none; }
   .custom li { display: flex; flex-wrap: wrap; gap: 4px 10px; }
@@ -482,7 +483,7 @@ html[dir="rtl"] .price bdi, .en-name { font-family: system-ui, "Helvetica Neue",
       <img src="assets/brand/logo.png" alt="" width="48" height="48">
       <div><h1 id="brandTitle" data-t="ui.brand">NEP Cafe</h1><p data-t="ui.tagline"></p></div>
     </div>
-    <div id="menuControls"></div><div class="langbar" id="langbar" role="radiogroup" hidden></div>
+    <div class="langbar" id="langbar" role="radiogroup" hidden></div>
     <p class="autodetect" id="autodetect" hidden></p>
   </div>
 </header>
@@ -743,17 +744,6 @@ function footerHTML() {
 
   <p class="fine"><a href="https://www.keiconcepts.info/nep">${prose(t("ui.brandLink"))}</a></p>`;
 }
-function renderControls() {
-  /* A single-location page has nothing to switch between, so the location group is
-     omitted rather than shown as one lone button. */
-  const locations = DATA.structure.locations.length > 1 ? `<div class="control-group" role="group" aria-label="${esc(t("ui.location"))}">${DATA.structure.locations.map(l=>`<button class="seg" type="button" data-location="${l.id}" aria-pressed="${state.location===l.id}">${prose(l.address.city)}</button>`).join("")}</div>` : "";
-  $("menuControls").innerHTML=locations;
-  $("menuControls").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
-    state.location=b.dataset.location;
-    const selector = `[data-location="${b.dataset.location}"]`;
-    state.hide=false; syncUrl(); render(); $("menuControls").querySelector(selector)?.focus({preventScroll:true}); window.scrollTo(0,0);
-  }));
-}
 function renderDayparts() {
   $("dayparts").setAttribute("aria-label", t("ui.daypart"));
   $("dayparts").innerHTML=[{id:"all",nameKey:"ui.allDayparts"},...DATA.structure.dayparts].map(d=>`<button class="pill" type="button" data-daypart="${d.id}" aria-pressed="${state.daypart===d.id}">${prose(t(d.nameKey))}</button>`).join("");
@@ -840,7 +830,6 @@ function render() {
   document.querySelectorAll("[data-t]").forEach(el => { el.innerHTML = prose(t(el.dataset.t)); });
   rebuildPhotos();
   rebuildViewer();
-  renderControls();
   renderLangbar();
   renderBar();
   renderDayparts();

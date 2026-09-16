@@ -72,7 +72,6 @@
   /* Sticky bar */
   .bar { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); }
   .bar .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 4px; padding-top: 4px; padding-bottom: 4px; }
-  .dayparts{display:flex;justify-content:center;gap:5px;padding:4px 0}
   .row { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-padding: 0 16px; margin: 0 -16px; padding: 0 16px; }
   .row::-webkit-scrollbar { display: none; }
   @media (min-width: 560px) { .row { margin: 0 -24px; padding: 0 24px; scroll-padding: 0 24px; } }
@@ -410,6 +409,11 @@ h2, h3, .item h3, .sheet-head h2 { text-transform:none; letter-spacing:0; }
 
   /* SUP interaction vocabulary, with this restaurant's own mark and palette. */
   #jumpRow, #summary, #dayparts { grid-column: 1 / -1; min-width: 0; }
+  /* Daypart tabs: a menu chooser above the section chips, not another chip row. Text with an
+     underline in the brand accent; 44px tall like every other control. */
+  .dayparts { display: flex; justify-content: center; gap: 0; padding: 0; border-bottom: 1px solid var(--line); }
+  .dayparts .pill { min-height: 44px; padding: 0 18px; border: 0; border-radius: 0; background: transparent; color: var(--muted); font-size: 0.9375rem; font-weight: 600; box-shadow: inset 0 -2px 0 transparent; }
+  .dayparts .pill[aria-pressed="true"] { background: transparent; color: var(--red-deep); box-shadow: inset 0 -2px 0 var(--red-deep); }
   .bar .wrap > button { min-width: 0; min-height: 44px; max-width: 100%; }
   #sectionBtn, #searchBtn { white-space: normal; }
   /* The masthead logo scrolls away, so the bar carries it. The band hangs above the
