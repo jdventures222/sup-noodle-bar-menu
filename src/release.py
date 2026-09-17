@@ -61,6 +61,7 @@ def verify(work):
     for source, target in [('items', 'img'), ('full', 'img/full'), ('variants', 'img/var')]:
         expected.update(f'{target}/{p.name}' for p in (work / 'assets' / source).iterdir() if p.suffix in ('.jpg', '.png', '.avif', '.webp'))
     expected.update(f'img/{p.name}' for p in (work / 'assets').glob('logo.l*.*') if p.suffix in ('.avif', '.webp'))
+    expected.update(f'img/{p.name}' for p in (work / 'assets').glob('mark.*') if p.suffix in ('.png', '.avif', '.webp'))
     expected.update(f'pdf/SUP-Menu-{lang}.pdf' for lang in LANGS)
     expected.update('sup-fonts/' + p.name for p in (work / 'assets/sup-fonts').iterdir() if p.is_file())
     expected.update({'sup-worker.js', 'sup-manifest.json'})

@@ -1,8 +1,8 @@
 {
   "revision": {
     "date": "2026-09-17",
-    "hash": "f35658a6",
-    "stamp": "2026-09-17 f35658a6"
+    "hash": "31df6f41",
+    "stamp": "2026-09-17 31df6f41"
   },
   "enabled": true,
   "files": [
@@ -220,6 +220,11 @@
     "/img/lychee.s252.webp",
     "/img/lychee.s84.avif",
     "/img/lychee.s84.webp",
+    "/img/mark.l216.avif",
+    "/img/mark.l216.webp",
+    "/img/mark.l320.avif",
+    "/img/mark.l320.webp",
+    "/img/mark.png",
     "/img/nuggets.jpg",
     "/img/nuggets.s168.avif",
     "/img/nuggets.s168.webp",
