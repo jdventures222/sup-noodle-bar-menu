@@ -47,8 +47,11 @@ alt = {}
 for source, row in derived.items():
     if hashlib.sha256((root / source).read_bytes()).hexdigest() != row["sha256"]:
         raise ValueError(source + ": derivatives are stale; run python3 scripts/derive_images.py sup in the brand repo")
-    if row["role"] != "hero":
+    if row["role"] not in ("hero", "logo"):
         alt[public(source)] = {fmt: [[public(f), w, h] for f, w, h in row[fmt]] for fmt in ("avif", "webp")}
+logo = derived.get("assets/logo.png")
+if not logo or logo["role"] != "logo":
+    raise ValueError("assets/logo.png: logo derivatives missing; run python3 scripts/derive_images.py sup in the brand repo")
 data = json.dumps({"structure": structure, "strings": strings, "photos": photos, "full": full, "variants": variants, "alt": alt, "revision": rev}, ensure_ascii=False, separators=(",", ":"))
 def uri(name, mime):
     return f"data:{mime};base64," + base64.b64encode((root / "assets" / name).read_bytes()).decode()
@@ -60,6 +63,7 @@ html = html.replace('__NOJS__', fallback)
 print('No-JS markup:', len(fallback.encode()), 'bytes')
 # Referenced as files, not inlined: base64 of these three was 62% of the gzipped
 # document, and every byte of the document blocks first paint.
+html = html.replace("__LOGO_AVIF__", ", ".join(f"{public(f)} {w}w" for f, w, _ in logo["avif"])).replace("__LOGO_WEBP__", ", ".join(f"{public(f)} {w}w" for f, w, _ in logo["webp"])).replace("__LOGO_SIZES__", "48px")
 html = html.replace("__ICON__", "img/icon.png").replace("__LOGO__", "img/logo.png").replace("__DOODLE_AVIF__", "img/doodle.avif").replace("__DOODLE_WEBP__", "img/doodle.webp").replace("__DOODLE__", "img/doodle.jpg")
 html = html.replace("__BOWL__", uri("bowl.jpg", "image/jpeg")).replace("__KIMCHI__", uri("kimchi.jpg", "image/jpeg"))
 out = root / "sup-menu.html"

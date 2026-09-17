@@ -1,8 +1,8 @@
 {
   "revision": {
     "date": "2026-09-17",
-    "hash": "7acb6c2d",
-    "stamp": "2026-09-17 7acb6c2d"
+    "hash": "eae8be8d",
+    "stamp": "2026-09-17 eae8be8d"
   },
   "enabled": true,
   "files": [
@@ -201,6 +201,10 @@
     "/img/kimchi.s252.webp",
     "/img/kimchi.s84.avif",
     "/img/kimchi.s84.webp",
+    "/img/logo.l216.avif",
+    "/img/logo.l216.webp",
+    "/img/logo.l320.avif",
+    "/img/logo.l320.webp",
     "/img/logo.png",
     "/img/lomo.jpg",
     "/img/lomo.s168.avif",

@@ -70,6 +70,7 @@
   .doodle { background-image: image-set(url("__DOODLE_AVIF__") type("image/avif"), url("__DOODLE_WEBP__") type("image/webp"), url("__DOODLE__") type("image/jpeg")); }
   .brand { display: flex; align-items: center; gap: 12px; padding: 12px 0 12px; }
   .brand img { width: 48px; height: 48px; border-radius: 50%; flex: none; }
+  .brand picture { display: block; flex: none; line-height: 0; }
   .brand h1 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 1.625rem; line-height: 1.75rem; margin: 0; }
   /* The bar logo parks focus here so a keyboard user lands somewhere real. The heading is
      not interactive, so it takes focus for assistive tech without drawing a ring round it. */
@@ -370,6 +371,7 @@
   .bar.scrolled .bar-logo { opacity: 1; visibility: visible; }
   @media (prefers-reduced-motion: reduce) { .bar-logo { transition: none; } }
   .bar-logo img { display: block; width: 32px; height: 32px; border-radius: 50%; }
+  .bar-logo picture { display: block; line-height: 0; }
   .fine bdi { overflow-wrap: anywhere; }
   .search-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
   .search-controls input { flex: 1 1 180px; min-width: 0; width: 100%; padding: 10px; font: inherit; border: 1px solid var(--control); border-radius: 8px; }
@@ -393,7 +395,7 @@
   <div class="doodle" role="presentation"></div>
   <div class="wrap">
     <div class="brand">
-      <img src="__LOGO__" alt="" width="48" height="48">
+      <picture><source type="image/avif" srcset="__LOGO_AVIF__" sizes="__LOGO_SIZES__"><source type="image/webp" srcset="__LOGO_WEBP__" sizes="__LOGO_SIZES__"><img src="__LOGO__" alt="" width="48" height="48"></picture>
       <div><h1 data-t="ui.brand">SUP Noodle Bar</h1><p data-t="ui.tagline"></p></div>
     </div>
     <div class="langbar" id="langbar" role="radiogroup"></div>
@@ -663,7 +665,7 @@ function renderBar() {
   const search = document.createElement("button"); search.id = "searchBtn"; search.className = "section-btn"; search.type = "button"; search.textContent = t("ui.search"); search.setAttribute("aria-haspopup", "dialog");
   search.addEventListener("click", e => openSearch(e.detail === 0));
   const logo = document.createElement("button"); logo.type = "button"; logo.id = "barLogo"; logo.className = "bar-logo"; logo.setAttribute("aria-label", plain(t("ui.jumpTo") + ": " + t("ui.brand")));
-  const mark = document.createElement("img"); mark.src = document.querySelector(".masthead .brand img").src; mark.alt = ""; mark.width = 32; mark.height = 32;
+  const mark = document.querySelector(".masthead .brand picture").cloneNode(true); const markImg = mark.querySelector("img"); markImg.alt = ""; markImg.width = 32; markImg.height = 32; mark.querySelectorAll("source").forEach(s => s.sizes = "32px");
   logo.append(mark);
   // html{scroll-behavior:smooth} carries the animation and already flips to auto under reduced motion.
   // Focus moves to the masthead heading: this button hides itself on arrival, so leaving focus

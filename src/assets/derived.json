@@ -2423,6 +2423,37 @@
     ]
    ]
   },
+  "assets/logo.png": {
+   "sha256": "06d0b23419c5f05ed0549587be684d7c659724e4fc98e5871ec452ac141f3471",
+   "role": "logo",
+   "logo": "adedb807b7f0",
+   "w": 320,
+   "h": 320,
+   "avif": [
+    [
+     "assets/logo.l216.avif",
+     216,
+     216
+    ],
+    [
+     "assets/logo.l320.avif",
+     320,
+     320
+    ]
+   ],
+   "webp": [
+    [
+     "assets/logo.l216.webp",
+     216,
+     216
+    ],
+    [
+     "assets/logo.l320.webp",
+     320,
+     320
+    ]
+   ]
+  },
   "assets/variants/bao-one-thumb.jpg": {
    "sha256": "1e450540eb0858be368fb84df613f52b81e78ecb5189429d4d89067c02996be0",
    "role": "thumb",

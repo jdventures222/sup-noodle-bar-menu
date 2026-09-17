@@ -22,6 +22,9 @@ for source, target in [('items', 'img'), ('full', 'img/full'), ('variants', 'img
 for lang in LANGS:
     shutil.copy2(root / 'pdf' / f'SUP-Menu-{lang}.pdf', site / 'pdf')
 shutil.copy2(root / 'assets' / 'logo.png', site / 'img' / 'logo.png')
+for path in sorted(root.glob('assets/logo.l*.*')):
+    if path.suffix in ('.avif', '.webp'):
+        shutil.copy2(path, site / 'img' / path.name)
 shutil.copy2(root / 'assets' / 'logo.png', site / 'img' / 'social-logo.png')
 shutil.copy2(root / 'assets' / 'icon.png', site / 'img' / 'icon.png')
 for name in ('doodle.jpg', 'doodle.avif', 'doodle.webp'):
