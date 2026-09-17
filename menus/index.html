@@ -48,7 +48,7 @@
   .intro { margin: 14px 0 0; max-width: 29rem; color: var(--body); font-size: 0.875rem; line-height: 1.6; }
 
   /* The same language row the menus carry: every name in its own script, one tap to switch. */
-  .langbar { display: flex; min-height: 54px; gap: 3px; margin: 18px -16px 0; padding: 5px 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .langbar { display: flex; min-height: 54px; gap: 3px; margin: 12px -16px 0; padding: 5px 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .langbar::-webkit-scrollbar { display: none; }
   .seg { flex: 1 1 auto; min-width: max-content; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 11px; border: 1px solid var(--line); background: var(--surface); color: var(--body); border-radius: 999px; font: inherit; font-size: 0.875rem; line-height: 1.2; cursor: pointer; }
   .seg[aria-checked="true"] { background: var(--red-deep); border-color: var(--red-deep); color: #fff; font-weight: 700; }
@@ -63,7 +63,7 @@
 
   .card {
     display: grid; grid-template-columns: 52px minmax(0, 1fr) 16px;
-    align-items: center; gap: 14px; min-height: 120px; padding: 20px 0;
+    align-items: center; gap: 14px; padding: 14px 0;
     border-radius: 4px; transition: background-color .15s ease;
   }
   .mark {
@@ -71,9 +71,9 @@
     display: grid; place-items: center; overflow: hidden;
   }
   .mark img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .mark picture { display: block; width: 100%; height: 100%; }
   /* Keep the original wordmark colours; QUA needs a dark ground. */
   /* SUP's mark is a disc that fills its square file; clip to the disc. */
-  .mark.round { border-radius: 50%; }
   .mark.on-dark { background: #051B13; }
   .mark.on-dark img { padding: 5px; }
   .text { min-width: 0; }
@@ -110,7 +110,7 @@
     .eyebrow { grid-column: 1 / -1; margin-bottom: 24px; }
     h1 { font-size: 4.5rem; }
     .intro { margin: 0; }
-    .langbar { grid-column: 1 / -1; margin: 18px -24px 0; padding: 5px 24px; }
+    .langbar { grid-column: 1 / -1; margin: 12px -24px 0; padding: 5px 24px; }
     .autodetect { grid-column: 1 / -1; }
     .directory { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
     footer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 32px; border-top: 1px solid var(--line); padding-top: 20px; }
@@ -175,7 +175,7 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry">
         <a class="card" href="../" data-href="../">
-          <span class="mark round"><img src="../img/logo.png" alt="" width="54" height="54"></span>
+          <span class="mark"><picture><source type="image/avif" srcset="../img/mark.l216.avif 216w, ../img/mark.l320.avif 320w" sizes="54px"><source type="image/webp" srcset="../img/mark.l216.webp 216w, ../img/mark.l320.webp 320w" sizes="54px"><img src="../img/mark.png" alt="" width="54" height="54"></picture></span>
           <div class="text">
             <h2 class="name" id="sup-name"><bdi dir="ltr">SUP Noodle Bar</bdi></h2>
             <span class="sub" data-t="brand.sup.tagline">Vietnamese noodle bar</span>
@@ -187,7 +187,7 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry group">
         <a class="card" href="../vox/" data-href="../vox/">
-          <span class="mark"><img src="../vox/assets/logo.png" alt="" width="54" height="54"></span>
+          <span class="mark"><picture><source type="image/avif" srcset="../vox/assets/logo.l216.avif 216w, ../vox/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="../vox/assets/logo.l216.webp 216w, ../vox/assets/logo.l480.webp 480w" sizes="54px"><img src="../vox/assets/logo.png" alt="" width="54" height="54"></picture></span>
           <div class="text">
             <h2 class="name" id="vox-name"><bdi dir="ltr">VOX Kitchen</bdi></h2>
             <span class="sub" data-t="brand.vox.tagline">Many flavors. One voice.</span>
@@ -207,7 +207,7 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry group">
         <a class="card" href="../nep/" data-href="../nep/">
-          <span class="mark"><img src="../nep/assets/brand/logo.png" alt="" width="54" height="54"></span>
+          <span class="mark"><picture><source type="image/avif" srcset="../nep/assets/brand/logo.l216.avif 216w, ../nep/assets/brand/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="../nep/assets/brand/logo.l216.webp 216w, ../nep/assets/brand/logo.l480.webp 480w" sizes="54px"><img src="../nep/assets/brand/logo.png" alt="" width="54" height="54"></picture></span>
           <div class="text">
             <h2 class="name" id="nep-name"><bdi dir="ltr">NEP Cafe</bdi></h2>
             <span class="sub" data-t="brand.nep.tagline">A snapshot of Vietnamese dining.</span>
@@ -226,7 +226,7 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry group">
         <a class="card" href="../rol/" data-href="../rol/">
-          <span class="mark"><img src="../rol/assets/logo.png" alt="" width="54" height="54"></span>
+          <span class="mark"><picture><source type="image/avif" srcset="../rol/assets/logo.l216.avif 216w, ../rol/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="../rol/assets/logo.l216.webp 216w, ../rol/assets/logo.l480.webp 480w" sizes="54px"><img src="../rol/assets/logo.png" alt="" width="54" height="54"></picture></span>
           <div class="text">
             <h2 class="name" id="rol-name"><bdi dir="ltr">ROL Hand Roll Bar</bdi></h2>
             <span class="sub" data-t="brand.rol.tagline">The freshest seat in the house.</span>
@@ -246,7 +246,7 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry">
         <a class="card" href="../kin/" data-href="../kin/">
-          <span class="mark"><img src="../kin/assets/logo.png" alt="" width="54" height="54"></span>
+          <span class="mark"><picture><source type="image/avif" srcset="../kin/assets/logo.l216.avif 216w, ../kin/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="../kin/assets/logo.l216.webp 216w, ../kin/assets/logo.l480.webp 480w" sizes="54px"><img src="../kin/assets/logo.png" alt="" width="54" height="54"></picture></span>
           <div class="text">
             <h2 class="name"><bdi dir="ltr">KIN Craft Ramen &amp; Izakaya</bdi></h2>
             <span class="sub" data-t="brand.kin.tagline">Ramen and izakaya plates.</span>
@@ -258,7 +258,7 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry">
         <a class="card" href="../ini/" data-href="../ini/">
-          <span class="mark"><img src="../ini/assets/logo.png" alt="" width="54" height="54"></span>
+          <span class="mark"><picture><source type="image/avif" srcset="../ini/assets/logo.l216.avif 216w, ../ini/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="../ini/assets/logo.l216.webp 216w, ../ini/assets/logo.l480.webp 480w" sizes="54px"><img src="../ini/assets/logo.png" alt="" width="54" height="54"></picture></span>
           <div class="text">
             <h2 class="name"><bdi dir="ltr">INI Ristorante</bdi></h2>
             <span class="sub" data-t="brand.ini.tagline">Italian cooking. Japanese point of view.</span>
@@ -270,7 +270,7 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry">
         <a class="card" href="../qua/" data-href="../qua/">
-          <span class="mark on-dark"><img src="../qua/assets/logo.png" alt="" width="54" height="54"></span>
+          <span class="mark on-dark"><picture><source type="image/avif" srcset="../qua/assets/logo.l216.avif 216w, ../qua/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="../qua/assets/logo.l216.webp 216w, ../qua/assets/logo.l480.webp 480w" sizes="54px"><img src="../qua/assets/logo.png" alt="" width="54" height="54"></picture></span>
           <div class="text">
             <h2 class="name"><bdi dir="ltr">QUA</bdi></h2>
             <span class="sub" data-t="brand.qua.tagline">Contemporary Chinese cuisine.</span>
@@ -282,7 +282,7 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry">
         <a class="card" href="../kei-coffee/" data-href="../kei-coffee/">
-          <span class="mark"><img src="../kei-coffee/assets/logo.png" alt="" width="54" height="54"></span>
+          <span class="mark"><picture><source type="image/avif" srcset="../kei-coffee/assets/logo.l216.avif 216w, ../kei-coffee/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="../kei-coffee/assets/logo.l216.webp 216w, ../kei-coffee/assets/logo.l480.webp 480w" sizes="54px"><img src="../kei-coffee/assets/logo.png" alt="" width="54" height="54"></picture></span>
           <div class="text">
             <h2 class="name"><bdi dir="ltr">Kei Coffee House</bdi></h2>
             <span class="sub" data-t="brand.kei-coffee.tagline">Start your day with intention.</span>
