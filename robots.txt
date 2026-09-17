@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /src/
+Disallow: /docs/
+Disallow: /.impeccable/
+
+Sitemap: https://menu.fyt.life/sitemap.xml

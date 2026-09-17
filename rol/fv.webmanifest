@@ -1,0 +1,17 @@
+{
+ "name": "ROL Hand Roll Bar · Fountain Valley",
+ "short_name": "ROL",
+ "description": "The freshest seat in the house. 16173 Brookhurst St, Fountain Valley, CA 92708.",
+ "start_url": "fv.html",
+ "display": "minimal-ui",
+ "lang": "en",
+ "background_color": "#F6F2ED",
+ "theme_color": "#FFFFFF",
+ "icons": [
+  {
+   "src": "assets/logo.png",
+   "sizes": "800x800",
+   "type": "image/png"
+  }
+ ]
+}

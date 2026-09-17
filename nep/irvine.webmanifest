@@ -1,0 +1,17 @@
+{
+ "name": "NEP Cafe · Irvine",
+ "short_name": "NEP Cafe",
+ "description": "A snapshot of Vietnamese dining. 14346 Culver Dr, Irvine, CA 92604.",
+ "start_url": "irvine.html",
+ "display": "minimal-ui",
+ "lang": "en",
+ "background_color": "#FCF9F8",
+ "theme_color": "#FFFFFF",
+ "icons": [
+  {
+   "src": "assets/brand/logo.png",
+   "sizes": "640x640",
+   "type": "image/png"
+  }
+ ]
+}

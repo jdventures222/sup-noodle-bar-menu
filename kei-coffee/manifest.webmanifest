@@ -1,0 +1,17 @@
+{
+ "name": "Kei Coffee House",
+ "short_name": "Kei Coffee",
+ "description": "Westminster · Start your day with intention. 15691 Brookhurst St, Westminster, CA 92683.",
+ "start_url": "./",
+ "display": "minimal-ui",
+ "lang": "en",
+ "background_color": "#F6F2ED",
+ "theme_color": "#FFFFFF",
+ "icons": [
+  {
+   "src": "assets/logo.png",
+   "sizes": "900x900",
+   "type": "image/png"
+  }
+ ]
+}

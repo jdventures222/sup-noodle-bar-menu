@@ -1,0 +1,17 @@
+{
+ "name": "ROL Hand Roll Bar · La Habra",
+ "short_name": "ROL",
+ "description": "The freshest seat in the house. 1202 S Idaho St, STE E-F, La Habra, CA 90631.",
+ "start_url": "la-habra.html",
+ "display": "minimal-ui",
+ "lang": "en",
+ "background_color": "#F6F2ED",
+ "theme_color": "#FFFFFF",
+ "icons": [
+  {
+   "src": "assets/logo.png",
+   "sizes": "800x800",
+   "type": "image/png"
+  }
+ ]
+}

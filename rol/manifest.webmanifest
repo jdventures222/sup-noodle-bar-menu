@@ -1,0 +1,17 @@
+{
+ "name": "ROL Hand Roll Bar",
+ "short_name": "ROL",
+ "description": "The freshest seat in the house. Fountain Valley · Irvine · La Habra.",
+ "start_url": "./",
+ "display": "minimal-ui",
+ "lang": "en",
+ "background_color": "#F6F2ED",
+ "theme_color": "#FFFFFF",
+ "icons": [
+  {
+   "src": "assets/logo.png",
+   "sizes": "800x800",
+   "type": "image/png"
+  }
+ ]
+}

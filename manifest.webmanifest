@@ -1,0 +1,17 @@
+{
+ "name": "SUP Noodle Bar Menu",
+ "short_name": "SUP",
+ "description": "Vietnamese noodle bar in Buena Park and Irvine",
+ "start_url": "./",
+ "display": "minimal-ui",
+ "lang": "en",
+ "background_color": "#F6F2ED",
+ "theme_color": "#FFFFFF",
+ "icons": [
+  {
+   "src": "img/logo.png",
+   "sizes": "320x320",
+   "type": "image/png"
+  }
+ ]
+}

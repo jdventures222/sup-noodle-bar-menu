@@ -1,0 +1,17 @@
+{
+ "name": "VOX Kitchen · Aliso Viejo · Online menu",
+ "short_name": "VOX",
+ "description": "Many flavors. One voice. Online menu, 26511 Aliso Creek Rd, Aliso Viejo, CA 92656.",
+ "start_url": "av-toast.html",
+ "display": "minimal-ui",
+ "lang": "en",
+ "background_color": "#e7e6dd",
+ "theme_color": "#FFFFFF",
+ "icons": [
+  {
+   "src": "assets/logo.png",
+   "sizes": "1200x1200",
+   "type": "image/png"
+  }
+ ]
+}

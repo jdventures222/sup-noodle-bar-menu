@@ -1,0 +1,17 @@
+{
+ "name": "KIN Craft Ramen & Izakaya",
+ "short_name": "KIN",
+ "description": "Fountain Valley · A Kei Concepts restaurant · 16185 Brookhurst St, Fountain Valley, CA 92708",
+ "start_url": "./",
+ "display": "minimal-ui",
+ "lang": "en",
+ "background_color": "#F6F2ED",
+ "theme_color": "#FFFFFF",
+ "icons": [
+  {
+   "src": "assets/logo.png",
+   "sizes": "700x700",
+   "type": "image/png"
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "name": "QUA",
+ "short_name": "QUA",
+ "description": "Contemporary Chinese Cuisine · Fountain Valley · 16121 Brookhurst St, Fountain Valley, CA 92708",
+ "start_url": "./",
+ "display": "minimal-ui",
+ "lang": "en",
+ "background_color": "#F6F2ED",
+ "theme_color": "#FFFFFF",
+ "icons": [
+  {
+   "src": "assets/logo.png",
+   "sizes": "640x374",
+   "type": "image/png"
+  }
+ ]
+}
