@@ -4,7 +4,8 @@ import pathlib
 import shutil
 import subprocess
 import tempfile
-from build_common import LANGS, revision
+from build_common import LANGS, read_strings, revision
+from sup_seo import manifest
 from sup_sw import generate
 
 root = pathlib.Path(__file__).parent
@@ -47,6 +48,7 @@ with tempfile.TemporaryDirectory(prefix='qr-build-', dir=root / 'tests') as work
 card = (root / 'qrcard.html').read_text().replace('assets/logo.png', 'img/logo.png').replace('assets/qr-menu.png', 'img/qr-menu.png')
 (site / 'qrcard.html').write_text(card)
 (site / 'revision.json').write_text(json.dumps(revision(root), indent=2) + '\n')
+(site / 'manifest.webmanifest').write_text(manifest(read_strings(root)['en']))
 (site / '.nojekyll').write_text('')
 shutil.copytree(root / 'assets/sup-fonts', site / 'sup-fonts')
 generate(root, site, revision(root))

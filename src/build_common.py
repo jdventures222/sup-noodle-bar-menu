@@ -9,7 +9,7 @@ from pathlib import Path
 LANGS = ['en', 'es', 'vi', 'ko', 'zh', 'zh-Hant', 'tl', 'fa', 'ar', 'ja', 'ru', 'hi', 'ur']
 SOURCES = ['build.py', 'build_print.py', 'build_site.py', 'build_common.py', 'release.py',
            'template.html', 'print_template.html', 'qrcard.html', 'qr.swift', 'qrread.swift',
-           'structure.json', 'sup_fonts.py', 'sup_nojs.py', 'sup_sw.py', 'sup-worker.js'] + [f'strings.{lang}.json' for lang in LANGS]
+           'structure.json', 'sup_fonts.py', 'sup_nojs.py', 'sup_seo.py', 'sup_sw.py', 'sup-worker.js'] + [f'strings.{lang}.json' for lang in LANGS]
 
 PHASE2_KEYS = {'ui.' + key for key in ('search', 'searchHint', 'searchCount', 'searchNone',
     'offlineSaved')}

@@ -14,6 +14,7 @@ from urllib.parse import unquote, urlsplit
 from build_common import LANGS, SOURCES, PHASE2_KEYS, read_strings, source_hash, poppler_tool
 from sup_sw import manifest
 from sup_nojs import markup
+from sup_seo import LOCATIONS
 
 ROOT = Path(__file__).resolve().parent
 
@@ -55,7 +56,7 @@ def verify(work):
         raise ValueError('Built language bundle differs from complete source translations')
     if data['structure'] != json.loads((work / 'structure.json').read_text()):
         raise ValueError('Built structure/prices differ from source')
-    expected = {'index.html', 'qrcard.html', 'revision.json', '.nojekyll',
+    expected = {'index.html', 'qrcard.html', 'revision.json', '.nojekyll', 'manifest.webmanifest',
                 'img/logo.png', 'img/social-logo.png', 'img/qr-menu.png',
                 'img/icon.png', 'img/doodle.jpg', 'img/doodle.avif', 'img/doodle.webp'}
     for source, target in [('items', 'img'), ('full', 'img/full'), ('variants', 'img/var')]:
@@ -77,6 +78,16 @@ def verify(work):
     fallback = markup(data['structure'], strings['en'])
     if fallback not in text or '<div id="sup-nojs"' not in fallback:
         raise ValueError('Missing generated no-JS menu')
+    places = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', text, re.S).group(1))
+    dishes = sum(len(sec['items']) for sec in data['structure']['sections'])
+    if [p['address']['streetAddress'] for p in places] != [loc['street'] for loc in LOCATIONS] or any(
+            sum(len(s['hasMenuItem']) for s in p['hasMenu']['hasMenuSection']) != dishes for p in places):
+        raise ValueError('JSON-LD places or dish count differ from the data')
+    for loc in LOCATIONS:
+        if loc['street'] not in text or loc['phone'] not in text:
+            raise ValueError('JSON-LD location differs from the footer: ' + loc['city'])
+    if '<link rel="manifest" href="manifest.webmanifest">' not in text:
+        raise ValueError('Missing web app manifest link')
     contact = ('https://www.keiconcepts.info/brands/sup', 'keiconcepts.info/brands/sup', 'hello@keiconcepts.info')
     for filename in [site / 'index.html', site / 'qrcard.html'] + [work / f'print-{lang}.html' for lang in LANGS]:
         content = filename.read_text()
