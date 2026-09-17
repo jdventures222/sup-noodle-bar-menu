@@ -1,0 +1,3507 @@
+{
+ "version": 1,
+ "settings": "57ec6dcfdc21",
+ "tool": "scripts/derive_images.py",
+ "sources": {
+  "assets/doodle.jpg": {
+   "sha256": "9fb47ff13f6462c7360377a89275d6ad556ea103f79df4ca5fcbee82362e5aea",
+   "role": "hero",
+   "w": 1600,
+   "h": 189,
+   "avif": [
+    [
+     "assets/doodle.avif",
+     1440,
+     170
+    ]
+   ],
+   "webp": [
+    [
+     "assets/doodle.webp",
+     1440,
+     170
+    ]
+   ]
+  },
+  "assets/full/bao.jpg": {
+   "sha256": "20f268970ebbfdeb25100908a9a9e2f9b5217e1204dc15e1473b71844e9ee07d",
+   "role": "full",
+   "w": 1324,
+   "h": 1324,
+   "avif": [
+    [
+     "assets/full/bao.avif",
+     1324,
+     1324
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/bao.webp",
+     1324,
+     1324
+    ]
+   ]
+  },
+  "assets/full/cajun.jpg": {
+   "sha256": "f8459d8a666a04ace276f14c22a7e834a2d3afd5684b86dbdc1ecd24ded43a61",
+   "role": "full",
+   "w": 1113,
+   "h": 1113,
+   "avif": [
+    [
+     "assets/full/cajun.avif",
+     1113,
+     1113
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/cajun.webp",
+     1113,
+     1113
+    ]
+   ]
+  },
+  "assets/full/drynoodle.jpg": {
+   "sha256": "ce18ab41647125afcf2f6fb5e3165a5e0646b08e2a54d4ac603f898419da5092",
+   "role": "full",
+   "w": 932,
+   "h": 932,
+   "avif": [
+    [
+     "assets/full/drynoodle.avif",
+     932,
+     932
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/drynoodle.webp",
+     932,
+     932
+    ]
+   ]
+  },
+  "assets/full/eggrolls.jpg": {
+   "sha256": "0f3ce37cb2663b4f22d7ed036d557d24f42a2d75705104904df3612c4fc00d92",
+   "role": "full",
+   "w": 1122,
+   "h": 1122,
+   "avif": [
+    [
+     "assets/full/eggrolls.avif",
+     1122,
+     1122
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/eggrolls.webp",
+     1122,
+     1122
+    ]
+   ]
+  },
+  "assets/full/friedegg.jpg": {
+   "sha256": "b42f7915b3595a206308452176f33f812279ffbcd38aab4f40539ceb350a638b",
+   "role": "full",
+   "w": 856,
+   "h": 856,
+   "avif": [
+    [
+     "assets/full/friedegg.avif",
+     856,
+     856
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/friedegg.webp",
+     856,
+     856
+    ]
+   ]
+  },
+  "assets/full/friedrice.jpg": {
+   "sha256": "c517088208e1c55944efe405fd8dc42b858d52698ebeb3613602948effc9e787",
+   "role": "full",
+   "w": 1147,
+   "h": 1147,
+   "avif": [
+    [
+     "assets/full/friedrice.avif",
+     1147,
+     1147
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/friedrice.webp",
+     1147,
+     1147
+    ]
+   ]
+  },
+  "assets/full/herbaltea.jpg": {
+   "sha256": "8ca08361e500627e5edcdd6fb3d3556e03e591fb1e9b71b8cd6cefb443452baf",
+   "role": "full",
+   "w": 808,
+   "h": 808,
+   "avif": [
+    [
+     "assets/full/herbaltea.avif",
+     808,
+     808
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/herbaltea.webp",
+     808,
+     808
+    ]
+   ]
+  },
+  "assets/full/jasmineiced.jpg": {
+   "sha256": "cd0a8e91ea241b64361f3e811d99512c25c45c6f75b9eee810a97686b7e48a06",
+   "role": "full",
+   "w": 832,
+   "h": 832,
+   "avif": [
+    [
+     "assets/full/jasmineiced.avif",
+     832,
+     832
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/jasmineiced.webp",
+     832,
+     832
+    ]
+   ]
+  },
+  "assets/full/kidsbox.jpg": {
+   "sha256": "4a5ed6ed3f81d6bf68e78a02e6520d66044b708a6d32c5f88874833c97027725",
+   "role": "full",
+   "w": 408,
+   "h": 408,
+   "avif": [
+    [
+     "assets/full/kidsbox.avif",
+     408,
+     408
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/kidsbox.webp",
+     408,
+     408
+    ]
+   ]
+  },
+  "assets/full/kimchi.jpg": {
+   "sha256": "efdbece64340ffc990af20b3163a82f8c26a738e963e3799ea965e72b7e40182",
+   "role": "full",
+   "w": 991,
+   "h": 991,
+   "avif": [
+    [
+     "assets/full/kimchi.avif",
+     991,
+     991
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/kimchi.webp",
+     991,
+     991
+    ]
+   ]
+  },
+  "assets/full/lomo.jpg": {
+   "sha256": "1d1fed4769f9052318dccafa345f8dbd7e0f9d30d2d9b552e6636c524bccde25",
+   "role": "full",
+   "w": 1114,
+   "h": 1114,
+   "avif": [
+    [
+     "assets/full/lomo.avif",
+     1114,
+     1114
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/lomo.webp",
+     1114,
+     1114
+    ]
+   ]
+  },
+  "assets/full/lychee.jpg": {
+   "sha256": "85d7477a98d232f6e7db964beadb0a40713ad3301fcfd94116bdd6bc2cf715f5",
+   "role": "full",
+   "w": 822,
+   "h": 822,
+   "avif": [
+    [
+     "assets/full/lychee.avif",
+     822,
+     822
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/lychee.webp",
+     822,
+     822
+    ]
+   ]
+  },
+  "assets/full/nuggets.jpg": {
+   "sha256": "2ea9bc3d8259e28f0f3989f24ea5beae3e1fb3630b72332775c42f3268058e25",
+   "role": "full",
+   "w": 1237,
+   "h": 1237,
+   "avif": [
+    [
+     "assets/full/nuggets.avif",
+     1237,
+     1237
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/nuggets.webp",
+     1237,
+     1237
+    ]
+   ]
+  },
+  "assets/full/parmfries.jpg": {
+   "sha256": "a41478409ea91a603e96423b0e2ce973dcc6b44e5c3e879197322c5c158614b0",
+   "role": "full",
+   "w": 881,
+   "h": 881,
+   "avif": [
+    [
+     "assets/full/parmfries.avif",
+     881,
+     881
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/parmfries.webp",
+     881,
+     881
+    ]
+   ]
+  },
+  "assets/full/passionfruit.jpg": {
+   "sha256": "d61052cd7eeb58fc60891edd24dfde2466acf7a7e30b4f93896d2bb4db91f029",
+   "role": "full",
+   "w": 884,
+   "h": 884,
+   "avif": [
+    [
+     "assets/full/passionfruit.avif",
+     884,
+     884
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/passionfruit.webp",
+     884,
+     884
+    ]
+   ]
+  },
+  "assets/full/phobeefbelly.jpg": {
+   "sha256": "c7d1dec6b1395eaedafdd3242d2e7db60a46488f921bd5140985c316806d5893",
+   "role": "full",
+   "w": 1047,
+   "h": 1047,
+   "avif": [
+    [
+     "assets/full/phobeefbelly.avif",
+     1047,
+     1047
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/phobeefbelly.webp",
+     1047,
+     1047
+    ]
+   ]
+  },
+  "assets/full/phobourdain.jpg": {
+   "sha256": "39ea562be9fd2139b482aecf3ca39710ecbcd85f6964a0105a801af0297fc7c6",
+   "role": "full",
+   "w": 1245,
+   "h": 1245,
+   "avif": [
+    [
+     "assets/full/phobourdain.avif",
+     1245,
+     1245
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/phobourdain.webp",
+     1245,
+     1245
+    ]
+   ]
+  },
+  "assets/full/phobrisket.jpg": {
+   "sha256": "b13c1dd3ca3273e3d955da11514bb04720da6e07bb619ca3bdb70a5c05e1d447",
+   "role": "full",
+   "w": 1049,
+   "h": 1049,
+   "avif": [
+    [
+     "assets/full/phobrisket.avif",
+     1049,
+     1049
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/phobrisket.webp",
+     1049,
+     1049
+    ]
+   ]
+  },
+  "assets/full/phocombo.jpg": {
+   "sha256": "1c1228aa0061d51b9f2f176e758a8cbbd345873b382c3a17523177e77f9d0af0",
+   "role": "full",
+   "w": 945,
+   "h": 945,
+   "avif": [
+    [
+     "assets/full/phocombo.avif",
+     945,
+     945
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/phocombo.webp",
+     945,
+     945
+    ]
+   ]
+  },
+  "assets/full/phofilet.jpg": {
+   "sha256": "ea14d2838012ff45e7e759e0fb89751f6bad72a4eb24076b77591a693f3a38ea",
+   "role": "full",
+   "w": 891,
+   "h": 891,
+   "avif": [
+    [
+     "assets/full/phofilet.avif",
+     891,
+     891
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/phofilet.webp",
+     891,
+     891
+    ]
+   ]
+  },
+  "assets/full/phomeatballs.jpg": {
+   "sha256": "34bf8c8cf29cde7dd3ea6e47742658efe5bf1963a2347e484687f6160b04b46d",
+   "role": "full",
+   "w": 908,
+   "h": 908,
+   "avif": [
+    [
+     "assets/full/phomeatballs.avif",
+     908,
+     908
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/phomeatballs.webp",
+     908,
+     908
+    ]
+   ]
+  },
+  "assets/full/phoribbones.jpg": {
+   "sha256": "ee65ef1239c83c7bd48db9db9a23c33e081da6291920cd0353238e2aafdfe850",
+   "role": "full",
+   "w": 956,
+   "h": 956,
+   "avif": [
+    [
+     "assets/full/phoribbones.avif",
+     956,
+     956
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/phoribbones.webp",
+     956,
+     956
+    ]
+   ]
+  },
+  "assets/full/phoshortrib.jpg": {
+   "sha256": "e1a1fa233f82d270ed3210e33bdc9afeac3b3c55bfcb58d11def464ddaaf5e86",
+   "role": "full",
+   "w": 1056,
+   "h": 1056,
+   "avif": [
+    [
+     "assets/full/phoshortrib.avif",
+     1056,
+     1056
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/phoshortrib.webp",
+     1056,
+     1056
+    ]
+   ]
+  },
+  "assets/full/phoshrimp.jpg": {
+   "sha256": "6ccc2e38737556e44e4d1322a8d08c33f975ef4a8bc75eb539465e0276e30761",
+   "role": "full",
+   "w": 1043,
+   "h": 1043,
+   "avif": [
+    [
+     "assets/full/phoshrimp.avif",
+     1043,
+     1043
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/phoshrimp.webp",
+     1043,
+     1043
+    ]
+   ]
+  },
+  "assets/full/phoveggie.jpg": {
+   "sha256": "72bb4c6d0d6b281bc27b6ce5e12a512468b7ad1a5cbb1a5d2edcd1a6f140a91d",
+   "role": "full",
+   "w": 1052,
+   "h": 1052,
+   "avif": [
+    [
+     "assets/full/phoveggie.avif",
+     1052,
+     1052
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/phoveggie.webp",
+     1052,
+     1052
+    ]
+   ]
+  },
+  "assets/full/poachedegg.jpg": {
+   "sha256": "a7f5b89b086bd2309efcc144d87ac653f085c77ccf949968f61627372189ff0f",
+   "role": "full",
+   "w": 725,
+   "h": 725,
+   "avif": [
+    [
+     "assets/full/poachedegg.avif",
+     725,
+     725
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/poachedegg.webp",
+     725,
+     725
+    ]
+   ]
+  },
+  "assets/full/royrogers.jpg": {
+   "sha256": "8e7992c710e1fe14e329ff37880adc506e107b7c1674c35cc9d205621b1a6bb4",
+   "role": "full",
+   "w": 898,
+   "h": 898,
+   "avif": [
+    [
+     "assets/full/royrogers.avif",
+     898,
+     898
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/royrogers.webp",
+     898,
+     898
+    ]
+   ]
+  },
+  "assets/full/shakenfries.jpg": {
+   "sha256": "1c93e78ccb5e6680567b3e6793ad5980d7ba55e26fd86c06b70c2a881f492d67",
+   "role": "full",
+   "w": 1024,
+   "h": 1024,
+   "avif": [
+    [
+     "assets/full/shakenfries.avif",
+     1024,
+     1024
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/shakenfries.webp",
+     1024,
+     1024
+    ]
+   ]
+  },
+  "assets/full/shirley.jpg": {
+   "sha256": "4c50f37fda58c90b6f08a1932834f9b08e6e68bf08d77e5b2ebcab6ed10ac3ce",
+   "role": "full",
+   "w": 879,
+   "h": 879,
+   "avif": [
+    [
+     "assets/full/shirley.avif",
+     879,
+     879
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/shirley.webp",
+     879,
+     879
+    ]
+   ]
+  },
+  "assets/full/sidebroth.jpg": {
+   "sha256": "82578e1b623963998c5fd1be16c4483372c15feb5b736ec2032587207a42725b",
+   "role": "full",
+   "w": 943,
+   "h": 943,
+   "avif": [
+    [
+     "assets/full/sidebroth.avif",
+     943,
+     943
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/sidebroth.webp",
+     943,
+     943
+    ]
+   ]
+  },
+  "assets/full/siderice.jpg": {
+   "sha256": "0a1e4c7e933d81cefc7cd3b3e549084a503b04c63cfa93d214034e5e42243836",
+   "role": "full",
+   "w": 977,
+   "h": 977,
+   "avif": [
+    [
+     "assets/full/siderice.avif",
+     977,
+     977
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/siderice.webp",
+     977,
+     977
+    ]
+   ]
+  },
+  "assets/full/soybutter.jpg": {
+   "sha256": "938dcfa4c149a675c0e249d3727d10361d675b3a113b8115b1d02dbe39d8a457",
+   "role": "full",
+   "w": 1093,
+   "h": 1093,
+   "avif": [
+    [
+     "assets/full/soybutter.avif",
+     1093,
+     1093
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/soybutter.webp",
+     1093,
+     1093
+    ]
+   ]
+  },
+  "assets/full/springroll.jpg": {
+   "sha256": "7559eabb07d2c718f64c4ef7e118eba4edca4d7db1c16c0d9d3e7fd966545f42",
+   "role": "full",
+   "w": 1400,
+   "h": 1400,
+   "avif": [
+    [
+     "assets/full/springroll.avif",
+     1400,
+     1400
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/springroll.webp",
+     1400,
+     1400
+    ]
+   ]
+  },
+  "assets/full/strawberrysoda.jpg": {
+   "sha256": "c278f0f0c1e94d291013e72e14fd16cada952639fc58147e430253983eaf610b",
+   "role": "full",
+   "w": 781,
+   "h": 781,
+   "avif": [
+    [
+     "assets/full/strawberrysoda.avif",
+     781,
+     781
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/strawberrysoda.webp",
+     781,
+     781
+    ]
+   ]
+  },
+  "assets/full/thaitea.jpg": {
+   "sha256": "df65ce6a3d903b4d0be548a19b8c58b5bb28174d914623ceb37c312cf3dbfc99",
+   "role": "full",
+   "w": 861,
+   "h": 861,
+   "avif": [
+    [
+     "assets/full/thaitea.avif",
+     861,
+     861
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/thaitea.webp",
+     861,
+     861
+    ]
+   ]
+  },
+  "assets/full/trufflefries.jpg": {
+   "sha256": "a41478409ea91a603e96423b0e2ce973dcc6b44e5c3e879197322c5c158614b0",
+   "role": "full",
+   "w": 881,
+   "h": 881,
+   "avif": [
+    [
+     "assets/full/trufflefries.avif",
+     881,
+     881
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/trufflefries.webp",
+     881,
+     881
+    ]
+   ]
+  },
+  "assets/full/vietcoffee.jpg": {
+   "sha256": "c8f6e85fb240999e15b6a876fb38db031941e452dd9a5f9c08b26b8ab5d00785",
+   "role": "full",
+   "w": 779,
+   "h": 779,
+   "avif": [
+    [
+     "assets/full/vietcoffee.avif",
+     779,
+     779
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/vietcoffee.webp",
+     779,
+     779
+    ]
+   ]
+  },
+  "assets/full/watermelon.jpg": {
+   "sha256": "4706d63017f50c94ac7c8d47fe8779d06ce1a413b1de1d1778fc1ae08e2dfb91",
+   "role": "full",
+   "w": 875,
+   "h": 875,
+   "avif": [
+    [
+     "assets/full/watermelon.avif",
+     875,
+     875
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/watermelon.webp",
+     875,
+     875
+    ]
+   ]
+  },
+  "assets/full/wings.jpg": {
+   "sha256": "2c1871229de0b5f03f5f08bd8e9c2794ac894d1e11fc798c07b2d92b76f5fb4f",
+   "role": "full",
+   "w": 1093,
+   "h": 1093,
+   "avif": [
+    [
+     "assets/full/wings.avif",
+     1093,
+     1093
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/wings.webp",
+     1093,
+     1093
+    ]
+   ]
+  },
+  "assets/full/yuzupeach.jpg": {
+   "sha256": "818ef39eddc78073f5dfcfd01c1ea63ac27adc52538cc621ffab14b920dc622b",
+   "role": "full",
+   "w": 843,
+   "h": 843,
+   "avif": [
+    [
+     "assets/full/yuzupeach.avif",
+     843,
+     843
+    ]
+   ],
+   "webp": [
+    [
+     "assets/full/yuzupeach.webp",
+     843,
+     843
+    ]
+   ]
+  },
+  "assets/items/bao.jpg": {
+   "sha256": "805fb97e82e4df6749c9960dbfc7c2183d7a9b455bddd83357bf2234c69df523",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/bao.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/bao.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/bao.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/bao.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/bao.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/bao.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/cajun.jpg": {
+   "sha256": "09145cfce9447e4d268788daf7503b526abfb6b7a075f7c2c89b8a7e0d6cfbbb",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/cajun.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/cajun.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/cajun.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/cajun.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/cajun.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/cajun.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/drynoodle.jpg": {
+   "sha256": "8bae52d31fa2d93becfcc8bfff27b9b8c9e5964476ebe9b4c0965aa41b59640a",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/drynoodle.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/drynoodle.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/drynoodle.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/drynoodle.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/drynoodle.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/drynoodle.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/eggrolls.jpg": {
+   "sha256": "a8dcf9c9c3813b35613213ea4afccaade3a3b85df097bb9a7f909ea5727f876b",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/eggrolls.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/eggrolls.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/eggrolls.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/eggrolls.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/eggrolls.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/eggrolls.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/friedegg.jpg": {
+   "sha256": "f84c153ffd9d97976ace5865e603366ad4b0607ba2e63dfb43001e284df4e075",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/friedegg.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/friedegg.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/friedegg.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/friedegg.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/friedegg.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/friedegg.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/friedrice.jpg": {
+   "sha256": "667de3209ec2f650fe7325a4f1fb8ee0d6c9300b7c36bb1676fe63977bddacf7",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/friedrice.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/friedrice.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/friedrice.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/friedrice.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/friedrice.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/friedrice.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/herbaltea.jpg": {
+   "sha256": "57b0da956cdf3912bacde6805c080b203dd0b6a3770fac5841a672158f2764d1",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/herbaltea.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/herbaltea.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/herbaltea.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/herbaltea.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/herbaltea.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/herbaltea.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/jasmineiced.jpg": {
+   "sha256": "ee513095edb3d09ed32b5b30518582b96585b1c628ef1197e444c0baebbbb1be",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/jasmineiced.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/jasmineiced.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/jasmineiced.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/jasmineiced.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/jasmineiced.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/jasmineiced.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/kidsbox.jpg": {
+   "sha256": "9d25bfa9ac9497aed041fb5e4fe5025a96fdbd46eeba59c917625d62362cce14",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/kidsbox.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/kidsbox.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/kidsbox.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/kidsbox.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/kidsbox.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/kidsbox.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/kimchi.jpg": {
+   "sha256": "c13182334dcbc8febd67d3c8ca86fe3311b9dcccdd4d18416fa8e7cdf572f779",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/kimchi.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/kimchi.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/kimchi.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/kimchi.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/kimchi.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/kimchi.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/lomo.jpg": {
+   "sha256": "dbab482f0d405f7bb97aaffd125754ef523a9d560cbaf026be21c374e049461f",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/lomo.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/lomo.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/lomo.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/lomo.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/lomo.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/lomo.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/lychee.jpg": {
+   "sha256": "486e1c92d8535bf1cc7d4be80e930e433ceb2c66f06cb94938cf463934ef79cb",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/lychee.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/lychee.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/lychee.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/lychee.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/lychee.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/lychee.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/nuggets.jpg": {
+   "sha256": "e0b25a6ce946a574d57df81cc08adc4f59e1c46ba2558cc32b087782af2752ab",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/nuggets.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/nuggets.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/nuggets.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/nuggets.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/nuggets.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/nuggets.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/parmfries.jpg": {
+   "sha256": "0279ef365a3c8392a838bc7fed08206221189ffe0a55374f6595820382ac0000",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/parmfries.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/parmfries.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/parmfries.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/parmfries.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/parmfries.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/parmfries.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/passionfruit.jpg": {
+   "sha256": "e9e751066e1873be2d43c6ba655f7d929a4f9775d07d9ce7a042949fcd861efa",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/passionfruit.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/passionfruit.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/passionfruit.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/passionfruit.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/passionfruit.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/passionfruit.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/phobeefbelly.jpg": {
+   "sha256": "b4f66d5b28b4d9b828fe3e62851c75b85db3862395dc2f450ac73d1b58727d74",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/phobeefbelly.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/phobeefbelly.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/phobeefbelly.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/phobeefbelly.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/phobeefbelly.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/phobeefbelly.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/phobourdain.jpg": {
+   "sha256": "d0d462fc63eb98916f9aaa3e25dea7d21f4fefcd31a778fa10b7b9d4cc24b94c",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/phobourdain.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/phobourdain.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/phobourdain.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/phobourdain.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/phobourdain.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/phobourdain.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/phobrisket.jpg": {
+   "sha256": "d3fcdc0594820161450505bfad9208da000c6d887181367ed11fc06bd2e181dc",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/phobrisket.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/phobrisket.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/phobrisket.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/phobrisket.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/phobrisket.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/phobrisket.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/phocombo.jpg": {
+   "sha256": "cc4f033611925eac30d91044e8f3c70951e6258952d0c338178fb7d969d4ef3f",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/phocombo.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/phocombo.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/phocombo.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/phocombo.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/phocombo.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/phocombo.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/phofilet.jpg": {
+   "sha256": "98e452fecf6c5ec35af583cdb2d2f04b19c2a291e52fd247818009eaddc78b41",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/phofilet.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/phofilet.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/phofilet.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/phofilet.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/phofilet.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/phofilet.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/phomeatballs.jpg": {
+   "sha256": "a1b5013d072c1697f19eca7266c49007bbc6d5d3cb1ffb0292b6c74ea8b37ab1",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/phomeatballs.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/phomeatballs.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/phomeatballs.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/phomeatballs.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/phomeatballs.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/phomeatballs.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/phoribbones.jpg": {
+   "sha256": "e5f95694b590b899b4c46ebb21eb9e86734b14ab6a178c7833172fc186c5c902",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/phoribbones.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/phoribbones.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/phoribbones.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/phoribbones.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/phoribbones.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/phoribbones.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/phoshortrib.jpg": {
+   "sha256": "bb0ac691f25d8f1aa34c688c15ad8675397e3aedd638023d412121ea261fd09d",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/phoshortrib.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/phoshortrib.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/phoshortrib.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/phoshortrib.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/phoshortrib.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/phoshortrib.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/phoshrimp.jpg": {
+   "sha256": "52aaa39eeb336964867df919318722e7e8a8e1fc9cf56fb6923a7ee7de13b008",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/phoshrimp.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/phoshrimp.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/phoshrimp.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/phoshrimp.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/phoshrimp.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/phoshrimp.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/phoveggie.jpg": {
+   "sha256": "61d15b79def4f690349dbcec38f4cd9dd18187dced7a6b48b54f6fa92fbef346",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/phoveggie.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/phoveggie.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/phoveggie.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/phoveggie.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/phoveggie.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/phoveggie.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/poachedegg.jpg": {
+   "sha256": "ada54d728c5ff47bf879c451120458203bbaba0408950946a8ab8eac2dc2c944",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/poachedegg.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/poachedegg.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/poachedegg.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/poachedegg.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/poachedegg.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/poachedegg.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/royrogers.jpg": {
+   "sha256": "00569824a8ab400d6ea0971ee5fe33be50a6f25c33f32fc83954a354bef03fb0",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/royrogers.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/royrogers.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/royrogers.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/royrogers.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/royrogers.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/royrogers.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/shakenfries.jpg": {
+   "sha256": "ff0b166c1e05a40008c7cfdc7491714b1070083ce7609ae06695e940baf00f24",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/shakenfries.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/shakenfries.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/shakenfries.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/shakenfries.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/shakenfries.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/shakenfries.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/shirley.jpg": {
+   "sha256": "f5c5ed8917f8e08b473633ed2c971edbfed047867c4a8a412c6badc3c2219a2a",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/shirley.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/shirley.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/shirley.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/shirley.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/shirley.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/shirley.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/sidebroth.jpg": {
+   "sha256": "e7271c01e26172ff8b1b93f0dbef131ba8b3c16a99ccf462b6d23e01a913bc16",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/sidebroth.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/sidebroth.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/sidebroth.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/sidebroth.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/sidebroth.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/sidebroth.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/siderice.jpg": {
+   "sha256": "00d1169010fc7a1c6073a2bd3f46481a5351a25ea8773c79ffb07b8efaf5a98b",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/siderice.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/siderice.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/siderice.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/siderice.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/siderice.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/siderice.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/soybutter.jpg": {
+   "sha256": "783abc97d23fd90c791969800f697b97c0b5a62009d3a5d2acf24befdf9e1de2",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/soybutter.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/soybutter.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/soybutter.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/soybutter.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/soybutter.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/soybutter.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/springroll.jpg": {
+   "sha256": "114e4017a6bb0e78ab83b29364aff127e723af6596f60449b01fd323425dc57a",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/springroll.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/springroll.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/springroll.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/springroll.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/springroll.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/springroll.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/strawberrysoda.jpg": {
+   "sha256": "d948018b565a84be31d6a7294ae3064a533f3d0be6dd4c6c973070366f9bd97f",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/strawberrysoda.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/strawberrysoda.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/strawberrysoda.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/strawberrysoda.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/strawberrysoda.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/strawberrysoda.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/thaitea.jpg": {
+   "sha256": "60d48db591edf6aa8ee1b86ef78cd7de5667d4b5c32db27e20ab1b1d980bb4da",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/thaitea.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/thaitea.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/thaitea.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/thaitea.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/thaitea.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/thaitea.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/trufflefries.jpg": {
+   "sha256": "0279ef365a3c8392a838bc7fed08206221189ffe0a55374f6595820382ac0000",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/trufflefries.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/trufflefries.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/trufflefries.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/trufflefries.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/trufflefries.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/trufflefries.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/vietcoffee.jpg": {
+   "sha256": "f2d7cc244ae62fcefe4657f5ef8c79ad41ba981fa6c853467b11939502f6a4c4",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/vietcoffee.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/vietcoffee.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/vietcoffee.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/vietcoffee.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/vietcoffee.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/vietcoffee.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/watermelon.jpg": {
+   "sha256": "b436cec23a0836ecadc738b39e16a3bb5b51eaab263e1e937c8332ab95c4f3d8",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/watermelon.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/watermelon.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/watermelon.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/watermelon.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/watermelon.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/watermelon.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/wings.jpg": {
+   "sha256": "5c1d33fea3d9cbd78c4724654ecf8509740612de4acfbb89344a736c1321d25e",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/wings.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/wings.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/wings.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/wings.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/wings.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/wings.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/items/yuzupeach.jpg": {
+   "sha256": "58413dd8f1e0ad16feda4decd5817da359f078b30accfe94c31a6c4febd4b332",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/items/yuzupeach.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/items/yuzupeach.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/items/yuzupeach.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/items/yuzupeach.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/items/yuzupeach.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/items/yuzupeach.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/bao-one-thumb.jpg": {
+   "sha256": "1e450540eb0858be368fb84df613f52b81e78ecb5189429d4d89067c02996be0",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/bao-one-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/bao-one-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/bao-one-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/bao-one-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/bao-one-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/bao-one-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/bao-one.jpg": {
+   "sha256": "9f31e550a2f641e5b699d6b14136be4703fc12ddb129a5dbf200bf6fa800161b",
+   "role": "full",
+   "w": 916,
+   "h": 916,
+   "avif": [
+    [
+     "assets/variants/bao-one.avif",
+     916,
+     916
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/bao-one.webp",
+     916,
+     916
+    ]
+   ]
+  },
+  "assets/variants/bao-three-thumb.jpg": {
+   "sha256": "805fb97e82e4df6749c9960dbfc7c2183d7a9b455bddd83357bf2234c69df523",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/bao-three-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/bao-three-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/bao-three-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/bao-three-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/bao-three-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/bao-three-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/bao-three.jpg": {
+   "sha256": "20f268970ebbfdeb25100908a9a9e2f9b5217e1204dc15e1473b71844e9ee07d",
+   "role": "full",
+   "w": 1324,
+   "h": 1324,
+   "avif": [
+    [
+     "assets/variants/bao-three.avif",
+     1324,
+     1324
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/bao-three.webp",
+     1324,
+     1324
+    ]
+   ]
+  },
+  "assets/variants/cajun-filet-thumb.jpg": {
+   "sha256": "d60cbe269d20892a2c883350f9925a264b3d48e3fedcad7f6c6d9e40849746ff",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/cajun-filet-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/cajun-filet-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/cajun-filet-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/cajun-filet-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/cajun-filet-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/cajun-filet-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/cajun-filet.jpg": {
+   "sha256": "4edfd4cc662ffd1963e1e40e52592fe43e8caa75d98c9c2fe80330206a20e450",
+   "role": "full",
+   "w": 1143,
+   "h": 1143,
+   "avif": [
+    [
+     "assets/variants/cajun-filet.avif",
+     1143,
+     1143
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/cajun-filet.webp",
+     1143,
+     1143
+    ]
+   ]
+  },
+  "assets/variants/cajun-shrimpsausage-thumb.jpg": {
+   "sha256": "a1858e3d63fb2173176dae051cb4b18fe3f872433633c949cb78eec8ae377e38",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/cajun-shrimpsausage-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/cajun-shrimpsausage-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/cajun-shrimpsausage-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/cajun-shrimpsausage-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/cajun-shrimpsausage-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/cajun-shrimpsausage-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/cajun-shrimpsausage.jpg": {
+   "sha256": "1032be5ed5ddcc200bea1767ca5fda1c2fe2414a89d7e1a371409c465917b81a",
+   "role": "full",
+   "w": 1114,
+   "h": 1114,
+   "avif": [
+    [
+     "assets/variants/cajun-shrimpsausage.avif",
+     1114,
+     1114
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/cajun-shrimpsausage.webp",
+     1114,
+     1114
+    ]
+   ]
+  },
+  "assets/variants/friedrice-filet-thumb.jpg": {
+   "sha256": "bf13d8fef772b1d47434529df7a0c7f759b94f71c123ef0eb0b446daf23120e1",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/friedrice-filet-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-filet-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-filet-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-filet-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-filet-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-filet-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/friedrice-filet.jpg": {
+   "sha256": "4182b32252cfa8b8b2e40f59a0e79c722bc94ced4f29a6b0658deec8c073d83d",
+   "role": "full",
+   "w": 1139,
+   "h": 1139,
+   "avif": [
+    [
+     "assets/variants/friedrice-filet.avif",
+     1139,
+     1139
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-filet.webp",
+     1139,
+     1139
+    ]
+   ]
+  },
+  "assets/variants/friedrice-friedtofu-thumb.jpg": {
+   "sha256": "81c609c255ac4605485afd7b8743546f0698b4f92e51f844dac7e0ae10c0e477",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/friedrice-friedtofu-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-friedtofu-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-friedtofu-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-friedtofu-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-friedtofu-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-friedtofu-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/friedrice-friedtofu.jpg": {
+   "sha256": "415fc6874375fac269775087adafcf1d086613a8d1bc77392166d090051af167",
+   "role": "full",
+   "w": 1099,
+   "h": 1099,
+   "avif": [
+    [
+     "assets/variants/friedrice-friedtofu.avif",
+     1099,
+     1099
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-friedtofu.webp",
+     1099,
+     1099
+    ]
+   ]
+  },
+  "assets/variants/friedrice-shrimp-thumb.jpg": {
+   "sha256": "667de3209ec2f650fe7325a4f1fb8ee0d6c9300b7c36bb1676fe63977bddacf7",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/friedrice-shrimp-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-shrimp-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-shrimp-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-shrimp-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-shrimp-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-shrimp-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/friedrice-shrimp.jpg": {
+   "sha256": "c517088208e1c55944efe405fd8dc42b858d52698ebeb3613602948effc9e787",
+   "role": "full",
+   "w": 1147,
+   "h": 1147,
+   "avif": [
+    [
+     "assets/variants/friedrice-shrimp.avif",
+     1147,
+     1147
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-shrimp.webp",
+     1147,
+     1147
+    ]
+   ]
+  },
+  "assets/variants/friedrice-softtofu-thumb.jpg": {
+   "sha256": "fab37425b2689dabb8f85a186d4db9b09962311c0978fd217f84b775d9beb1f6",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/friedrice-softtofu-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-softtofu-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-softtofu-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-softtofu-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-softtofu-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-softtofu-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/friedrice-softtofu.jpg": {
+   "sha256": "0911b9363ab9e6924aa20455b6ba71fa4686789d0cf930784ab19de2218159b4",
+   "role": "full",
+   "w": 1145,
+   "h": 1145,
+   "avif": [
+    [
+     "assets/variants/friedrice-softtofu.avif",
+     1145,
+     1145
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-softtofu.webp",
+     1145,
+     1145
+    ]
+   ]
+  },
+  "assets/variants/friedrice-spam-thumb.jpg": {
+   "sha256": "262f21c1b6b29b885656acd945f67aab6f30297f57b45a677c5ce1289149b912",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/friedrice-spam-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-spam-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-spam-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-spam-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-spam-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-spam-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/friedrice-spam.jpg": {
+   "sha256": "7a667113dca7ae75723483fe0522c81bf8acd258a5811ac6d64bdaf99b457635",
+   "role": "full",
+   "w": 1141,
+   "h": 1141,
+   "avif": [
+    [
+     "assets/variants/friedrice-spam.avif",
+     1141,
+     1141
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-spam.webp",
+     1141,
+     1141
+    ]
+   ]
+  },
+  "assets/variants/friedrice-wings-thumb.jpg": {
+   "sha256": "9b44e3674ee0a4c34aea7178d0b6d6f48d93a4aeb11b32beff8e967aaddde023",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/friedrice-wings-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-wings-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-wings-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-wings-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/friedrice-wings-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/friedrice-wings-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/friedrice-wings.jpg": {
+   "sha256": "c7c949250de6ea03fc19c53e7efc22cffc10c4d640ebea953a07b962e34f0377",
+   "role": "full",
+   "w": 1137,
+   "h": 1137,
+   "avif": [
+    [
+     "assets/variants/friedrice-wings.avif",
+     1137,
+     1137
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/friedrice-wings.webp",
+     1137,
+     1137
+    ]
+   ]
+  },
+  "assets/variants/kimchi-filet-thumb.jpg": {
+   "sha256": "ea095e9913d3d7ec3ed59da7e5efab695dc96ec40ebd696806c4ed31d1197880",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/kimchi-filet-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/kimchi-filet-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/kimchi-filet-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/kimchi-filet-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/kimchi-filet-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/kimchi-filet-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/kimchi-filet.jpg": {
+   "sha256": "0bca4ad8826c1e2e9711ee509f954b402b7909f0f55aa54a333c145e883a882c",
+   "role": "full",
+   "w": 1164,
+   "h": 1164,
+   "avif": [
+    [
+     "assets/variants/kimchi-filet.avif",
+     1164,
+     1164
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/kimchi-filet.webp",
+     1164,
+     1164
+    ]
+   ]
+  },
+  "assets/variants/kimchi-softtofu-thumb.jpg": {
+   "sha256": "fe80f9fa1eabf8e7da9254ed9f1f6e608daf8f912a149a53e8629c97a7f990b2",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/kimchi-softtofu-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/kimchi-softtofu-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/kimchi-softtofu-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/kimchi-softtofu-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/kimchi-softtofu-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/kimchi-softtofu-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/kimchi-softtofu.jpg": {
+   "sha256": "651477acbbcec73be2fba199031f50c7822b4937167cc63ce3c8e40fbd3af7dd",
+   "role": "full",
+   "w": 968,
+   "h": 968,
+   "avif": [
+    [
+     "assets/variants/kimchi-softtofu.avif",
+     968,
+     968
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/kimchi-softtofu.webp",
+     968,
+     968
+    ]
+   ]
+  },
+  "assets/variants/kimchi-spam-thumb.jpg": {
+   "sha256": "c13182334dcbc8febd67d3c8ca86fe3311b9dcccdd4d18416fa8e7cdf572f779",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/kimchi-spam-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/kimchi-spam-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/kimchi-spam-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/kimchi-spam-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/kimchi-spam-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/kimchi-spam-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/kimchi-spam.jpg": {
+   "sha256": "efdbece64340ffc990af20b3163a82f8c26a738e963e3799ea965e72b7e40182",
+   "role": "full",
+   "w": 991,
+   "h": 991,
+   "avif": [
+    [
+     "assets/variants/kimchi-spam.avif",
+     991,
+     991
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/kimchi-spam.webp",
+     991,
+     991
+    ]
+   ]
+  },
+  "assets/variants/lomo-filet-thumb.jpg": {
+   "sha256": "dbab482f0d405f7bb97aaffd125754ef523a9d560cbaf026be21c374e049461f",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/lomo-filet-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/lomo-filet-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/lomo-filet-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/lomo-filet-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/lomo-filet-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/lomo-filet-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/lomo-filet.jpg": {
+   "sha256": "1d1fed4769f9052318dccafa345f8dbd7e0f9d30d2d9b552e6636c524bccde25",
+   "role": "full",
+   "w": 1114,
+   "h": 1114,
+   "avif": [
+    [
+     "assets/variants/lomo-filet.avif",
+     1114,
+     1114
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/lomo-filet.webp",
+     1114,
+     1114
+    ]
+   ]
+  },
+  "assets/variants/lomo-shrimp-thumb.jpg": {
+   "sha256": "8b1ab2e7acab69a3e314fdbdc26f1d2226a127d230e7352e8bf694e8c2f11bb9",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/lomo-shrimp-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/lomo-shrimp-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/lomo-shrimp-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/lomo-shrimp-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/lomo-shrimp-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/lomo-shrimp-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/lomo-shrimp.jpg": {
+   "sha256": "28ec3fe0cc9c85d6fc68d98a79b1be6b9c03281bb00e1537039e1a96d6748915",
+   "role": "full",
+   "w": 1097,
+   "h": 1097,
+   "avif": [
+    [
+     "assets/variants/lomo-shrimp.avif",
+     1097,
+     1097
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/lomo-shrimp.webp",
+     1097,
+     1097
+    ]
+   ]
+  },
+  "assets/variants/lomo-tofu-thumb.jpg": {
+   "sha256": "abceb431689159487e95dfc11041a96a7714b536f97d41d43abfad9123bfcec7",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/lomo-tofu-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/lomo-tofu-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/lomo-tofu-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/lomo-tofu-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/lomo-tofu-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/lomo-tofu-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/lomo-tofu.jpg": {
+   "sha256": "470d66f5315669a462af075864288459d6ebae8a849325085c0bf8eb6b2a31d3",
+   "role": "full",
+   "w": 1116,
+   "h": 1116,
+   "avif": [
+    [
+     "assets/variants/lomo-tofu.avif",
+     1116,
+     1116
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/lomo-tofu.webp",
+     1116,
+     1116
+    ]
+   ]
+  },
+  "assets/variants/wings-garlic-thumb.jpg": {
+   "sha256": "5c1d33fea3d9cbd78c4724654ecf8509740612de4acfbb89344a736c1321d25e",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/wings-garlic-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/wings-garlic-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/wings-garlic-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/wings-garlic-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/wings-garlic-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/wings-garlic-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/wings-garlic.jpg": {
+   "sha256": "2c1871229de0b5f03f5f08bd8e9c2794ac894d1e11fc798c07b2d92b76f5fb4f",
+   "role": "full",
+   "w": 1093,
+   "h": 1093,
+   "avif": [
+    [
+     "assets/variants/wings-garlic.avif",
+     1093,
+     1093
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/wings-garlic.webp",
+     1093,
+     1093
+    ]
+   ]
+  },
+  "assets/variants/wings-parmesan-thumb.jpg": {
+   "sha256": "0511479994fe36117a06d5bbcf62f8176eef7bc9d3ccd3a50c64ea1023d0b797",
+   "role": "thumb",
+   "w": 400,
+   "h": 400,
+   "avif": [
+    [
+     "assets/variants/wings-parmesan-thumb.s84.avif",
+     84,
+     84
+    ],
+    [
+     "assets/variants/wings-parmesan-thumb.s168.avif",
+     168,
+     168
+    ],
+    [
+     "assets/variants/wings-parmesan-thumb.s252.avif",
+     252,
+     252
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/wings-parmesan-thumb.s84.webp",
+     84,
+     84
+    ],
+    [
+     "assets/variants/wings-parmesan-thumb.s168.webp",
+     168,
+     168
+    ],
+    [
+     "assets/variants/wings-parmesan-thumb.s252.webp",
+     252,
+     252
+    ]
+   ]
+  },
+  "assets/variants/wings-parmesan.jpg": {
+   "sha256": "51bc4b5dd31a7a2399794608d91eeb116e3bcb575ad523a264e69e2a5dabaf77",
+   "role": "full",
+   "w": 883,
+   "h": 883,
+   "avif": [
+    [
+     "assets/variants/wings-parmesan.avif",
+     883,
+     883
+    ]
+   ],
+   "webp": [
+    [
+     "assets/variants/wings-parmesan.webp",
+     883,
+     883
+    ]
+   ]
+  }
+ }
+}

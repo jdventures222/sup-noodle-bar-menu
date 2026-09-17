@@ -1,0 +1,34 @@
+{
+ "pages": {
+  "fv.html": "683876f57254ce6c2b0e6e898b002061c73802b3c853e3bb27857114417efc78",
+  "irvine.html": "6f71f70590b9939fba506d89224bb4f1e3f385e45afbf06a3f4bcc4f31a51b54"
+ },
+ "files": [
+  "NEP-Menu-fv-ar.pdf",
+  "NEP-Menu-fv-en.pdf",
+  "NEP-Menu-fv-es.pdf",
+  "NEP-Menu-fv-fa.pdf",
+  "NEP-Menu-fv-hi.pdf",
+  "NEP-Menu-fv-ja.pdf",
+  "NEP-Menu-fv-ko.pdf",
+  "NEP-Menu-fv-ru.pdf",
+  "NEP-Menu-fv-tl.pdf",
+  "NEP-Menu-fv-ur.pdf",
+  "NEP-Menu-fv-vi.pdf",
+  "NEP-Menu-fv-zh-Hant.pdf",
+  "NEP-Menu-fv-zh.pdf",
+  "NEP-Menu-irvine-ar.pdf",
+  "NEP-Menu-irvine-en.pdf",
+  "NEP-Menu-irvine-es.pdf",
+  "NEP-Menu-irvine-fa.pdf",
+  "NEP-Menu-irvine-hi.pdf",
+  "NEP-Menu-irvine-ja.pdf",
+  "NEP-Menu-irvine-ko.pdf",
+  "NEP-Menu-irvine-ru.pdf",
+  "NEP-Menu-irvine-tl.pdf",
+  "NEP-Menu-irvine-ur.pdf",
+  "NEP-Menu-irvine-vi.pdf",
+  "NEP-Menu-irvine-zh-Hant.pdf",
+  "NEP-Menu-irvine-zh.pdf"
+ ]
+}

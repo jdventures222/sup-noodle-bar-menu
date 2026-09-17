@@ -57,6 +57,7 @@
   svg { display: block; }
   :focus-visible { outline: 3px solid var(--red-deep); outline-offset: 2px; }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 16px; }
+  #main { min-height: 100vh; }
   @media (min-width: 560px) { .wrap { padding: 0 24px; } }
   .skip { position: absolute; inset-inline-start: -9999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 12px; border-radius: 6px; z-index: 50; }
   .skip:focus { inset-inline-start: 8px; }
@@ -66,6 +67,7 @@
   /* Masthead */
   .masthead { background: var(--surface); }
   .doodle { height: 36px; background: #fff url("__DOODLE__") center / cover no-repeat; }
+  .doodle { background-image: image-set(url("__DOODLE_AVIF__") type("image/avif"), url("__DOODLE_WEBP__") type("image/webp"), url("__DOODLE__") type("image/jpeg")); }
   .brand { display: flex; align-items: center; gap: 12px; padding: 12px 0 12px; }
   .brand img { width: 48px; height: 48px; border-radius: 50%; flex: none; }
   .brand h1 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 1.625rem; line-height: 1.75rem; margin: 0; }
@@ -75,7 +77,7 @@
   .brand p { margin: 1px 0 0; color: var(--muted); font-size: 0.8125rem; line-height: 1.125rem; }
 
   /* Language switcher: every language visible in its own script, scrolls only if a narrow screen forces it. */
-  .langbar { display: flex; gap: 3px; margin: 0 -16px; padding: 5px 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .langbar { display: flex; min-height: 54px; gap: 3px; margin: 0 -16px; padding: 5px 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .langbar::-webkit-scrollbar { display: none; }
   @media (min-width: 560px) { .langbar { margin: 0 -24px; padding: 5px 24px; } }
   .seg { flex: 1 1 auto; min-width: max-content; display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 9px; border: 1px solid var(--line); background: var(--surface); color: var(--body); border-radius: 999px; font-size: 0.8125rem; line-height: 1.0625rem; font-weight: 600; white-space: nowrap; cursor: pointer; }
@@ -280,6 +282,8 @@
   .lb-zoom { position: relative; transform-origin: center; background-position: center; background-size: cover; overflow: hidden; touch-action: none; }
   .lb-zoom img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .25s; pointer-events: none; -webkit-user-drag: none; }
   .lb-zoom img.in { opacity: 1; }
+  .thumb-btn picture, .lb-zoom picture { display: block; width: 100%; height: 100%; }
+  .shot picture, .special picture { display: block; }
   .lb-zoom.cutout { background-image: none !important; }
   .lb-zoom.cutout img { object-fit: contain; }
   .lb-chrome { position: absolute; inset: 0; pointer-events: none; transition: opacity .2s ease-in-out; }
@@ -543,7 +547,7 @@ function itemHTML(it, kind) {
   let photo = "";
   if (pi !== undefined) {
     const p = PHOTOS[pi];
-    photo = `<button class="thumb-btn" type="button" data-photo="${pi}" aria-label="${esc(plain(t("ui.photoOf").replace("{name}", t(k + ".name"))))}" aria-haspopup="dialog"><img class="thumb${p.cutout ? " cutout" : ""}" src="${p.thumb}" alt="" loading="lazy" width="84" height="84"></button>`;
+    photo = `<button class="thumb-btn" type="button" data-photo="${pi}" aria-label="${esc(plain(t("ui.photoOf").replace("{name}", t(k + ".name"))))}" aria-haspopup="dialog">${pictureHTML(p.thumb, 84, `class="thumb${p.cutout ? " cutout" : ""}" alt="" loading="lazy" width="84" height="84"`)}</button>`;
   }
   return `<li class="item${kind === "item" && pi === undefined ? " no-photo" : ""}" id="item-${it.id}" data-kind="${kind}" data-allergens="${allOf(it).join(" ")}">
     <div class="item-body">
@@ -554,19 +558,27 @@ function itemHTML(it, kind) {
 }
 /* Dishes served several ways get a scrollable strip of what each one looks like.
    It scrolls natively, so it never competes with the viewer's swipe-to-close. */
+/* AVIF and WebP derivatives beside each JPEG; the JPEG stays the fallback. Densities are
+   computed against the box the photo fills, so one thumbnail serves 84px tiles and 76px shots. */
+function pictureHTML(path, box, attrs) {
+  const alt = DATA.alt[path];
+  if (!alt) return `<img src="${path}" ${attrs}>`;
+  const set = rows => rows.map(([f, w, h]) => `${f} ${(Math.min(w, h) / box).toFixed(2)}x`).join(", ");
+  return `<picture><source type="image/avif" srcset="${set(alt.avif)}"><source type="image/webp" srcset="${set(alt.webp)}"><img src="${path}" ${attrs}></picture>`;
+}
 function optionShotsHTML(it, k) {
   const rows = DATA.variants[it.id];
   if (!rows || rows.length < 2) return "";
   const shots = rows.map(v => {
     const i = VARIANT_INDEX[it.id + "/" + v.k];
     const label = t(`${k}.price.${v.k}`);
-    return `<li><button class="shot" type="button" data-photo="${i}" aria-label="${esc(plain(t("ui.photoOf").replace("{name}", t(k + ".name") + " — " + label)))}" aria-haspopup="dialog"><img src="img/var/${v.t}" alt="" loading="lazy" width="76" height="76"><span>${prose(label)}</span></button></li>`;
+    return `<li><button class="shot" type="button" data-photo="${i}" aria-label="${esc(plain(t("ui.photoOf").replace("{name}", t(k + ".name") + " — " + label)))}" aria-haspopup="dialog">${pictureHTML("img/var/" + v.t, 76, 'alt="" loading="lazy" width="76" height="76"')}<span>${prose(label)}</span></button></li>`;
   }).join("");
   return `<div class="shots side"><span class="lab">${prose(t("ui.eachOption"))}</span><ul>${shots}</ul></div>`;
 }
 function specialsHTML() {
   return `<div class="specials">${DATA.structure.specials.map(sp => {
-    const img = DATA.photos[sp.item] ? `<img src="img/${DATA.photos[sp.item]}" alt="" width="84" height="84">` : `<span></span>`;
+    const img = DATA.photos[sp.item] ? `${pictureHTML("img/" + DATA.photos[sp.item], 84, 'alt="" width="84" height="84"')}` : `<span></span>`;
     // The card carries its dish's allergens so "hide flagged" takes it away with the dish.
     // It shows no warning of its own: tapping it lands on the dish, which states them.
     const promoted = ITEM_BY_ID[sp.item];
@@ -1021,7 +1033,7 @@ function startOffline() {
 /* Photo viewer: pinch to four times fit, double-tap to zoom, and drag in any direction to dismiss.
    A single tap toggles the chrome; arrows and the keyboard page between photos. */
 const LB = { dlg: $("lb"), track: $("lbTrack"), bg: $("lbBg"), chrome: $("lbChrome"), cap: $("lbCap"), index: 0, s: 1, tx: 0, ty: 0, fit: [], zooms: [], pointers: new Map(), gest: null, chromeOn: true, tapT: 0, tapX: 0, tapY: 0, tapTimer: 0, exit: null, opener: null, session: 0 };
-LB.track.innerHTML = PHOTOS.map((p, i) => `<figure class="lb-slide" data-i="${i}" style="margin:0"><div class="lb-zoom${p.cutout ? " cutout" : ""}" style="background-image:url('${p.thumb}')"><img alt="" draggable="false"></div></figure>`).join("");
+LB.track.innerHTML = PHOTOS.map((p, i) => `<figure class="lb-slide" data-i="${i}" style="margin:0"><div class="lb-zoom${p.cutout ? " cutout" : ""}" style="background-image:url('${p.thumb}')"><picture><source type="image/avif"><source type="image/webp"><img alt="" draggable="false" decoding="async" width="${p.w}" height="${p.h}"></picture></div></figure>`).join("");
 LB.zooms = [...LB.track.querySelectorAll(".lb-zoom")];
 const vw = () => LB.track.clientWidth, vh = () => LB.track.clientHeight;
 const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y), mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
@@ -1029,11 +1041,17 @@ function lbLayout() {
   const W = vw(), H = vh();
   PHOTOS.forEach((p, i) => { const r = Math.min(W / p.w, H / p.h); const w = Math.round(p.w * r), h = Math.round(p.h * r); LB.fit[i] = { w, h }; LB.zooms[i].style.width = w + "px"; LB.zooms[i].style.height = h + "px"; });
 }
+/* A viewer photo is fetched only when its slide is reached; the one on screen goes first. */
+function lbSources(img, path, current) {
+  const alt = DATA.alt[path];
+  img.parentElement.querySelectorAll("source").forEach(s => { s.srcset = alt ? alt[s.type.slice(6)][0][0] : ""; });
+  if ("fetchPriority" in img) img.fetchPriority = current ? "high" : "auto";
+}
 function lbLoad(i) {
   for (let j = i - 1; j <= i + 1; j++) {
     if (j < 0 || j >= PHOTOS.length) continue;
     const img = LB.zooms[j].querySelector("img");
-    if (!img.getAttribute("src")) { img.alt = t(`item.${PHOTOS[j].id}.name`); img.addEventListener("load", () => img.classList.add("in"), { once: true }); img.src = PHOTOS[j].full; }
+    if (!img.getAttribute("src")) { img.alt = t(`item.${PHOTOS[j].id}.name`); img.addEventListener("load", () => img.classList.add("in"), { once: true }); lbSources(img, PHOTOS[j].full, j === i); img.src = PHOTOS[j].full; }
   }
 }
 function lbCaption(i) {

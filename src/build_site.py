@@ -17,14 +17,15 @@ if site.exists():
 (site / 'index.html').write_text((root / 'sup-menu.html').read_text())
 for source, target in [('items', 'img'), ('full', 'img/full'), ('variants', 'img/var')]:
     for path in (root / 'assets' / source).iterdir():
-        if path.suffix in ('.jpg', '.png'):
+        if path.suffix in ('.jpg', '.png', '.avif', '.webp'):
             shutil.copy2(path, site / target / path.name)
 for lang in LANGS:
     shutil.copy2(root / 'pdf' / f'SUP-Menu-{lang}.pdf', site / 'pdf')
 shutil.copy2(root / 'assets' / 'logo.png', site / 'img' / 'logo.png')
 shutil.copy2(root / 'assets' / 'logo.png', site / 'img' / 'social-logo.png')
 shutil.copy2(root / 'assets' / 'icon.png', site / 'img' / 'icon.png')
-shutil.copy2(root / 'assets' / 'doodle.jpg', site / 'img' / 'doodle.jpg')
+for name in ('doodle.jpg', 'doodle.avif', 'doodle.webp'):
+    shutil.copy2(root / 'assets' / name, site / 'img' / name)
 
 # Compile and run by exact executable path; all tools/intermediate files stay in tests/.
 (root / 'tests').mkdir(exist_ok=True)

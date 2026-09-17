@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Printed QR codes</title>
+<style>
+  :root { --ink: #1B1917; --body: #4A4542; --muted: #625B56; --line: #D8D0C8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px 16px 48px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: #fff; line-height: 1.5; }
+  header, .card { max-width: 42rem; margin: 0 auto; }
+  h1 { font-size: 1.75rem; margin: 0 0 8px; }
+  header p { margin: 0 0 10px; color: var(--body); max-width: 65ch; }
+  header ul { margin: 0 0 24px; padding-left: 20px; color: var(--body); max-width: 65ch; }
+  .card { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 20px; align-items: start; padding: 20px 0; border-top: 1px solid var(--line); }
+  .card img { width: 160px; height: 160px; display: block; }
+  .card h2 { margin: 0 0 4px; font-size: 1.125rem; }
+  .where { margin: 0 0 6px; color: var(--body); font-size: 0.875rem; }
+  .url { margin: 0 0 6px; font-family: ui-monospace, Menlo, monospace; font-size: 0.9375rem; font-weight: 600; overflow-wrap: anywhere; }
+  .meta { margin: 0; color: var(--muted); font-size: 0.8125rem; overflow-wrap: anywhere; }
+  code { font-family: ui-monospace, Menlo, monospace; }
+  @media (max-width: 480px) { .card { grid-template-columns: 1fr; } }
+  @media print {
+    @page { size: letter; margin: 0.5in; }
+    body { padding: 0; }
+    header { break-after: page; }
+    .card { break-inside: avoid; break-after: page; grid-template-columns: 1fr; justify-items: center; text-align: center; border: 0; padding-top: 1.5in; }
+    .card img { width: 60mm; height: 60mm; }
+    .card h2 { font-size: 18pt; }
+    .url { font-size: 13pt; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Printed QR codes</h1>
+  <p>Every code below opens the address on its line, which then forwards to the menu. Print only these addresses; a menu page's own path never goes on paper, so a page can move without a reprint.</p>
+  <ul>
+    <li>Print each code at least 30 mm wide, with the white margin the PNG already carries (four modules) left untouched; never below 25 mm.</li>
+    <li>The PNGs are 2048 px with error-correction level H, so the restaurant's mark in the centre is tolerated; do not add anything else on top of the code.</li>
+    <li>Before a print run, scan the proof with two different phones and confirm the menu opens.</li>
+    <li>Printing this page gives one card per sheet with the code at 60 mm.</li>
+  </ul>
+</header>
+
+<section class="card">
+  <img src="qr/menus.png" alt="QR code for https://menu.fyt.life/r/menus" width="2048" height="2048">
+  <h2>Kei Concepts · Menus</h2>
+  
+  <p class="url">https://menu.fyt.life/r/menus</p>
+  <p class="meta">29 bytes · 33×33 modules · opens <code>/menus/</code> · The directory of every menu.</p>
+</section>
+<section class="card">
+  <img src="qr/sup.png" alt="QR code for https://menu.fyt.life/r/sup" width="2048" height="2048">
+  <h2>SUP Noodle Bar</h2>
+  
+  <p class="url">https://menu.fyt.life/r/sup</p>
+  <p class="meta">27 bytes · 33×33 modules · opens <code>/</code> · SUP Noodle Bar, both locations (the card in print encodes https://menu.fyt.life/ directly).</p>
+</section>
+<section class="card">
+  <img src="qr/ini.png" alt="QR code for https://menu.fyt.life/r/ini" width="2048" height="2048">
+  <h2>INI Ristorante</h2>
+  <p class="where">16129 Brookhurst St, Fountain Valley, CA 92708</p>
+  <p class="url">https://menu.fyt.life/r/ini</p>
+  <p class="meta">27 bytes · 33×33 modules · opens <code>/ini/</code></p>
+</section>
+<section class="card">
+  <img src="qr/kin.png" alt="QR code for https://menu.fyt.life/r/kin" width="2048" height="2048">
+  <h2>KIN Craft Ramen &amp; Izakaya</h2>
+  <p class="where">16185 Brookhurst St, Fountain Valley, CA 92708</p>
+  <p class="url">https://menu.fyt.life/r/kin</p>
+  <p class="meta">27 bytes · 33×33 modules · opens <code>/kin/</code></p>
+</section>
+<section class="card">
+  <img src="qr/qua.png" alt="QR code for https://menu.fyt.life/r/qua" width="2048" height="2048">
+  <h2>QUA</h2>
+  <p class="where">16121 Brookhurst St, Fountain Valley, CA 92708</p>
+  <p class="url">https://menu.fyt.life/r/qua</p>
+  <p class="meta">27 bytes · 33×33 modules · opens <code>/qua/</code></p>
+</section>
+<section class="card">
+  <img src="qr/kei-coffee.png" alt="QR code for https://menu.fyt.life/r/kei-coffee" width="2048" height="2048">
+  <h2>Kei Coffee House</h2>
+  <p class="where">15691 Brookhurst St, Westminster, CA 92683</p>
+  <p class="url">https://menu.fyt.life/r/kei-coffee</p>
+  <p class="meta">34 bytes · 33×33 modules · opens <code>/kei-coffee/</code></p>
+</section>
+<section class="card">
+  <img src="qr/rol.png" alt="QR code for https://menu.fyt.life/r/rol" width="2048" height="2048">
+  <h2>ROL Hand Roll Bar</h2>
+  <p class="where">Fountain Valley · Irvine · La Habra</p>
+  <p class="url">https://menu.fyt.life/r/rol</p>
+  <p class="meta">27 bytes · 33×33 modules · opens <code>/rol/</code> · All three ROL locations on one page.</p>
+</section>
+<section class="card">
+  <img src="qr/rol-fv.png" alt="QR code for https://menu.fyt.life/r/rol-fv" width="2048" height="2048">
+  <h2>ROL Hand Roll Bar</h2>
+  <p class="where">16173 Brookhurst St, Fountain Valley, CA 92708</p>
+  <p class="url">https://menu.fyt.life/r/rol-fv</p>
+  <p class="meta">30 bytes · 33×33 modules · opens <code>/rol/fv.html</code></p>
+</section>
+<section class="card">
+  <img src="qr/rol-irvine.png" alt="QR code for https://menu.fyt.life/r/rol-irvine" width="2048" height="2048">
+  <h2>ROL Hand Roll Bar</h2>
+  <p class="where">14370 Culver Dr, Unit 2G, Irvine, CA 92604</p>
+  <p class="url">https://menu.fyt.life/r/rol-irvine</p>
+  <p class="meta">34 bytes · 33×33 modules · opens <code>/rol/irvine.html</code></p>
+</section>
+<section class="card">
+  <img src="qr/rol-la-habra.png" alt="QR code for https://menu.fyt.life/r/rol-la-habra" width="2048" height="2048">
+  <h2>ROL Hand Roll Bar</h2>
+  <p class="where">1202 S Idaho St, STE E-F, La Habra, CA 90631</p>
+  <p class="url">https://menu.fyt.life/r/rol-la-habra</p>
+  <p class="meta">36 bytes · 37×37 modules · opens <code>/rol/la-habra.html</code></p>
+</section>
+<section class="card">
+  <img src="qr/nep.png" alt="QR code for https://menu.fyt.life/r/nep" width="2048" height="2048">
+  <h2>NEP Cafe</h2>
+  <p class="where">Fountain Valley · Irvine</p>
+  <p class="url">https://menu.fyt.life/r/nep</p>
+  <p class="meta">27 bytes · 33×33 modules · opens <code>/nep/</code> · Opens on Fountain Valley.</p>
+</section>
+<section class="card">
+  <img src="qr/nep-fv.png" alt="QR code for https://menu.fyt.life/r/nep-fv" width="2048" height="2048">
+  <h2>NEP Cafe</h2>
+  <p class="where">10836 Warner Ave, Fountain Valley, CA 92708</p>
+  <p class="url">https://menu.fyt.life/r/nep-fv</p>
+  <p class="meta">30 bytes · 33×33 modules · opens <code>/nep/fv.html</code></p>
+</section>
+<section class="card">
+  <img src="qr/nep-irvine.png" alt="QR code for https://menu.fyt.life/r/nep-irvine" width="2048" height="2048">
+  <h2>NEP Cafe</h2>
+  <p class="where">14346 Culver Dr, Irvine, CA 92604</p>
+  <p class="url">https://menu.fyt.life/r/nep-irvine</p>
+  <p class="meta">34 bytes · 33×33 modules · opens <code>/nep/irvine.html</code> · Replaces the printed Irvine code that pointed at the combined page.</p>
+</section>
+<section class="card">
+  <img src="qr/vox.png" alt="QR code for https://menu.fyt.life/r/vox" width="2048" height="2048">
+  <h2>VOX Kitchen</h2>
+  <p class="where">Aliso Viejo · Fountain Valley · Costa Mesa</p>
+  <p class="url">https://menu.fyt.life/r/vox</p>
+  <p class="meta">27 bytes · 33×33 modules · opens <code>/vox/</code> · Opens on the South Coast Plaza table menu.</p>
+</section>
+<section class="card">
+  <img src="qr/vox-scp.png" alt="QR code for https://menu.fyt.life/r/vox-scp" width="2048" height="2048">
+  <h2>VOX Kitchen · Table menu</h2>
+  <p class="where">3333 Bear St, Ste 118, Costa Mesa, CA 92626</p>
+  <p class="url">https://menu.fyt.life/r/vox-scp</p>
+  <p class="meta">31 bytes · 33×33 modules · opens <code>/vox/scp-table.html</code></p>
+</section>
+<section class="card">
+  <img src="qr/vox-av.png" alt="QR code for https://menu.fyt.life/r/vox-av" width="2048" height="2048">
+  <h2>VOX Kitchen · Table menu</h2>
+  <p class="where">26511 Aliso Creek Rd, Aliso Viejo, CA 92656</p>
+  <p class="url">https://menu.fyt.life/r/vox-av</p>
+  <p class="meta">30 bytes · 33×33 modules · opens <code>/vox/av-table.html</code></p>
+</section>
+<section class="card">
+  <img src="qr/vox-fv.png" alt="QR code for https://menu.fyt.life/r/vox-fv" width="2048" height="2048">
+  <h2>VOX Kitchen · Online menu</h2>
+  <p class="where">16161 Brookhurst St, Fountain Valley, CA 92708</p>
+  <p class="url">https://menu.fyt.life/r/vox-fv</p>
+  <p class="meta">30 bytes · 33×33 modules · opens <code>/vox/fv-toast.html</code></p>
+</section>
+</body>
+</html>

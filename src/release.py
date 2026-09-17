@@ -57,9 +57,9 @@ def verify(work):
         raise ValueError('Built structure/prices differ from source')
     expected = {'index.html', 'qrcard.html', 'revision.json', '.nojekyll',
                 'img/logo.png', 'img/social-logo.png', 'img/qr-menu.png',
-                'img/icon.png', 'img/doodle.jpg'}
+                'img/icon.png', 'img/doodle.jpg', 'img/doodle.avif', 'img/doodle.webp'}
     for source, target in [('items', 'img'), ('full', 'img/full'), ('variants', 'img/var')]:
-        expected.update(f'{target}/{p.name}' for p in (work / 'assets' / source).iterdir() if p.suffix in ('.jpg', '.png'))
+        expected.update(f'{target}/{p.name}' for p in (work / 'assets' / source).iterdir() if p.suffix in ('.jpg', '.png', '.avif', '.webp'))
     expected.update(f'pdf/SUP-Menu-{lang}.pdf' for lang in LANGS)
     expected.update('sup-fonts/' + p.name for p in (work / 'assets/sup-fonts').iterdir() if p.is_file())
     expected.update({'sup-worker.js', 'sup-manifest.json'})
@@ -91,6 +91,7 @@ def verify(work):
     urls = ['img/' + filename for filename in data['photos'].values()]
     urls += ['img/full/' + row['f'] for row in data['full'].values()]
     urls += ['img/var/' + row[key] for rows in data['variants'].values() for row in rows for key in ('f', 't')]
+    urls += [row[0] for formats in data['alt'].values() for fmt in ('avif', 'webp') for row in formats[fmt]]
     urls += [f'pdf/SUP-Menu-{lang}.pdf' for lang in LANGS]
     for file in site.glob('*.html'):
         urls += Document(file.read_text()).urls

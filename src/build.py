@@ -1,4 +1,4 @@
-import json, base64, sys, pathlib, html as html_lib
+import json, base64, hashlib, sys, pathlib, html as html_lib
 from build_common import LANGS, read_strings, revision
 from sup_nojs import markup
 from sup_fonts import glyph_hash
@@ -36,7 +36,20 @@ if vdir.exists():
             w, h = dims(f)
             rows.append({"k": k, "t": t.name, "f": f.name, "w": w, "h": h})
         if len(rows) > 1: variants[item] = rows
-data = json.dumps({"structure": structure, "strings": strings, "photos": photos, "full": full, "variants": variants, "revision": rev}, ensure_ascii=False, separators=(",", ":"))
+# AVIF and WebP derivatives (assets/derived.json, made by the brand repo's scripts/derive_images.py sup),
+# keyed by the public path the page uses; a derivative made from other bytes is stale.
+derived = json.loads((root / "assets/derived.json").read_text())["sources"] if (root / "assets/derived.json").exists() else {}
+def public(path):
+    for source, target in (("assets/items/", "img/"), ("assets/full/", "img/full/"), ("assets/variants/", "img/var/"), ("assets/", "img/")):
+        if path.startswith(source): return target + path[len(source):]
+    raise ValueError(path)
+alt = {}
+for source, row in derived.items():
+    if hashlib.sha256((root / source).read_bytes()).hexdigest() != row["sha256"]:
+        raise ValueError(source + ": derivatives are stale; run python3 scripts/derive_images.py sup in the brand repo")
+    if row["role"] != "hero":
+        alt[public(source)] = {fmt: [[public(f), w, h] for f, w, h in row[fmt]] for fmt in ("avif", "webp")}
+data = json.dumps({"structure": structure, "strings": strings, "photos": photos, "full": full, "variants": variants, "alt": alt, "revision": rev}, ensure_ascii=False, separators=(",", ":"))
 def uri(name, mime):
     return f"data:{mime};base64," + base64.b64encode((root / "assets" / name).read_bytes()).decode()
 html = (root / "template.html").read_text()
@@ -47,7 +60,7 @@ html = html.replace('__NOJS__', fallback)
 print('No-JS markup:', len(fallback.encode()), 'bytes')
 # Referenced as files, not inlined: base64 of these three was 62% of the gzipped
 # document, and every byte of the document blocks first paint.
-html = html.replace("__ICON__", "img/icon.png").replace("__LOGO__", "img/logo.png").replace("__DOODLE__", "img/doodle.jpg")
+html = html.replace("__ICON__", "img/icon.png").replace("__LOGO__", "img/logo.png").replace("__DOODLE_AVIF__", "img/doodle.avif").replace("__DOODLE_WEBP__", "img/doodle.webp").replace("__DOODLE__", "img/doodle.jpg")
 html = html.replace("__BOWL__", uri("bowl.jpg", "image/jpeg")).replace("__KIMCHI__", uri("kimchi.jpg", "image/jpeg"))
 out = root / "sup-menu.html"
 out.write_text(html)
