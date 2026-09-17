@@ -540,7 +540,7 @@ function itemHTML(it, kind) {
   const desc = has(k + ".desc") ? `<p class="desc">${prose(t(k + ".desc"))}</p>` : "";
   const note = has(k + ".note") ? `<p class="note">${prose(t(k + ".note"))}</p>` : "";
   const variants = keyed ? variantsHTML(k, it) : "";
-  const sides = it.addons ? `<div class="sides"><span class="lab">${prose(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${prose(t("addon." + a.id + ".name"))}${merged(a).length ? ` <span class="vplus">(+ ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
+  const sides = it.addons ? `<div class="sides"><span class="lab">${prose(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${prose(t("addon." + a.id + ".name"))}${rawMarkHTML(a)}${merged(a).length ? ` <span class="vplus">(+ ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
   const pi = kind === "item" ? PHOTO_INDEX[it.id] : undefined;
   let photo = "";
   if (pi !== undefined) {
