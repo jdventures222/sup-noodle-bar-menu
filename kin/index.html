@@ -350,10 +350,12 @@ h2, h3, .item h3, .sheet-head h2 { text-transform:none; letter-spacing:0; }
 .draft-note { padding:16px 0 12px; font-size:0.8125rem; line-height:1.5; }
 .draft-note p { margin:6px 0 0; }
 .draft-note .eyebrow { color:var(--red-deep); font-family:var(--text); }
-.happy-card { padding:18px; border:1px solid #BDA37A; border-radius:14px; background:#1C1B1B; color:#FCF9F8; }
-.happy-card .eyebrow { color:#D4B98E; font-family:var(--text); }
-.happy-card h2 { margin:7px 0; font-size:1.375rem; line-height:1.25; }
-.happy-card p { margin:0; font-size:0.8125rem; color:#E4DDD3; }
+.happy-card { display:grid; grid-template-columns:84px minmax(0,1fr); gap:12px; align-items:center; padding:10px; background:var(--surface); border:1px solid var(--line); border-radius:14px; }
+.happy-card .mark { display:flex; align-items:center; justify-content:center; width:84px; height:84px; border-radius:10px; background:#BDA37A; color:#fff; }
+.happy-card .mark svg { width:40px; height:40px; }
+.happy-card .eyebrow { font-family:var(--text); font-size:0.75rem; line-height:1rem; font-weight:700; letter-spacing:.04em; color:#7A6240; }
+.happy-card h2 { margin:2px 0 3px; font-size:1.3125rem; line-height:1.4375rem; text-wrap:balance; }
+.happy-card .when { margin:0; font-size:0.9375rem; line-height:1.25rem; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; }
 .unknown-price { font-family:var(--text); color:var(--muted); font-size:0.75rem; max-width:80px; white-space:normal; text-align:end; }
 .al { font-size:0.75rem; line-height:1.55; }
 .al.unknown { color:#73624A; font-weight:400; }
@@ -446,7 +448,8 @@ h2, h3, .item h3, .sheet-head h2 { text-transform:none; letter-spacing:0; }
   #jumpRow, #summary, #dayparts { grid-column: 1 / -1; min-width: 0; }
   /* Daypart tabs: a menu chooser above the section chips, not another chip row. Text with an
      underline in the brand accent; 44px tall like every other control. */
-  .dayparts { display: flex; justify-content: center; gap: 0; padding: 0; border-bottom: 1px solid var(--line); }
+  .dayparts { display: flex; justify-content: flex-start; gap: 0; padding: 0; border-bottom: 1px solid var(--line); }
+  .dayparts .pill:first-child { padding-inline-start: 0; }
   .dayparts .pill { min-height: 44px; padding: 0 18px; border: 0; border-radius: 0; background: transparent; color: var(--muted); font-size: 0.9375rem; font-weight: 600; box-shadow: inset 0 -2px 0 transparent; }
   .dayparts .pill[aria-pressed="true"] { background: transparent; color: var(--red-deep); box-shadow: inset 0 -2px 0 var(--red-deep); }
   .bar .wrap > button { min-width: 0; min-height: 44px; max-width: 100%; }
@@ -572,6 +575,7 @@ function loadLang(code) {
 }
 const LANGS = [{"code":"en","label":"English"},{"code":"es","label":"Español"},{"code":"vi","label":"Tiếng Việt"},{"code":"ko","label":"한국어"},{"code":"zh","label":"简体中文"},{"code":"zh-Hant","label":"繁體中文"},{"code":"tl","label":"Tagalog"},{"code":"fa","label":"فارسی"},{"code":"ar","label":"العربية"},{"code":"ja","label":"日本語"},{"code":"ru","label":"Русский"},{"code":"hi","label":"हिन्दी"},{"code":"ur","label":"اردو"}];
 const ICON = {
+  moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5z"/></svg>',
   globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>',
   shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.2 8.4-7 10-3.8-1.6-7-5-7-10V6z"/><path d="M12 8v4M12 15.5v.5"/></svg>',
   chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>',
@@ -750,7 +754,9 @@ function optionShotsHTML(it, k) {
   return `<div class="shots side"><span class="lab">${prose(t("ui.eachOption"))}</span><ul>${shots}</ul></div>`;
 }
 function specialsHTML() {
-  return `<aside class="happy-card"><div class="eyebrow">${prose(t("ui.happy"))}</div><h2>${prose(t("ui.happyWhen"))}</h2></aside>`;
+  // The hours string is "days · time" in every language; the card sets the two apart.
+  const [days, time] = t("ui.happyWhen").split(" · ");
+  return `<aside class="happy-card"><span class="mark" aria-hidden="true">${ICON.moon}</span><div><div class="eyebrow">${prose(t("ui.happy"))}</div><h2>${prose(days)}</h2>${time ? `<p class="when">${prose(time)}</p>` : ""}</div></aside>`;
 }
 function ctaHTML() {
   return `<button class="cta" type="button" id="ctaFilter" aria-haspopup="dialog">${ICON.shield}<span><b id="ctaTitle"></b><small id="ctaSub"></small></span>${ICON.chevron}</button>`;
