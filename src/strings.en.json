@@ -44,7 +44,7 @@
   "ui.allergyNotice": "Please tell your server about any dietary restrictions or food allergies. We strongly advise guests with severe food allergies or sensitivities to exercise caution when dining at SUP. We make every effort to accommodate food allergies and keep our guests safe, but cross-contamination is always possible and we cannot guarantee an allergen-free environment. If you have any questions, please ask your server.",
   "ui.halalNote": "SUP Noodle Bar does not claim that any of its food is halal.",
   "ui.rawTitle": "Undercooked food notice",
-  "ui.rawNotice": "Dishes prepared with soft-boiled, poached, sunny-side-up, or over-easy eggs, as well as rare or medium-rare steaks, may be undercooked. *These items may be served raw or undercooked, or contain raw or undercooked ingredients. Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
+  "ui.rawNotice": "Dishes prepared with soft-boiled, poached, sunny-side-up, or over-easy eggs, as well as rare or medium-rare steaks, may be undercooked. These items may be served raw or undercooked, or contain raw or undercooked ingredients. Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
   "ui.phoRefill": "Free unlimited noodle refills with dine-in pho.",
   "allergen.milk": "Dairy",
   "allergen.egg": "Egg",

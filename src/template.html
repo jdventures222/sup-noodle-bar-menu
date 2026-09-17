@@ -196,7 +196,6 @@
   .has-photos .item.no-photo > .shots.side .shot { width: 76px; max-width: 76px; }
   .has-photos .item.no-photo > .shots.side .shot span { word-break: normal; overflow-wrap: anywhere; }
   .shot { display: grid; gap: 4px; justify-items: center; width: 76px; padding: 0; border: 0; background: none; cursor: zoom-in; scroll-margin-top: calc(var(--bar-h) + 8px); }
-  .rawmark { color: var(--red-deep); font-weight: 800; text-decoration: none; margin-inline-start: 3px; }
   .shot img { width: 76px; height: 76px; object-fit: cover; border-radius: 10px; background: var(--line-soft); display: block; }
   .shot span { font-size: 0.75rem; line-height: 1rem; color: var(--body); text-align: center; }
   .shot:active img { transform: scale(.95); }
@@ -529,7 +528,6 @@ function variantsHTML(k, it) {
     return `<li><span>${prose(t(`${k}.price.${p.k}`))}${extra}</span>${priceHTML(p)}</li>`;
   }).join("")}</ul>`;
 }
-const rawMarkHTML = it => it.raw ? `<a class="rawmark" href="#raw-notice" aria-label="${esc(plain(t("ui.rawTitle")))}">*</a>` : "";
 
 function itemHTML(it, kind) {
   const k = `${kind}.${it.id}`;
@@ -540,7 +538,7 @@ function itemHTML(it, kind) {
   const desc = has(k + ".desc") ? `<p class="desc">${prose(t(k + ".desc"))}</p>` : "";
   const note = has(k + ".note") ? `<p class="note">${prose(t(k + ".note"))}</p>` : "";
   const variants = keyed ? variantsHTML(k, it) : "";
-  const sides = it.addons ? `<div class="sides"><span class="lab">${prose(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${prose(t("addon." + a.id + ".name"))}${rawMarkHTML(a)}${merged(a).length ? ` <span class="vplus">(+ ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
+  const sides = it.addons ? `<div class="sides"><span class="lab">${prose(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${prose(t("addon." + a.id + ".name"))}${merged(a).length ? ` <span class="vplus">(+ ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
   const pi = kind === "item" ? PHOTO_INDEX[it.id] : undefined;
   let photo = "";
   if (pi !== undefined) {
@@ -549,7 +547,7 @@ function itemHTML(it, kind) {
   }
   return `<li class="item${kind === "item" && pi === undefined ? " no-photo" : ""}" id="item-${it.id}" data-kind="${kind}" data-allergens="${allOf(it).join(" ")}">
     <div class="item-body">
-      <div class="item-head"><h3>${nm.h3}${rawMarkHTML(it)}</h3>${single}</div>
+      <div class="item-head"><h3>${nm.h3}</h3>${single}</div>
       ${nm.sub}${badgesHTML(it)}${tagline}${desc}${variants}${note}${sides}
     </div>${photo}${optionShotsHTML(it, k)}${containsHTML(it)}
   </li>`;
