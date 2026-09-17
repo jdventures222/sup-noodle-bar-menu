@@ -196,6 +196,7 @@
   .has-photos .item.no-photo > .shots.side .shot { width: 76px; max-width: 76px; }
   .has-photos .item.no-photo > .shots.side .shot span { word-break: normal; overflow-wrap: anywhere; }
   .shot { display: grid; gap: 4px; justify-items: center; width: 76px; padding: 0; border: 0; background: none; cursor: zoom-in; scroll-margin-top: calc(var(--bar-h) + 8px); }
+  .rawmark { color: var(--red-deep); font-weight: 800; text-decoration: none; margin-inline-start: 3px; }
   .shot img { width: 76px; height: 76px; object-fit: cover; border-radius: 10px; background: var(--line-soft); display: block; }
   .shot span { font-size: 0.75rem; line-height: 1rem; color: var(--body); text-align: center; }
   .shot:active img { transform: scale(.95); }
@@ -528,6 +529,8 @@ function variantsHTML(k, it) {
     return `<li><span>${prose(t(`${k}.price.${p.k}`))}${extra}</span>${priceHTML(p)}</li>`;
   }).join("")}</ul>`;
 }
+const rawMarkHTML = it => it.raw ? `<a class="rawmark" href="#raw-notice" aria-label="${esc(plain(t("ui.rawTitle")))}">*</a>` : "";
+
 function itemHTML(it, kind) {
   const k = `${kind}.${it.id}`;
   const keyed = it.prices.length && it.prices[0].k !== undefined;
@@ -546,7 +549,7 @@ function itemHTML(it, kind) {
   }
   return `<li class="item${kind === "item" && pi === undefined ? " no-photo" : ""}" id="item-${it.id}" data-kind="${kind}" data-allergens="${allOf(it).join(" ")}">
     <div class="item-body">
-      <div class="item-head"><h3>${nm.h3}</h3>${single}</div>
+      <div class="item-head"><h3>${nm.h3}${rawMarkHTML(it)}</h3>${single}</div>
       ${nm.sub}${badgesHTML(it)}${tagline}${desc}${variants}${note}${sides}
     </div>${photo}${optionShotsHTML(it, k)}${containsHTML(it)}
   </li>`;
@@ -601,7 +604,7 @@ function footerHTML() {
   </div>
   <p class="notice"><b>${prose(t("ui.allergyTitle"))}</b>${prose(t("ui.allergyNotice"))}</p>
   ${["ar", "fa", "ur"].includes(state.lang) ? `<p class="notice halal-note">${prose(t("ui.halalNote"))}</p>` : ""}
-  <p class="notice"><b>${prose(t("ui.rawTitle"))}</b>${prose(t("ui.rawNotice"))}</p>
+  <p class="notice" id="raw-notice"><b>${prose(t("ui.rawTitle"))}</b>${prose(t("ui.rawNotice"))}</p>
   <p class="pdfs"><b>${prose(t("ui.pdfMenu"))}:</b> ${LANGS.map(l => `<a href="pdf/SUP-Menu-${l.code}.pdf" lang="${l.code}">${nativeName(l)}</a>`).join(" · ")}</p>
   <p class="fine"><bdi dir="ltr"><a href="https://www.keiconcepts.info/brands/sup">keiconcepts.info/brands/sup</a></bdi><br><bdi dir="ltr">@supnoodlebar</bdi> · <bdi dir="ltr"><a href="mailto:hello@keiconcepts.info">hello@keiconcepts.info</a></bdi></p>`;
 }

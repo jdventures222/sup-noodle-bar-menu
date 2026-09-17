@@ -13,7 +13,7 @@ def markup(structure, s):
         values=set(entry.get('contains',[])+entry.get('likely',[]))
         return ('<p><b>'+t('ui.contains')+':</b> '+', '.join(t('allergen.'+a) for a in structure['allergens'] if a in values)+'</p>') if values else ''
     def item(it,kind='item'):
-        key=kind+'.'+it['id']; out='<article><h3>'+t(key+'.name')+'</h3>'
+        key=kind+'.'+it['id']; out='<article><h3>'+t(key+'.name')+(' *' if it.get('raw') else '')+'</h3>'
         for suffix in ('tagline','desc','note'):
             if key+'.'+suffix in s: out+='<p>'+t(key+'.'+suffix)+'</p>'
         for p in it['prices']:
