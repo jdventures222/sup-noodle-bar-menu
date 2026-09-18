@@ -132,9 +132,16 @@
   .qr-open { display: block; width: 64px; height: 64px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; }
   .qr-open img { display: block; width: 100%; height: 100%; }
   .qr-open:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
-  .qr-sheet { position: fixed; inset: auto 0 0 0; margin: 0; width: 100%; max-width: 100%; max-height: min(90dvh, 90vh); border: 0; border-radius: 18px 18px 0 0; padding: 0; background: var(--surface); color: var(--ink); box-shadow: 0 -8px 40px rgba(27, 25, 23, .18); overflow: hidden; display: none; flex-direction: column; }
-  .qr-sheet[open] { display: flex; }
-  .qr-sheet::backdrop { background: rgba(27, 25, 23, .48); }
+  .qr-sheet { position: fixed; inset: auto 0 0 0; margin: 0; width: 100%; max-width: 100%; max-height: min(90dvh, 90vh); border: 0; border-radius: 18px 18px 0 0; padding: 0; background: var(--surface); color: var(--ink); box-shadow: 0 -8px 40px rgba(27, 25, 23, .18); overflow: hidden; display: none; flex-direction: column; transform: translateY(102%); transition: transform .32s cubic-bezier(.2, .8, .2, 1); }
+  .qr-sheet[open] { display: flex; transform: none; }
+  .qr-sheet.closing { transform: translateY(102%); }
+  .qr-sheet::backdrop { background: rgba(27, 25, 23, .48); transition: opacity .32s; }
+  .qr-sheet.closing::backdrop { opacity: 0; }
+  @starting-style { .qr-sheet[open] { transform: translateY(102%); } .qr-sheet[open]::backdrop { opacity: 0; } }
+  /* The head is the drag handle, as on the menus' sheets: the sheet follows a downward drag and closes
+     past a third of its height or on a flick. */
+  .qr-head { touch-action: none; cursor: grab; }
+  .qr-sheet.dragging, .qr-sheet.dragging::backdrop { transition: none; }
   .qr-head { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 44px; align-items: center; gap: 8px; padding: 18px 8px 8px 20px; flex: none; }
   .qr-head::before { content: ""; position: absolute; top: 8px; inset-inline-start: 50%; width: 40px; height: 5px; margin-inline-start: -20px; border-radius: 3px; background: var(--muted); }
   .qr-head h2 { margin: 6px 0 0; font-size: 1.25rem; line-height: 1.3; overflow-wrap: anywhere; }
@@ -151,7 +158,7 @@
   .save { display: inline-flex; align-items: center; justify-content: center; justify-self: start; min-height: 44px; padding: 0 16px; border: 1px solid var(--red); border-radius: 999px; color: var(--red); font-size: 0.875rem; font-weight: 700; text-decoration: none; }
   .save:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
   @media (min-width: 45rem) {
-    .qr-sheet { inset: 0; margin: auto; width: min(560px, 92vw); max-height: min(84dvh, 84vh); border-radius: 18px; }
+    .qr-sheet, .qr-sheet.closing { inset: 0; margin: auto; width: min(560px, 92vw); max-height: min(84dvh, 84vh); border-radius: 18px; transform: none; transition: none; }
     .qr-head::before { display: none; }
     .qr-code { grid-template-columns: 160px minmax(0, 1fr); }
     .qr-code img { width: 160px; height: 160px; }
@@ -478,15 +485,64 @@ function fillQr(code) {
 }
 let qrOpener = null;
 function openQr(button) {
-  qrOpener = button; fillQr(button.dataset.code);
+  qrOpener = button; fillQr(button.dataset.code); prefetchQr(button.dataset.code);
   const dlg = $("qrDialog"); dlg.showModal();
   const first = dlg.querySelector(".save"); if (first) first.focus({ preventScroll: true });
 }
-function closeQr() { const dlg = $("qrDialog"); if (!dlg.open) return; dlg.close(); if (qrOpener && qrOpener.isConnected) qrOpener.focus({ preventScroll: true }); }
+const desktopCard = () => matchMedia("(min-width: 45rem)").matches;
+function closeQr() {
+  const dlg = $("qrDialog"); if (!dlg.open || dlg.classList.contains("closing")) return;
+  const ms = (desktopCard() || matchMedia("(prefers-reduced-motion: reduce)").matches) ? 0 : 320;
+  dlg.style.transform = ""; dlg.classList.add("closing");
+  setTimeout(() => { dlg.close(); dlg.classList.remove("closing"); if (qrOpener && qrOpener.isConnected) qrOpener.focus({ preventScroll: true }); }, ms);
+}
 document.querySelectorAll(".qr-open").forEach(b => b.addEventListener("click", () => openQr(b)));
 $("qrClose").addEventListener("click", closeQr);
 $("qrDialog").addEventListener("cancel", e => { e.preventDefault(); closeQr(); });
-$("qrDialog").addEventListener("click", e => { if (e.target === e.currentTarget) closeQr(); });
+/* A backdrop tap closes; a press that starts on the sheet and ends on the backdrop (a drag) does not:
+   the click's target is then the dialog itself, exactly as for a backdrop tap. */
+let qrDownOnBackdrop = false;
+$("qrDialog").addEventListener("pointerdown", e => { qrDownOnBackdrop = e.target === e.currentTarget; });
+$("qrDialog").addEventListener("click", e => { if (e.target === e.currentTarget && qrDownOnBackdrop) closeQr(); });
+(function attachSheetDrag(dlg) {
+  let drag = null;
+  dlg.addEventListener("pointerdown", e => {
+    const head = e.target.closest(".qr-head");
+    if (!head || e.target.closest("button") || (e.pointerType === "mouse" && e.button !== 0) || desktopCard()) return;
+    drag = { id: e.pointerId, y0: e.clientY, y: e.clientY, t: e.timeStamp, v: 0 };
+    dlg.classList.add("dragging"); head.setPointerCapture(e.pointerId);
+  });
+  dlg.addEventListener("pointermove", e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const dt = e.timeStamp - drag.t; if (dt > 0) drag.v = (e.clientY - drag.y) / dt;
+    drag.y = e.clientY; drag.t = e.timeStamp;
+    dlg.style.transform = `translateY(${Math.max(0, e.clientY - drag.y0)}px)`;
+  });
+  const release = e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const dy = Math.max(0, e.clientY - drag.y0), fling = drag.v > 0.5 && dy > 24;
+    drag = null; dlg.classList.remove("dragging");
+    if (e.type === "pointerup" && (dy > dlg.offsetHeight * 0.3 || fling)) closeQr(); else dlg.style.transform = "";
+  };
+  dlg.addEventListener("pointerup", release); dlg.addEventListener("pointercancel", release);
+})($("qrDialog"));
+/* On a phone, "Save QR code" hands the PNG to the share sheet, whose "Save Image" puts it in the photo
+   library (a download would land in Files). The link itself stays the download for every other case.
+   The files are fetched when the sheet opens, so the share starts inside the tap. */
+const qrFiles = new Map();
+function prefetchQr(code) {
+  (QR[code] || []).forEach(c => { if (qrFiles.has(c.code)) return; const p = fetch(`r/qr/${c.code}.png`).then(r => r.blob()).then(b => new File([b], `menu-fyt-life-${c.code}-qr.png`, { type: "image/png" })).catch(() => null); p.then(f => { p.__file = f; }); qrFiles.set(c.code, p); });
+}
+$("qrBody").addEventListener("click", e => {
+  const a = e.target.closest("a.save");
+  if (!a || a.dataset.native || !navigator.share || !navigator.canShare || !matchMedia("(pointer: coarse)").matches) return;
+  e.preventDefault();
+  const fallback = () => { const b = a.cloneNode(true); b.dataset.native = "1"; b.hidden = true; document.body.appendChild(b); b.click(); b.remove(); };
+  const code = a.getAttribute("href").slice("r/qr/".length, -".png".length);
+  const share = file => { if (!file || !navigator.canShare({ files: [file] })) { fallback(); return; } navigator.share({ files: [file], title: a.textContent.trim() }).catch(err => { if (!err || err.name !== "AbortError") fallback(); }); };
+  const pending = qrFiles.get(code);
+  if (pending && pending.__file !== undefined) share(pending.__file); else (pending || Promise.resolve(null)).then(share);
+});
 function syncUrl() { const u = new URL(location.href); u.searchParams.set("lang", state.lang); u.hash = ""; history.replaceState(history.state, "", u); }
 function setLang(code) {
   if (!LANGS.some(l => l.code === code)) return;
