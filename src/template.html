@@ -132,11 +132,8 @@
   .btn.quiet { background: var(--ground); color: var(--ink); }
 
   /* Specials */
-  /* The specials as a swipeable rail: one card and the edge of the next on a phone, two side by side wider (finding 12). */
-  .specials { display: flex; gap: 10px; margin: 14px -6px 0; padding: 6px; overflow: auto; scroll-padding-inline: 6px; scroll-snap-type: inline proximity; overscroll-behavior-inline: contain; scrollbar-width: none; }
-  .specials::-webkit-scrollbar { display: none; }
-  .special { flex: 0 0 calc(100% - 24px); scroll-snap-align: start; }
-  @media (min-width: 560px) { .special { flex-basis: calc((100% - 10px) / 2); } }
+  .specials { display: grid; gap: 10px; margin: 14px 0 0; grid-template-columns: 1fr; }
+  @media (min-width: 560px) { .specials { grid-template-columns: 1fr 1fr; gap: 12px; } }
   .special { display: grid; grid-template-columns: 84px minmax(0, 1fr) 20px; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px; color: inherit; text-decoration: none; }
   .special:active { background: var(--ground); }
   .special img { width: 84px; height: 84px; object-fit: cover; border-radius: 10px; display: block; }
@@ -1404,7 +1401,7 @@ function toast(text) {
 }
 document.addEventListener("click", e => {
   const share = e.target.closest("#shareMenu, [data-share-dish]"), view = e.target.closest("[data-view-dish]");
-  if (view) { const id = "item-" + view.dataset.viewDish; LB.dlg.__afterClose = () => goToItem(id); closeDialog(LB.dlg); return; }
+  if (view) { const id = "item-" + view.dataset.viewDish, pointer = e.detail !== 0; LB.dlg.__afterClose = () => { const target = $(id); if (!target) return; target.classList.toggle("pointer-focus", pointer); goToItem(id); clearTimeout(searchHighlightTimer); document.querySelector(".search-highlight")?.classList.remove("search-highlight"); target.classList.add("search-highlight"); searchHighlightTimer = setTimeout(() => target.classList.remove("search-highlight"), 1800); }; closeDialog(LB.dlg); return; }
   if (!share) return;
   const done = shareLink(share.dataset.shareDish ? dishUrl(share.dataset.shareDish) : menuUrl());
   const dlg = openDlg();

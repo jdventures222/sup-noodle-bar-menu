@@ -1454,7 +1454,7 @@ function toast(text) {
 }
 document.addEventListener("click", e => {
   const share = e.target.closest("#shareMenu, [data-share-dish]"), view = e.target.closest("[data-view-dish]");
-  if (view) { const id = "item-" + view.dataset.viewDish; LB.dlg.__afterClose = () => goToItem(id); closeDialog(LB.dlg); return; }
+  if (view) { const id = "item-" + view.dataset.viewDish, pointer = e.detail !== 0; LB.dlg.__afterClose = () => { const target = $(id); if (!target) return; target.classList.toggle("pointer-focus", pointer); focusMenuTarget(id); clearTimeout(searchHighlightTimer); document.querySelector(".search-highlight")?.classList.remove("search-highlight"); target.classList.add("search-highlight"); searchHighlightTimer = setTimeout(() => target.classList.remove("search-highlight"), 1800); }; closeDialog(LB.dlg); return; }
   if (!share) return;
   const done = shareLink(share.dataset.shareDish ? dishUrl(share.dataset.shareDish) : menuUrl());
   const dlg = openDlg();

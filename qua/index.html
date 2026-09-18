@@ -553,10 +553,7 @@ html[lang="ur"] .promo-list .promo-card :is(.eyebrow, .promo-title, .when, .term
 .hide-flagged .promo-list .promo-card.flagged { display: none; }
 @media (min-width: 760px) { .specials.promo-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .promo-list .promo-card:only-child { grid-column: 1 / -1; } }
 @media print { .promo-list .promo-card .promo-media, .promo-list .promo-card > svg { display: none !important; } .promo-list .promo-card { grid-template-columns: minmax(0, 1fr); break-inside: avoid; } }
-.specials.promo-list.qua-promos { --promo-title-size: 1.5rem; --promo-title-weight: 400; --promo-card-bg: #eaece2; --promo-card-line: var(--line); --promo-mark-bg: #051b13;  display: flex; gap: 10px; overflow: auto; margin-inline: -6px; padding: 6px; scroll-padding-inline: 6px; scroll-snap-type: inline proximity; overscroll-behavior-inline: contain; scrollbar-width: none; }
-.qua-promos::-webkit-scrollbar { display: none; }
-.qua-promos .promo-card { flex: 0 0 calc(100% - 24px); scroll-snap-align: start; }
-@media (min-width: 760px) { .qua-promos .promo-card { flex-basis: calc((100% - 10px) / 2); } }
+.specials.promo-list.qua-promos { --promo-title-size: 1.5rem; --promo-title-weight: 400; --promo-card-bg: #eaece2; --promo-card-line: var(--line); --promo-mark-bg: #051b13; }
 
   /* A linked dish the filter hides (openLinkedDish); the pill back to search results; the copied-link toast;
      the viewer caption's View dish and Share; Share menu and the PDF in the Sections sheet. */
@@ -1575,7 +1572,7 @@ function toast(text) {
 }
 document.addEventListener("click", e => {
   const share = e.target.closest("#shareMenu, [data-share-dish]"), view = e.target.closest("[data-view-dish]");
-  if (view) { const id = "item-" + view.dataset.viewDish; LB.dlg.__afterClose = () => goToItem(id); closeDialog(LB.dlg); return; }
+  if (view) { const id = "item-" + view.dataset.viewDish, pointer = e.detail !== 0; LB.dlg.__afterClose = () => { const target = $(id); if (!target) return; target.classList.toggle("pointer-focus", pointer); focusMenuTarget(id); clearTimeout(searchHighlightTimer); document.querySelector(".search-highlight")?.classList.remove("search-highlight"); target.classList.add("search-highlight"); searchHighlightTimer = setTimeout(() => target.classList.remove("search-highlight"), 1800); }; closeDialog(LB.dlg); return; }
   if (!share) return;
   const done = shareLink(share.dataset.shareDish ? dishUrl(share.dataset.shareDish) : menuUrl());
   const dlg = openDlg();
