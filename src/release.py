@@ -12,7 +12,7 @@ import tempfile
 from html.parser import HTMLParser
 from urllib.parse import unquote, urlsplit
 from build_common import LANGS, SOURCES, PHASE2_KEYS, read_strings, source_hash, poppler_tool
-from sup_sw import manifest
+from sup_sw import BASE, manifest
 from sup_nojs import markup
 from sup_seo import LOCATIONS
 
@@ -70,7 +70,7 @@ def verify(work):
     if actual != expected:
         raise ValueError(f'Public output mismatch: missing={expected-actual}; stray/private={actual-expected}')
     sw_manifest = json.loads((site / 'sup-manifest.json').read_text())
-    if sw_manifest != manifest(site, data['revision']) or set(sw_manifest['files']) != {'/' + p for p in actual}:
+    if sw_manifest != manifest(site, data['revision']) or set(sw_manifest['files']) != {BASE + p for p in actual}:
         raise ValueError('SUP worker allowlist does not exactly match published files')
     worker = (site / 'sup-worker.js').read_text()
     if worker != (work / 'sup-worker.js').read_text().replace('__SUP_MANIFEST__', json.dumps(sw_manifest, separators=(',', ':'))):
@@ -88,6 +88,11 @@ def verify(work):
             raise ValueError('JSON-LD location differs from the footer: ' + loc['city'])
     if '<link rel="manifest" href="manifest.webmanifest">' not in text:
         raise ValueError('Missing web app manifest link')
+    # The menu lives under BASE: its canonical, alternates and worker scope must all say so.
+    if f'<link rel="canonical" href="https://menu.fyt.life{BASE}">' not in text or f'href="https://menu.fyt.life{BASE}?lang=ur"' not in text:
+        raise ValueError('Canonical or alternates do not point at ' + BASE)
+    if f"register('{BASE}sup-worker.js',{{scope:'{BASE}'" not in text or f"['{BASE}', '{BASE}index.html'].includes(location.pathname)" not in text:
+        raise ValueError('Service worker is not registered at ' + BASE)
     contact = ('https://www.keiconcepts.info/brands/sup', 'keiconcepts.info/brands/sup', 'hello@keiconcepts.info')
     for filename in [site / 'index.html', site / 'qrcard.html'] + [work / f'print-{lang}.html' for lang in LANGS]:
         content = filename.read_text()
@@ -116,7 +121,12 @@ def verify(work):
             continue
         if not parsed.path:
             continue
-        target = (site / unquote(parsed.path).lstrip('/')).resolve()
+        path = unquote(parsed.path)
+        if parsed.netloc == 'menu.fyt.life':
+            if not path.startswith(BASE):
+                raise ValueError(f'Absolute URL outside {BASE}: {url}')
+            path = path[len(BASE):]
+        target = (site / path.lstrip('/')).resolve()
         if not target.is_relative_to(site.resolve()) or not target.exists():
             raise ValueError(f'Missing/invalid referenced asset: {url}')
     base_prices = None

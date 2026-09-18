@@ -38,7 +38,7 @@ with tempfile.TemporaryDirectory(prefix='qr-build-', dir=root / 'tests') as work
     for name in ('qr', 'qrread'):
         subprocess.run(['swiftc', '-O', '-module-cache-path', str(work / 'modules'), '-o', str(work / name), str(root / f'{name}.swift')], check=True)
     qr = root / 'assets' / 'qr-menu.png'
-    url = 'https://menu.fyt.life/'
+    url = 'https://menu.fyt.life/r/sup'  # the printed address forwards to the menu; the root is the directory
     subprocess.run([str(work / 'qr'), url, str(qr), '2048', str(root / 'assets' / 'logo.png')], check=True)
     decoded = subprocess.check_output([str(work / 'qrread'), str(qr)], text=True).strip()
     if not decoded.endswith(f'1 code(s) -> ["{url}"]'):

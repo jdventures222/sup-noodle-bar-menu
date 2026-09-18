@@ -2,11 +2,13 @@
 import json
 import os
 
+BASE='/sup/'  # the menu's directory on menu.fyt.life; the directory of every menu is the root
+
 def manifest(site, rev):
-    paths=sorted({'/'+p.relative_to(site).as_posix() for p in site.rglob('*') if p.is_file()} |
-                 {'/sup-worker.js','/sup-manifest.json'})
-    return {'revision':rev,'enabled':os.environ.get('SUP_SW_DISABLED')!='1','files':paths,
-            'aliases':{'/':'/index.html'},'precache':['/index.html','/img/logo.png']}
+    paths=sorted({BASE+p.relative_to(site).as_posix() for p in site.rglob('*') if p.is_file()} |
+                 {BASE+'sup-worker.js',BASE+'sup-manifest.json'})
+    return {'revision':rev,'enabled':os.environ.get('SUP_SW_DISABLED')!='1','base':BASE,'files':paths,
+            'aliases':{BASE:BASE+'index.html'},'precache':[BASE+'index.html',BASE+'img/logo.png']}
 
 def generate(root, site, rev):
     data=manifest(site,rev)

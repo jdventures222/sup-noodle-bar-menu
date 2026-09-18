@@ -1,10 +1,10 @@
-/* Only exact SUP paths reach respondWith. The root scope also covers future restaurants. */
+/* Only exact SUP paths reach respondWith. The scope is SUP's own directory (SUP.base); the root is the directory of every menu. */
 const SUP = __SUP_MANIFEST__;
 const SUP_CACHE = 'sup-menu-' + SUP.revision.stamp;
 const SUP_STATE = 'sup-cache-state';
 const SUP_FILES = new Set(SUP.files);
 const supPath = url => SUP.aliases[url.pathname] || url.pathname;
-const supFull = path => path.startsWith('/img/full/') || (path.startsWith('/img/var/') && !path.endsWith('-thumb.jpg'));
+const supFull = path => path.startsWith(SUP.base+'img/full/') || (path.startsWith(SUP.base+'img/var/') && !path.endsWith('-thumb.jpg'));
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     // No cache:'reload': the page downloaded these seconds ago and they are still fresh,
@@ -58,7 +58,7 @@ self.addEventListener('fetch', event => {
     // PDF viewers may request a byte range. Save/return a complete 200 response so
     // a later offline open is usable; Cache.put cannot store partial 206 responses.
     let request=event.request;
-    if (path.startsWith('/pdf/') && request.headers.has('range')) {
+    if (path.startsWith(SUP.base+'pdf/') && request.headers.has('range')) {
       const headers=new Headers(request.headers);headers.delete('range');
       request=new Request(request,{headers});
     }
@@ -70,7 +70,7 @@ self.addEventListener('fetch', event => {
 self.addEventListener('message', event => {
   if (!SUP.enabled || !event.source?.url) return;
   const sender=new URL(event.source.url);
-  if (sender.origin!==self.location.origin || supPath(sender)!=='/index.html') return;
+  if (sender.origin!==self.location.origin || supPath(sender)!==SUP.base+'index.html') return;
   // The viewer preloads adjacent photos. Cache the displayed photo only.
   const path=event.data?.supOpened;
   if (typeof path!=='string' || !SUP_FILES.has(path) || !supFull(path)) return;

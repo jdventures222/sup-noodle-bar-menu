@@ -4,7 +4,7 @@ release.py checks they still agree."""
 import json
 from decimal import Decimal, ROUND_HALF_UP
 
-HOST = 'https://menu.fyt.life/'
+HOST = 'https://menu.fyt.life/sup/'
 LOCATIONS = [
     {'street': '5141 Beach Blvd Unit B', 'city': 'Buena Park', 'zip': '90621', 'phone': '714-521-2444'},
     {'street': '14370 Culver Dr Unit 2H', 'city': 'Irvine', 'zip': '92604', 'phone': '657-300-8420'},

@@ -7,31 +7,31 @@
 <meta name="color-scheme" content="light">
 <title>SUP Noodle Bar Menu</title>
 <meta name="description" content="__DESCRIPTION__">
-<link rel="canonical" href="https://menu.fyt.life/">
+<link rel="canonical" href="https://menu.fyt.life/sup/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://menu.fyt.life/">
+<meta property="og:url" content="https://menu.fyt.life/sup/">
 <meta property="og:title" content="__PREVIEW_TITLE__">
 <meta property="og:description" content="__DESCRIPTION__">
-<meta property="og:image" content="https://menu.fyt.life/img/social-logo.png">
+<meta property="og:image" content="https://menu.fyt.life/sup/img/social-logo.png">
 <meta property="og:image:alt" content="SUP Noodle Bar">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="__PREVIEW_TITLE__">
 <meta name="twitter:description" content="__DESCRIPTION__">
-<meta name="twitter:image" content="https://menu.fyt.life/img/social-logo.png">
-<link rel="alternate" hreflang="en" href="https://menu.fyt.life/?lang=en">
-<link rel="alternate" hreflang="es" href="https://menu.fyt.life/?lang=es">
-<link rel="alternate" hreflang="vi" href="https://menu.fyt.life/?lang=vi">
-<link rel="alternate" hreflang="ko" href="https://menu.fyt.life/?lang=ko">
-<link rel="alternate" hreflang="zh-Hans" href="https://menu.fyt.life/?lang=zh">
-<link rel="alternate" hreflang="zh-Hant" href="https://menu.fyt.life/?lang=zh-Hant">
-<link rel="alternate" hreflang="tl" href="https://menu.fyt.life/?lang=tl">
-<link rel="alternate" hreflang="fa" href="https://menu.fyt.life/?lang=fa">
-<link rel="alternate" hreflang="ar" href="https://menu.fyt.life/?lang=ar">
-<link rel="alternate" hreflang="ja" href="https://menu.fyt.life/?lang=ja">
-<link rel="alternate" hreflang="ru" href="https://menu.fyt.life/?lang=ru">
-<link rel="alternate" hreflang="hi" href="https://menu.fyt.life/?lang=hi">
-<link rel="alternate" hreflang="ur" href="https://menu.fyt.life/?lang=ur">
-<link rel="alternate" hreflang="x-default" href="https://menu.fyt.life/">
+<meta name="twitter:image" content="https://menu.fyt.life/sup/img/social-logo.png">
+<link rel="alternate" hreflang="en" href="https://menu.fyt.life/sup/?lang=en">
+<link rel="alternate" hreflang="es" href="https://menu.fyt.life/sup/?lang=es">
+<link rel="alternate" hreflang="vi" href="https://menu.fyt.life/sup/?lang=vi">
+<link rel="alternate" hreflang="ko" href="https://menu.fyt.life/sup/?lang=ko">
+<link rel="alternate" hreflang="zh-Hans" href="https://menu.fyt.life/sup/?lang=zh">
+<link rel="alternate" hreflang="zh-Hant" href="https://menu.fyt.life/sup/?lang=zh-Hant">
+<link rel="alternate" hreflang="tl" href="https://menu.fyt.life/sup/?lang=tl">
+<link rel="alternate" hreflang="fa" href="https://menu.fyt.life/sup/?lang=fa">
+<link rel="alternate" hreflang="ar" href="https://menu.fyt.life/sup/?lang=ar">
+<link rel="alternate" hreflang="ja" href="https://menu.fyt.life/sup/?lang=ja">
+<link rel="alternate" hreflang="ru" href="https://menu.fyt.life/sup/?lang=ru">
+<link rel="alternate" hreflang="hi" href="https://menu.fyt.life/sup/?lang=hi">
+<link rel="alternate" hreflang="ur" href="https://menu.fyt.life/sup/?lang=ur">
+<link rel="alternate" hreflang="x-default" href="https://menu.fyt.life/sup/">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="apple-mobile-web-app-title" content="SUP">
 <script type="application/ld+json">__JSONLD__</script>
@@ -1035,18 +1035,18 @@ function offlineStatus() {
   $('supOffline').innerHTML=date?prose(t('ui.offlineSaved').replace('{date}',date)):'';
 }
 function startOffline() {
-  if (!('serviceWorker' in navigator) || !['/', '/index.html'].includes(location.pathname)) return;
+  if (!('serviceWorker' in navigator) || !['/sup/', '/sup/index.html'].includes(location.pathname)) return;
   const warm=async()=>{
     if(!navigator.serviceWorker.controller)return;
     await window.supFontReady;
     const urls=new Set(performance.getEntriesByType('resource').map(r=>r.name));
     // The first visit loaded before control. Replay only assets already used by this page.
-    await Promise.allSettled([...urls].filter(value=>{const u=new URL(value);return u.origin===location.origin && (u.pathname.startsWith('/sup-fonts/') || (u.pathname.startsWith('/img/')&&!u.pathname.startsWith('/img/full/')&&(!u.pathname.startsWith('/img/var/')||u.pathname.endsWith('-thumb.jpg'))))}).map(url=>fetch(url).then(response=>response.arrayBuffer())));
+    await Promise.allSettled([...urls].filter(value=>{const u=new URL(value);return u.origin===location.origin && (u.pathname.startsWith('/sup/sup-fonts/') || (u.pathname.startsWith('/sup/img/')&&!u.pathname.startsWith('/sup/img/full/')&&(!u.pathname.startsWith('/sup/img/var/')||u.pathname.endsWith('-thumb.jpg'))))}).map(url=>fetch(url).then(response=>response.arrayBuffer())));
   };
   navigator.serviceWorker.addEventListener('controllerchange',warm);
-  navigator.serviceWorker.register('/sup-worker.js',{scope:'/',updateViaCache:'none'}).then(()=>navigator.serviceWorker.ready).then(warm).catch(()=>{});
+  navigator.serviceWorker.register('/sup/sup-worker.js',{scope:'/sup/',updateViaCache:'none'}).then(()=>navigator.serviceWorker.ready).then(warm).catch(()=>{});
   // Observe the caption; all existing viewer source remains untouched.
-  new MutationObserver(()=>{if(LB.dlg.open)navigator.serviceWorker.controller?.postMessage({supOpened:'/'+PHOTOS[LB.index].full})}).observe(LB.cap,{childList:true});
+  new MutationObserver(()=>{if(LB.dlg.open)navigator.serviceWorker.controller?.postMessage({supOpened:'/sup/'+PHOTOS[LB.index].full})}).observe(LB.cap,{childList:true});
 }
 
 /* Photo viewer: pinch to four times fit, double-tap to zoom, and drag in any direction to dismiss.

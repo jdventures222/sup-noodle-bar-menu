@@ -8,7 +8,7 @@ Only after validation does the command replace `site/`, `pdf/`, `sup-menu.html`,
 
 The revision is a UTC ISO date and an eight-character SHA-256 prefix over named source files and assets (excluding the generated QR). Set `SOURCE_DATE_EPOCH` to a fixed Unix timestamp to reproduce the revision date; PDF internal timestamps may still differ. The revision appears in menu metadata, embedded data and `revision.json`; every PDF page has localized page/total and revision date.
 
-`python3 build.py` defaults to every language. The existing three-command sequence remains available for development, but only `release.py` provides the staging/verification guarantee. `site/qrcard.html` is the printable 5×7-inch card; its generated `img/qr-menu.png` encodes exactly `https://menu.fyt.life/`. QR compilation artifacts are temporary under `tests/`.
+`python3 build.py` defaults to every language. The existing three-command sequence remains available for development, but only `release.py` provides the staging/verification guarantee. `site/qrcard.html` is the printable 5×7-inch card; its generated `img/qr-menu.png` encodes exactly `https://menu.fyt.life/r/sup`, the printed address that forwards to the menu at `/sup/` (the root is the directory of every menu). QR compilation artifacts are temporary under `tests/`.
 
 ## Phase 2 build inputs and offline operation
 
