@@ -399,7 +399,9 @@
      Only the preview is clipped; photo viewer source and dimensions are unchanged. */
   .thumb-btn, .shot .photo-frame { overflow: hidden; isolation: isolate; background: linear-gradient(to bottom, var(--photo-bg-top, var(--photo-bg, var(--line-soft))) 0 30%, var(--photo-bg-bot, var(--photo-bg, var(--line-soft))) 70% 100%); border-radius: 5px; aspect-ratio: 1; }
   .shot .photo-frame { display: block; width: 76px; height: 76px; }
-  .thumb-btn .thumb, .shot .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; border-radius: 0; box-shadow: none; background: transparent; }
+  /* The reviewed square frame (assets/photo-framing.json): the photo contained in the tile on its edge-matched bands, then
+     scaled by its zoom and shifted by its offsets, as the framing review previewed it (restored 2026-09-18 on the owner's 'Fix all'). */
+  .thumb-btn .thumb, .shot .photo-frame img { width: 100%; height: 100%; object-fit: contain; object-position: 50% 50%; border-radius: 0; box-shadow: none; background: transparent; transform: translate(var(--photo-x, 0%), var(--photo-y, 0%)) scale(var(--photo-zoom, 1)); transform-origin: center; }
   .al.derived { display: block; grid-column: 1 / -1; }
 
   /* SUP interaction vocabulary, with this restaurant's own mark and palette. */
