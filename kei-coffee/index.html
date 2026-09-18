@@ -514,8 +514,11 @@ html[lang="ur"] .promo-list .promo-card :is(.eyebrow, .promo-title, .when, .term
 @media (min-width: 760px) { .specials.promo-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .promo-list .promo-card:only-child { grid-column: 1 / -1; } }
 @media print { .promo-list .promo-card .promo-media, .promo-list .promo-card > svg { display: none !important; } .promo-list .promo-card { grid-template-columns: minmax(0, 1fr); break-inside: avoid; } }
 .specials.promo-list.coffee-promos { --promo-title-font: var(--text); --promo-title-size: 1.0625rem; --promo-title-weight: 700; --promo-card-line: var(--line-soft); --promo-mark-bg: #1c1b1b;
-  display: flex; gap: 10px; overflow: auto; margin-inline: -6px; padding: 6px; scroll-padding-inline: 6px; scroll-snap-type: inline proximity; overscroll-behavior-inline: contain; }
-.coffee-promos .promo-card { flex: 0 0 calc(100% - 24px); scroll-snap-align: start; }
+  display: flex; gap: 10px; overflow-x: auto; overflow-y: hidden; margin-inline: -6px; padding: 6px; scroll-padding-inline: 6px; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; scrollbar-width: none; }
+.coffee-promos::-webkit-scrollbar { display: none; }
+.coffee-promos .promo-card { flex: 0 0 calc(100% - 24px); scroll-snap-align: start; scroll-snap-stop: normal; -webkit-tap-highlight-color: transparent; }
+/* A swipe along the rail must not press the card it starts on (the owner's 2026-09-18 note: the rail felt clunky). */
+@media (hover: none) { .coffee-promos a.promo-card:active, .coffee-promos .special:active { background: var(--promo-card-bg); } }
 @media (min-width: 760px) { .coffee-promos .promo-card { flex-basis: calc((100% - 10px) / 2); } }
 
   /* A linked dish the filter hides (openLinkedDish); the pill back to search results; the copied-link toast;

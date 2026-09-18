@@ -198,27 +198,53 @@
   .qr-head .x { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--ground); color: var(--ink); cursor: pointer; display: grid; place-items: center; }
   .qr-head .x svg { width: 20px; height: 20px; }
   .qr-head .x:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
-  /* A tile opens the restaurant's photos full screen, in a viewer like the menus' own (the owner's 2026-09-18 request). */
+  /* The menus' own photo viewer, lifted from KIN's template so the directory's tiles open photos exactly as a menu does
+     (the owner's 2026-09-18 request): pinch, double-tap, drag to dismiss, a tap toggles the chrome, swipe or arrows page. */
+  dialog.lb { --ease: cubic-bezier(.2, .8, .2, 1); }
+  dialog.lb { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: #fff; overflow: hidden; display: none; touch-action: none; }
+  dialog.lb[open] { display: block; }
+  dialog.lb::backdrop { background: transparent; }
+  .lb-bg { position: absolute; inset: 0; background: #000; opacity: 0; }
+  .lb-track { direction: ltr; position: absolute; inset: 0; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
+  .lb-track.zoomed { cursor: move; }
+  .lb-slide { position: absolute; inset: 0; width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden; touch-action: none; }
+  .lb-zoom { position: relative; transform-origin: center; background-position: center; background-size: cover; overflow: hidden; touch-action: none; }
+  .lb-zoom img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .25s; pointer-events: none; -webkit-user-drag: none; }
+  .lb-zoom img.in { opacity: 1; }
+  .lb-zoom picture { display: block; width: 100%; height: 100%; }
+  .lb-zoom.cutout { background-image: none !important; }
+  .lb-zoom.cutout img { object-fit: contain; }
+  .lb-chrome { position: absolute; inset: 0; pointer-events: none; transition: opacity .2s ease-in-out; }
+  .lb-chrome.off > * { pointer-events: none !important; }
+  .lb-close { pointer-events: auto; position: absolute; top: calc(10px + env(safe-area-inset-top)); inset-inline-start: calc(10px + env(safe-area-inset-left)); width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; cursor: pointer; }
+  .lb-close span { width: 34px; height: 34px; border-radius: 50%; background: rgba(0, 0, 0, .35); display: grid; place-items: center; }
+  .lb-close svg { width: 14px; height: 14px; }
+  .lb-cap { position: absolute; inset-inline: 16px; bottom: calc(24px + env(safe-area-inset-bottom)); display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .lb-cap > span:not(.lb-acts) { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: rgba(0, 0, 0, .55); border-radius: 999px; padding: 7px 14px; font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; }
+  .lb-cap span b { font-weight: 700; margin-inline-start: 8px; font-variant-numeric: tabular-nums; }
+  .lb-nav { display: none; pointer-events: auto; position: absolute; top: 50%; width: 44px; height: 44px; margin-top: -22px; place-items: center; background: none; border: 0; cursor: pointer; }
+  .lb-nav span { width: 38px; height: 38px; border-radius: 50%; background: rgba(0, 0, 0, .35); display: grid; place-items: center; }
+  .lb-nav svg { width: 18px; height: 18px; }
+  .lb-nav.prev { inset-inline-start: 12px; } .lb-nav.next { inset-inline-end: 12px; }
+  .lb-nav[disabled] { opacity: .3; cursor: default; }
+  .lb-nav { display: grid; }
+  .lb-close:focus-visible span, .lb-nav:focus-visible span { outline: 3px solid #fff; outline-offset: 2px; }
+  .lb-close:focus-visible, .lb-nav:focus-visible { outline: 0; }
+  html[dir="rtl"] .lb-close { inset-inline-start: calc(10px + env(safe-area-inset-right)); }
+  html[dir="rtl"] .lb-nav svg { transform: scaleX(-1); }
+  html[lang="ur"] .lb-cap span { white-space: normal; overflow: visible; text-align: center; }
+  .lb-cap { max-height: 35dvh; overflow-y: auto; padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
+  .lb-cap span, .lb-cap b { white-space: normal; overflow-wrap: anywhere; }
+  .lb-cap small { display: block; font-size: .8125rem; line-height: 1.4; }
+  .lb-error { color: #fff; text-align: center; padding: 12px; }
+  .toast { position: fixed; left: 50%; bottom: calc(76px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 60; padding: 10px 16px; border-radius: 999px; background: rgba(27, 25, 23, .92); color: #fff; font-size: 0.875rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity .2s; }
+  .toast.on { opacity: 1; }
+  .lb-acts { flex-basis: 100%; display: flex; justify-content: center; gap: 8px; pointer-events: auto; }
+  .lb-act { min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .45); background: rgba(0, 0, 0, .55); color: #fff; font: inherit; font-size: 0.875rem; font-weight: 600; cursor: pointer; }
+  html:is([lang="fa"], [lang="ar"], [lang="ur"]) .lb-cap span { line-height: 1.7; }
+  html[lang="ur"] .lb-cap span { line-height: 2.6; white-space: normal; overflow: visible; text-align: center; }
   .dish[role="button"] { cursor: pointer; }
   .dish[role="button"]:focus-visible:not(.pointer-focus) { outline: 3px solid var(--red); outline-offset: 2px; }
-  .viewer { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #0f0e0d; color: #fff; }
-  .viewer::backdrop { background: #0f0e0d; }
-  .viewer:focus { outline: none; }
-  .v-stage { position: absolute; inset: 0; display: grid; place-items: center; touch-action: pan-y; }
-  .v-stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; opacity: 0; transition: opacity .25s ease; }
-  .v-stage img.in { opacity: 1; }
-  .v-btn { position: absolute; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255, 255, 255, .45); border-radius: 50%; background: rgba(0, 0, 0, .55); color: #fff; display: grid; place-items: center; cursor: pointer; }
-  .v-btn svg { width: 22px; height: 22px; }
-  .v-btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
-  .v-close { top: max(12px, env(safe-area-inset-top)); inset-inline-end: 12px; }
-  .v-prev, .v-next { top: 50%; transform: translateY(-50%); }
-  .v-prev { inset-inline-start: 12px; }
-  .v-next { inset-inline-end: 12px; }
-  html[dir="rtl"] .v-prev svg, html[dir="rtl"] .v-next svg { transform: scaleX(-1); }
-  .v-cap { position: absolute; inset-inline: 12px; bottom: max(16px, env(safe-area-inset-bottom)); margin: 0; text-align: center; }
-  .v-cap span { display: inline-block; max-width: 100%; padding: 7px 14px; border-radius: 999px; background: rgba(0, 0, 0, .55); font-size: .875rem; line-height: 1.25rem; font-weight: 600; overflow-wrap: anywhere; }
-  .v-cap:empty { display: none; }
-  @media (prefers-reduced-motion: reduce) { .v-stage img { transition: none; } }
   .qr-body { overflow-y: auto; overscroll-behavior: contain; padding: 4px 20px calc(24px + env(safe-area-inset-bottom)); display: grid; gap: 20px; }
   .qr-code { margin: 0; display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 14px; align-items: center; padding-top: 16px; border-top: 1px solid var(--line); }
   .qr-code:first-child { border-top: 0; padding-top: 4px; }
@@ -480,15 +506,18 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
   <div class="qr-head"><h2 id="qrTitle"></h2><button class="x" type="button" id="qrClose"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
   <div class="qr-body" id="qrBody"></div>
 </dialog>
-<dialog class="viewer" id="viewer" tabindex="-1">
-  <div class="v-stage" id="viewerStage"><img id="viewerImg" alt="" decoding="async"></div>
-  <button class="v-btn v-close" type="button" id="viewerClose"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-  <button class="v-btn v-prev" type="button" id="viewerPrev"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-  <button class="v-btn v-next" type="button" id="viewerNext"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-  <p class="v-cap" id="viewerCap"></p>
+<dialog class="lb" id="lb">
+  <div class="lb-bg" id="lbBg"></div>
+  <div class="lb-track" id="lbTrack"></div>
+  <div class="lb-chrome" id="lbChrome">
+    <button class="lb-close" type="button" id="lbClose"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg></span></button>
+    <button class="lb-nav prev" type="button" id="lbPrev"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg></span></button>
+    <button class="lb-nav next" type="button" id="lbNext"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></span></button>
+    <div class="lb-cap" id="lbCap" role="status" aria-live="polite" aria-atomic="true"></div>
+  </div>
 </dialog>
 <script>
-const STRINGS = {"en":{"ui.docTitle":"Kei Concepts · Menus","ui.title":"Menus","ui.intro":"Every restaurant’s live menu. Each opens the same page a guest sees after scanning the QR code at the table.","ui.byLocation":"Menu by location:","ui.skip":"Skip to menu","ui.language":"Language","ui.chooseLanguage":"Choose a language","ui.autoDetected":"Shown in your device's language.","ui.qrFor":"QR code for {name}","ui.saveQr":"Save QR code","ui.close":"Close","ui.hours":"Hours","ui.closed":"Closed","ui.call":"Call","ui.directions":"Directions","brand.sup.tagline":"Vietnamese noodle bar","brand.vox.tagline":"Many flavors. One voice.","brand.nep.tagline":"A snapshot of Vietnamese dining.","brand.rol.tagline":"The freshest seat in the house.","brand.kin.tagline":"Ramen and izakaya plates.","brand.ini.tagline":"Italian cooking. Japanese point of view.","brand.qua.tagline":"Contemporary Chinese cuisine.","brand.kei-coffee.tagline":"Start your day with intention.","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"Today","ui.photoViewer":"Dish photo","ui.prevPhoto":"Previous photo","ui.nextPhoto":"Next photo","ui.dishPhotos":"Dish photos"},"es":{"ui.docTitle":"Kei Concepts · Menús","ui.title":"Menús","ui.intro":"Los menús actualizados de todos nuestros restaurantes. Cada enlace abre la misma página que ves al escanear el código QR en la mesa.","ui.byLocation":"Menú por ubicación:","ui.skip":"Ir al menú","ui.language":"Idioma","ui.chooseLanguage":"Elige un idioma","ui.autoDetected":"Se muestra en el idioma de tu dispositivo.","ui.qrFor":"Código QR de {name}","ui.saveQr":"Guardar código QR","ui.close":"Cerrar","ui.hours":"Horario","ui.closed":"Cerrado","ui.call":"Llamar","ui.directions":"Cómo llegar","brand.sup.tagline":"Bar de fideos vietnamitas","brand.vox.tagline":"Muchos sabores. Una sola voz.","brand.nep.tagline":"Una muestra de la gastronomía vietnamita.","brand.rol.tagline":"El lugar más fresco de la casa.","brand.kin.tagline":"Ramen y platos de izakaya.","brand.ini.tagline":"Cocina italiana. Perspectiva japonesa.","brand.qua.tagline":"Cocina china contemporánea.","brand.kei-coffee.tagline":"Empieza tu día con intención.","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"Hoy","ui.photoViewer":"Foto del platillo","ui.prevPhoto":"Foto anterior","ui.nextPhoto":"Foto siguiente","ui.dishPhotos":"Fotos de platos"},"vi":{"ui.docTitle":"Kei Concepts · Thực đơn","ui.title":"Thực đơn","ui.intro":"Thực đơn mới nhất của mọi nhà hàng. Mỗi liên kết mở đúng trang thực đơn mà bạn thấy khi quét mã QR tại bàn.","ui.byLocation":"Thực đơn theo địa điểm:","ui.skip":"Đến thực đơn","ui.language":"Ngôn ngữ","ui.chooseLanguage":"Chọn ngôn ngữ","ui.autoDetected":"Hiển thị theo ngôn ngữ trên thiết bị của bạn.","ui.qrFor":"Mã QR của {name}","ui.saveQr":"Lưu mã QR","ui.close":"Đóng","ui.hours":"Giờ mở cửa","ui.closed":"Đóng cửa","ui.call":"Gọi","ui.directions":"Chỉ đường","brand.sup.tagline":"Quán mì Việt Nam","brand.vox.tagline":"Nhiều hương vị. Một tiếng nói.","brand.nep.tagline":"Một góc ẩm thực Việt Nam.","brand.rol.tagline":"Chỗ ngồi cho vị tươi ngon nhất.","brand.kin.tagline":"Ramen và các món izakaya.","brand.ini.tagline":"Ẩm thực Ý. Góc nhìn Nhật Bản.","brand.qua.tagline":"Ẩm thực Trung Hoa đương đại.","brand.kei-coffee.tagline":"Bắt đầu ngày mới với mục đích rõ ràng.","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"Hôm nay","ui.photoViewer":"Ảnh món ăn","ui.prevPhoto":"Ảnh trước","ui.nextPhoto":"Ảnh tiếp theo","ui.dishPhotos":"Ảnh món ăn"},"ko":{"ui.docTitle":"Kei Concepts · 메뉴","ui.title":"메뉴","ui.intro":"모든 레스토랑의 최신 메뉴를 확인하세요. 각 링크를 누르면 테이블의 QR 코드를 스캔했을 때와 같은 페이지가 열립니다.","ui.byLocation":"지점별 메뉴:","ui.skip":"메뉴로 건너뛰기","ui.language":"언어","ui.chooseLanguage":"언어 선택","ui.autoDetected":"기기 언어에 맞춰 표시하고 있습니다.","ui.qrFor":"{name}의 QR 코드","ui.saveQr":"QR 코드 저장","ui.close":"닫기","ui.hours":"영업시간","ui.closed":"휴무","ui.call":"전화","ui.directions":"길찾기","brand.sup.tagline":"베트남 국숫집","brand.vox.tagline":"다양한 맛. 하나의 목소리.","brand.nep.tagline":"베트남 식문화의 한 장면.","brand.rol.tagline":"가장 신선한 맛을 즐기는 자리.","brand.kin.tagline":"라멘과 이자카야 요리.","brand.ini.tagline":"이탈리아 요리. 일본의 시각.","brand.qua.tagline":"현대적인 중식.","brand.kei-coffee.tagline":"뜻을 담아 하루를 시작하세요.","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"오늘","ui.photoViewer":"메뉴 사진","ui.prevPhoto":"이전 사진","ui.nextPhoto":"다음 사진","ui.dishPhotos":"음식 사진"},"zh":{"ui.docTitle":"Kei Concepts · 菜单","ui.title":"菜单","ui.intro":"各家餐厅的最新菜单。点击链接，即可打开与扫描餐桌上二维码相同的菜单页面。","ui.byLocation":"各门店菜单：","ui.skip":"跳转至菜单","ui.language":"语言","ui.chooseLanguage":"选择语言","ui.autoDetected":"已按您设备的语言显示。","ui.qrFor":"{name} 的二维码","ui.saveQr":"保存二维码","ui.close":"关闭","ui.hours":"营业时间","ui.closed":"休息","ui.call":"致电","ui.directions":"路线","brand.sup.tagline":"越南粉面馆","brand.vox.tagline":"多种风味，同一个声音。","brand.nep.tagline":"越南餐桌一瞥。","brand.rol.tagline":"店里最鲜美的一席。","brand.kin.tagline":"拉面与居酒屋料理。","brand.ini.tagline":"意式烹饪，日式视角。","brand.qua.tagline":"现代中餐。","brand.kei-coffee.tagline":"用心开启新的一天。","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"今天","ui.photoViewer":"菜品照片","ui.prevPhoto":"上一张","ui.nextPhoto":"下一张","ui.dishPhotos":"菜品照片"},"zh-Hant":{"ui.docTitle":"Kei Concepts · 菜單","ui.title":"菜單","ui.intro":"各家餐廳的最新菜單。點選連結，即可開啟與掃描餐桌上 QR 碼相同的菜單頁面。","ui.byLocation":"各門市菜單：","ui.skip":"跳至菜單","ui.language":"語言","ui.chooseLanguage":"選擇語言","ui.autoDetected":"已依裝置語言顯示。","ui.qrFor":"{name} 的 QR 碼","ui.saveQr":"儲存 QR 碼","ui.close":"關閉","ui.hours":"營業時間","ui.closed":"公休","ui.call":"致電","ui.directions":"路線","brand.sup.tagline":"越南麵館","brand.vox.tagline":"多種風味，同一個聲音。","brand.nep.tagline":"越南餐桌一瞥。","brand.rol.tagline":"店裡最鮮美的一席。","brand.kin.tagline":"拉麵與居酒屋料理。","brand.ini.tagline":"義式烹飪，日式觀點。","brand.qua.tagline":"現代中餐。","brand.kei-coffee.tagline":"用心開啟新的一天。","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"今天","ui.photoViewer":"餐點照片","ui.prevPhoto":"上一張照片","ui.nextPhoto":"下一張照片","ui.dishPhotos":"餐點照片"},"tl":{"ui.docTitle":"Kei Concepts · Mga menu","ui.title":"Mga menu","ui.intro":"Mga pinakabagong menu ng bawat restawran. Bawat link ay nagbubukas ng parehong pahinang makikita mo kapag ini-scan mo ang QR code sa mesa.","ui.byLocation":"Menu ayon sa lokasyon:","ui.skip":"Dumiretso sa menu","ui.language":"Wika","ui.chooseLanguage":"Pumili ng wika","ui.autoDetected":"Ipinapakita sa wikang gamit ng iyong aparato.","ui.qrFor":"QR code para sa {name}","ui.saveQr":"I-save ang QR code","ui.close":"Isara","ui.hours":"Mga oras","ui.closed":"Sarado","ui.call":"Tumawag","ui.directions":"Direksyon","brand.sup.tagline":"Kainan ng pansit na Vietnamese","brand.vox.tagline":"Maraming lasa. Iisang tinig.","brand.nep.tagline":"Isang sulyap sa pagkaing Vietnamese.","brand.rol.tagline":"Puwesto para sa pinakasariwang lasa.","brand.kin.tagline":"Ramen at mga putahe ng izakaya.","brand.ini.tagline":"Lutuing Italyano. Pananaw na Hapones.","brand.qua.tagline":"Makabagong lutuing Tsino.","brand.kei-coffee.tagline":"Simulan ang araw nang may layunin.","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"Ngayon","ui.photoViewer":"Larawan ng pagkain","ui.prevPhoto":"Nakaraang larawan","ui.nextPhoto":"Susunod na larawan","ui.dishPhotos":"Mga larawan ng pagkain"},"fa":{"ui.docTitle":"Kei Concepts · منوها","ui.title":"منوها","ui.intro":"منوی به‌روز همهٔ رستوران‌ها. هر لینک همان صفحه‌ای را باز می‌کند که با اسکن کد QR روی میز می‌بینید.","ui.byLocation":"منو بر اساس مکان:","ui.skip":"رفتن به منو","ui.language":"زبان","ui.chooseLanguage":"یک زبان انتخاب کنید","ui.autoDetected":"به زبان دستگاه شما نمایش داده می‌شود.","ui.qrFor":"کد QR برای {name}","ui.saveQr":"ذخیرهٔ کد QR","ui.close":"بستن","ui.hours":"ساعات کاری","ui.closed":"تعطیل","ui.call":"تماس","ui.directions":"مسیریابی","brand.sup.tagline":"نودل‌بار ویتنامی","brand.vox.tagline":"طعم‌های بسیار. یک صدا.","brand.nep.tagline":"نمایی از غذاهای ویتنامی.","brand.rol.tagline":"جایی برای تازه‌ترین طعم‌ها.","brand.kin.tagline":"رامن و خوراک‌های ایزاکایا.","brand.ini.tagline":"آشپزی ایتالیایی. با نگاهی ژاپنی.","brand.qua.tagline":"آشپزی معاصر چینی.","brand.kei-coffee.tagline":"روزتان را هدفمند آغاز کنید.","city.buenaPark":"بوئنا پارک","city.irvine":"ارواین","city.costaMesa":"کوستا میسا","city.alisoViejo":"آلیسو ویهو","city.fountainValley":"فاونتن ولی","city.laHabra":"لا هابرا","city.westminster":"وست‌مینستر","ui.today":"امروز","ui.photoViewer":"عکس غذا","ui.prevPhoto":"عکس قبلی","ui.nextPhoto":"عکس بعدی","ui.dishPhotos":"عکس‌های غذا"},"ar":{"ui.docTitle":"Kei Concepts · قوائم الطعام","ui.title":"قوائم الطعام","ui.intro":"أحدث قوائم الطعام لكل مطاعمنا. يفتح كل رابط الصفحة نفسها التي تراها عند مسح رمز QR على الطاولة.","ui.byLocation":"قائمة الطعام حسب الموقع:","ui.skip":"الانتقال إلى القائمة","ui.language":"اللغة","ui.chooseLanguage":"اختر لغة","ui.autoDetected":"تُعرض بلغة جهازك.","ui.qrFor":"رمز QR الخاص بـ {name}","ui.saveQr":"حفظ رمز QR","ui.close":"إغلاق","ui.hours":"ساعات العمل","ui.closed":"مغلق","ui.call":"اتصال","ui.directions":"الاتجاهات","brand.sup.tagline":"مطعم نودلز فيتنامي","brand.vox.tagline":"نكهات كثيرة. صوت واحد.","brand.nep.tagline":"لمحة عن المطبخ الفيتنامي.","brand.rol.tagline":"مقعدك حيث الطزاجة في أوجها.","brand.kin.tagline":"رامن وأطباق إيزاكايا.","brand.ini.tagline":"طبخ إيطالي. برؤية يابانية.","brand.qua.tagline":"مطبخ صيني معاصر.","brand.kei-coffee.tagline":"ابدأ يومك بقصد وهدف.","city.buenaPark":"بوينا بارك","city.irvine":"إرفاين","city.costaMesa":"كوستا ميسا","city.alisoViejo":"أليسو فييخو","city.fountainValley":"فاونتن فالي","city.laHabra":"لا هابرا","city.westminster":"وستمنستر","ui.today":"اليوم","ui.photoViewer":"صورة الطبق","ui.prevPhoto":"الصورة السابقة","ui.nextPhoto":"الصورة التالية","ui.dishPhotos":"صور الأطباق"},"ja":{"ui.docTitle":"Kei Concepts · メニュー","ui.title":"メニュー","ui.intro":"各レストランの最新メニュー。各リンクから、テーブルのQRコードを読み取ったときと同じページが開きます。","ui.byLocation":"店舗別メニュー：","ui.skip":"メニューへ移動","ui.language":"言語","ui.chooseLanguage":"言語を選択","ui.autoDetected":"お使いの端末の言語で表示しています。","ui.qrFor":"{name} のQRコード","ui.saveQr":"QRコードを保存","ui.close":"閉じる","ui.hours":"営業時間","ui.closed":"定休日","ui.call":"電話する","ui.directions":"経路","brand.sup.tagline":"ベトナム麺料理店","brand.vox.tagline":"多彩な味わい。ひとつの声。","brand.nep.tagline":"ベトナムの食を垣間見る。","brand.rol.tagline":"いちばん新鮮なおいしさを、この席で。","brand.kin.tagline":"ラーメンと居酒屋料理。","brand.ini.tagline":"イタリア料理を、日本の視点で。","brand.qua.tagline":"現代中国料理。","brand.kei-coffee.tagline":"心を込めて一日を始めよう。","city.buenaPark":"ブエナパーク","city.irvine":"アーバイン","city.costaMesa":"コスタメサ","city.alisoViejo":"アリソビエホ","city.fountainValley":"ファウンテンバレー","city.laHabra":"ラハブラ","city.westminster":"ウェストミンスター","ui.today":"本日","ui.photoViewer":"料理の写真","ui.prevPhoto":"前の写真","ui.nextPhoto":"次の写真","ui.dishPhotos":"料理の写真"},"ru":{"ui.docTitle":"Kei Concepts · Меню","ui.title":"Меню","ui.intro":"Актуальные меню всех ресторанов. Каждая ссылка открывает ту же страницу, которую вы видите при сканировании QR-кода на столе.","ui.byLocation":"Меню по адресам:","ui.skip":"Перейти к меню","ui.language":"Язык","ui.chooseLanguage":"Выберите язык","ui.autoDetected":"Показано на языке вашего устройства.","ui.qrFor":"QR-код для {name}","ui.saveQr":"Сохранить QR-код","ui.close":"Закрыть","ui.hours":"Часы работы","ui.closed":"Закрыто","ui.call":"Позвонить","ui.directions":"Маршрут","brand.sup.tagline":"Вьетнамская лапшичная","brand.vox.tagline":"Множество вкусов. Один голос.","brand.nep.tagline":"Знакомство с вьетнамской кухней.","brand.rol.tagline":"Самое свежее место в зале.","brand.kin.tagline":"Рамен и блюда идзакая.","brand.ini.tagline":"Итальянская кухня. Японский взгляд.","brand.qua.tagline":"Современная китайская кухня.","brand.kei-coffee.tagline":"Начните день осознанно.","city.buenaPark":"Буэна-Парк","city.irvine":"Ирвайн","city.costaMesa":"Коста-Меса","city.alisoViejo":"Алисо-Вьехо","city.fountainValley":"Фаунтин-Вэлли","city.laHabra":"Ла-Хабра","city.westminster":"Вестминстер","ui.today":"Сегодня","ui.photoViewer":"Фото блюда","ui.prevPhoto":"Предыдущее фото","ui.nextPhoto":"Следующее фото","ui.dishPhotos":"Фото блюд"},"hi":{"ui.docTitle":"Kei Concepts · मेन्यू","ui.title":"मेन्यू","ui.intro":"सभी रेस्तराँ के मौजूदा मेन्यू। हर लिंक वही पेज खोलता है जो आपको मेज़ पर लगा QR कोड स्कैन करने पर दिखता है।","ui.byLocation":"स्थान के अनुसार मेन्यू:","ui.skip":"सीधे मेन्यू पर जाएँ","ui.language":"भाषा","ui.chooseLanguage":"एक भाषा चुनें","ui.autoDetected":"आपके डिवाइस की भाषा में दिखाया गया है।","ui.qrFor":"{name} का QR कोड","ui.saveQr":"QR कोड सेव करें","ui.close":"बंद करें","ui.hours":"खुलने का समय","ui.closed":"बंद","ui.call":"कॉल करें","ui.directions":"रास्ता","brand.sup.tagline":"वियतनामी नूडल बार","brand.vox.tagline":"अनेक स्वाद। एक आवाज़।","brand.nep.tagline":"वियतनामी भोजन की एक झलक।","brand.rol.tagline":"यहाँ की सबसे ताज़गी भरी जगह।","brand.kin.tagline":"रामेन और इज़ाकाया के व्यंजन।","brand.ini.tagline":"इतालवी खाना। जापानी नज़रिया।","brand.qua.tagline":"समकालीन चीनी व्यंजन।","brand.kei-coffee.tagline":"अपने दिन की शुरुआत एक उद्देश्य के साथ करें।","city.buenaPark":"बुएना पार्क","city.irvine":"इरवाइन","city.costaMesa":"कोस्टा मेसा","city.alisoViejo":"अलिसो विएहो","city.fountainValley":"फाउंटेन वैली","city.laHabra":"ला हाब्रा","city.westminster":"वेस्टमिंस्टर","ui.today":"आज","ui.photoViewer":"व्यंजन की तस्वीर","ui.prevPhoto":"पिछली तस्वीर","ui.nextPhoto":"अगली तस्वीर","ui.dishPhotos":"व्यंजनों की तस्वीरें"},"ur":{"ui.docTitle":"Kei Concepts · مینو","ui.title":"مینو","ui.intro":"ہر ریستوران کا تازہ ترین مینو۔ ہر لنک وہی صفحہ کھولتا ہے جو آپ میز پر موجود QR کوڈ اسکین کرنے پر دیکھتے ہیں۔","ui.byLocation":"مقام کے لحاظ سے مینو:","ui.skip":"براہِ راست مینو پر جائیں","ui.language":"زبان","ui.chooseLanguage":"زبان منتخب کریں","ui.autoDetected":"آپ کے آلے کی زبان میں دکھایا گیا ہے۔","ui.qrFor":"{name} کا QR کوڈ","ui.saveQr":"QR کوڈ محفوظ کریں","ui.close":"بند کریں","ui.hours":"اوقاتِ کار","ui.closed":"بند","ui.call":"کال کریں","ui.directions":"راستہ","brand.sup.tagline":"ویتنامی نوڈل بار","brand.vox.tagline":"بہت سے ذائقے۔ ایک آواز۔","brand.nep.tagline":"ویتنامی کھانوں کی ایک جھلک۔","brand.rol.tagline":"یہاں کی سب سے تازگی بھری نشست۔","brand.kin.tagline":"رامن اور ایزاکایا کے پکوان۔","brand.ini.tagline":"اطالوی کھانا۔ جاپانی نقطۂ نظر۔","brand.qua.tagline":"عصری چینی کھانے۔","brand.kei-coffee.tagline":"اپنے دن کا آغاز ایک مقصد کے ساتھ کریں۔","city.buenaPark":"بوئنا پارک","city.irvine":"اِروائن","city.costaMesa":"کوسٹا میسا","city.alisoViejo":"الیسو ویئہو","city.fountainValley":"فاؤنٹین ویلی","city.laHabra":"لا ہابرا","city.westminster":"ویسٹ منسٹر","ui.today":"آج","ui.photoViewer":"پکوان کی تصویر","ui.prevPhoto":"پچھلی تصویر","ui.nextPhoto":"اگلی تصویر","ui.dishPhotos":"کھانوں کی تصاویر"}};
+const STRINGS = {"en":{"ui.docTitle":"Kei Concepts · Menus","ui.title":"Menus","ui.intro":"Every restaurant’s live menu. Each opens the same page a guest sees after scanning the QR code at the table.","ui.byLocation":"Menu by location:","ui.skip":"Skip to menu","ui.language":"Language","ui.chooseLanguage":"Choose a language","ui.autoDetected":"Shown in your device's language.","ui.qrFor":"QR code for {name}","ui.saveQr":"Save QR code","ui.close":"Close","ui.hours":"Hours","ui.closed":"Closed","ui.call":"Call","ui.directions":"Directions","brand.sup.tagline":"Vietnamese noodle bar","brand.vox.tagline":"Many flavors. One voice.","brand.nep.tagline":"A snapshot of Vietnamese dining.","brand.rol.tagline":"The freshest seat in the house.","brand.kin.tagline":"Ramen and izakaya plates.","brand.ini.tagline":"Italian cooking. Japanese point of view.","brand.qua.tagline":"Contemporary Chinese cuisine.","brand.kei-coffee.tagline":"Start your day with intention.","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"Today","ui.photoViewer":"Dish photo","ui.prevPhoto":"Previous photo","ui.nextPhoto":"Next photo","ui.dishPhotos":"Dish photos","ui.viewDish":"View dish","ui.share":"Share","ui.linkCopied":"Link copied"},"es":{"ui.docTitle":"Kei Concepts · Menús","ui.title":"Menús","ui.intro":"Los menús actualizados de todos nuestros restaurantes. Cada enlace abre la misma página que ves al escanear el código QR en la mesa.","ui.byLocation":"Menú por ubicación:","ui.skip":"Ir al menú","ui.language":"Idioma","ui.chooseLanguage":"Elige un idioma","ui.autoDetected":"Se muestra en el idioma de tu dispositivo.","ui.qrFor":"Código QR de {name}","ui.saveQr":"Guardar código QR","ui.close":"Cerrar","ui.hours":"Horario","ui.closed":"Cerrado","ui.call":"Llamar","ui.directions":"Cómo llegar","brand.sup.tagline":"Bar de fideos vietnamitas","brand.vox.tagline":"Muchos sabores. Una sola voz.","brand.nep.tagline":"Una muestra de la gastronomía vietnamita.","brand.rol.tagline":"El lugar más fresco de la casa.","brand.kin.tagline":"Ramen y platos de izakaya.","brand.ini.tagline":"Cocina italiana. Perspectiva japonesa.","brand.qua.tagline":"Cocina china contemporánea.","brand.kei-coffee.tagline":"Empieza tu día con intención.","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"Hoy","ui.photoViewer":"Foto del platillo","ui.prevPhoto":"Foto anterior","ui.nextPhoto":"Foto siguiente","ui.dishPhotos":"Fotos de platos","ui.viewDish":"Ver platillo","ui.share":"Compartir","ui.linkCopied":"Enlace copiado"},"vi":{"ui.docTitle":"Kei Concepts · Thực đơn","ui.title":"Thực đơn","ui.intro":"Thực đơn mới nhất của mọi nhà hàng. Mỗi liên kết mở đúng trang thực đơn mà bạn thấy khi quét mã QR tại bàn.","ui.byLocation":"Thực đơn theo địa điểm:","ui.skip":"Đến thực đơn","ui.language":"Ngôn ngữ","ui.chooseLanguage":"Chọn ngôn ngữ","ui.autoDetected":"Hiển thị theo ngôn ngữ trên thiết bị của bạn.","ui.qrFor":"Mã QR của {name}","ui.saveQr":"Lưu mã QR","ui.close":"Đóng","ui.hours":"Giờ mở cửa","ui.closed":"Đóng cửa","ui.call":"Gọi","ui.directions":"Chỉ đường","brand.sup.tagline":"Quán mì Việt Nam","brand.vox.tagline":"Nhiều hương vị. Một tiếng nói.","brand.nep.tagline":"Một góc ẩm thực Việt Nam.","brand.rol.tagline":"Chỗ ngồi cho vị tươi ngon nhất.","brand.kin.tagline":"Ramen và các món izakaya.","brand.ini.tagline":"Ẩm thực Ý. Góc nhìn Nhật Bản.","brand.qua.tagline":"Ẩm thực Trung Hoa đương đại.","brand.kei-coffee.tagline":"Bắt đầu ngày mới với mục đích rõ ràng.","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"Hôm nay","ui.photoViewer":"Ảnh món ăn","ui.prevPhoto":"Ảnh trước","ui.nextPhoto":"Ảnh tiếp theo","ui.dishPhotos":"Ảnh món ăn","ui.viewDish":"Xem món","ui.share":"Chia sẻ","ui.linkCopied":"Đã sao chép liên kết"},"ko":{"ui.docTitle":"Kei Concepts · 메뉴","ui.title":"메뉴","ui.intro":"모든 레스토랑의 최신 메뉴를 확인하세요. 각 링크를 누르면 테이블의 QR 코드를 스캔했을 때와 같은 페이지가 열립니다.","ui.byLocation":"지점별 메뉴:","ui.skip":"메뉴로 건너뛰기","ui.language":"언어","ui.chooseLanguage":"언어 선택","ui.autoDetected":"기기 언어에 맞춰 표시하고 있습니다.","ui.qrFor":"{name}의 QR 코드","ui.saveQr":"QR 코드 저장","ui.close":"닫기","ui.hours":"영업시간","ui.closed":"휴무","ui.call":"전화","ui.directions":"길찾기","brand.sup.tagline":"베트남 국숫집","brand.vox.tagline":"다양한 맛. 하나의 목소리.","brand.nep.tagline":"베트남 식문화의 한 장면.","brand.rol.tagline":"가장 신선한 맛을 즐기는 자리.","brand.kin.tagline":"라멘과 이자카야 요리.","brand.ini.tagline":"이탈리아 요리. 일본의 시각.","brand.qua.tagline":"현대적인 중식.","brand.kei-coffee.tagline":"뜻을 담아 하루를 시작하세요.","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"오늘","ui.photoViewer":"메뉴 사진","ui.prevPhoto":"이전 사진","ui.nextPhoto":"다음 사진","ui.dishPhotos":"음식 사진","ui.viewDish":"메뉴 보기","ui.share":"공유","ui.linkCopied":"링크 복사됨"},"zh":{"ui.docTitle":"Kei Concepts · 菜单","ui.title":"菜单","ui.intro":"各家餐厅的最新菜单。点击链接，即可打开与扫描餐桌上二维码相同的菜单页面。","ui.byLocation":"各门店菜单：","ui.skip":"跳转至菜单","ui.language":"语言","ui.chooseLanguage":"选择语言","ui.autoDetected":"已按您设备的语言显示。","ui.qrFor":"{name} 的二维码","ui.saveQr":"保存二维码","ui.close":"关闭","ui.hours":"营业时间","ui.closed":"休息","ui.call":"致电","ui.directions":"路线","brand.sup.tagline":"越南粉面馆","brand.vox.tagline":"多种风味，同一个声音。","brand.nep.tagline":"越南餐桌一瞥。","brand.rol.tagline":"店里最鲜美的一席。","brand.kin.tagline":"拉面与居酒屋料理。","brand.ini.tagline":"意式烹饪，日式视角。","brand.qua.tagline":"现代中餐。","brand.kei-coffee.tagline":"用心开启新的一天。","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"今天","ui.photoViewer":"菜品照片","ui.prevPhoto":"上一张","ui.nextPhoto":"下一张","ui.dishPhotos":"菜品照片","ui.viewDish":"查看菜品","ui.share":"分享","ui.linkCopied":"链接已复制"},"zh-Hant":{"ui.docTitle":"Kei Concepts · 菜單","ui.title":"菜單","ui.intro":"各家餐廳的最新菜單。點選連結，即可開啟與掃描餐桌上 QR 碼相同的菜單頁面。","ui.byLocation":"各門市菜單：","ui.skip":"跳至菜單","ui.language":"語言","ui.chooseLanguage":"選擇語言","ui.autoDetected":"已依裝置語言顯示。","ui.qrFor":"{name} 的 QR 碼","ui.saveQr":"儲存 QR 碼","ui.close":"關閉","ui.hours":"營業時間","ui.closed":"公休","ui.call":"致電","ui.directions":"路線","brand.sup.tagline":"越南麵館","brand.vox.tagline":"多種風味，同一個聲音。","brand.nep.tagline":"越南餐桌一瞥。","brand.rol.tagline":"店裡最鮮美的一席。","brand.kin.tagline":"拉麵與居酒屋料理。","brand.ini.tagline":"義式烹飪，日式觀點。","brand.qua.tagline":"現代中餐。","brand.kei-coffee.tagline":"用心開啟新的一天。","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"今天","ui.photoViewer":"餐點照片","ui.prevPhoto":"上一張照片","ui.nextPhoto":"下一張照片","ui.dishPhotos":"餐點照片","ui.viewDish":"查看餐點","ui.share":"分享","ui.linkCopied":"連結已複製"},"tl":{"ui.docTitle":"Kei Concepts · Mga menu","ui.title":"Mga menu","ui.intro":"Mga pinakabagong menu ng bawat restawran. Bawat link ay nagbubukas ng parehong pahinang makikita mo kapag ini-scan mo ang QR code sa mesa.","ui.byLocation":"Menu ayon sa lokasyon:","ui.skip":"Dumiretso sa menu","ui.language":"Wika","ui.chooseLanguage":"Pumili ng wika","ui.autoDetected":"Ipinapakita sa wikang gamit ng iyong aparato.","ui.qrFor":"QR code para sa {name}","ui.saveQr":"I-save ang QR code","ui.close":"Isara","ui.hours":"Mga oras","ui.closed":"Sarado","ui.call":"Tumawag","ui.directions":"Direksyon","brand.sup.tagline":"Kainan ng pansit na Vietnamese","brand.vox.tagline":"Maraming lasa. Iisang tinig.","brand.nep.tagline":"Isang sulyap sa pagkaing Vietnamese.","brand.rol.tagline":"Puwesto para sa pinakasariwang lasa.","brand.kin.tagline":"Ramen at mga putahe ng izakaya.","brand.ini.tagline":"Lutuing Italyano. Pananaw na Hapones.","brand.qua.tagline":"Makabagong lutuing Tsino.","brand.kei-coffee.tagline":"Simulan ang araw nang may layunin.","city.buenaPark":"Buena Park","city.irvine":"Irvine","city.costaMesa":"Costa Mesa","city.alisoViejo":"Aliso Viejo","city.fountainValley":"Fountain Valley","city.laHabra":"La Habra","city.westminster":"Westminster","ui.today":"Ngayon","ui.photoViewer":"Larawan ng pagkain","ui.prevPhoto":"Nakaraang larawan","ui.nextPhoto":"Susunod na larawan","ui.dishPhotos":"Mga larawan ng pagkain","ui.viewDish":"Tingnan ang pagkain","ui.share":"Ibahagi","ui.linkCopied":"Nakopya ang link"},"fa":{"ui.docTitle":"Kei Concepts · منوها","ui.title":"منوها","ui.intro":"منوی به‌روز همهٔ رستوران‌ها. هر لینک همان صفحه‌ای را باز می‌کند که با اسکن کد QR روی میز می‌بینید.","ui.byLocation":"منو بر اساس مکان:","ui.skip":"رفتن به منو","ui.language":"زبان","ui.chooseLanguage":"یک زبان انتخاب کنید","ui.autoDetected":"به زبان دستگاه شما نمایش داده می‌شود.","ui.qrFor":"کد QR برای {name}","ui.saveQr":"ذخیرهٔ کد QR","ui.close":"بستن","ui.hours":"ساعات کاری","ui.closed":"تعطیل","ui.call":"تماس","ui.directions":"مسیریابی","brand.sup.tagline":"نودل‌بار ویتنامی","brand.vox.tagline":"طعم‌های بسیار. یک صدا.","brand.nep.tagline":"نمایی از غذاهای ویتنامی.","brand.rol.tagline":"جایی برای تازه‌ترین طعم‌ها.","brand.kin.tagline":"رامن و خوراک‌های ایزاکایا.","brand.ini.tagline":"آشپزی ایتالیایی. با نگاهی ژاپنی.","brand.qua.tagline":"آشپزی معاصر چینی.","brand.kei-coffee.tagline":"روزتان را هدفمند آغاز کنید.","city.buenaPark":"بوئنا پارک","city.irvine":"ارواین","city.costaMesa":"کوستا میسا","city.alisoViejo":"آلیسو ویهو","city.fountainValley":"فاونتن ولی","city.laHabra":"لا هابرا","city.westminster":"وست‌مینستر","ui.today":"امروز","ui.photoViewer":"عکس غذا","ui.prevPhoto":"عکس قبلی","ui.nextPhoto":"عکس بعدی","ui.dishPhotos":"عکس‌های غذا","ui.viewDish":"مشاهدهٔ غذا","ui.share":"اشتراک‌گذاری","ui.linkCopied":"پیوند کپی شد"},"ar":{"ui.docTitle":"Kei Concepts · قوائم الطعام","ui.title":"قوائم الطعام","ui.intro":"أحدث قوائم الطعام لكل مطاعمنا. يفتح كل رابط الصفحة نفسها التي تراها عند مسح رمز QR على الطاولة.","ui.byLocation":"قائمة الطعام حسب الموقع:","ui.skip":"الانتقال إلى القائمة","ui.language":"اللغة","ui.chooseLanguage":"اختر لغة","ui.autoDetected":"تُعرض بلغة جهازك.","ui.qrFor":"رمز QR الخاص بـ {name}","ui.saveQr":"حفظ رمز QR","ui.close":"إغلاق","ui.hours":"ساعات العمل","ui.closed":"مغلق","ui.call":"اتصال","ui.directions":"الاتجاهات","brand.sup.tagline":"مطعم نودلز فيتنامي","brand.vox.tagline":"نكهات كثيرة. صوت واحد.","brand.nep.tagline":"لمحة عن المطبخ الفيتنامي.","brand.rol.tagline":"مقعدك حيث الطزاجة في أوجها.","brand.kin.tagline":"رامن وأطباق إيزاكايا.","brand.ini.tagline":"طبخ إيطالي. برؤية يابانية.","brand.qua.tagline":"مطبخ صيني معاصر.","brand.kei-coffee.tagline":"ابدأ يومك بقصد وهدف.","city.buenaPark":"بوينا بارك","city.irvine":"إرفاين","city.costaMesa":"كوستا ميسا","city.alisoViejo":"أليسو فييخو","city.fountainValley":"فاونتن فالي","city.laHabra":"لا هابرا","city.westminster":"وستمنستر","ui.today":"اليوم","ui.photoViewer":"صورة الطبق","ui.prevPhoto":"الصورة السابقة","ui.nextPhoto":"الصورة التالية","ui.dishPhotos":"صور الأطباق","ui.viewDish":"عرض الطبق","ui.share":"مشاركة","ui.linkCopied":"تم نسخ الرابط"},"ja":{"ui.docTitle":"Kei Concepts · メニュー","ui.title":"メニュー","ui.intro":"各レストランの最新メニュー。各リンクから、テーブルのQRコードを読み取ったときと同じページが開きます。","ui.byLocation":"店舗別メニュー：","ui.skip":"メニューへ移動","ui.language":"言語","ui.chooseLanguage":"言語を選択","ui.autoDetected":"お使いの端末の言語で表示しています。","ui.qrFor":"{name} のQRコード","ui.saveQr":"QRコードを保存","ui.close":"閉じる","ui.hours":"営業時間","ui.closed":"定休日","ui.call":"電話する","ui.directions":"経路","brand.sup.tagline":"ベトナム麺料理店","brand.vox.tagline":"多彩な味わい。ひとつの声。","brand.nep.tagline":"ベトナムの食を垣間見る。","brand.rol.tagline":"いちばん新鮮なおいしさを、この席で。","brand.kin.tagline":"ラーメンと居酒屋料理。","brand.ini.tagline":"イタリア料理を、日本の視点で。","brand.qua.tagline":"現代中国料理。","brand.kei-coffee.tagline":"心を込めて一日を始めよう。","city.buenaPark":"ブエナパーク","city.irvine":"アーバイン","city.costaMesa":"コスタメサ","city.alisoViejo":"アリソビエホ","city.fountainValley":"ファウンテンバレー","city.laHabra":"ラハブラ","city.westminster":"ウェストミンスター","ui.today":"本日","ui.photoViewer":"料理の写真","ui.prevPhoto":"前の写真","ui.nextPhoto":"次の写真","ui.dishPhotos":"料理の写真","ui.viewDish":"料理を見る","ui.share":"共有","ui.linkCopied":"リンクをコピーしました"},"ru":{"ui.docTitle":"Kei Concepts · Меню","ui.title":"Меню","ui.intro":"Актуальные меню всех ресторанов. Каждая ссылка открывает ту же страницу, которую вы видите при сканировании QR-кода на столе.","ui.byLocation":"Меню по адресам:","ui.skip":"Перейти к меню","ui.language":"Язык","ui.chooseLanguage":"Выберите язык","ui.autoDetected":"Показано на языке вашего устройства.","ui.qrFor":"QR-код для {name}","ui.saveQr":"Сохранить QR-код","ui.close":"Закрыть","ui.hours":"Часы работы","ui.closed":"Закрыто","ui.call":"Позвонить","ui.directions":"Маршрут","brand.sup.tagline":"Вьетнамская лапшичная","brand.vox.tagline":"Множество вкусов. Один голос.","brand.nep.tagline":"Знакомство с вьетнамской кухней.","brand.rol.tagline":"Самое свежее место в зале.","brand.kin.tagline":"Рамен и блюда идзакая.","brand.ini.tagline":"Итальянская кухня. Японский взгляд.","brand.qua.tagline":"Современная китайская кухня.","brand.kei-coffee.tagline":"Начните день осознанно.","city.buenaPark":"Буэна-Парк","city.irvine":"Ирвайн","city.costaMesa":"Коста-Меса","city.alisoViejo":"Алисо-Вьехо","city.fountainValley":"Фаунтин-Вэлли","city.laHabra":"Ла-Хабра","city.westminster":"Вестминстер","ui.today":"Сегодня","ui.photoViewer":"Фото блюда","ui.prevPhoto":"Предыдущее фото","ui.nextPhoto":"Следующее фото","ui.dishPhotos":"Фото блюд","ui.viewDish":"Посмотреть блюдо","ui.share":"Поделиться","ui.linkCopied":"Ссылка скопирована"},"hi":{"ui.docTitle":"Kei Concepts · मेन्यू","ui.title":"मेन्यू","ui.intro":"सभी रेस्तराँ के मौजूदा मेन्यू। हर लिंक वही पेज खोलता है जो आपको मेज़ पर लगा QR कोड स्कैन करने पर दिखता है।","ui.byLocation":"स्थान के अनुसार मेन्यू:","ui.skip":"सीधे मेन्यू पर जाएँ","ui.language":"भाषा","ui.chooseLanguage":"एक भाषा चुनें","ui.autoDetected":"आपके डिवाइस की भाषा में दिखाया गया है।","ui.qrFor":"{name} का QR कोड","ui.saveQr":"QR कोड सेव करें","ui.close":"बंद करें","ui.hours":"खुलने का समय","ui.closed":"बंद","ui.call":"कॉल करें","ui.directions":"रास्ता","brand.sup.tagline":"वियतनामी नूडल बार","brand.vox.tagline":"अनेक स्वाद। एक आवाज़।","brand.nep.tagline":"वियतनामी भोजन की एक झलक।","brand.rol.tagline":"यहाँ की सबसे ताज़गी भरी जगह।","brand.kin.tagline":"रामेन और इज़ाकाया के व्यंजन।","brand.ini.tagline":"इतालवी खाना। जापानी नज़रिया।","brand.qua.tagline":"समकालीन चीनी व्यंजन।","brand.kei-coffee.tagline":"अपने दिन की शुरुआत एक उद्देश्य के साथ करें।","city.buenaPark":"बुएना पार्क","city.irvine":"इरवाइन","city.costaMesa":"कोस्टा मेसा","city.alisoViejo":"अलिसो विएहो","city.fountainValley":"फाउंटेन वैली","city.laHabra":"ला हाब्रा","city.westminster":"वेस्टमिंस्टर","ui.today":"आज","ui.photoViewer":"व्यंजन की तस्वीर","ui.prevPhoto":"पिछली तस्वीर","ui.nextPhoto":"अगली तस्वीर","ui.dishPhotos":"व्यंजनों की तस्वीरें","ui.viewDish":"व्यंजन देखें","ui.share":"शेयर करें","ui.linkCopied":"लिंक कॉपी हो गया"},"ur":{"ui.docTitle":"Kei Concepts · مینو","ui.title":"مینو","ui.intro":"ہر ریستوران کا تازہ ترین مینو۔ ہر لنک وہی صفحہ کھولتا ہے جو آپ میز پر موجود QR کوڈ اسکین کرنے پر دیکھتے ہیں۔","ui.byLocation":"مقام کے لحاظ سے مینو:","ui.skip":"براہِ راست مینو پر جائیں","ui.language":"زبان","ui.chooseLanguage":"زبان منتخب کریں","ui.autoDetected":"آپ کے آلے کی زبان میں دکھایا گیا ہے۔","ui.qrFor":"{name} کا QR کوڈ","ui.saveQr":"QR کوڈ محفوظ کریں","ui.close":"بند کریں","ui.hours":"اوقاتِ کار","ui.closed":"بند","ui.call":"کال کریں","ui.directions":"راستہ","brand.sup.tagline":"ویتنامی نوڈل بار","brand.vox.tagline":"بہت سے ذائقے۔ ایک آواز۔","brand.nep.tagline":"ویتنامی کھانوں کی ایک جھلک۔","brand.rol.tagline":"یہاں کی سب سے تازگی بھری نشست۔","brand.kin.tagline":"رامن اور ایزاکایا کے پکوان۔","brand.ini.tagline":"اطالوی کھانا۔ جاپانی نقطۂ نظر۔","brand.qua.tagline":"عصری چینی کھانے۔","brand.kei-coffee.tagline":"اپنے دن کا آغاز ایک مقصد کے ساتھ کریں۔","city.buenaPark":"بوئنا پارک","city.irvine":"اِروائن","city.costaMesa":"کوسٹا میسا","city.alisoViejo":"الیسو ویئہو","city.fountainValley":"فاؤنٹین ویلی","city.laHabra":"لا ہابرا","city.westminster":"ویسٹ منسٹر","ui.today":"آج","ui.photoViewer":"پکوان کی تصویر","ui.prevPhoto":"پچھلی تصویر","ui.nextPhoto":"اگلی تصویر","ui.dishPhotos":"کھانوں کی تصاویر","ui.viewDish":"پکوان دیکھیں","ui.share":"شیئر کریں","ui.linkCopied":"لنک کاپی ہو گیا"}};
 const LANGS = [{"code":"en","label":"English"},{"code":"es","label":"Español"},{"code":"vi","label":"Tiếng Việt"},{"code":"ko","label":"한국어"},{"code":"zh","label":"简体中文"},{"code":"zh-Hant","label":"繁體中文"},{"code":"tl","label":"Tagalog"},{"code":"fa","label":"فارسی"},{"code":"ar","label":"العربية"},{"code":"ja","label":"日本語"},{"code":"ru","label":"Русский"},{"code":"hi","label":"हिन्दी"},{"code":"ur","label":"اردو"}];
 const QR = {"sup":[{"code":"sup","target":"/sup/","name":"SUP Noodle Bar","where":null,"location":null}],"ini":[{"code":"ini","target":"/ini/","name":"INI Ristorante","where":"16129 Brookhurst St, Fountain Valley, CA 92708","location":"fountain-valley"}],"kin":[{"code":"kin","target":"/kin/","name":"KIN Craft Ramen & Izakaya","where":"16185 Brookhurst St, Fountain Valley, CA 92708","location":"fountain-valley"}],"qua":[{"code":"qua","target":"/qua/","name":"QUA","where":"16121 Brookhurst St, Fountain Valley, CA 92708","location":"fountain-valley"}],"kei-coffee":[{"code":"kei-coffee","target":"/kei-coffee/","name":"Kei Coffee House","where":"15691 Brookhurst St, Westminster, CA 92683","location":"westminster"}],"rol":[{"code":"rol","target":"/rol/","name":"ROL Hand Roll Bar","where":"Fountain Valley · Irvine · La Habra","location":null},{"code":"rol-fv","target":"/rol/fv.html","name":"ROL Hand Roll Bar","where":"16173 Brookhurst St, Fountain Valley, CA 92708","location":"fv"},{"code":"rol-irvine","target":"/rol/irvine.html","name":"ROL Hand Roll Bar","where":"14370 Culver Dr, Unit 2G, Irvine, CA 92604","location":"irvine"},{"code":"rol-la-habra","target":"/rol/la-habra.html","name":"ROL Hand Roll Bar","where":"1202 S Idaho St, STE E-F, La Habra, CA 90631","location":"la-habra"}],"nep":[{"code":"nep","target":"/nep/","name":"NEP Cafe","where":"Fountain Valley · Irvine","location":null},{"code":"nep-fv","target":"/nep/fv.html","name":"NEP Cafe","where":"10836 Warner Ave, Fountain Valley, CA 92708","location":"fv"},{"code":"nep-irvine","target":"/nep/irvine.html","name":"NEP Cafe","where":"14346 Culver Dr, Irvine, CA 92604","location":"irvine"}],"vox":[{"code":"vox","target":"/vox/","name":"VOX Kitchen","where":"Aliso Viejo · Fountain Valley · Costa Mesa","location":null},{"code":"vox-scp","target":"/vox/scp-table.html","name":"VOX Kitchen · Table menu","where":"3333 Bear St, Ste 118, Costa Mesa, CA 92626","location":"scp"},{"code":"vox-av","target":"/vox/av-table.html","name":"VOX Kitchen · Table menu","where":"26511 Aliso Creek Rd, Aliso Viejo, CA 92656","location":"av"},{"code":"vox-fv","target":"/vox/fv-toast.html","name":"VOX Kitchen · Online menu","where":"16161 Brookhurst St, Fountain Valley, CA 92708","location":"fv"}]};
 const LOCS = [{"brand":"sup","id":"buena-park","city":"city.buenaPark","hours":[[600,1320],[600,1320],[600,1320],[600,1320],[600,1320],[600,1320],[600,1320]],"phone":"714-521-2444","tel":"+17145212444","maps":"https://maps.apple.com/?address=5141%20Beach%20Blvd%20Unit%20B%2C%20Buena%20Park%2C%20CA%2090621"},{"brand":"sup","id":"irvine","city":"city.irvine","hours":[[600,1320],[600,1320],[600,1320],[600,1320],[600,1320],[600,1320],[600,1320]],"phone":"657-300-8420","tel":"+16573008420","maps":"https://maps.apple.com/?address=14370%20Culver%20Dr%20Unit%202H%2C%20Irvine%2C%20CA%2092604"},{"brand":"vox","id":"scp","city":"city.costaMesa","hours":[[660,1260],[660,1260],[660,1260],[660,1260],[660,1260],[660,1260],[660,1260]],"phone":"(714) 907-0729","tel":"+17149070729","maps":"https://maps.apple.com/?address=3333%20Bear%20St%2C%20Ste%20118%2C%20Costa%20Mesa%2C%20CA%2092626"},{"brand":"vox","id":"av","city":"city.alisoViejo","hours":[null,[660,1260],[660,1260],[660,1260],[660,1260],[660,1260],[660,1260]],"phone":"(949) 705-6666","tel":"+19497056666","maps":"https://maps.apple.com/?address=26511%20Aliso%20Creek%20Rd%2C%20Aliso%20Viejo%2C%20CA%2092656"},{"brand":"vox","id":"fv","city":"city.fountainValley","hours":[[600,1260],[600,1260],[600,1260],[600,1260],[600,1320],[600,1320],[600,1260]],"phone":"(657) 231-6493","tel":"+16572316493","maps":"https://maps.apple.com/?address=16161%20Brookhurst%20St%2C%20Fountain%20Valley%2C%20CA%2092708"},{"brand":"nep","id":"fv","city":"city.fountainValley","hours":[[540,1260],[540,1260],[540,1260],[540,1260],[540,1260],[480,1260],[480,1260]],"phone":"(714) 516-8121","tel":"+17145168121","maps":"https://maps.apple.com/?address=10836%20Warner%20Ave%2C%20Fountain%20Valley%2C%20CA%2092708"},{"brand":"nep","id":"irvine","city":"city.irvine","hours":[[540,1260],[540,1260],[540,1260],[540,1260],[540,1320],[540,1320],[540,1260]],"phone":"(949) 527-6533","tel":"+19495276533","maps":"https://maps.apple.com/?address=14346%20Culver%20Dr%2C%20Irvine%2C%20CA%2092604"},{"brand":"rol","id":"fv","city":"city.fountainValley","hours":[[660,1320],[660,1320],[660,1320],[660,1320],[660,1320],[660,1320],[660,1320]],"phone":"(714) 576-7119","tel":"+17145767119","maps":"https://maps.apple.com/?address=16173%20Brookhurst%20St%2C%20Fountain%20Valley%2C%20CA%2092708"},{"brand":"rol","id":"irvine","city":"city.irvine","hours":[[660,1320],[660,1320],[660,1320],[660,1320],[660,1320],[660,1320],[660,1320]],"phone":"(949) 681-6171","tel":"+19496816171","maps":"https://maps.apple.com/?address=14370%20Culver%20Dr%2C%20Unit%202G%2C%20Irvine%2C%20CA%2092604"},{"brand":"rol","id":"la-habra","city":"city.laHabra","hours":[[660,1320],[660,1320],[660,1320],[660,1320],[660,1320],[660,1320],[660,1320]],"phone":"(562) 846-4779","tel":"+15628464779","maps":"https://maps.apple.com/?address=1202%20S%20Idaho%20St%2C%20STE%20E-F%2C%20La%20Habra%2C%20CA%2090631"},{"brand":"kin","id":"fountain-valley","city":"city.fountainValley","hours":[[660,1380],[660,1380],[660,1380],[660,1380],[660,1380],[660,1380],[660,1380]],"phone":"(949) 688-6961","tel":"+19496886961","maps":"https://maps.apple.com/?address=16185%20Brookhurst%20St%2C%20Fountain%20Valley%2C%20CA%2092708"},{"brand":"ini","id":"fountain-valley","city":"city.fountainValley","hours":[[660,1320],[660,1320],[660,1320],[660,1320],[660,1320],[600,1320],[600,1320]],"phone":"(714) 277-4046","tel":"+17142774046","maps":"https://maps.apple.com/?address=16129%20Brookhurst%20St%2C%20Fountain%20Valley%2C%20CA%2092708"},{"brand":"qua","id":"fountain-valley","city":"city.fountainValley","hours":[[660,1320],[660,1320],[660,1320],[660,1320],[660,1320],[600,1320],[600,1320]],"phone":"(657) 300-8391","tel":"+16573008391","maps":"https://maps.apple.com/?address=16121%20Brookhurst%20St%2C%20Fountain%20Valley%2C%20CA%2092708"},{"brand":"kei-coffee","id":"westminster","city":"city.westminster","hours":[[420,1260],[420,1260],[420,1260],[420,1260],[420,1260],[420,1260],[420,1260]],"phone":"(714) 702-5058","tel":"+17147025058","maps":"https://maps.apple.com/?address=15691%20Brookhurst%20St%2C%20Westminster%2C%20CA%2092683"}];
@@ -565,11 +594,11 @@ function render() {
   $("qrClose").setAttribute("aria-label", plain(t("ui.close")));
   if ($("qrDialog").open) fillQr($("qrDialog").dataset.code);
   document.querySelectorAll('.dish[role="button"]').forEach(labelTile);
-  $("viewer").setAttribute("aria-label", plain(t("ui.photoViewer")));
-  $("viewerClose").setAttribute("aria-label", plain(t("ui.close")));
-  $("viewerPrev").setAttribute("aria-label", plain(t("ui.prevPhoto")));
-  $("viewerNext").setAttribute("aria-label", plain(t("ui.nextPhoto")));
-  if ($("viewer").open) viewerCaption();
+  $("lb").setAttribute("aria-label", plain(t("ui.photoViewer")));
+  $("lbClose").setAttribute("aria-label", plain(t("ui.close")));
+  $("lbPrev").setAttribute("aria-label", plain(t("ui.prevPhoto")));
+  $("lbNext").setAttribute("aria-label", plain(t("ui.nextPhoto")));
+  if ($("lb").open) lbCaption(LB.index);
   renderLangbar();
   renderHours();
 }
@@ -704,64 +733,348 @@ $("qrBody").addEventListener("click", e => {
   const pending = qrFiles.get(code);
   if (pending && pending.__file !== undefined) share(pending.__file); else (pending || Promise.resolve(null)).then(share);
 });
-/* Full-screen dish photos: a card's tile is a button that opens the restaurant's photos in a viewer like the
-   menus' own, starting at the picture the tile shows; prev/next, the arrow keys and a horizontal swipe move
-   through the pool. The names come from dishes/<lang>.json on first use. One history entry while open, as
-   the QR sheet; focus returns to the tile without a ring for a pointer opener. */
-const VIEWER = { brand: "", i: 0, opener: null, keyboard: false, key: "", seq: 0, pending: 0, names: {}, req: 0 };
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const labelTile = box => box.setAttribute("aria-label", plain(t("ui.dishPhotos")) + " · " + box.closest(".card").querySelector(".go").textContent.trim());
-const dishNames = lang => VIEWER.names[lang] || (VIEWER.names[lang] = fetch(`dishes/${lang}.json`).then(r => { if (!r.ok) throw new Error(String(r.status)); return r.json(); }).catch(() => { delete VIEWER.names[lang]; return {}; }));
-function viewerCaption() {
-  const req = ++VIEWER.req, brand = VIEWER.brand, i = VIEWER.i;
-  dishNames(state.lang).then(names => {
-    if (req !== VIEWER.req) return;
-    const name = (names[brand] || [])[i] || "";
-    $("viewerCap").innerHTML = name ? `<span>${prose(name)}</span>` : ""; $("viewerImg").alt = plain(name);
+let modalSeq = 0;
+const modal = { backs: 0, next: null, guard: 0 };
+if (history.state && history.state.modal) history.replaceState(null, "", location.href);
+function syncModalClass() { document.documentElement.classList.toggle("modal", !!document.querySelector("dialog[open]")); }
+const openDlg = () => $("lb").open ? $("lb") : null;
+function runNext() {
+  if (modal.backs > 0 || openDlg()) return;
+  const n = modal.next; modal.next = null;
+  if (n) n(!!(history.state && history.state.modal));
+}
+function requestOpen(fn) {
+  const cur = openDlg();
+  if (!cur && modal.backs === 0) { modal.next = null; fn(!!(history.state && history.state.modal)); return; }
+  modal.next = fn;
+  if (cur && !cur.dataset.pending && !cur.classList.contains("closing")) closeDialog(cur, true, true);
+}
+function openDialog(dlg, adopt) {
+  if (dlg.open) return;
+  dlg.showModal(); syncModalClass();
+  const k = String(++modalSeq); dlg.dataset.k = k;
+  const st = { modal: dlg.id, k };
+  if (adopt && history.state && history.state.modal) history.replaceState(st, ""); else history.pushState(st, "");
+}
+function closeDialog(dlg, fromPop, instant) {
+  if (!dlg.open || dlg.classList.contains("closing")) return;
+  if (!fromPop && dlg.dataset.k && history.state && history.state.modal === dlg.id && history.state.k === dlg.dataset.k) {
+    if (dlg.dataset.pending) return;
+    dlg.dataset.pending = "1"; modal.backs++; history.back();
+    const k = dlg.dataset.k;
+    dlg.__fallback = setTimeout(() => { dlg.__fallback = 0; if (dlg.open && dlg.dataset.pending && dlg.dataset.k === k) closeDialog(dlg, true); }, 800);
+    clearTimeout(modal.guard); modal.guard = setTimeout(() => { modal.backs = 0; runNext(); }, 3000);
+    return;
+  }
+  clearTimeout(dlg.__fallback); dlg.__fallback = 0;
+  delete dlg.dataset.pending; delete dlg.dataset.k;
+  const ms = (reduced || instant) ? 0 : (dlg.id === "lb" ? lbExit() : 320);
+  if (dlg.classList.contains("sheet")) dlg.style.transform = "";
+  dlg.classList.add("closing");
+  setTimeout(() => {
+    let back = dlg.__returnFocus; dlg.__returnFocus = null;
+    if (back && !back.isConnected) back = back.id ? $(back.id) : null;
+    if (back) back.classList.toggle("pointer-focus", !dlg.__keyboardOpen);
+    dlg.classList.remove("closing"); dlg.close(); syncModalClass();
+    if (dlg.id === "lb") lbAfterClose();
+    if (back && back.isConnected && !openDlg() && !modal.next) back.focus({ preventScroll: true });
+    const after = dlg.__afterClose; dlg.__afterClose = null; if (after) after();
+    runNext();
+  }, ms);
+}
+window.addEventListener("popstate", () => {
+  const st = history.state;
+  if (modal.backs > 0) { modal.backs--; if (modal.backs === 0) clearTimeout(modal.guard); }
+  [$("lb")].filter(d => d.open).forEach(d => { if (!st || st.modal !== d.id || st.k !== d.dataset.k) closeDialog(d, true); });
+  runNext();
+});
+$("lb").addEventListener("cancel", e => { e.preventDefault(); closeDialog($("lb")); });
+/* Photo viewer: pinch to four times fit, double-tap to zoom, and drag in any direction to dismiss.
+   A single tap toggles the chrome; arrows and the keyboard page between photos. */
+const LB = { brand: "", dlg: $("lb"), track: $("lbTrack"), bg: $("lbBg"), chrome: $("lbChrome"), cap: $("lbCap"), index: 0, s: 1, tx: 0, ty: 0, fit: [], zooms: [], pointers: new Map(), gest: null, chromeOn: true, tapT: 0, tapX: 0, tapY: 0, tapTimer: 0, exit: null, opener: null, session: 0 };
+/* The photos are a restaurant's pool (every thumbnail its menu shows, gathered by hub/build.py), built when its
+   tile is tapped; the dish behind each photo and its menu page come from dishes/<lang>.json on first use. */
+let PHOTOS = [];
+const NAMES = {};
+const dishNames = lang => NAMES[lang] || (NAMES[lang] = fetch(`dishes/${lang}.json`).then(r => { if (!r.ok) throw new Error(String(r.status)); return r.json(); }).catch(() => { delete NAMES[lang]; return {}; }));
+const fullPath = (pool, i) => (pool.fullOverrides || {})[i] || pool.fullDir + (pool.fullSub ? pool.list[i][0].replace(pool.fullSub[0], pool.fullSub[1]) : pool.list[i][0]);
+function lbBuild(brand) {
+  if (LB.brand === brand) return;
+  const pool = DISHES[brand]; LB.brand = brand;
+  PHOTOS = pool.list.map((d, i) => ({ id: i, thumb: pool.dir + d[0], full: fullPath(pool, i), w: d[1], h: d[2], cutout: d[0].endsWith(".png"), single: null }));
+  LB.track.innerHTML = PHOTOS.map((p, i) => `<figure class="lb-slide" data-i="${i}" style="margin:0"><div class="lb-zoom${p.cutout ? " cutout" : ""}"><picture><source type="image/avif"><source type="image/webp"><img alt="" draggable="false" decoding="async" width="${p.w}" height="${p.h}"></picture></div></figure>`).join("");
+  LB.zooms = [...LB.track.querySelectorAll(".lb-zoom")]; LB.fit = [];
+}
+const lbDish = i => { const rows = (NAMES.__loaded && NAMES.__loaded[state.lang]) || null; return rows && rows[LB.brand] ? rows[LB.brand][i] : null; };
+const lbName = i => { const d = lbDish(i); return d ? d[0] : ""; };
+function lbEnsureNames() {
+  const lang = state.lang, session = LB.session;
+  dishNames(lang).then(rows => { NAMES.__loaded = NAMES.__loaded || {}; NAMES.__loaded[lang] = rows; if (LB.session === session && LB.dlg.open && state.lang === lang) { lbCaption(LB.index); lbLoad(LB.index); } });
+}
+const vw = () => LB.track.clientWidth, vh = () => LB.track.clientHeight;
+const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y), mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
+function lbLayout() {
+  const W = vw(), H = vh();
+  PHOTOS.forEach((p, i) => { const r = Math.min(W / p.w, H / p.h); const w = Math.round(p.w * r), h = Math.round(p.h * r); LB.fit[i] = { w, h }; LB.zooms[i].style.width = w + "px"; LB.zooms[i].style.height = h + "px"; });
+}
+/* A viewer photo is fetched only when its slide is reached; the one on screen goes first. */
+function lbSources(img, path, current) {
+  img.parentElement.querySelectorAll("source").forEach(s => { s.srcset = path.replace(/\.[a-z]+$/, "." + s.type.slice(6)); });
+  if ("fetchPriority" in img) img.fetchPriority = current ? "high" : "auto";
+}
+function lbLoad(i) {
+  for (const j of [lbSeek(i - 1, -1), i, lbSeek(i + 1, 1)]) {
+    if (j < 0 || j >= PHOTOS.length) continue;
+    LB.zooms[j].style.backgroundImage = `url("${PHOTOS[j].thumb}")`;
+    const img = LB.zooms[j].querySelector("img");
+    if (!img.getAttribute("src")) { img.alt = plain(lbName(j)); img.addEventListener("load", () => img.classList.add("in"), { once: true }); lbSources(img, PHOTOS[j].full, j === i); img.src = PHOTOS[j].full; }
+  }
+}
+function lbCaption(i) {
+  const p = PHOTOS[i];
+  const name = lbName(i);
+  LB.cap.innerHTML = name ? `<span>${prose(name)}</span>` + lbActsHTML(p) : "";
+  LB.zooms[i].querySelector("img").alt = plain(name);
+  LB.zooms.forEach((z, n) => z.parentElement.setAttribute("aria-hidden", String(n !== i)));
+  $("lbPrev").disabled = lbSeek(i - 1, -1) < 0; $("lbNext").disabled = lbSeek(i + 1, 1) < 0;
+}
+function lbSetZoom(i, s, tx, ty, animate) {
+  const z = LB.zooms[i];
+  z.style.transition = animate && !reduced ? "transform .25s ease-out" : "none";
+  z.style.transform = (s === 1 && !tx && !ty) ? "" : `translate(${tx}px, ${ty}px) scale(${s})`;
+  if (i === LB.index) { LB.s = s; LB.tx = tx; LB.ty = ty; LB.track.classList.toggle("zoomed", s > 1.01); }
+}
+function lbBounds(s) { const f = LB.fit[LB.index]; return { x: Math.max(0, (f.w * s - vw()) / 2), y: Math.max(0, (f.h * s - vh()) / 2) }; }
+function lbPlaceTrack(animate) {
+  /* Keep the track's touch region on screen in iOS WebKit. */
+  LB.zooms.forEach((z, i) => {
+    z.parentElement.style.transition = animate && !reduced ? "transform .3s var(--ease)" : "none";
+    z.parentElement.style.transform = `translateX(${(i - LB.index) * vw()}px)`;
   });
 }
-const fullPath = (pool, i) => (pool.fullOverrides || {})[i] || pool.fullDir + (pool.fullSub ? pool.list[i][0].replace(pool.fullSub[0], pool.fullSub[1]) : pool.list[i][0]);
-function viewerShow(i) {
-  const pool = DISHES[VIEWER.brand]; i = (i + pool.list.length) % pool.list.length; VIEWER.i = i;
-  const img = $("viewerImg"); img.classList.remove("in"); img.alt = ""; img.src = fullPath(pool, i);
-  img.decode().then(() => img.classList.add("in"), () => img.classList.add("in"));
-  viewerCaption();
+function lbCancelTap() { clearTimeout(LB.tapTimer); LB.tapTimer = 0; LB.tapT = 0; LB.tapGen = (LB.tapGen || 0) + 1; }
+function lbCancelGesture() {
+  const g = LB.gest;
+  LB.pointers.forEach((p, id) => { try { LB.track.releasePointerCapture(id); } catch (e) {} });
+  LB.pointers.clear(); LB.gest = null; lbCancelTap();
+  if (g && g.mode === "drag") lbSpringBack();
 }
-function openViewer(box, keyboard) {
-  VIEWER.brand = box.dataset.brand; VIEWER.opener = box; VIEWER.keyboard = !!keyboard;
-  const dlg = $("viewer"); dlg.showModal(); dlg.focus({ preventScroll: true });
-  viewerShow(Number(box.dataset.index) || 0);
-  VIEWER.key = String(++VIEWER.seq); history.pushState({ viewer: VIEWER.key }, "");
+const lbEligible = i => i >= 0 && i < PHOTOS.length;
+const lbSeek = (from, step) => {
+  for (let i = from; i >= 0 && i < PHOTOS.length; i += step) if (lbEligible(i)) return i;
+  return -1;
+};
+function lbGoto(i, animate) {
+  i = clamp(i, 0, PHOTOS.length - 1);
+  if (!lbEligible(i)) { i = lbSeek(i, i < LB.index ? -1 : 1); if (i < 0) return; }
+  if (LB.gest) lbCancelGesture(); else lbCancelTap();
+  if (i !== LB.index) { lbSetZoom(LB.index, 1, 0, 0, false); LB.index = i; LB.s = 1; LB.tx = 0; LB.ty = 0; LB.track.classList.remove("zoomed"); lbCaption(i); lbLoad(i); }
+  lbPlaceTrack(animate);
 }
-function closeViewer(fromPop) {
-  const dlg = $("viewer"); if (!dlg.open) return;
-  if (!fromPop && history.state && history.state.viewer === VIEWER.key) {
-    if (VIEWER.pending) return;
-    VIEWER.pending = setTimeout(() => { VIEWER.pending = 0; if (dlg.open) closeViewer(true); }, 800); history.back(); return;
+function lbChrome(on) { LB.chromeOn = on; LB.chrome.inert = !on; LB.chrome.style.transition = "opacity .2s ease-in-out"; LB.chrome.style.opacity = on ? 1 : 0; LB.chrome.classList.toggle("off", !on); }
+function lbDrag(dx, dy) {
+  const z = LB.zooms[LB.index], d = Math.hypot(dx, dy); z.style.transition = "none";
+  z.style.transform = `translate(${dx}px, ${dy}px) scale(${1 - Math.min(d / 1400, .14)})`;
+  LB.bg.style.transition = "none"; LB.bg.style.opacity = Math.max(1 - d / 420, .4);
+  LB.chrome.style.transition = "none"; LB.chrome.style.opacity = Math.max(1 - d / 130, 0) * (LB.chromeOn ? 1 : 0);
+}
+function lbSpringBack() {
+  const z = LB.zooms[LB.index]; z.style.transition = "transform .34s cubic-bezier(.3, 1.25, .5, 1)"; z.style.transform = "";
+  LB.bg.style.transition = "opacity .3s"; LB.bg.style.opacity = 1;
+  LB.chrome.style.transition = "opacity .2s"; LB.chrome.style.opacity = LB.chromeOn ? 1 : 0;
+}
+function lbOnPhoto(x, y) {
+  const r = LB.zooms[LB.index].getBoundingClientRect();
+  return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+}
+function lbTap(x, y) {
+  const now = performance.now();
+  if (LB.tapT && now - LB.tapT < 300 && Math.hypot(x - LB.tapX, y - LB.tapY) < 30) { lbCancelTap(); lbDoubleTap(x, y); return; }
+  lbCancelTap();
+  if (LB.s <= 1.01 && !lbOnPhoto(x, y)) { closeDialog(LB.dlg); return; }
+  LB.tapT = now; LB.tapX = x; LB.tapY = y;
+  const sess = LB.session, gen = LB.tapGen;
+  LB.tapTimer = setTimeout(() => { if (LB.tapGen !== gen) return; LB.tapTimer = 0; LB.tapT = 0; if (LB.session === sess && LB.dlg.open) lbChrome(!LB.chromeOn); }, 300);
+}
+function lbDoubleTap(x, y) {
+  if (LB.s > 1.01) { lbSetZoom(LB.index, 1, 0, 0, true); return; }
+  const s = 2.5, px = x - vw() / 2, py = y - vh() / 2, b = lbBounds(s);
+  lbSetZoom(LB.index, s, clamp(px - px * s, -b.x, b.x), clamp(py - py * s, -b.y, b.y), true);
+}
+function lbOpen(i, btn, keyboard) { requestOpen(adopt => lbOpenNow(i, btn, adopt, keyboard)); }
+function lbOpenNow(i, btn, adopt, keyboard) {
+  if (LB.dlg.open) return;
+  LB.session++; lbCancelGesture();
+  LB.opener = btn; LB.index = i; LB.exit = null;
+  LB.zooms.forEach(z => { z.getAnimations().forEach(a => a.cancel()); z.style.transition = "none"; z.style.transform = ""; z.style.opacity = ""; });
+  LB.s = 1; LB.tx = 0; LB.ty = 0; LB.track.classList.remove("zoomed");
+  LB.dlg.__returnFocus = btn;
+  LB.dlg.__keyboardOpen = keyboard;
+  openDialog(LB.dlg, adopt);
+  lbLayout(); lbLoad(i); lbCaption(i); lbPlaceTrack(false); lbChrome(true); lbEnsureNames();
+  $("lbClose").focus({ preventScroll: true });
+  const thumb = btn && btn.querySelector("img"); const r0 = thumb ? thumb.getBoundingClientRect() : null;
+  LB.bg.style.transition = "none";
+  if (reduced || !r0 || !r0.width) { LB.bg.style.opacity = 1; LB.chrome.style.opacity = 1; return; }
+  const z = LB.zooms[i], f = LB.fit[i];
+  const dx = (r0.left + r0.width / 2) - vw() / 2, dy = (r0.top + r0.height / 2) - vh() / 2;
+  z.animate([{ width: r0.width + "px", height: r0.height + "px", transform: `translate(${dx}px, ${dy}px)`, borderRadius: "12px" }, { width: f.w + "px", height: f.h + "px", transform: "none", borderRadius: "0px" }], { duration: 320, easing: "cubic-bezier(.2,.8,.2,1)" });
+  LB.bg.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, easing: "ease-out" }).onfinish = () => { LB.bg.style.opacity = 1; };
+  LB.chrome.style.opacity = 0;
+  LB.chrome.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200, delay: 160, easing: "ease-in-out" }).onfinish = () => { LB.chrome.style.opacity = 1; };
+}
+function lbExit() {
+  const i = LB.index, z = LB.zooms[i];
+  const btn = LB.opener;
+  const thumb = btn && btn.querySelector("img"); const r0 = thumb ? thumb.getBoundingClientRect() : null;
+  const bgFrom = getComputedStyle(LB.bg).opacity;
+  LB.chrome.animate([{ opacity: getComputedStyle(LB.chrome).opacity }, { opacity: 0 }], { duration: 150, fill: "forwards" });
+  let ms = 200;
+  if (LB.exit && LB.exit.fling) {
+    const { dx, dy } = LB.exit.fling, d = Math.hypot(dx, dy) || 1;
+    z.animate([{ transform: z.style.transform, opacity: 1 }, { transform: `translate(${dx + dx / d * 190}px, ${dy + dy / d * 190}px) scale(.8)`, opacity: 0 }], { duration: 220, easing: "ease-out", fill: "forwards" });
+    ms = 220;
+  } else if (!LB.exit && r0 && r0.width && r0.bottom > 0 && r0.top < vh() && LB.s <= 1.01) {
+    const f = LB.fit[i]; const dx = (r0.left + r0.width / 2) - vw() / 2, dy = (r0.top + r0.height / 2) - vh() / 2;
+    z.animate([{ width: f.w + "px", height: f.h + "px", transform: "none", borderRadius: "0px" }, { width: r0.width + "px", height: r0.height + "px", transform: `translate(${dx}px, ${dy}px)`, borderRadius: "12px" }], { duration: 280, easing: "cubic-bezier(.2,.8,.2,1)", fill: "forwards" });
+    ms = 280;
+  } else {
+    z.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 160, fill: "forwards" }); ms = 180;
   }
-  clearTimeout(VIEWER.pending); VIEWER.pending = 0;
-  dlg.close(); $("viewerImg").removeAttribute("src"); $("viewerImg").classList.remove("in"); $("viewerCap").innerHTML = "";
-  if (VIEWER.opener && VIEWER.opener.isConnected) { VIEWER.opener.classList.toggle("pointer-focus", !VIEWER.keyboard); VIEWER.opener.focus({ preventScroll: true }); }
+  LB.bg.animate([{ opacity: bgFrom }, { opacity: 0 }], { duration: ms, easing: "ease-out", fill: "forwards" });
+  return ms;
 }
-if (history.state && history.state.viewer) history.replaceState(null, "", location.href);
-addEventListener("popstate", () => { const dlg = $("viewer"); if (dlg.open && !(history.state && history.state.viewer === VIEWER.key)) closeViewer(true); });
-$("viewerClose").addEventListener("click", () => closeViewer());
-$("viewer").addEventListener("cancel", e => { e.preventDefault(); closeViewer(); });
-$("viewerPrev").addEventListener("click", () => viewerShow(VIEWER.i - 1));
-$("viewerNext").addEventListener("click", () => viewerShow(VIEWER.i + 1));
-$("viewer").addEventListener("keydown", e => {
-  if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-  e.preventDefault(); viewerShow(VIEWER.i + ((e.key === "ArrowRight") !== (document.documentElement.dir === "rtl") ? 1 : -1));
+function lbAfterClose() {
+  lbCancelGesture(); LB.session++;
+  LB.zooms.forEach(z => { z.getAnimations().forEach(a => a.cancel()); z.style.transition = "none"; z.style.transform = ""; });
+  LB.bg.getAnimations().forEach(a => a.cancel()); LB.chrome.getAnimations().forEach(a => a.cancel());
+  LB.bg.style.opacity = 0; LB.chrome.style.opacity = 1; LB.chrome.classList.remove("off"); LB.chromeOn = true; LB.chrome.inert = false;
+  LB.track.classList.remove("zoomed"); LB.exit = null;
+}
+function lbStartPinch(now) {
+  const [a, b] = [...LB.pointers.values()];
+  LB.gest = { mode: "pinch", d0: Math.max(dist(a, b), 1), m0: mid(a, b), s0: LB.s, tx0: LB.tx, ty0: LB.ty, t0: now, x0: a.x, y0: a.y, samples: [] };
+}
+function lbVelocity(g, now, x, y) {
+  g.samples.push([now, x, y]);
+  const s1 = g.samples[g.samples.length - 1];
+  const s0 = g.samples.find(s => now - s[0] <= 100);
+  if (!s0 || s1[0] - s0[0] < 8) return { vx: 0, vy: 0 };
+  const dt = (s1[0] - s0[0]) / 1000;
+  return { vx: (s1[1] - s0[1]) / dt, vy: (s1[2] - s0[2]) / dt };
+}
+LB.track.addEventListener("pointerdown", e => {
+  if (e.pointerType === "mouse" && e.button !== 0) return;
+  if (LB.pointers.size >= 2 && !LB.pointers.has(e.pointerId)) return;
+  try { LB.track.setPointerCapture(e.pointerId); } catch (err) {}
+  LB.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  const now = performance.now();
+  if (LB.pointers.size === 1) LB.gest = { x0: e.clientX, y0: e.clientY, t0: now, tx0: LB.tx, ty0: LB.ty, mode: null, samples: [[now, e.clientX, e.clientY]] };
+  else {
+    const g = LB.gest;
+    if (g && g.mode === "drag") lbSpringBack();
+    lbCancelTap(); lbStartPinch(now);
+  }
 });
-(function attachSwipe(stage) {
-  let swipe = null;
-  stage.addEventListener("pointerdown", e => { if (e.pointerType === "mouse" && e.button !== 0) return; swipe = { id: e.pointerId, x: e.clientX, y: e.clientY }; });
-  const end = e => {
-    if (!swipe || e.pointerId !== swipe.id) return;
-    const dx = e.clientX - swipe.x, dy = e.clientY - swipe.y; swipe = null;
-    if (e.type === "pointerup" && Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.2) viewerShow(VIEWER.i + ((dx < 0) !== (document.documentElement.dir === "rtl") ? 1 : -1));
-  };
-  stage.addEventListener("pointerup", end); stage.addEventListener("pointercancel", end);
-})($("viewerStage"));
+LB.track.addEventListener("pointermove", e => {
+  if (!LB.pointers.has(e.pointerId) || !LB.gest) return;
+  LB.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  const g = LB.gest, now = performance.now();
+  if (g.mode === "done") return;
+  if (g.mode === "pinch") {
+    if (LB.pointers.size < 2) return;
+    const [a, b] = [...LB.pointers.values()]; const m = mid(a, b);
+    const s = clamp(g.s0 * dist(a, b) / g.d0, 1, 4), bd = lbBounds(s);
+    const cx = (g.m0.x - vw() / 2 - g.tx0) / g.s0, cy = (g.m0.y - vh() / 2 - g.ty0) / g.s0;
+    lbSetZoom(LB.index, s, clamp(m.x - vw() / 2 - cx * s, -bd.x, bd.x), clamp(m.y - vh() / 2 - cy * s, -bd.y, bd.y), false);
+    return;
+  }
+  if (LB.pointers.size !== 1) return;
+  const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
+  g.samples.push([now, e.clientX, e.clientY]); if (g.samples.length > 8) g.samples.shift();
+  if (LB.s > 1.01) {
+    if (!g.mode) { if (Math.hypot(dx, dy) < 6) return; g.mode = "pan"; lbCancelTap(); }
+    const bd = lbBounds(LB.s); lbSetZoom(LB.index, LB.s, clamp(g.tx0 + dx, -bd.x, bd.x), clamp(g.ty0 + dy, -bd.y, bd.y), false); return;
+  }
+  if (!g.mode) { if (Math.hypot(dx, dy) < 14) return; g.mode = Math.abs(dx) > Math.abs(dy) * 1.2 ? "page" : "drag"; lbCancelTap(); }
+  if (g.mode === "drag") lbDrag(dx, dy);
+  else if (g.mode === "page") { const z = LB.zooms[LB.index]; z.style.transition = "none"; z.style.transform = `translate(${dx}px, 0)`; }
+});
+function lbPointerEnd(e) {
+  if (!LB.pointers.has(e.pointerId)) return;
+  LB.pointers.delete(e.pointerId);
+  if (e.type === "pointercancel") lbCancelTap();
+  const g = LB.gest; if (!g) return;
+  const now = performance.now();
+  if (g.mode === "pinch") {
+    if (LB.pointers.size >= 2) { lbStartPinch(now); return; }
+    if (LB.s < 1.01) lbSetZoom(LB.index, 1, 0, 0, true);
+    if (LB.pointers.size === 1) { const p = [...LB.pointers.values()][0]; LB.gest = { x0: p.x, y0: p.y, t0: now, tx0: LB.tx, ty0: LB.ty, mode: LB.s > 1.01 ? "pan" : "done", samples: [] }; }
+    else LB.gest = null;
+    return;
+  }
+  LB.gest = null;
+  if (g.mode === "pan" || g.mode === "done") return;
+  const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
+  const v = lbVelocity(g, now, e.clientX, e.clientY);
+  if (g.mode === "page") {
+    /* A horizontal swipe pages, in reading direction as the arrow keys do (finding 11). */
+    const flick = Math.abs(dx + v.vx * .25);
+    lbSpringBack();
+    if (Math.abs(dx) > 48 || (e.type === "pointerup" && flick > 220)) lbGoto(LB.index + ((dx < 0) !== isRTL() ? 1 : -1), true);
+    return;
+  }
+  if (g.mode === "drag") {
+    const d = Math.hypot(dx, dy), flick = Math.hypot(dx + v.vx * .25, dy + v.vy * .25);
+    if (d > 60 || (e.type === "pointerup" && flick > 300)) { LB.exit = { fling: { dx, dy } }; closeDialog(LB.dlg); }
+    else lbSpringBack();
+    return;
+  }
+  if (e.type === "pointerup" && Math.hypot(dx, dy) < 10 && now - g.t0 < 350) lbTap(e.clientX, e.clientY);
+}
+LB.track.addEventListener("pointerup", lbPointerEnd);
+LB.track.addEventListener("pointercancel", lbPointerEnd);
+$("lbClose").addEventListener("click", () => closeDialog(LB.dlg));
+$("lbPrev").addEventListener("click", () => lbGoto(LB.index - 1, true));
+$("lbNext").addEventListener("click", () => lbGoto(LB.index + 1, true));
+document.addEventListener("keydown", e => {
+  document.querySelectorAll(".pointer-focus").forEach(b => b.classList.remove("pointer-focus"));
+  if (!LB.dlg.open || LB.dlg.classList.contains("closing")) return;
+  lbChrome(true);
+  if (e.key === "ArrowRight") { e.preventDefault(); lbGoto(LB.index + (isRTL() ? -1 : 1), true); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); lbGoto(LB.index + (isRTL() ? 1 : -1), true); }
+});
+window.addEventListener("resize", () => {
+  if (!LB.dlg.open) return;
+  lbCancelGesture();
+  [...LB.zooms, LB.bg, LB.chrome].forEach(el => el.getAnimations().forEach(a => a.finish()));
+  lbLayout(); lbSetZoom(LB.index, 1, 0, 0, false); lbPlaceTrack(false);
+});
+/* "View dish" opens the dish on the restaurant's own menu page; "Share" shares that address (the native sheet where
+   there is one, else the clipboard and a toast), as the menus' viewer does for its dishes. */
+const dishUrl = i => { const d = lbDish(i); return d ? new URL(`${d[2]}?lang=${encodeURIComponent(state.lang)}#item-${d[1]}`, location.href).href : ""; };
+function shareLink(url) {
+  if (navigator.share) return navigator.share({ url }).then(() => "shared", () => "shared");
+  if (navigator.clipboard) return navigator.clipboard.writeText(url).then(() => "copied", () => "failed");
+  return Promise.resolve("failed");
+}
+function toast(text) {
+  const host = openDlg() || document.body;
+  let el = host.querySelector(":scope > .toast");
+  if (!el) { el = document.createElement("div"); el.className = "toast"; el.setAttribute("role", "status"); el.setAttribute("aria-live", "polite"); host.append(el); }
+  el.textContent = plain(text); el.classList.add("on"); clearTimeout(el.__t); el.__t = setTimeout(() => el.classList.remove("on"), 2000);
+}
+document.addEventListener("click", e => {
+  const share = e.target.closest("[data-share-dish]"), view = e.target.closest("[data-view-dish]");
+  if (view) { const url = dishUrl(+view.dataset.viewDish); if (url) location.href = url; return; }
+  if (!share) return;
+  const url = dishUrl(+share.dataset.shareDish); if (!url) return;
+  shareLink(url).then(v => { if (v === "copied") toast(t("ui.linkCopied")); });
+});
+const lbActsHTML = p => `<span class="lb-acts"><button class="lb-act" type="button" data-view-dish="${esc(p.id)}">${prose(t("ui.viewDish"))}</button><button class="lb-act" type="button" data-share-dish="${esc(p.id)}">${prose(t("ui.share"))}</button></span>`;
 function syncUrl() { const u = new URL(location.href); u.searchParams.set("lang", state.lang); u.hash = ""; history.replaceState(history.state, "", u); }
 function setLang(code) {
   if (!LANGS.some(l => l.code === code)) return;
@@ -805,8 +1118,8 @@ function startDishes() {
     let i = box.querySelector("picture") ? 0 : Math.floor(Math.random() * list.length), timer = 0;
     if (!box.querySelector("picture")) box.innerHTML = dishHTML(brand, i, !first);
     box.dataset.index = i; box.removeAttribute("aria-hidden"); box.setAttribute("role", "button"); box.tabIndex = 0; labelTile(box);
-    box.addEventListener("click", e => openViewer(box, e.detail === 0));
-    box.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openViewer(box, true); } });
+    box.addEventListener("click", e => { if (navigator.vibrate) navigator.vibrate(10); lbBuild(brand); lbOpen(Number(box.dataset.index) || 0, box, e.detail === 0); });
+    box.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); lbBuild(brand); lbOpen(Number(box.dataset.index) || 0, box, true); } });
     box.querySelector("img").addEventListener("error", () => { box.hidden = true; }, { once: true });
     if (still || list.length < 2) return;
     const schedule = () => { timer = setTimeout(next, 4000 + Math.random() * 4000); };

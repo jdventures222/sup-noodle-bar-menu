@@ -532,9 +532,11 @@ html:not([lang="en"]) .brand h1 { font-family: var(--display); }
 .promo-list a.promo-card:active { background: var(--ground); }
 .promo-list a.promo-card:focus-visible { outline: 3px solid var(--red-deep); outline-offset: 2px; }
 .promo-list .promo-card .promo-copy { min-inline-size: 0; overflow-wrap: anywhere; }
-.promo-list .promo-card .promo-media { display: grid; place-items: center; inline-size: 84px; aspect-ratio: 1; overflow: hidden; border-radius: 10px; background: var(--line-soft, var(--ground)); }
+.promo-list .promo-card .promo-media { display: grid; place-items: center; inline-size: 84px; aspect-ratio: 1; overflow: hidden; border-radius: 10px; background: linear-gradient(to bottom, var(--photo-bg-top, var(--photo-bg, var(--line-soft, var(--ground)))) 0 30%, var(--photo-bg-bot, var(--photo-bg, var(--line-soft, var(--ground)))) 70% 100%); }
 .promo-list .promo-card .promo-media picture { display: block; inline-size: 100%; }
-.promo-list .promo-card .promo-media img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 1; object-fit: cover; object-position: center; border-radius: 0; }
+/* The card's picture whole, not a centre crop (the owner's 2026-09-18 note on Afternoon tea): a 16:9 photo sits on
+   the bands of its reviewed frame, each band the colour of the edge it touches. */
+.promo-list .promo-card .promo-media img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 1; object-fit: contain; object-position: center; border-radius: 0; }
 .promo-list .promo-card .promo-mark { background: var(--promo-mark-bg); color: #fff; }
 .promo-list .promo-card .promo-mark img { object-fit: contain; }
 .promo-list .promo-card .promo-mark svg { inline-size: 40px; block-size: 40px; color: inherit; }
@@ -830,7 +832,7 @@ function promoPhotoHTML(itemId, pool) {
   const path = DATA.photos[itemId];
   if (!path) return promoMarkHTML();
   const ids = (pool || []).filter(id => DATA.photos[id]);
-  return `<span class="promo-media" aria-hidden="true"${ids.length > 1 ? ` data-pool="${esc(ids.join(" "))}" data-current="${esc(itemId)}"` : ""}>${pictureHTML(path, 84, 'alt="" width="84" height="84" loading="lazy" decoding="async"')}</span>`;
+  return `<span class="promo-media" aria-hidden="true" style="${framingStyle(path)}"${ids.length > 1 ? ` data-pool="${esc(ids.join(" "))}" data-current="${esc(itemId)}"` : ""}>${pictureHTML(path, 84, 'alt="" width="84" height="84" loading="lazy" decoding="async"')}</span>`;
 }
 const photoPool = () => Object.keys(DATA.photos);
 
@@ -850,7 +852,7 @@ function startPromoRotation() {
       const pic = document.createRange().createContextualFragment(pictureHTML(DATA.photos[id], 84, 'alt="" width="84" height="84" decoding="async"')).firstElementChild;
       pic.classList.add("in"); box.append(pic);
       const img = pic.tagName === "IMG" ? pic : pic.querySelector("img");
-      img.decode().then(() => { void pic.offsetWidth; pic.classList.remove("in"); current = id; box.dataset.current = id; setTimeout(() => { while (box.firstElementChild !== pic) box.firstElementChild.remove(); }, 700); schedule(); }, () => { pic.remove(); schedule(); });
+      img.decode().then(() => { void pic.offsetWidth; pic.classList.remove("in"); current = id; box.dataset.current = id; box.style.cssText = framingStyle(DATA.photos[id]); setTimeout(() => { while (box.firstElementChild !== pic) box.firstElementChild.remove(); }, 700); schedule(); }, () => { pic.remove(); schedule(); });
     };
     schedule(); box.__resume = () => { if (!timer && !document.hidden) schedule(); };
     seen.observe(box);
