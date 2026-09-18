@@ -44,8 +44,8 @@
     --ink: #2c180d; --body: #4A4542; --muted: #625B56;
     --ground: #e7e6dd; --surface: #FFFFFF; --line: #D8D0C8; --line-soft: #E9E3DC; --control: #837A74;
     --flag-bg: #FCEAE8; --amber: #9A5A0B; --amber-bg: #FFF3DE; --amber-line: #F0D3A3;
-    --display: "VOX Display", "Arial Narrow", Arial, sans-serif;
-    --text: "VOX Text", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --display: "Oswald", "Arial Narrow", Arial, sans-serif;
+    --text: "Source Sans 3", -apple-system, "Helvetica Neue", Arial, sans-serif;
     --maxw: 720px; --bar-h: 52px; --logo-band: 44px; --thumb: 84px; --ease: cubic-bezier(.2, .8, .2, 1);
   }
   html[lang="ko"] { --display: "Noto Sans", "Noto Sans KR", sans-serif; --text: "Noto Sans", "Noto Sans KR", sans-serif; }
@@ -335,7 +335,7 @@
 
   @media print { .bar, .cta, .skip, dialog { display: none !important; } body { background: #fff; } .thumb-btn { pointer-events: none; } }
 
-@font-face{font-family:"VOX Display";src:url("assets/fonts/heading.otf")} @font-face{font-family:"VOX Text";src:url("assets/fonts/body.woff2")}
+@font-face{font-family:"Oswald";font-weight:700;font-display:swap;src:url("assets/fonts/oswald-700.woff2") format("woff2")} @font-face{font-family:"Source Sans 3";font-weight:400 700;font-display:swap;src:url("assets/fonts/source-sans-3-400-700.woff2") format("woff2")}
 .doodle{height:120px;background-image:url("assets/hero-web.jpg");background-position:center 45%}.doodle{background-image:image-set(url("assets/hero-web.avif") type("image/avif"), url("assets/hero-web.webp") type("image/webp"), url("assets/hero-web.jpg") type("image/jpeg"))}
 .brand img{width:74px;height:74px;border-radius:0}.brand h1{font-size:1.875rem;line-height:1.05}.brand p{font-size:1rem}
 .draft-label{font:600 12px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#843d0d}
@@ -512,7 +512,7 @@ const TRANSLATIONS = {};
 Object.assign(DATA.strings, TRANSLATIONS);
 /* A dictionary that is not inline is fetched on first use (the heavier brands ship English alone);
    the menu renders only once the chosen language has arrived. */
-const LANG_FILES = {"es":"i18n/es.json?v=d4ccb6ed","vi":"i18n/vi.json?v=aef32ad9","ko":"i18n/ko.json?v=82895677","zh":"i18n/zh.json?v=eee44853","zh-Hant":"i18n/zh-Hant.json?v=24ee31d2","tl":"i18n/tl.json?v=65a2c141","fa":"i18n/fa.json?v=9205e442","ar":"i18n/ar.json?v=a4873f1b","ja":"i18n/ja.json?v=42f230f4","ru":"i18n/ru.json?v=5e07e7a8","hi":"i18n/hi.json?v=6ae7446f","ur":"i18n/ur.json?v=1b6038dc"};
+const LANG_FILES = {"es":"i18n/es.json?v=d4ccb6ed","vi":"i18n/vi.json?v=aef32ad9","ko":"i18n/ko.json?v=8962565d","zh":"i18n/zh.json?v=f04164c8","zh-Hant":"i18n/zh-Hant.json?v=fce24c0b","tl":"i18n/tl.json?v=cca97039","fa":"i18n/fa.json?v=17219498","ar":"i18n/ar.json?v=8d7c64b9","ja":"i18n/ja.json?v=1d522080","ru":"i18n/ru.json?v=bc3886b9","hi":"i18n/hi.json?v=02e14ddd","ur":"i18n/ur.json?v=5482024d"};
 const LANG_LOADS = {};
 const haveLang = code => !!DATA.strings[code];
 const knownLang = code => haveLang(code) || !!LANG_FILES[code];
