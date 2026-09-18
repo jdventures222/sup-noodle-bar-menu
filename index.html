@@ -118,7 +118,7 @@
   /* The mark, the text and the arrow share the first row; the location blocks take the card's full width beneath. */
   .card > .side, .card > .text, .card > .arrow { grid-row: 1; }
   .card > .arrow { grid-column: 3; }
-  .card > .where { grid-row: 2; grid-column: 1 / -1; margin-top: 2px; }
+  .card > .where { grid-row: 2; grid-column: 1 / -1; margin-top: 6px; }
   .dish { grid-area: dish; position: relative; width: 88px; aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: var(--line); }
   .dish picture { position: absolute; inset: 0; display: block; opacity: 1; transition: opacity .6s ease; background: linear-gradient(to bottom, var(--bg-top, var(--line)) 0 30%, var(--bg-bot, var(--line)) 70% 100%); }
   .dish picture.in { opacity: 0; }
@@ -127,10 +127,11 @@
   .name { margin: 0; font-weight: 700; font-size: 1.0625rem; line-height: 1.3; letter-spacing: -.02em; overflow-wrap: anywhere; }
   .sub { display: block; margin-top: 4px; color: var(--body); font-size: 0.8125rem; line-height: 1.45; }
   .where { display: block; margin-top: 6px; color: var(--muted); font-size: 0.8125rem; line-height: 1.45; }
-  /* One block per location: its button, then Hours, Call and Directions in a row, the week below. Blocks sit
-     side by side only where each has room for that row (190px), one under another otherwise. */
-  .chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px 16px; }
-  .loc { display: grid; justify-items: start; }
+  /* One row per location, divided by hairlines: its button at the start and Hours, Call and Directions at
+     the end of the same row, or under the button where the row has no room for both; the week unfolds
+     beneath the row at the card's full width. */
+  .chips { display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--line); }
+  .loc { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 12px; padding: 6px 0; border-bottom: 1px solid var(--line); }
   .chips .loc > a {
     position: relative; z-index: 1;
     display: inline-flex; align-items: center; justify-content: center;
@@ -148,13 +149,14 @@
   .brand-line { width: 36px; height: 3px; border-radius: 2px; background: var(--brand, var(--red)); }
   /* Per location (H2): an Hours button that unfolds the week, tap-to-call and directions in one row, the
      seven-day table below them with today's row marked. All of it sits above the card's stretched link. */
-  .loc-info { display: grid; justify-items: start; font-size: 0.8125rem; line-height: 1.3; color: var(--muted); }
+  .loc-info { display: contents; font-size: 0.8125rem; line-height: 1.3; color: var(--muted); }
   .loc-info .acts { display: flex; flex-wrap: wrap; gap: 0 8px; }
   .loc-info .act { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 44px; min-height: 44px; padding: 0 4px; margin: 0 -4px; border: 0; background: none; font: inherit; color: var(--brand-action, var(--brand, var(--red))); font-weight: 600; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; cursor: pointer; }
   .loc-info .act:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
   .loc-info .act svg { width: 14px; height: 14px; transition: transform .2s ease; }
   .loc-info .act[aria-expanded="true"] svg { transform: rotate(180deg); }
-  .week { position: relative; z-index: 1; margin: 0 0 6px; border-collapse: collapse; color: var(--body); font-variant-numeric: tabular-nums; }
+  .week-wrap { flex-basis: 100%; padding-inline-start: 12px; }
+  .week { position: relative; z-index: 1; margin: 2px 0 8px; border-collapse: collapse; color: var(--body); font-variant-numeric: tabular-nums; }
   .week th { padding: 2px 12px 2px 0; text-align: start; font-weight: 400; }
   .week td { padding: 2px 0; white-space: nowrap; }
   .week tr[aria-current] { color: var(--ink); font-weight: 600; }
@@ -539,7 +541,7 @@ function renderHours(date) {
       `<button class="act" type="button" aria-expanded="${open}" aria-controls="${id}" aria-label="${esc(plain(t("ui.hours")))} · ${esc(where)}">${prose(t("ui.hours"))}${CHEVRON_DOWN}</button>` +
       `<a class="act" href="tel:${esc(l.tel)}" aria-label="${esc(plain(t("ui.call")))} · ${esc(where)}">${prose(t("ui.call"))}</a>` +
       `<a class="act" href="${esc(l.maps)}" target="_blank" rel="noopener" aria-label="${esc(plain(t("ui.directions")))} · ${esc(where)}">${prose(t("ui.directions"))}</a></span>` +
-      `<div id="${id}"${open ? "" : " hidden"}>${weekHTML(l, today)}</div>`;
+      `<div class="week-wrap" id="${id}"${open ? "" : " hidden"}>${weekHTML(l, today)}</div>`;
   });
 }
 document.addEventListener("click", e => {
@@ -648,7 +650,7 @@ state.lang = pickLang();
 render();
 /* A tile of the restaurant's own dishes on each card: one of the thumbnails its menu ships (DATA.photos and
    option shots, gathered by hub/build.py), chosen at random and replaced by another at a random interval
-   of 5 to 11 s with a crossfade, while the tile is on screen. A reduced-motion setting keeps the first
+   of 4 to 8 s with a crossfade, while the tile is on screen. A reduced-motion setting keeps the first
    pick; a hidden tab or a tile scrolled away pauses the change. Decorative: the dish is not named here,
    its menu names it. */
 function dishHTML(brand, i, lazy) {
@@ -667,7 +669,7 @@ function startDishes() {
     box.innerHTML = dishHTML(brand, i, !first);
     box.querySelector("img").addEventListener("error", () => { box.hidden = true; }, { once: true });
     if (still || list.length < 2) return;
-    const schedule = () => { timer = setTimeout(next, 5000 + Math.random() * 6000); };
+    const schedule = () => { timer = setTimeout(next, 4000 + Math.random() * 4000); };
     const next = () => {
       timer = 0; if (document.hidden || box.hidden || box.__onScreen === false) return;
       let j = Math.floor(Math.random() * (list.length - 1)); if (j >= i) j++;
