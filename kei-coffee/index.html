@@ -314,7 +314,7 @@
   .lb-nav svg { width: 18px; height: 18px; }
   .lb-nav.prev { inset-inline-start: 12px; } .lb-nav.next { inset-inline-end: 12px; }
   .lb-nav[disabled] { opacity: .3; cursor: default; }
-  @media (hover: hover) and (pointer: fine) { .lb-nav { display: grid; } }
+  .lb-nav { display: grid; }
   .lb-close:focus-visible span, .lb-nav:focus-visible span { outline: 3px solid #fff; outline-offset: 2px; }
   .lb-close:focus-visible, .lb-nav:focus-visible { outline: 0; }
 
@@ -360,9 +360,6 @@
   .custom {background:#f1e9de;border-radius:8px;padding:10px 12px;color:var(--ink);}
   .source-detail p {margin:5px 0;}
   .option-group {margin:16px 0;}.option-group small {display:block;}.option-group ul {padding:0;list-style:none;}.option-group li {display:flex;justify-content:space-between;gap:16px;padding:5px 0;border-bottom:1px solid var(--line-soft);}.option-group li span:last-child{white-space:nowrap;}
-  .featured-links {display:flex;gap:8px;overflow:auto;margin:16px 0;padding-bottom:4px;}
-  .featured-link.special {display:block;flex:0 0 170px;min-width:0;border:1px solid var(--line-soft);box-shadow:none;border-radius:8px;background:var(--surface);padding:12px;text-decoration:none;font:600 13px/1.4 var(--text);}
-  .featured-link span {display:block;color:var(--muted);font-size:0.625rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;}
   .badge {background:#e6d5c7;color:#5c3d1e;font-size:0.625rem;}
   .thumb {object-fit:cover;background:#f2f2f0;border-radius:8px;}
   .locs {grid-template-columns:1fr;}
@@ -486,6 +483,40 @@ html[dir="rtl"] .price bdi, .en-name { font-family: system-ui, "Helvetica Neue",
 html[lang="ja"] { line-break: strict; word-break: normal; }
 @supports (word-break: auto-phrase) { html[lang="ja"] { word-break: auto-phrase; } }
 
+
+/* Promotions in SUP's card family: 84px artwork, eyebrow, title, timing, terms, a chevron only when the card leads somewhere. */
+.specials.promo-list { --promo-title-font: var(--display); --promo-title-size: 1.3125rem; --promo-title-weight: 500; --promo-title-case: none; --promo-card-bg: var(--surface); --promo-card-line: var(--line); --promo-mark-bg: var(--red);
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-block: 14px 0; margin-inline: 0; padding: 0; }
+.promo-list .promo-card { box-sizing: border-box; display: grid; grid-template-columns: 84px minmax(0, 1fr) 20px; gap: 12px; align-items: center; min-inline-size: 0; min-block-size: 44px; margin: 0; padding: 10px; border: 1px solid var(--promo-card-line); border-radius: 14px; background: var(--promo-card-bg); color: var(--ink); font-family: var(--text); text-align: start; text-decoration: none; box-shadow: none; }
+.promo-list .promo-card.promo-notice { grid-template-columns: 84px minmax(0, 1fr); cursor: default; }
+.promo-list a.promo-card:active { background: var(--ground); }
+.promo-list a.promo-card:focus-visible { outline: 3px solid var(--red-deep); outline-offset: 2px; }
+.promo-list .promo-card .promo-copy { min-inline-size: 0; overflow-wrap: anywhere; }
+.promo-list .promo-card .promo-media { display: grid; place-items: center; inline-size: 84px; aspect-ratio: 1; overflow: hidden; border-radius: 10px; background: var(--line-soft, var(--ground)); }
+.promo-list .promo-card .promo-media picture { display: block; inline-size: 100%; }
+.promo-list .promo-card .promo-media img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 1; object-fit: cover; object-position: center; border-radius: 0; }
+.promo-list .promo-card .promo-mark { background: var(--promo-mark-bg); color: #fff; }
+.promo-list .promo-card .promo-mark img { object-fit: contain; }
+.promo-list .promo-card .promo-mark svg { inline-size: 40px; block-size: 40px; color: inherit; }
+.promo-list .promo-card .eyebrow { margin: 0; color: var(--red-deep); font: 700 0.75rem/1.25 var(--text); letter-spacing: 0.06em; text-transform: uppercase; }
+.promo-list .promo-card .promo-title { margin-block: 2px 3px; margin-inline: 0; color: var(--ink); font-family: var(--promo-title-font); font-size: var(--promo-title-size); font-weight: var(--promo-title-weight); line-height: 1.2; letter-spacing: 0; text-transform: var(--promo-title-case); text-wrap: balance; overflow-wrap: anywhere; }
+.promo-list .promo-card .when { margin-block: 1px 0; margin-inline: 0; color: var(--body); font: 400 0.8125rem/1.4 var(--text); }
+.promo-list .promo-card .terms { margin-block: 3px 0; margin-inline: 0; color: var(--muted); font: 400 0.75rem/1.4 var(--text); }
+.promo-list .promo-card .promo-price { margin-block-start: 4px; }
+.promo-list .promo-card .price { color: var(--ink); font: 700 1rem/1.375 var(--text); font-variant-numeric: tabular-nums; }
+.promo-list .promo-card > svg { inline-size: 20px; block-size: 20px; color: var(--control); justify-self: end; transform: none; }
+html[dir="rtl"] .promo-list .promo-card > svg { transform: scaleX(-1); }
+html:is([lang="ko"], [lang^="zh"], [lang="ja"], [lang="hi"], [lang="ar"], [lang="fa"], [lang="ur"]) .promo-list .promo-card :is(.eyebrow, .promo-title) { text-transform: none; letter-spacing: 0; }
+html:is([lang="ko"], [lang^="zh"], [lang="ja"]) .promo-list .promo-card .promo-title { font-size: 1.125rem; line-height: 1.5; }
+html:is([lang="ar"], [lang="fa"], [lang="hi"]) .promo-list .promo-card :is(.eyebrow, .promo-title, .when, .terms) { line-height: 1.7; }
+html[lang="ur"] .promo-list .promo-card :is(.eyebrow, .promo-title, .when, .terms) { line-height: 2.6; }
+.hide-flagged .promo-list .promo-card.flagged { display: none; }
+@media (min-width: 760px) { .specials.promo-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .promo-list .promo-card:only-child { grid-column: 1 / -1; } }
+@media print { .promo-list .promo-card .promo-media, .promo-list .promo-card > svg { display: none !important; } .promo-list .promo-card { grid-template-columns: minmax(0, 1fr); break-inside: avoid; } }
+.specials.promo-list.coffee-promos { --promo-title-font: var(--text); --promo-title-size: 1.0625rem; --promo-title-weight: 700; --promo-card-line: var(--line-soft); --promo-mark-bg: #1c1b1b;
+  display: flex; gap: 10px; overflow: auto; margin-inline: -6px; padding: 6px; scroll-padding-inline: 6px; scroll-snap-type: inline proximity; overscroll-behavior-inline: contain; }
+.coffee-promos .promo-card { flex: 0 0 calc(100% - 24px); scroll-snap-align: start; }
+@media (min-width: 760px) { .coffee-promos .promo-card { flex-basis: calc((100% - 10px) / 2); } }
 </style>
 </head>
 <body>
@@ -733,8 +764,26 @@ function optionShotsHTML(it, k) {
   }).join("");
   return `<div class="shots"><span class="lab">${prose(t("ui.eachOption"))}</span><ul>${shots}</ul></div>`;
 }
+/* A promotion's artwork: the dish photo when the menu has one, otherwise the brand mark on its tile. */
+function promoMarkHTML() {
+  return `<span class="promo-media promo-mark" aria-hidden="true"><img src="assets/logo.png" alt="" width="84" height="84" decoding="async"></span>`;
+}
+function promoPhotoHTML(itemId) {
+  const path = DATA.photos[itemId];
+  if (!path) return promoMarkHTML();
+  return `<span class="promo-media" aria-hidden="true">${pictureHTML(path, 84, 'alt="" width="84" height="84" loading="lazy" decoding="async"')}</span>`;
+}
 function specialsHTML() {
-  return `<div class="featured-links" aria-label="${esc(caption("featured"))}">${DATA.structure.featured.filter(f=>f.badge==='bestSeller').slice(0,5).map(f=>`<a class="special featured-link" href="#item-${f.item}" data-target="item-${f.item}"><span>${prose(t("ui.bestSeller"))}</span>${prose(t('item.'+f.item+'.name'))}</a>`).join('')}</div>`;
+  const items = new Map(DATA.structure.sections.flatMap(sec => sec.items.map(it => [it.id, it])));
+  const cards = DATA.structure.featured.filter(f => f.badge === "bestSeller").slice(0, 5).map(f => {
+    const item = items.get(f.item);
+    if (!item) return "";
+    const prices = item.prices || [];
+    const single = prices.length === 1 && prices[0].k === undefined && !prices[0].plus && Number.isFinite(prices[0].p);
+    const price = single ? `<div class="promo-price">${priceHTML(prices[0])}</div>` : "";
+    return `<a class="special promo-card" href="#item-${esc(f.item)}" data-target="item-${esc(f.item)}" data-allergens="${esc(allOf(item).join(" "))}">${promoPhotoHTML(f.item)}<div class="promo-copy"><div class="eyebrow">${prose(t("ui.bestSeller"))}</div><h2 class="promo-title">${prose(t("item." + f.item + ".name"))}</h2>${price}</div>${ICON.chevron}</a>`;
+  }).join("");
+  return cards ? `<div class="specials featured-links promo-list coffee-promos" role="region" aria-label="${esc(caption("featured"))}">${cards}</div>` : "";
 }
 function ctaHTML() {
   return `<button class="cta" type="button" id="ctaFilter" aria-haspopup="dialog">${ICON.shield}<span><b id="ctaTitle"></b><small id="ctaSub"></small></span>${ICON.chevron}</button>`;
@@ -822,7 +871,7 @@ function renderBar() {
 function renderMain() {
   $("main").innerHTML = specialsHTML() + ctaHTML() + DATA.structure.sections.map(sectionHTML).join("");
   $("ctaFilter").addEventListener("click", e => openSheet("filterSheet", filterSheetHTML(), e.detail === 0));
-  document.querySelectorAll(".special").forEach(a => a.addEventListener("click", () => {
+  document.querySelectorAll("a.special[data-target]").forEach(a => a.addEventListener("click", () => {
     const tgt = $(a.dataset.target);
     if (tgt && tgt.classList.contains("flagged") && state.hide) { state.hide = false; applyFilter(); }
   }));
@@ -883,7 +932,7 @@ document.addEventListener("keydown", e => {
   e.preventDefault();
   const group = radio.closest('[role="radiogroup"]');
   const buttons = [...group.querySelectorAll('[role="radio"]')];
-  const step = ["ArrowDown", "ArrowRight"].includes(e.key) ? 1 : -1;
+  const step = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : (e.key === "ArrowRight") !== isRTL() ? 1 : -1;
   const index = e.key === "Home" ? 0 : e.key === "End" ? buttons.length - 1 : (buttons.indexOf(radio) + step + buttons.length) % buttons.length;
   const code = buttons[index].dataset.lang;
   const sheet = group.closest("#langSheet");
@@ -907,7 +956,7 @@ function toggleAvoid(a) {
 function clearAvoid() { state.avoid.clear(); state.hide = false; store("kei-coffee-avoid", ""); const y = window.scrollY; renderMain(); applyFilter(); window.scrollTo(0, y); syncFilterUrl(); }
 function applyFilter() {
   let n = 0;
-  document.querySelectorAll(".item").forEach(el => {
+  document.querySelectorAll(".item, .promo-card[data-allergens]").forEach(el => {
     const hits = (el.dataset.allergens || "").split(" ").filter(a => a && state.avoid.has(a));
     el.classList.toggle("flagged", hits.length > 0);
     if (hits.length && el.dataset.kind === "item") n++;
@@ -1018,7 +1067,7 @@ function closeDialog(dlg, fromPop, instant) {
     let back = dlg.__returnFocus; dlg.__returnFocus = null;
     if (back && !back.isConnected) back = back.id ? $(back.id) : $("filterBtn");
     if (back) back.classList.toggle("pointer-focus", !dlg.__keyboardOpen);
-    dlg.classList.remove("closing"); dlg.close(); syncModalClass();
+    dlg.classList.remove("closing"); dlg.close(); syncModalClass(); if (dlg.id === "filterSheet") syncFilterUrl();
     if (dlg.id === "lb") lbAfterClose();
     if (back && back.isConnected && !openDlg() && !modal.next) back.focus({ preventScroll: true });
     const after = dlg.__afterClose; dlg.__afterClose = null; if (after) after();
@@ -1102,7 +1151,7 @@ function openSections(keyboard) {
 function searchResults() {
   const query = searchFold(menuQuery);
   const rows = [...document.querySelectorAll("#main .item[data-kind='item']")].filter(itemVisible).filter(el => {
-    const text = [el.querySelector("h3")?.textContent, el.querySelector(".desc")?.textContent, ...[...el.querySelectorAll(".variants li > span:first-child, .modifiers li > span:first-child, .custom li > span:first-child, .choice, .courses")].map(s => s.textContent)].join(" ");
+    const text = [el.querySelector("h3")?.textContent, el.querySelector(".en-name")?.textContent, el.querySelector(".desc")?.textContent, ...[...el.querySelectorAll(".variants li > span:first-child, .modifiers li > span:first-child, .custom li > span:first-child, .choice, .courses")].map(s => s.textContent)].join(" ");
     return !query || searchFold(text).includes(query);
   });
   $("searchCount").textContent = plain(t("ui.searchCount").replace("{n}", rows.length));

@@ -314,7 +314,7 @@
   .lb-nav svg { width: 18px; height: 18px; }
   .lb-nav.prev { inset-inline-start: 12px; } .lb-nav.next { inset-inline-end: 12px; }
   .lb-nav[disabled] { opacity: .3; cursor: default; }
-  @media (hover: hover) and (pointer: fine) { .lb-nav { display: grid; } }
+  .lb-nav { display: grid; }
   .lb-close:focus-visible span, .lb-nav:focus-visible span { outline: 3px solid #fff; outline-offset: 2px; }
   .lb-close:focus-visible, .lb-nav:focus-visible { outline: 0; }
 
@@ -464,6 +464,37 @@ html[dir="rtl"] .price bdi, .en-name { font-family: system-ui, "Helvetica Neue",
 html[lang="ja"] { line-break: strict; word-break: normal; }
 @supports (word-break: auto-phrase) { html[lang="ja"] { word-break: auto-phrase; } }
 
+
+/* Promotions in SUP's card family: 84px artwork, eyebrow, title, timing, terms, a chevron only when the card leads somewhere. */
+.specials.promo-list { --promo-title-font: var(--display); --promo-title-size: 1.3125rem; --promo-title-weight: 500; --promo-title-case: none; --promo-card-bg: var(--surface); --promo-card-line: var(--line); --promo-mark-bg: var(--red);
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-block: 14px 0; margin-inline: 0; padding: 0; }
+.promo-list .promo-card { box-sizing: border-box; display: grid; grid-template-columns: 84px minmax(0, 1fr) 20px; gap: 12px; align-items: center; min-inline-size: 0; min-block-size: 44px; margin: 0; padding: 10px; border: 1px solid var(--promo-card-line); border-radius: 14px; background: var(--promo-card-bg); color: var(--ink); font-family: var(--text); text-align: start; text-decoration: none; box-shadow: none; }
+.promo-list .promo-card.promo-notice { grid-template-columns: 84px minmax(0, 1fr); cursor: default; }
+.promo-list a.promo-card:active { background: var(--ground); }
+.promo-list a.promo-card:focus-visible { outline: 3px solid var(--red-deep); outline-offset: 2px; }
+.promo-list .promo-card .promo-copy { min-inline-size: 0; overflow-wrap: anywhere; }
+.promo-list .promo-card .promo-media { display: grid; place-items: center; inline-size: 84px; aspect-ratio: 1; overflow: hidden; border-radius: 10px; background: var(--line-soft, var(--ground)); }
+.promo-list .promo-card .promo-media picture { display: block; inline-size: 100%; }
+.promo-list .promo-card .promo-media img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 1; object-fit: cover; object-position: center; border-radius: 0; }
+.promo-list .promo-card .promo-mark { background: var(--promo-mark-bg); color: #fff; }
+.promo-list .promo-card .promo-mark img { object-fit: contain; }
+.promo-list .promo-card .promo-mark svg { inline-size: 40px; block-size: 40px; color: inherit; }
+.promo-list .promo-card .eyebrow { margin: 0; color: var(--red-deep); font: 700 0.75rem/1.25 var(--text); letter-spacing: 0.06em; text-transform: uppercase; }
+.promo-list .promo-card .promo-title { margin-block: 2px 3px; margin-inline: 0; color: var(--ink); font-family: var(--promo-title-font); font-size: var(--promo-title-size); font-weight: var(--promo-title-weight); line-height: 1.2; letter-spacing: 0; text-transform: var(--promo-title-case); text-wrap: balance; overflow-wrap: anywhere; }
+.promo-list .promo-card .when { margin-block: 1px 0; margin-inline: 0; color: var(--body); font: 400 0.8125rem/1.4 var(--text); }
+.promo-list .promo-card .terms { margin-block: 3px 0; margin-inline: 0; color: var(--muted); font: 400 0.75rem/1.4 var(--text); }
+.promo-list .promo-card .promo-price { margin-block-start: 4px; }
+.promo-list .promo-card .price { color: var(--ink); font: 700 1rem/1.375 var(--text); font-variant-numeric: tabular-nums; }
+.promo-list .promo-card > svg { inline-size: 20px; block-size: 20px; color: var(--control); justify-self: end; transform: none; }
+html[dir="rtl"] .promo-list .promo-card > svg { transform: scaleX(-1); }
+html:is([lang="ko"], [lang^="zh"], [lang="ja"], [lang="hi"], [lang="ar"], [lang="fa"], [lang="ur"]) .promo-list .promo-card :is(.eyebrow, .promo-title) { text-transform: none; letter-spacing: 0; }
+html:is([lang="ko"], [lang^="zh"], [lang="ja"]) .promo-list .promo-card .promo-title { font-size: 1.125rem; line-height: 1.5; }
+html:is([lang="ar"], [lang="fa"], [lang="hi"]) .promo-list .promo-card :is(.eyebrow, .promo-title, .when, .terms) { line-height: 1.7; }
+html[lang="ur"] .promo-list .promo-card :is(.eyebrow, .promo-title, .when, .terms) { line-height: 2.6; }
+.hide-flagged .promo-list .promo-card.flagged { display: none; }
+@media (min-width: 760px) { .specials.promo-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .promo-list .promo-card:only-child { grid-column: 1 / -1; } }
+@media print { .promo-list .promo-card .promo-media, .promo-list .promo-card > svg { display: none !important; } .promo-list .promo-card { grid-template-columns: minmax(0, 1fr); break-inside: avoid; } }
+.specials.promo-list.vox-promos { --promo-title-weight: 800; --promo-title-case: uppercase; --promo-mark-bg: var(--red); }
 </style>
 </head>
 <body>
@@ -516,7 +547,7 @@ const TRANSLATIONS = {};
 Object.assign(DATA.strings, TRANSLATIONS);
 /* A dictionary that is not inline is fetched on first use (the heavier brands ship English alone);
    the menu renders only once the chosen language has arrived. */
-const LANG_FILES = {"es":"i18n/es.json?v=d4ccb6ed","vi":"i18n/vi.json?v=aef32ad9","ko":"i18n/ko.json?v=8962565d","zh":"i18n/zh.json?v=f04164c8","zh-Hant":"i18n/zh-Hant.json?v=fce24c0b","tl":"i18n/tl.json?v=cca97039","fa":"i18n/fa.json?v=17219498","ar":"i18n/ar.json?v=8d7c64b9","ja":"i18n/ja.json?v=1d522080","ru":"i18n/ru.json?v=bc3886b9","hi":"i18n/hi.json?v=02e14ddd","ur":"i18n/ur.json?v=5482024d"};
+const LANG_FILES = {"es":"i18n/es.json?v=20fed860","vi":"i18n/vi.json?v=0a29cb64","ko":"i18n/ko.json?v=446cdbcf","zh":"i18n/zh.json?v=ca7e20c5","zh-Hant":"i18n/zh-Hant.json?v=5c9bd4e7","tl":"i18n/tl.json?v=f2e7bc8f","fa":"i18n/fa.json?v=12391c39","ar":"i18n/ar.json?v=6c957d09","ja":"i18n/ja.json?v=84b3e4ab","ru":"i18n/ru.json?v=8d912064","hi":"i18n/hi.json?v=44111871","ur":"i18n/ur.json?v=a3e4af17"};
 const LANG_LOADS = {};
 const haveLang = code => !!DATA.strings[code];
 const knownLang = code => haveLang(code) || !!LANG_FILES[code];
@@ -716,9 +747,22 @@ function optionShotsHTML(it, k) {
   }).join("");
   return `<div class="shots"><span class="lab">${prose(t("ui.eachOption"))}</span><ul>${shots}</ul></div>`;
 }
+/* A promotion's artwork: the dish photo when the menu has one, otherwise the brand mark on its tile. */
+function promoMarkHTML() {
+  return `<span class="promo-media promo-mark" aria-hidden="true"><img src="assets/logo.png" alt="" width="84" height="84" decoding="async"></span>`;
+}
+function promoPhotoHTML(itemId) {
+  const path = DATA.photos[itemId];
+  if (!path) return promoMarkHTML();
+  return `<span class="promo-media" aria-hidden="true">${pictureHTML(path, 84, 'alt="" width="84" height="84" loading="lazy" decoding="async"')}</span>`;
+}
 function specialsHTML() {
- const m=DATA.activeMenu;
- return `<div class="draft-intro"><p><strong>${prose(DATA.location.place || DATA.location.name)}</strong></p>${m.id === "scp-table" ? `<p><b>${prose(vui("happyHour"))}</b> ${prose(vui("happyWhen"))} </p>` : ""}</div>`;
+  const place = DATA.location.place || DATA.location.name;
+  const sp = DATA.structure.specials.find(sp => sp.id === "scp-happy-hour");
+  if (DATA.activeMenu.id !== "scp-table" || !sp) return `<div class="draft-intro"><p><strong>${prose(place)}</strong></p></div>`;
+  const linked = !!sp.menuLink;
+  const tag = linked ? "a" : "aside";
+  return `<div class="specials promo-list vox-promos"><${tag} class="special promo-card${linked ? "" : " promo-notice"}"${linked ? ` href="${esc(sp.menuLink)}"` : ""}>${promoMarkHTML()}<div class="promo-copy"><div class="eyebrow">${prose(place)}</div><h2 class="promo-title">${prose(vui("happyHour").replace(/[:：]\s*$/, ""))}</h2><p class="when">${prose(vui("happyWhen"))}</p></div>${linked ? ICON.chevron : ""}</${tag}></div>`;
 }
 function ctaHTML() {
   return `<button class="cta" type="button" id="ctaFilter" aria-haspopup="dialog">${ICON.shield}<span><b id="ctaTitle"></b><small id="ctaSub"></small></span>${ICON.chevron}</button>`;
@@ -811,7 +855,7 @@ function renderBar() {
 function renderMain() {
   $("main").innerHTML = specialsHTML() + ctaHTML() + DATA.structure.sections.map(sectionHTML).join("");
   $("ctaFilter").addEventListener("click", e => openSheet("filterSheet", filterSheetHTML(), e.detail === 0));
-  document.querySelectorAll(".special").forEach(a => a.addEventListener("click", () => {
+  document.querySelectorAll("a.special[data-target]").forEach(a => a.addEventListener("click", () => {
     const tgt = $(a.dataset.target);
     if (tgt && tgt.classList.contains("flagged") && state.hide) { state.hide = false; applyFilter(); }
   }));
@@ -872,7 +916,7 @@ document.addEventListener("keydown", e => {
   e.preventDefault();
   const group = radio.closest('[role="radiogroup"]');
   const buttons = [...group.querySelectorAll('[role="radio"]')];
-  const step = ["ArrowDown", "ArrowRight"].includes(e.key) ? 1 : -1;
+  const step = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : (e.key === "ArrowRight") !== isRTL() ? 1 : -1;
   const index = e.key === "Home" ? 0 : e.key === "End" ? buttons.length - 1 : (buttons.indexOf(radio) + step + buttons.length) % buttons.length;
   const code = buttons[index].dataset.lang;
   const sheet = group.closest("#langSheet");
@@ -1007,7 +1051,7 @@ function closeDialog(dlg, fromPop, instant) {
     let back = dlg.__returnFocus; dlg.__returnFocus = null;
     if (back && !back.isConnected) back = back.id ? $(back.id) : $("filterBtn");
     if (back) back.classList.toggle("pointer-focus", !dlg.__keyboardOpen);
-    dlg.classList.remove("closing"); dlg.close(); syncModalClass();
+    dlg.classList.remove("closing"); dlg.close(); syncModalClass(); if (dlg.id === "filterSheet") syncFilterUrl();
     if (dlg.id === "lb") lbAfterClose();
     if (back && back.isConnected && !openDlg() && !modal.next) back.focus({ preventScroll: true });
     const after = dlg.__afterClose; dlg.__afterClose = null; if (after) after();
@@ -1091,7 +1135,7 @@ function openSections(keyboard) {
 function searchResults() {
   const query = searchFold(menuQuery);
   const rows = [...document.querySelectorAll("#main .item[data-kind='item']")].filter(itemVisible).filter(el => {
-    const text = [el.querySelector("h3")?.textContent, el.querySelector(".desc")?.textContent, ...[...el.querySelectorAll(".variants li > span:first-child, .modifiers li > span:first-child, .custom li > span:first-child, .choice, .courses")].map(s => s.textContent)].join(" ");
+    const text = [el.querySelector("h3")?.textContent, el.querySelector(".en-name")?.textContent, el.querySelector(".desc")?.textContent, ...[...el.querySelectorAll(".variants li > span:first-child, .modifiers li > span:first-child, .custom li > span:first-child, .choice, .courses")].map(s => s.textContent)].join(" ");
     return !query || searchFold(text).includes(query);
   });
   $("searchCount").textContent = plain(t("ui.searchCount").replace("{n}", rows.length));

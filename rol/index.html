@@ -315,7 +315,7 @@
   .lb-nav svg { width: 18px; height: 18px; }
   .lb-nav.prev { inset-inline-start: 12px; } .lb-nav.next { inset-inline-end: 12px; }
   .lb-nav[disabled] { opacity: .3; cursor: default; }
-  @media (hover: hover) and (pointer: fine) { .lb-nav { display: grid; } }
+  .lb-nav { display: grid; }
   .lb-close:focus-visible span, .lb-nav:focus-visible span { outline: 3px solid #fff; outline-offset: 2px; }
   .lb-close:focus-visible, .lb-nav:focus-visible { outline: 0; }
 
@@ -881,7 +881,7 @@ document.addEventListener("keydown", e => {
   e.preventDefault();
   const group = radio.closest('[role="radiogroup"]');
   const buttons = [...group.querySelectorAll('[role="radio"]')];
-  const step = ["ArrowDown", "ArrowRight"].includes(e.key) ? 1 : -1;
+  const step = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : (e.key === "ArrowRight") !== isRTL() ? 1 : -1;
   const index = e.key === "Home" ? 0 : e.key === "End" ? buttons.length - 1 : (buttons.indexOf(radio) + step + buttons.length) % buttons.length;
   const code = buttons[index].dataset.lang;
   const sheet = group.closest("#langSheet");
@@ -1016,7 +1016,7 @@ function closeDialog(dlg, fromPop, instant) {
     let back = dlg.__returnFocus; dlg.__returnFocus = null;
     if (back && !back.isConnected) back = back.id ? $(back.id) : $("filterBtn");
     if (back) back.classList.toggle("pointer-focus", !dlg.__keyboardOpen);
-    dlg.classList.remove("closing"); dlg.close(); syncModalClass();
+    dlg.classList.remove("closing"); dlg.close(); syncModalClass(); if (dlg.id === "filterSheet") syncFilterUrl();
     if (dlg.id === "lb") lbAfterClose();
     if (back && back.isConnected && !openDlg() && !modal.next) back.focus({ preventScroll: true });
     const after = dlg.__afterClose; dlg.__afterClose = null; if (after) after();
@@ -1100,7 +1100,7 @@ function openSections(keyboard) {
 function searchResults() {
   const query = searchFold(menuQuery);
   const rows = [...document.querySelectorAll("#main .item[data-kind='item']")].filter(itemVisible).filter(el => {
-    const text = [el.querySelector("h3")?.textContent, el.querySelector(".desc")?.textContent, ...[...el.querySelectorAll(".variants li > span:first-child, .modifiers li > span:first-child, .custom li > span:first-child, .choice, .courses")].map(s => s.textContent)].join(" ");
+    const text = [el.querySelector("h3")?.textContent, el.querySelector(".en-name")?.textContent, el.querySelector(".desc")?.textContent, ...[...el.querySelectorAll(".variants li > span:first-child, .modifiers li > span:first-child, .custom li > span:first-child, .choice, .courses")].map(s => s.textContent)].join(" ");
     return !query || searchFold(text).includes(query);
   });
   $("searchCount").textContent = plain(t("ui.searchCount").replace("{n}", rows.length));

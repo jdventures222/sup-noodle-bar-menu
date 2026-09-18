@@ -321,7 +321,7 @@
   .lb-nav svg { width: 18px; height: 18px; }
   .lb-nav.prev { inset-inline-start: 12px; } .lb-nav.next { inset-inline-end: 12px; }
   .lb-nav[disabled] { opacity: .3; cursor: default; }
-  @media (hover: hover) and (pointer: fine) { .lb-nav { display: grid; } }
+  .lb-nav { display: grid; }
   .lb-close:focus-visible span, .lb-nav:focus-visible span { outline: 3px solid #fff; outline-offset: 2px; }
   .lb-close:focus-visible, .lb-nav:focus-visible { outline: 0; }
 
@@ -770,7 +770,7 @@ document.addEventListener("keydown", e => {
   e.preventDefault();
   const group = radio.closest('[role="radiogroup"]');
   const buttons = [...group.querySelectorAll('[role="radio"]')];
-  const step = ["ArrowDown", "ArrowRight"].includes(e.key) ? 1 : -1;
+  const step = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : (e.key === "ArrowRight") !== isRTL() ? 1 : -1;
   const next = buttons[(buttons.indexOf(radio) + step + buttons.length) % buttons.length];
   const inSheet = group.closest("#langSheet");
   setLang(next.dataset.lang);
@@ -926,7 +926,7 @@ function closeDialog(dlg, fromPop, instant) {
   setTimeout(() => {
     const back = dlg.__returnFocus; dlg.__returnFocus = null;
     if (back) back.classList.toggle("pointer-focus", !dlg.__keyboardOpen);
-    dlg.classList.remove("closing"); dlg.close(); syncModalClass();
+    dlg.classList.remove("closing"); dlg.close(); syncModalClass(); if (dlg.id === "filterSheet") syncFilterUrl();
     if (dlg.id === "lb") lbAfterClose();
     if (back && back.isConnected && !openDlg() && !modal.next) back.focus({ preventScroll: true });
     const after = dlg.__afterClose; dlg.__afterClose = null; if (after) after();
@@ -1008,7 +1008,7 @@ function searchFold(value) {
   return String(value).normalize('NFD').replace(/(\p{Script=Latin})\p{M}+/gu, '$1').normalize('NFC').toLocaleLowerCase().replace(/đ/g,'d').trim();
 }
 function searchKeys({it, sec}) {
-  return ['item.'+it.id+'.name', ...it.prices.filter(p=>p.k).map(p=>'item.'+it.id+'.price.'+p.k),
+  return ['item.'+it.id+'.name', 'item.'+it.id+'.desc', ...it.prices.filter(p=>p.k).map(p=>'item.'+it.id+'.price.'+p.k),
     ...[...(it.addons||[]), ...(sec.addons||[])].map(a=>'addon.'+a.id+'.name')];
 }
 let supQuery = '';
