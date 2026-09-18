@@ -132,8 +132,11 @@
   .btn.quiet { background: var(--ground); color: var(--ink); }
 
   /* Specials */
-  .specials { display: grid; gap: 10px; margin: 14px 0 0; grid-template-columns: 1fr; }
-  @media (min-width: 560px) { .specials { grid-template-columns: 1fr 1fr; gap: 12px; } }
+  /* The specials as a swipeable rail: one card and the edge of the next on a phone, two side by side wider (finding 12). */
+  .specials { display: flex; gap: 10px; margin: 14px -6px 0; padding: 6px; overflow: auto; scroll-padding-inline: 6px; scroll-snap-type: inline proximity; overscroll-behavior-inline: contain; scrollbar-width: none; }
+  .specials::-webkit-scrollbar { display: none; }
+  .special { flex: 0 0 calc(100% - 24px); scroll-snap-align: start; }
+  @media (min-width: 560px) { .special { flex-basis: calc((100% - 10px) / 2); } }
   .special { display: grid; grid-template-columns: 84px minmax(0, 1fr) 20px; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px; color: inherit; text-decoration: none; }
   .special:active { background: var(--ground); }
   .special img { width: 84px; height: 84px; object-fit: cover; border-radius: 10px; display: block; }
@@ -312,7 +315,7 @@
   .lb-close { pointer-events: auto; position: absolute; top: calc(10px + env(safe-area-inset-top)); inset-inline-start: calc(10px + env(safe-area-inset-left)); width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; cursor: pointer; }
   .lb-close span { width: 34px; height: 34px; border-radius: 50%; background: rgba(0, 0, 0, .35); display: grid; place-items: center; }
   .lb-close svg { width: 14px; height: 14px; }
-  .lb-cap { position: absolute; inset-inline: 16px; bottom: calc(24px + env(safe-area-inset-bottom)); display: flex; justify-content: center; }
+  .lb-cap { position: absolute; inset-inline: 16px; bottom: calc(24px + env(safe-area-inset-bottom)); display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
   .lb-cap > span { max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 0 8px; background: rgba(0, 0, 0, .55); border-radius: 18px; padding: 7px 14px; font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; text-align: center; }
   .lb-cap .lb-name { min-width: 0; max-width: 100%; white-space: normal; }
   .lb-cap span b { flex: none; white-space: nowrap; font-weight: 700; font-variant-numeric: tabular-nums; }
@@ -406,6 +409,23 @@
   .offline-status { margin: 0; padding: 6px 0; font-size: .75rem; line-height: 1.5; color: var(--amber); }
   html[lang="ur"] :is(.search-result h3, .search-controls, .offline-status) { line-height: 2.6; }
 
+
+  /* A linked dish the filter hides (openLinkedDish); the pill back to search results; the copied-link toast;
+     the viewer caption's View dish and Share; Share menu and the PDF in the Sections sheet. */
+  .link-note { margin: 12px auto 0; }
+  .link-note[hidden] { display: none; }
+  .link-note span { display: block; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-size: 0.875rem; line-height: 1.4; }
+  .back-results { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 40; min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: rgba(27, 25, 23, .92); color: #fff; font: inherit; font-size: 0.9375rem; font-weight: 600; box-shadow: 0 6px 24px rgba(0, 0, 0, .18); cursor: pointer; }
+  .back-results[hidden] { display: none; }
+  .toast { position: fixed; left: 50%; bottom: calc(76px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 60; padding: 10px 16px; border-radius: 999px; background: rgba(27, 25, 23, .92); color: #fff; font-size: 0.875rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity .2s; }
+  .toast.on { opacity: 1; }
+  .lb-acts { flex-basis: 100%; display: flex; justify-content: center; gap: 8px; pointer-events: auto; }
+  .lb-act { min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .45); background: rgba(0, 0, 0, .55); color: #fff; font: inherit; font-size: 0.875rem; font-weight: 600; cursor: pointer; }
+  .sheet-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+  .sheet-tools .btn { flex: 1 1 auto; text-align: center; text-decoration: none; }
+  @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+  /* Printing carries every options disclosure and the footer's notices (finding 16). */
+  @media print { #main details { display: block !important; } #main details > summary { list-style: none; } #main details > :not(summary) { display: block !important; } .end, #footer, footer.end { display: block !important; } }
 </style>
 </head>
 <body>
@@ -431,6 +451,7 @@
   </div>
 </nav>
 
+<p class="wrap link-note" id="linkNote" role="status" hidden></p>
 <main class="wrap" id="main" tabindex="-1">__NOJS__</main>
 
 <footer class="end">
@@ -646,7 +667,7 @@ function langSheetHTML() {
 }
 function sectionSheetHTML() {
   return `<div class="sheet-head"><h2 id="sectionTitle">${prose(t("ui.sections"))}</h2><button class="x" type="button" data-close aria-label="${esc(t("ui.close"))}"><span>${ICON.x}</span></button></div>
-  <div class="sheet-body"><nav class="section-list" aria-labelledby="sectionTitle">${DATA.structure.sections.map(sec => `<a href="#sec-${sec.id}" data-section="sec-${sec.id}">${prose(t(`sec.${sec.id}.title`))}</a>`).join("")}</nav></div>`;
+  <div class="sheet-body"><nav class="section-list" aria-labelledby="sectionTitle">${DATA.structure.sections.map(sec => `<a href="#sec-${sec.id}" data-section="sec-${sec.id}">${prose(t(`sec.${sec.id}.title`))}</a>`).join("")}</nav><div class="sheet-tools"><button class="btn quiet" type="button" id="shareMenu">${prose(t("ui.shareMenu"))}</button><a class="btn quiet" href="pdf/SUP-Menu-${state.lang}.pdf">${prose(t("ui.fullMenuPdf"))}</a></div></div>`;
 }
 function filterSheetHTML() {
   const chips = ORDER.map(a => `<button class="pill" type="button" data-avoid="${a}" aria-pressed="${state.avoid.has(a)}">${prose(t("allergen." + a))}</button>`).join("");
@@ -903,6 +924,7 @@ function requestOpen(fn) {
 }
 function openDialog(dlg, adopt) {
   if (dlg.open) return;
+  hideBackToResults();
   dlg.showModal(); syncModalClass();
   const k = String(++modalSeq); dlg.dataset.k = k;
   const st = { modal: dlg.id, k };
@@ -1021,6 +1043,7 @@ function searchResults() {
     (!query || searchKeys(row).some(k=>searchFold(t(k)).includes(query)||searchFold(S_EN[k]||'').includes(query))));
   $('searchCount').textContent=t('ui.searchCount').replace('{n}', rows.length);
   $('searchNone').hidden=rows.length>0;
+  $('searchNone').innerHTML=prose(t(state.hide&&state.avoid.size?'ui.searchNoneFiltered':'ui.searchNone'));
   $('searchClear').disabled=!supQuery;
   $('searchFilter').innerHTML=state.avoid.size ? prose(t('ui.avoiding'))+': '+listNames([...state.avoid])+' · '+prose(t(state.hide?'ui.hideFlagged':'ui.showFlagged')) : '';
   $('searchResults').innerHTML=rows.map(({it})=>{
@@ -1056,6 +1079,7 @@ $('searchSheet').addEventListener('click', e => {
     // A brief static tint adds no animation, including with reduced motion enabled.
     target.classList.add('search-highlight');
     searchHighlightTimer = setTimeout(() => target.classList.remove('search-highlight'), 1800);
+    showBackToResults();
   };
   closeDialog(dlg);
 });
@@ -1106,7 +1130,7 @@ function lbLoad(i) {
 function lbCaption(i) {
   const p = PHOTOS[i];
   const vn = p.vk ? " · " + t(`item.${p.id}.price.${p.vk}`) : "";
-  LB.cap.innerHTML = `<span><span class="lb-name">${prose(t(`item.${p.id}.name`) + vn)}</span>${p.single ? `<b>${ltr(money(p.single.p))}</b>` : ""}</span>`;
+  LB.cap.innerHTML = `<span><span class="lb-name">${prose(t(`item.${p.id}.name`) + vn)}</span>${p.single ? `<b>${ltr(money(p.single.p))}</b>` : ""}</span>` + lbActsHTML(p);
   /* Paging is silent to a screen reader otherwise. Digits carry the position in
      every language, so this needs no translated string. */
   $("lbStatus").textContent = plain(t(`item.${p.id}.name`) + vn) + " · " + (i + 1) + " / " + PHOTOS.length;
@@ -1278,8 +1302,9 @@ LB.track.addEventListener("pointermove", e => {
     if (!g.mode) { if (Math.hypot(dx, dy) < 6) return; g.mode = "pan"; lbCancelTap(); }
     const bd = lbBounds(LB.s); lbSetZoom(LB.index, LB.s, clamp(g.tx0 + dx, -bd.x, bd.x), clamp(g.ty0 + dy, -bd.y, bd.y), false); return;
   }
-  if (!g.mode) { if (Math.hypot(dx, dy) < 14) return; g.mode = "drag"; lbCancelTap(); }
+  if (!g.mode) { if (Math.hypot(dx, dy) < 14) return; g.mode = Math.abs(dx) > Math.abs(dy) * 1.2 ? "page" : "drag"; lbCancelTap(); }
   if (g.mode === "drag") lbDrag(dx, dy);
+  else if (g.mode === "page") { const z = LB.zooms[LB.index]; z.style.transition = "none"; z.style.transform = `translate(${dx}px, 0)`; }
 });
 function lbPointerEnd(e) {
   if (!LB.pointers.has(e.pointerId)) return;
@@ -1298,6 +1323,13 @@ function lbPointerEnd(e) {
   if (g.mode === "pan" || g.mode === "done") return;
   const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
   const v = lbVelocity(g, now, e.clientX, e.clientY);
+  if (g.mode === "page") {
+    /* A horizontal swipe pages, in reading direction as the arrow keys do (finding 11). */
+    const flick = Math.abs(dx + v.vx * .25);
+    lbSpringBack();
+    if (Math.abs(dx) > 48 || (e.type === "pointerup" && flick > 220)) lbGoto(LB.index + ((dx < 0) !== isRTL() ? 1 : -1), true);
+    return;
+  }
   if (g.mode === "drag") {
     const d = Math.hypot(dx, dy), flick = Math.hypot(dx + v.vx * .25, dy + v.vy * .25);
     if (d > 60 || (e.type === "pointerup" && flick > 300)) { LB.exit = { fling: { dx, dy } }; closeDialog(LB.dlg); }
@@ -1334,15 +1366,69 @@ state.lang = pickLang();
 (load("sup-avoid") || "").split(",").filter(a => ORDER.includes(a)).forEach(a => state.avoid.add(a));
 const sharedFilter = new URLSearchParams(location.search);
 if (sharedFilter.has("avoid")) { state.avoid.clear(); sharedFilter.get("avoid").split(",").filter(a => ORDER.includes(a)).forEach(a => state.avoid.add(a)); state.hide = state.avoid.size > 0 && sharedFilter.get("hide") === "1"; }
-/* A menu always opens at the top. A leftover fragment from a tapped special, or a scroll position the browser
-   restores, would otherwise drop a diner into the middle of the menu. */
-if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-if (location.hash) { const u = new URL(location.href); u.hash = ""; history.replaceState(history.state, "", u); }
+/* Keep the guest's place (finding 3): Back restores the scroll, a #item-<id> link opens on that dish, and a
+   linked dish the filter hides says so above the menu until the filter lets it through. */
+const linkedDish = /^#item-[\w-]+$/.test(location.hash) ? location.hash.slice(1) : "";
+function goToItem(id) {
+  const target = $(id); if (!target || !target.getClientRects().length) return false;
+  target.setAttribute("tabindex", "-1"); target.focus({ preventScroll: true });
+  window.scrollTo({ top: Math.max(0, scrollY + target.getBoundingClientRect().top - $("bar").offsetHeight - 8), behavior: "instant" });
+  return true;
+}
+function openLinkedDish() {
+  hiddenDishNote();
+  if (!linkedDish || !$(linkedDish)) return;
+  requestAnimationFrame(() => goToItem(linkedDish));
+}
+function hiddenDishNote() {
+  const note = $("linkNote"); if (!note) return;
+  const el = linkedDish && $(linkedDish);
+  const hidden = !!el && (el.hidden || !el.getClientRects().length || (state.hide && el.classList.contains("flagged")));
+  note.hidden = !hidden; note.innerHTML = hidden ? `<span>${prose(t("ui.hiddenByFilter"))}</span>` : "";
+}
+{ const base = applyFilter; applyFilter = function () { base(); hiddenDishNote(); }; }
+/* Share (findings 14, item 71): the menu from its Sections sheet, a dish from its photo. The native share sheet
+   where there is one, else the link goes to the clipboard and a toast says so. */
+function menuUrl() { const u = new URL(location.href); u.hash = ""; return u.href; }
+function dishUrl(id) { const u = new URL(location.href); u.hash = "item-" + id; return u.href; }
+function shareLink(url) {
+  if (navigator.share) return navigator.share({ url }).then(() => "shared", () => "shared");
+  if (navigator.clipboard) return navigator.clipboard.writeText(url).then(() => "copied", () => "failed");
+  return Promise.resolve("failed");
+}
+function toast(text) {
+  const host = openDlg() || document.body;
+  let el = host.querySelector(":scope > .toast");
+  if (!el) { el = document.createElement("div"); el.className = "toast"; el.setAttribute("role", "status"); el.setAttribute("aria-live", "polite"); host.append(el); }
+  el.textContent = plain(text); el.classList.add("on"); clearTimeout(el.__t); el.__t = setTimeout(() => el.classList.remove("on"), 2000);
+}
+document.addEventListener("click", e => {
+  const share = e.target.closest("#shareMenu, [data-share-dish]"), view = e.target.closest("[data-view-dish]");
+  if (view) { const id = "item-" + view.dataset.viewDish; LB.dlg.__afterClose = () => goToItem(id); closeDialog(LB.dlg); return; }
+  if (!share) return;
+  const done = shareLink(share.dataset.shareDish ? dishUrl(share.dataset.shareDish) : menuUrl());
+  const dlg = openDlg();
+  const tell = () => done.then(v => { if (v === "copied") toast(t("ui.linkCopied")); });
+  if (dlg && dlg.id !== "lb") { dlg.__afterClose = tell; closeDialog(dlg); } else tell();
+});
+const lbActsHTML = p => `<span class="lb-acts"><button class="lb-act" type="button" data-view-dish="${esc(p.id)}">${prose(t("ui.viewDish"))}</button><button class="lb-act" type="button" data-share-dish="${esc(p.id)}">${prose(t("ui.share"))}</button></span>`;
+/* After a jump from search, a pill offers the way back to the results (the query is kept); it goes after
+   15 s, on use, or when a sheet opens (finding 10). */
+function showBackToResults() {
+  let b = $("backResults");
+  if (!b) { b = document.createElement("button"); b.type = "button"; b.id = "backResults"; b.className = "back-results"; b.addEventListener("click", () => { hideBackToResults(); openSearch(false); }); document.body.append(b); }
+  b.textContent = plain(t("ui.backToResults")); b.hidden = false; clearTimeout(showBackToResults.t); showBackToResults.t = setTimeout(hideBackToResults, 15000);
+}
+function hideBackToResults() { const b = $("backResults"); if (b) b.hidden = true; clearTimeout(showBackToResults.t); }
+/* Printing opens every options disclosure so the paper carries the choices and their prices (finding 16). */
+let printOpened = [];
+addEventListener("beforeprint", () => { printOpened = [...document.querySelectorAll("#main details:not([open])")]; printOpened.forEach(d => { d.open = true; }); });
+addEventListener("afterprint", () => { printOpened.forEach(d => { d.open = false; }); printOpened = []; });
+if ("scrollRestoration" in history) history.scrollRestoration = "auto";
 render();
 if (state.avoid.size) syncFilterUrl();
-window.scrollTo(0, 0);
+openLinkedDish();
 startOffline();
-addEventListener("pageshow", e => { if (e.persisted) window.scrollTo(0, 0); });
 </script>
 
 <script>

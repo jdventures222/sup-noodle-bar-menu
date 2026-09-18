@@ -219,5 +219,13 @@
   "ui.searchHint": "料理・オプション・追加メニューの名前を検索できます。",
   "ui.searchCount": "{n} 件の料理が見つかりました",
   "ui.searchNone": "料理が見つかりません。別の名前で検索してください。",
-  "ui.offlineSaved": "オフライン — {date} に保存したメニューを表示しています"
+  "ui.offlineSaved": "オフライン — {date} に保存したメニューを表示しています",
+  "ui.hiddenByFilter": "この料理はフィルターにより非表示になっています。",
+  "ui.shareMenu": "メニューを共有",
+  "ui.fullMenuPdf": "メニュー全体（PDF）",
+  "ui.backToResults": "検索結果に戻る",
+  "ui.searchNoneFiltered": "この検索条件と現在のフィルターに一致する料理はありません。",
+  "ui.viewDish": "料理を見る",
+  "ui.share": "共有",
+  "ui.linkCopied": "リンクをコピーしました"
 }

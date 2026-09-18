@@ -172,7 +172,7 @@
   "item.passionfruit.name": "Trà xanh chanh dây",
   "item.passionfruit.desc": "Trà xanh lài và chanh dây xay nhuyễn.",
   "item.fountain.name": "Nước ngọt ly",
-  "item.fountain.desc": "Coke, Diet Coke, Coke Zero, Fanta Strawberry, Ginger Ale, Barq's Root Beer, Sprite hoặc nước chanh.",
+  "item.fountain.desc": "Coke, Diet Coke, Coke Zero, Fanta Strawberry, ginger ale, Barq's Root Beer, Sprite hoặc nước chanh.",
   "item.shirley.name": "Shirley Temple",
   "item.royrogers.name": "Roy Rogers",
   "item.jasmineiced.name": "Trà lài đá",
@@ -219,5 +219,13 @@
   "ui.searchHint": "Tìm tên món, lựa chọn hoặc món thêm.",
   "ui.searchCount": "Tìm thấy {n} món",
   "ui.searchNone": "Không tìm thấy món. Hãy thử tên khác.",
-  "ui.offlineSaved": "Ngoại tuyến — đang hiển thị thực đơn đã lưu ngày {date}"
+  "ui.offlineSaved": "Ngoại tuyến — đang hiển thị thực đơn đã lưu ngày {date}",
+  "ui.hiddenByFilter": "Bộ lọc của bạn đang ẩn món này.",
+  "ui.shareMenu": "Chia sẻ thực đơn",
+  "ui.fullMenuPdf": "Thực đơn đầy đủ (PDF)",
+  "ui.backToResults": "Quay lại kết quả",
+  "ui.searchNoneFiltered": "Không có món nào khớp với tìm kiếm này và bộ lọc hiện tại.",
+  "ui.viewDish": "Xem món",
+  "ui.share": "Chia sẻ",
+  "ui.linkCopied": "Đã sao chép liên kết"
 }

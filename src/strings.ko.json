@@ -219,5 +219,13 @@
   "ui.searchHint": "메뉴, 옵션 또는 추가 메뉴 이름을 검색하세요.",
   "ui.searchCount": "검색된 메뉴: {n}개",
   "ui.searchNone": "검색된 메뉴가 없습니다. 다른 이름으로 검색해 보세요.",
-  "ui.offlineSaved": "오프라인 — {date}에 저장된 메뉴를 표시합니다"
+  "ui.offlineSaved": "오프라인 — {date}에 저장된 메뉴를 표시합니다",
+  "ui.hiddenByFilter": "이 메뉴는 설정하신 필터로 인해 숨겨져 있습니다.",
+  "ui.shareMenu": "메뉴 공유",
+  "ui.fullMenuPdf": "전체 메뉴 (PDF)",
+  "ui.backToResults": "검색 결과로 돌아가기",
+  "ui.searchNoneFiltered": "이 검색어와 현재 필터에 해당하는 메뉴가 없습니다.",
+  "ui.viewDish": "메뉴 보기",
+  "ui.share": "공유",
+  "ui.linkCopied": "링크 복사됨"
 }

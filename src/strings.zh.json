@@ -219,5 +219,13 @@
   "ui.searchHint": "搜索菜品、选项或加料名称。",
   "ui.searchCount": "找到 {n} 道菜品",
   "ui.searchNone": "未找到菜品，请试试其他名称。",
-  "ui.offlineSaved": "离线 — 正在显示 {date} 保存的菜单"
+  "ui.offlineSaved": "离线 — 正在显示 {date} 保存的菜单",
+  "ui.hiddenByFilter": "您的筛选条件已隐藏这道菜品。",
+  "ui.shareMenu": "分享菜单",
+  "ui.fullMenuPdf": "完整菜单（PDF）",
+  "ui.backToResults": "返回搜索结果",
+  "ui.searchNoneFiltered": "没有菜品符合当前搜索和筛选条件。",
+  "ui.viewDish": "查看菜品",
+  "ui.share": "分享",
+  "ui.linkCopied": "链接已复制"
 }

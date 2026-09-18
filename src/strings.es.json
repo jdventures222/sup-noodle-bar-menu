@@ -172,7 +172,7 @@
   "item.passionfruit.name": "Té verde con maracuyá",
   "item.passionfruit.desc": "Té verde de jazmín con puré de maracuyá.",
   "item.fountain.name": "Bebida de dispensador",
-  "item.fountain.desc": "Coke, Diet Coke, Coke Zero, Fanta Strawberry, Ginger Ale, Barq's Root Beer, Sprite o limonada.",
+  "item.fountain.desc": "Coke, Diet Coke, Coke Zero, Fanta Strawberry, ginger ale, Barq's Root Beer, Sprite o limonada.",
   "item.shirley.name": "Shirley Temple",
   "item.royrogers.name": "Roy Rogers",
   "item.jasmineiced.name": "Té helado de jazmín",
@@ -219,5 +219,13 @@
   "ui.searchHint": "Busca por nombre de plato, opción o extra.",
   "ui.searchCount": "Platos encontrados: {n}",
   "ui.searchNone": "No se encontraron platos. Prueba con otro nombre.",
-  "ui.offlineSaved": "Sin conexión — menú guardado el {date}"
+  "ui.offlineSaved": "Sin conexión — menú guardado el {date}",
+  "ui.hiddenByFilter": "Tus filtros ocultan este platillo.",
+  "ui.shareMenu": "Compartir menú",
+  "ui.fullMenuPdf": "Menú completo (PDF)",
+  "ui.backToResults": "Volver a los resultados",
+  "ui.searchNoneFiltered": "Ningún plato coincide con esta búsqueda y los filtros actuales.",
+  "ui.viewDish": "Ver platillo",
+  "ui.share": "Compartir",
+  "ui.linkCopied": "Enlace copiado"
 }

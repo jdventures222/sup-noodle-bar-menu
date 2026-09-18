@@ -219,5 +219,13 @@
   "ui.searchHint": "搜尋餐點、選項或加料名稱。",
   "ui.searchCount": "找到 {n} 道餐點",
   "ui.searchNone": "找不到餐點，請試試其他名稱。",
-  "ui.offlineSaved": "離線 — 正在顯示 {date} 儲存的菜單"
+  "ui.offlineSaved": "離線 — 正在顯示 {date} 儲存的菜單",
+  "ui.hiddenByFilter": "您的篩選條件已隱藏這道餐點。",
+  "ui.shareMenu": "分享菜單",
+  "ui.fullMenuPdf": "完整菜單（PDF）",
+  "ui.backToResults": "返回搜尋結果",
+  "ui.searchNoneFiltered": "沒有餐點符合目前的搜尋與篩選條件。",
+  "ui.viewDish": "查看餐點",
+  "ui.share": "分享",
+  "ui.linkCopied": "連結已複製"
 }

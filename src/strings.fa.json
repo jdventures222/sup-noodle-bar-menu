@@ -219,5 +219,13 @@
   "ui.searchHint": "نام غذا، گزینه یا افزودنی را جستجو کنید.",
   "ui.searchCount": "{n} غذا پیدا شد",
   "ui.searchNone": "غذایی پیدا نشد. نام دیگری را امتحان کنید.",
-  "ui.offlineSaved": "آفلاین — نمایش منوی ذخیره‌شده در {date}"
+  "ui.offlineSaved": "آفلاین — نمایش منوی ذخیره‌شده در {date}",
+  "ui.hiddenByFilter": "فیلترهای شما این غذا را پنهان کرده‌اند.",
+  "ui.shareMenu": "اشتراک‌گذاری منو",
+  "ui.fullMenuPdf": "منوی کامل (پی‌دی‌اف)",
+  "ui.backToResults": "بازگشت به نتایج",
+  "ui.searchNoneFiltered": "هیچ غذایی با این جستجو و فیلترهای فعلی مطابقت ندارد.",
+  "ui.viewDish": "مشاهدهٔ غذا",
+  "ui.share": "اشتراک‌گذاری",
+  "ui.linkCopied": "پیوند کپی شد"
 }

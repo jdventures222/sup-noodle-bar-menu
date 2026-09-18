@@ -219,5 +219,13 @@
   "ui.searchHint": "Hanapin ang pangalan ng pagkain, opsyon o dagdag.",
   "ui.searchCount": "{n} pagkain ang nahanap",
   "ui.searchNone": "Walang nahanap na pagkain. Subukan ang ibang pangalan.",
-  "ui.offlineSaved": "Walang internet — ipinapakita ang menu na na-save noong {date}"
+  "ui.offlineSaved": "Walang internet — ipinapakita ang menu na na-save noong {date}",
+  "ui.hiddenByFilter": "Nakatago ang pagkaing ito dahil sa iyong mga filter.",
+  "ui.shareMenu": "Ibahagi ang menu",
+  "ui.fullMenuPdf": "Buong menu (PDF)",
+  "ui.backToResults": "Bumalik sa mga resulta",
+  "ui.searchNoneFiltered": "Walang pagkaing tumutugma sa paghahanap na ito at sa kasalukuyang mga filter.",
+  "ui.viewDish": "Tingnan ang pagkain",
+  "ui.share": "Ibahagi",
+  "ui.linkCopied": "Nakopya ang link"
 }
