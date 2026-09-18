@@ -18,21 +18,21 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menu.fyt.life/"/>
   </url>
   <url>
-    <loc>https://menu.fyt.life/menus/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://menu.fyt.life/menus/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://menu.fyt.life/menus/?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://menu.fyt.life/menus/?lang=vi"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://menu.fyt.life/menus/?lang=ko"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menu.fyt.life/menus/?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://menu.fyt.life/menus/?lang=zh-Hant"/>
-    <xhtml:link rel="alternate" hreflang="tl" href="https://menu.fyt.life/menus/?lang=tl"/>
-    <xhtml:link rel="alternate" hreflang="fa" href="https://menu.fyt.life/menus/?lang=fa"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://menu.fyt.life/menus/?lang=ar"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://menu.fyt.life/menus/?lang=ja"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://menu.fyt.life/menus/?lang=ru"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://menu.fyt.life/menus/?lang=hi"/>
-    <xhtml:link rel="alternate" hreflang="ur" href="https://menu.fyt.life/menus/?lang=ur"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://menu.fyt.life/menus/"/>
+    <loc>https://menu.fyt.life/sup/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menu.fyt.life/sup/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://menu.fyt.life/sup/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://menu.fyt.life/sup/?lang=vi"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://menu.fyt.life/sup/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menu.fyt.life/sup/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://menu.fyt.life/sup/?lang=zh-Hant"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://menu.fyt.life/sup/?lang=tl"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://menu.fyt.life/sup/?lang=fa"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://menu.fyt.life/sup/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://menu.fyt.life/sup/?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://menu.fyt.life/sup/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://menu.fyt.life/sup/?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://menu.fyt.life/sup/?lang=ur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menu.fyt.life/sup/"/>
   </url>
   <url>
     <loc>https://menu.fyt.life/vox/</loc>

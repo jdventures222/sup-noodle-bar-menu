@@ -837,6 +837,10 @@ function render() {
   applyFilter();
   observeSections();
 }
+/* The filter travels in the address (?avoid=peanut,shellfish[&hide=1]) so a table can share the menu they see:
+   written on every change, read once on load where it outranks the saved choice, never stored by itself. */
+function syncAvoid(u) { const on = ORDER.filter(a => state.avoid.has(a)); if (on.length) u.searchParams.set("avoid", on.join(",")); else u.searchParams.delete("avoid"); if (on.length && state.hide) u.searchParams.set("hide", "1"); else u.searchParams.delete("hide"); }
+function syncFilterUrl() { const u = new URL(location.href); syncAvoid(u); history.replaceState(history.state, "", u); }
 function syncUrl() { const u = new URL(location.href); u.searchParams.set("lang", state.lang); u.hash = ""; history.replaceState(history.state, "", u); }
 let langRestore = 0;
 async function scrollToMenuStart(token) {
@@ -892,9 +896,9 @@ function toggleAvoid(a) {
   state.avoid.has(a) ? state.avoid.delete(a) : state.avoid.add(a);
   if (!state.avoid.size) state.hide = false;
   store("ini-avoid", [...state.avoid].join(","));
-  const y = window.scrollY; renderMain(); applyFilter(); window.scrollTo(0, y);
+  const y = window.scrollY; renderMain(); applyFilter(); window.scrollTo(0, y); syncFilterUrl();
 }
-function clearAvoid() { state.avoid.clear(); state.hide = false; store("ini-avoid", ""); const y = window.scrollY; renderMain(); applyFilter(); window.scrollTo(0, y); }
+function clearAvoid() { state.avoid.clear(); state.hide = false; store("ini-avoid", ""); const y = window.scrollY; renderMain(); applyFilter(); window.scrollTo(0, y); syncFilterUrl(); }
 function applyFilter() {
   let n = 0;
   document.querySelectorAll(".item").forEach(el => {
@@ -920,7 +924,7 @@ function applyFilter() {
   if (active) {
     sm.innerHTML = `<button class="grow" type="button" id="summaryEdit" aria-haspopup="dialog"><b>${prose(t("ui.avoiding"))}:</b> ${names} · ${prose(count)}</button><button class="linkbtn" type="button" id="summaryHide" aria-pressed="${state.hide}">${prose(t(state.hide ? "ui.show" : "ui.hide"))}</button><button class="linkbtn" type="button" id="summaryClear">${prose(t("ui.clear"))}</button>`;
     $("summaryEdit").addEventListener("click", e => openSheet("filterSheet", filterSheetHTML(), e.detail === 0));
-    $("summaryHide").addEventListener("click", () => { state.hide = !state.hide; applyFilter(); });
+    $("summaryHide").addEventListener("click", () => { state.hide = !state.hide; applyFilter(); syncFilterUrl(); });
     $("summaryClear").addEventListener("click", clearAvoid);
   }
   if (focusedSummary) (active ? ($(focusedSummary) || $("filterBtn")) : $("filterBtn")).focus({preventScroll: true});
@@ -1030,7 +1034,7 @@ document.querySelectorAll("dialog").forEach(dlg => {
     const c = e.target.closest("[data-close]"); if (c) { closeDialog(dlg); return; }
     const l = e.target.closest("[data-lang]"); if (l) { const code = l.dataset.lang; dlg.__afterClose = syncUrl; closeDialog(dlg); if (code !== state.lang) setLang(code); return; }
     const a = e.target.closest("[data-avoid]"); if (a) { toggleAvoid(a.dataset.avoid); return; }
-    if (e.target.closest("#hideBtn")) { state.hide = !state.hide; applyFilter(); return; }
+    if (e.target.closest("#hideBtn")) { state.hide = !state.hide; applyFilter(); syncFilterUrl(); return; }
     if (e.target.closest("#clearBtn")) { clearAvoid(); return; }
   });
 });
@@ -1346,10 +1350,13 @@ $("main").addEventListener("click", e => {
 if ("ResizeObserver" in window) new ResizeObserver(syncBarHeight).observe($("bar"));
 state.lang = pickLang();
 (load("ini-avoid") || "").split(",").filter(a => ORDER.includes(a)).forEach(a => state.avoid.add(a));
+const sharedFilter = new URLSearchParams(location.search);
+if (sharedFilter.has("avoid")) { state.avoid.clear(); sharedFilter.get("avoid").split(",").filter(a => ORDER.includes(a)).forEach(a => state.avoid.add(a)); state.hide = state.avoid.size > 0 && sharedFilter.get("hide") === "1"; }
 /* A menu always opens at the top. A leftover fragment from a tapped special, or a scroll position the browser
    restores, would otherwise drop a diner into the middle of the menu. */
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 if (location.hash) { const u = new URL(location.href); u.hash = ""; history.replaceState(history.state, "", u); }
+if (state.avoid.size) syncFilterUrl();
 if (haveLang(state.lang)) { render(); window.scrollTo(0, 0); }
 else { renderLangbar(); loadLang(state.lang).then(ok => { if (!ok) state.lang = "en"; render(); window.scrollTo(0, 0); }); }
 addEventListener("pageshow", e => { if (e.persisted) window.scrollTo(0, 0); });
