@@ -359,8 +359,9 @@
   .sheet-status .pill { flex-shrink: 1; }
   .opt .native, .opt .eng { white-space: normal; }
   .variants li { display: flex; flex-wrap: wrap; gap: 2px 10px; }
-  .variants li > span:first-child { flex: 1 1 auto; min-width: 0; max-width: 100%; }
-  .variants li > .price { flex: none; }
+  /* A zero basis lets a long label wrap beside its price instead of pushing the price onto a line of its own. */
+  .variants li > span:first-child { flex: 1 1 0%; min-width: 0; max-width: 100%; }
+  .variants li > .price { flex: none; margin-inline-start: auto; }
   .shot { width: max-content; min-width: 76px; max-width: min(12em, 280px); }
   .shot span { max-width: 100%; }
   .section-btn { justify-self: start; min-height: 44px; max-width: 100%; border: 0; background: none; color: var(--red-deep); font-size: .875rem; font-weight: 700; padding: 4px 0; text-align: start; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
