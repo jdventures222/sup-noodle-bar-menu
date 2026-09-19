@@ -210,7 +210,7 @@
   .shot { display: grid; gap: 4px; justify-items: center; width: 76px; padding: 0; border: 0; background: none; cursor: zoom-in; scroll-margin-top: calc(var(--bar-h) + 8px); }
   .shot img { width: 76px; height: 76px; object-fit: cover; border-radius: 10px; background: var(--line-soft); display: block; }
   .shot span { font-size: 0.75rem; line-height: 1rem; color: var(--body); text-align: center; }
-  .shot:active img { transform: scale(.95); }
+  .shot:active .photo-frame { transform: scale(.95); }
   .al { margin: 7px 0 0; font-size: 0.8125rem; line-height: 1.1875rem; color: var(--body); text-align: end; justify-self: end; }
   /* The photo column is too narrow to hold the line, so it takes its own row and
      shrinks to fit against the inline-end edge, sitting under the photo. */
@@ -646,8 +646,10 @@ function framingStyle(path) {
     /* A 16:9 photo in a square frame leaves a flat band above and below it. One colour
        cannot match a photo that is light at the top and dark at the bottom, so each band
        takes the colour of the edge it touches; the blend between them falls behind the
-       photo, whose band never exceeds 17.5% of the tile. */
-    (f.backgroundTop ? `;--photo-bg-top:${f.backgroundTop};--photo-bg-bot:${f.backgroundBottom}` : "");
+       photo, whose band never exceeds 17.5% of the tile. Both band variables are always
+       set (a one-colour frame repeats its colour), so a card picture never inherits the
+       bands of the picture before it. */
+    `;--photo-bg-top:${f.backgroundTop || f.background};--photo-bg-bot:${f.backgroundBottom || f.background}`;
 }
 /* AVIF and WebP derivatives beside each JPEG; the JPEG stays the fallback. Densities are
    computed against the box the photo fills, so one thumbnail serves 84px tiles and 76px shots. */
@@ -1270,7 +1272,7 @@ function lbOpenNow(i, btn, adopt, keyboard) {
   openDialog(LB.dlg, adopt);
   lbLayout(); lbLoad(i); lbCaption(i); lbPlaceTrack(false); lbChrome(true);
   $("lbClose").focus({ preventScroll: true });
-  const thumb = btn && btn.querySelector("img"); const r0 = thumb ? thumb.getBoundingClientRect() : null;
+  const thumb = btn && (btn.querySelector(".photo-frame") || btn); const r0 = thumb ? thumb.getBoundingClientRect() : null;
   LB.bg.style.transition = "none";
   if (reduced || !r0 || !r0.width) { LB.bg.style.opacity = 1; LB.chrome.style.opacity = 1; return; }
   const z = LB.zooms[i], f = LB.fit[i];
@@ -1283,7 +1285,7 @@ function lbOpenNow(i, btn, adopt, keyboard) {
 function lbExit() {
   const i = LB.index, z = LB.zooms[i];
   const btn = document.querySelector(`[data-photo="${i}"]`);
-  const thumb = btn && btn.querySelector("img"); const r0 = thumb ? thumb.getBoundingClientRect() : null;
+  const thumb = btn && (btn.querySelector(".photo-frame") || btn); const r0 = thumb ? thumb.getBoundingClientRect() : null;
   const bgFrom = getComputedStyle(LB.bg).opacity;
   LB.chrome.animate([{ opacity: getComputedStyle(LB.chrome).opacity }, { opacity: 0 }], { duration: 150, fill: "forwards" });
   let ms = 200;
