@@ -186,11 +186,9 @@
   .pointer-focus:focus-visible { outline: 0; }
   .thumb { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; background: var(--line-soft); display: block; box-shadow: inset 0 0 0 1px rgba(27, 25, 23, .06); }
   .thumb.cutout { object-fit: contain; background: transparent; border-radius: 0; box-shadow: none; }
-  .item-head { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
-  .item-head h3 { flex: 1 1 auto; max-width: 100%; }
-  /* A long translated name pushes the price onto its own line. It stays hard right there,
-     rather than dropping to the left gutter where it reads as a stray number. */
-  .item-head > .price { flex: none; margin-inline-start: auto; max-width: 100%; }
+  .item-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; align-items: baseline; }
+  .item-head h3 { min-width: 0; max-width: 100%; }
+  .item-head > .price { text-align: end; max-width: 100%; }
   .item h3 { font-family: var(--display); text-transform: uppercase; font-weight: 700; font-size: 1.3125rem; line-height: 1.5rem; margin: 0; min-width: 0; }
   html[lang="ko"] .item h3, html[lang^="zh"] .item h3 { text-transform: none; font-size: 1.125rem; line-height: 1.5rem; }
   .price { font-family: var(--text); font-weight: 700; font-size: 1rem; line-height: 1.375rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -661,8 +659,8 @@ function footerHTML() {
   <p class="notice"><b>${prose(t("ui.allergyTitle"))}</b>${prose(t("ui.allergyNotice"))}</p>
   ${["ar", "fa", "ur"].includes(state.lang) ? `<p class="notice halal-note">${prose(t("ui.halalNote"))}</p>` : ""}
   <p class="notice" id="raw-notice"><b>${prose(t("ui.rawTitle"))}</b>${prose(t("ui.rawNotice"))}</p>
-  <p class="pdfs"><b>${prose(t("ui.pdfMenu"))}:</b> ${LANGS.map(l => `<a href="pdf/SUP-Menu-${l.code}.pdf" lang="${l.code}">${nativeName(l)}</a>`).join(" · ")}</p>
-  <p class="fine"><bdi dir="ltr"><a href="https://www.keiconcepts.info/brands/sup">keiconcepts.info/brands/sup</a></bdi><br><bdi dir="ltr">@supnoodlebar</bdi> · <bdi dir="ltr"><a href="mailto:hello@keiconcepts.info">hello@keiconcepts.info</a></bdi></p>`;
+  <p class="fine"><a href="https://www.keiconcepts.info/brands/sup"><bdi dir="ltr">SUP · Kei Concepts</bdi></a> · <a href="https://www.instagram.com/supnoodlebar/"><bdi dir="ltr">@supnoodlebar</bdi></a></p>
+  <p class="pdfs"><b>${prose(t("ui.pdfMenu"))}:</b> ${LANGS.map(l => `<a href="pdf/SUP-Menu-${l.code}.pdf" lang="${l.code}">${nativeName(l)}</a>`).join(" · ")}</p>`;
 }
 function langSheetHTML() {
   return `<div class="sheet-head"><h2 id="langTitle">${prose(t("ui.language"))}</h2><button class="x" type="button" data-close aria-label="${esc(t("ui.close"))}"><span>${ICON.x}</span></button></div>
