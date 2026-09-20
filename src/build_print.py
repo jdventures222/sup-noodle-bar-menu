@@ -51,7 +51,7 @@ def build(lang):
     def variants(k, it):
         rows=[]
         for p in it["prices"]:
-            extra = f' <span class="vplus">(+ {names(p["contains"])})</span>' if p.get("contains") else ""
+            extra = f' <span class="vplus">({prose(t("ui.contains"))}: {names(p["contains"])})</span>' if p.get("contains") else ""
             rows.append(f'<li><span>{prose(t(k+".price."+p["k"]))}{extra}</span><span class="dots"></span>{price(p)}</li>')
         return '<ul class="variants">' + "".join(rows) + '</ul>'
     def item(it, kind):
@@ -67,7 +67,7 @@ def build(lang):
         if it.get("addons"):
             rows = ""
             for a in it["addons"]:
-                extra = (' <span class="vplus">(+ ' + names(merged(a)) + ')</span>') if merged(a) else ""
+                extra = (' <span class="vplus">(' + prose(t("ui.contains")) + ': ' + names(merged(a)) + ')</span>') if merged(a) else ""
                 rows += f'<li><span>{prose(t("addon."+a["id"]+".name"))}{extra}</span><span class="dots"></span>{price(a["prices"][0])}</li>'
             sides = f'<div class="sides"><span class="lab caps">{prose(t("ui.sides"))}</span><ul class="variants">{rows}</ul></div>'
         ph = photo_of(it["id"]) if kind=="item" else None

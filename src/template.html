@@ -108,6 +108,12 @@
   .bar { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); }
   .bar .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding-top: 4px; padding-bottom: 4px; }
   .row { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-padding: 0 16px; margin: 0 -16px; padding: 0 16px; }
+  /* A strip that scrolls sideways fades at the edge that hides more (the owner, 2026-09-19); the mask is set by fadeStrip. */
+  .langbar[data-fade="end"], .row[data-fade="end"] { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent); }
+  .langbar[data-fade="start"], .row[data-fade="start"] { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 40px), transparent); }
+  .langbar[data-fade="both"], .row[data-fade="both"] { -webkit-mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent); }
+  html[dir="rtl"] .langbar[data-fade="end"], html[dir="rtl"] .row[data-fade="end"] { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 40px), transparent); }
+  html[dir="rtl"] .langbar[data-fade="start"], html[dir="rtl"] .row[data-fade="start"] { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent); }
   .row::-webkit-scrollbar { display: none; }
   @media (min-width: 560px) { .row { margin: 0 -24px; padding: 0 24px; scroll-padding: 0 24px; } }
   .row > * { flex: none; }
@@ -568,7 +574,7 @@ function badgesHTML(it) {
 }
 function variantsHTML(k, it) {
   return `<ul class="variants">${it.prices.map(p => {
-    const extra = (p.contains || []).length ? ` <span class="vplus">(+ ${listNames(p.contains)})</span>` : "";
+    const extra = (p.contains || []).length ? ` <span class="vplus">(${prose(t("ui.contains"))}: ${listNames(p.contains)})</span>` : "";
     return `<li><span>${prose(t(`${k}.price.${p.k}`))}${extra}</span>${priceHTML(p)}</li>`;
   }).join("")}</ul>`;
 }
@@ -582,7 +588,7 @@ function itemHTML(it, kind) {
   const desc = has(k + ".desc") ? `<p class="desc">${prose(t(k + ".desc"))}</p>` : "";
   const note = has(k + ".note") ? `<p class="note">${prose(t(k + ".note"))}</p>` : "";
   const variants = keyed ? variantsHTML(k, it) : "";
-  const sides = it.addons ? `<div class="sides"><span class="lab">${prose(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${prose(t("addon." + a.id + ".name"))}${merged(a).length ? ` <span class="vplus">(+ ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
+  const sides = it.addons ? `<div class="sides"><span class="lab">${prose(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${prose(t("addon." + a.id + ".name"))}${merged(a).length ? ` <span class="vplus">(${prose(t("ui.contains"))}: ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
   const pi = kind === "item" ? PHOTO_INDEX[it.id] : undefined;
   let photo = "";
   if (pi !== undefined) {
@@ -897,6 +903,20 @@ function observeSections() {
 function scheduleSpy() { if (!spyRaf) spyRaf = requestAnimationFrame(observeSections); }
 addEventListener("scroll", scheduleSpy, { passive: true });
 addEventListener("resize", scheduleSpy);
+/* The language strip and the section strip fade at the edge that hides more pills (the owner, 2026-09-19). */
+function fadeStrip(el) {
+  const room = el.scrollWidth - el.clientWidth;
+  if (room <= 1) { if (el.hasAttribute("data-fade")) el.removeAttribute("data-fade"); return; }
+  const x = Math.abs(el.scrollLeft);
+  const fade = x <= 1 ? "end" : x >= room - 1 ? "start" : "both";
+  if (el.dataset.fade !== fade) el.dataset.fade = fade;
+}
+const strips = ["langbar", "jumpRow"].map(id => document.getElementById(id)).filter(Boolean);
+const fadeStrips = () => strips.forEach(fadeStrip);
+strips.forEach(el => { el.addEventListener("scroll", () => fadeStrip(el), { passive: true }); new MutationObserver(fadeStrips).observe(el, { childList: true, attributes: true }); });
+addEventListener("resize", fadeStrips);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fadeStrips);
+fadeStrips();
 
 /* Modal dialogs: at most one history entry exists for whatever dialog is open, so the phone's back gesture
    closes it. Swapping one dialog for another reuses that entry instead of popping it, so an open request never
