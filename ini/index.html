@@ -301,6 +301,7 @@
   .lb-track { direction: ltr; position: absolute; inset: 0; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
   .lb-track.zoomed { cursor: move; }
   .lb-slide { position: absolute; inset: 0; width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden; touch-action: none; }
+  .lb-slide { background: var(--photo-viewer-bg, transparent); }
   .lb-zoom { position: relative; transform-origin: center; background-position: center; background-size: cover; overflow: hidden; touch-action: none; }
   .lb-zoom img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .25s; pointer-events: none; -webkit-user-drag: none; }
   .lb-zoom img.in { opacity: 1; }
@@ -1274,8 +1275,15 @@ for (const id of ["sectionSheet", "searchSheet"]) $(id).addEventListener("click"
 /* Photo viewer: pinch to four times fit, double-tap to zoom, and drag in any direction to dismiss.
    A single tap toggles the chrome; arrows and the keyboard page between photos. */
 const LB = { dlg: $("lb"), track: $("lbTrack"), bg: $("lbBg"), chrome: $("lbChrome"), cap: $("lbCap"), index: 0, s: 1, tx: 0, ty: 0, fit: [], zooms: [], pointers: new Map(), gest: null, chromeOn: true, tapT: 0, tapX: 0, tapY: 0, tapTimer: 0, exit: null, opener: null, session: 0 };
-LB.track.innerHTML = PHOTOS.map((p, i) => `<figure class="lb-slide" data-i="${i}" style="margin:0"><div class="lb-zoom${p.cutout ? " cutout" : ""}"><picture><source type="image/avif"><source type="image/webp"><img alt="" draggable="false" decoding="async" width="${p.w}" height="${p.h}"></picture></div></figure>`).join("");
+LB.track.innerHTML = PHOTOS.map((p, i) => `<figure class="lb-slide" data-i="${i}" style="margin:0;${viewerBandStyle(DATA.framing[p.thumb], DATA.alt[p.thumb]?.avif?.at(-1)?.slice(1))}"><div class="lb-zoom${p.cutout ? " cutout" : ""}"><picture><source type="image/avif"><source type="image/webp"><img alt="" draggable="false" decoding="async" width="${p.w}" height="${p.h}"></picture></div></figure>`).join("");
 LB.zooms = [...LB.track.querySelectorAll(".lb-zoom")];
+/* A height-fit frame's approved edge colour also fills its full-photo viewer. */
+function viewerBandStyle(f, size) {
+  if (!f || !size) return "";
+  // Use the thumbnail aspect: full photos may have a different crop. Allow derivative pixel rounding.
+  const aspect = size[0] / size[1], cover = Math.max(aspect / (4 / 3), (4 / 3) / aspect);
+  return f.zoom < cover - .01 ? `--photo-viewer-bg:${f.background}` : "";
+}
 const vw = () => LB.track.clientWidth, vh = () => LB.track.clientHeight;
 const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y), mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
 function lbLayout() {

@@ -2,24 +2,24 @@
  "layout": "diner-print-v1",
  "printer_sha256": "ff9ca4247e94070f05892bf397859b23ce19bf90ff6ad678dd5a5176fb18d8cb",
  "pages": {
-  "index.html": "4cbeb08e31625759764ec264fd90ae5bb9fdef7569d2225086d5a9e121059742"
+  "index.html": "528d21216d5205672a43e53501f45de09a31477ee8b295ad30d128b661f4d450"
  },
  "print_pages": {
-  "INI-Menu-en.html": "5c791d164e0f1877780b226d41672f051dee0c5fb922890e9507e5a1da60a79e",
-  "INI-Menu-es.html": "b2208f4c6f8354e92804d56b4ed56f555cb8e585ef4797218d085464a78fa0f7",
-  "INI-Menu-vi.html": "6b7449070ebc9fae5c64b827655d6c29f539fbb948fe8e87c25a52cf60f4d1f8",
-  "INI-Menu-ko.html": "746022309774a0117ec756b3df4d6b1b7055363b5150b519e779f94a105a1452",
-  "INI-Menu-zh.html": "77247f817328e50cc5d40794c05a3c326ab25a1db1f756581ce24076aad11dfa",
-  "INI-Menu-zh-Hant.html": "a494f6725d8d8c8f02c3a8ad5896262883bc4839ce161a9b1344618e546b7ca4",
-  "INI-Menu-tl.html": "afae47058c8de5f06a6bffee3eb064323d3e1e16e3c562ebcec184a123667f19",
-  "INI-Menu-fa.html": "33a884ddd49f55e2919b9e52168af0a604eb1afae9c82862c8159be46ac7fc49",
-  "INI-Menu-ar.html": "2cb614a5a1f859701236aec95a79460af7c46fa2ab27d502aa67294b09540a1c",
-  "INI-Menu-ja.html": "6acb9d85811f7fe4d3b870a3607f7431655f8416f04b42f2ef02e577360e1c8e",
-  "INI-Menu-ru.html": "da4d248ef2d5a4a523bbf825da5100fab4056125454051dc914abbed907eca87",
-  "INI-Menu-hi.html": "ebfcd2d3c002175d28a4eb8fcb960a8a1f621eb677be4ff6166f836ecb9d40c5",
-  "INI-Menu-ur.html": "940e8786f54377b7fd5b7cee0ca1975146ee9df22bd886c6be4a3202d9fb17c4"
+  "INI-Menu-en.html": "66fadd0e152155c2cffd825769620c294692e2389e41b6f7efc9844389cc9dba",
+  "INI-Menu-es.html": "1f2920df3ac81fe07a681228e6dc41ceb2dd0b3e89f4950198e4b3078ddb7a6d",
+  "INI-Menu-vi.html": "03c54ce0f00e138fc718d15f7bbdfc527de15dfb1c2d622230bbf46d0abbe6cf",
+  "INI-Menu-ko.html": "af73c30ab04a5e0f053da64b8e5d130570c00027c05f54ee0677c3322e4ada93",
+  "INI-Menu-zh.html": "8403c27b7e04136faeabbe3fb371751197932ff1dbf430b97d13c968736fa92c",
+  "INI-Menu-zh-Hant.html": "c856e7f28a98bdc10eea32cf518e5ebb360e1dd1756e6819ecb13f35b0a2c25b",
+  "INI-Menu-tl.html": "931075a94bc71efa7d42e75439599aa63b4881b645290a958ae4a064c0998e02",
+  "INI-Menu-fa.html": "620acf919cdc6198716a2326615df4df1efc31acaded4e3cf92d581928217254",
+  "INI-Menu-ar.html": "8d2ec32a5e8d74d34e2b03197b42ccfedcabb202432d1af42b0760c5d95c302d",
+  "INI-Menu-ja.html": "0e6448420ecc57c9dafbcca5dac4f86ed65dfd85d31e498ac22ed6342b7c4f90",
+  "INI-Menu-ru.html": "1f68e564049383b7dfe702ae17762e61fde66985593dc452e2113179621e43af",
+  "INI-Menu-hi.html": "66f62557fafcbb933ad681d17b28a8a592659549ef2044ee008891f5b9e8d513",
+  "INI-Menu-ur.html": "86a71864f11b29f983c47bef3c922cd920bc2a00e563f4e362fabd1d1fbec0d0"
  },
- "source_sha256": "07f7c5c4b8ce635bb786a4cf3693e2c7bc7b1a8922b733baf8bd1e1bc0694628",
+ "source_sha256": "85a8258a60e2e86b2cb1450e154b62cbd99c5d8688d7d8216b301901e3c28673",
  "revision_date": "2026-09-20",
  "files": [
   "INI-Menu-ar.pdf",
@@ -52,18 +52,18 @@
   "INI-Menu-ur.pdf": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nAAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes      4  0\nBAAAAA+Times-Bold                    CID TrueType      Identity-H       yes yes yes      8  0\nCAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes      9  0\nDAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     10  0\nEAAAAA+Times-Bold                    CID TrueType      Identity-H       yes yes yes     11  0\nFAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     12  0\nGAAAAA+Times-Roman                   CID TrueType      Identity-H       yes yes yes     13  0\nHAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     17  0\nIAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     19  0\nJAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     20  0\nKAAAAA+HelveticaNeue-Bold            CID TrueType      Identity-H       yes yes yes     21  0\nLAAAAA+HelveticaNeue                 CID TrueType      Identity-H       yes yes yes     22  0\nMAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     23  0\nNAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     27  0\nOAAAAA+Times-Roman                   CID TrueType      Identity-H       yes yes yes     29  0\nPAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     51  0\nQAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     68  0\n"
  },
  "pdf_sha256": {
-  "INI-Menu-en.pdf": "30adc5393d49d8b98fc022c83d96f31645c61427446140070c02df8bc94dba74",
-  "INI-Menu-es.pdf": "d2c39b1c97e2dc8cd85d17568755703e2213fa4a7600b7c700e64c071b34dbbf",
-  "INI-Menu-vi.pdf": "adc9bf87b927945665c7622ce2cddc3a4b37b4e6e3434f415ef9fd77428b3406",
-  "INI-Menu-ko.pdf": "72c42e86b44d923237cb203255acd451dd5ba1d079ca007174a1205877bf4753",
-  "INI-Menu-zh.pdf": "d1142c74d6f9d7b19d5e37a7f94f602f544581d3e6a0ddfc0b3940a458d1793e",
-  "INI-Menu-zh-Hant.pdf": "bae73e030d050157ed3cffe3b8cf0c0c5de39084618f4d42e1296a6b2f754b8e",
-  "INI-Menu-tl.pdf": "c7cf40250a0d49a67cb133a132f3e02fbaf955ce353ab2021883ab6509bc00e4",
-  "INI-Menu-fa.pdf": "a1f8d692107af6c9b08a021fd34e869e37c79688f0badaa1d02ada1787ca5ac9",
-  "INI-Menu-ar.pdf": "fbf4ef3a750825ec43f7451a1d4573b999649e96abb1b9a7af23aec0c8479370",
-  "INI-Menu-ja.pdf": "010db43b876cb9ecef08dd86b2d45e857e859b8b30132437d3106d2e34f4e48a",
-  "INI-Menu-ru.pdf": "a7020b767258aeae222fd5aaaf82e4b17cda96d25fc314c6701eb9c8dc4140af",
-  "INI-Menu-hi.pdf": "43fad22e83c50cbabeba7fb41063e2e3b9f3e3c6c3ccdf5047dc5a9fd1abe166",
-  "INI-Menu-ur.pdf": "df5ac519105c46f96bbc284bf6add1f3948492d5b941753f4997d326fa0f9837"
+  "INI-Menu-en.pdf": "42bd5568cadcc849677fc0d805c1f756cb38ece047c2a478c0ee87a0f28ad5e3",
+  "INI-Menu-es.pdf": "b3587df7417e3727866c49e0d5d249b8e2f5848a97fad24171836bf0abd45f67",
+  "INI-Menu-vi.pdf": "bdb82d0928806c43984c107683bdb340f09ec425714a69d6c7ebc128a0c196c4",
+  "INI-Menu-ko.pdf": "7ff529e0f071249bc45f486af3551810edda0380fa16699f8de10d32a5faf38e",
+  "INI-Menu-zh.pdf": "61c5f96297f77cd369981265c97ade5fd8de22f410401392eb0a9e058d9eee88",
+  "INI-Menu-zh-Hant.pdf": "b828cb5aa01c8fdcdfa05f4c682197abb633692a0a6e849f13ccefb6e34a6bc9",
+  "INI-Menu-tl.pdf": "68041002155ca3e95bb704c30646d4d2ec6dcfd07121267f8f8473caeadc395f",
+  "INI-Menu-fa.pdf": "24fe70501f84aa58241a54fa4ed5683197fa897f54acf36edcfbda214bdaa486",
+  "INI-Menu-ar.pdf": "bbc14dc52cff029b8db54117365ee857e4307a482ee820e381ae6264a7c9b044",
+  "INI-Menu-ja.pdf": "e93c34d471decfcabe53afa44184841d1d5e13a792326695248913376c8fc954",
+  "INI-Menu-ru.pdf": "3d09249ae95b85c3813c45c413a64a781dd1197651a6c67c7d6e7e0409590811",
+  "INI-Menu-hi.pdf": "a3865911c3026a24026e5919a4df81b5bc421222a5187aceac33357b137b4c09",
+  "INI-Menu-ur.pdf": "a15bab9d2e42ae09195e73436ff03eae20bc6d032f315c75aad64a0050938017"
  }
 }
