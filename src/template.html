@@ -134,9 +134,9 @@
   /* Specials */
   .specials { display: grid; gap: 10px; margin: 14px 0 0; grid-template-columns: 1fr; }
   @media (min-width: 560px) { .specials { grid-template-columns: 1fr 1fr; gap: 12px; } }
-  .special { display: grid; grid-template-columns: 84px minmax(0, 1fr) 20px; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px; color: inherit; text-decoration: none; }
+  .special { display: grid; grid-template-columns: calc(84px * 4 / 3) minmax(0, 1fr) 20px; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px; color: inherit; text-decoration: none; }
   .special:active { background: var(--ground); }
-  .special img { width: 84px; height: 84px; object-fit: cover; border-radius: 10px; display: block; }
+  .special img { width: calc(84px * 4 / 3); height: 84px; object-fit: cover; border-radius: 10px; display: block; }
   .special .eyebrow { font-family: var(--display); text-transform: uppercase; font-weight: 700; font-size: 0.75rem; line-height: 0.875rem; letter-spacing: .06em; color: var(--red-deep); }
   html[lang="ko"] .special .eyebrow, html[lang^="zh"] .special .eyebrow { text-transform: none; letter-spacing: 0; }
   .special h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 1.3125rem; line-height: 1.4375rem; margin: 2px 0 3px; text-wrap: balance; }
@@ -168,14 +168,14 @@
   .item { padding: 14px 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--bar-h) + 8px); }
   .item.flagged { background: var(--flag-bg); box-shadow: inset 3px 0 0 var(--red-deep); border-radius: 10px; margin: 2px -10px; padding-inline-start: 12px; padding-inline-end: 10px; border-bottom-color: transparent; }
   .hide-flagged :is(.item, .special).flagged { display: none; }
-  .has-photos .item { display: grid; grid-template-columns: minmax(0, 1fr) var(--thumb); gap: 12px; align-items: start; }
+  .has-photos .item { display: grid; grid-template-columns: minmax(0, 1fr) calc(var(--thumb) * 4 / 3); gap: 12px; align-items: start; }
   /* A dish without a photo still reserves the photo track, so its right-aligned price
      keeps the same edge as the photographed dishes above and below it in the section. */
-  .has-photos .item.no-photo { grid-template-columns: minmax(0, 1fr) var(--thumb); }
+  .has-photos .item.no-photo { grid-template-columns: minmax(0, 1fr) calc(var(--thumb) * 4 / 3); }
   .compact { --thumb: 72px; }
   @media (min-width: 560px) { section.menu { --thumb: 112px; } .compact { --thumb: 88px; } .has-photos .item { gap: 16px; } }
   .item-body { min-width: 0; }
-  .thumb-btn { display: block; width: var(--thumb); height: var(--thumb); padding: 0; border: 0; background: none; border-radius: 12px; cursor: zoom-in; transition: transform .15s var(--ease); }
+  .thumb-btn { display: block; width: calc(var(--thumb) * 4 / 3); height: var(--thumb); padding: 0; border: 0; background: none; border-radius: 12px; cursor: zoom-in; transition: transform .15s var(--ease); }
   .thumb-btn:active { transform: scale(.95); }
   .pointer-focus:focus-visible { outline: 0; }
   .thumb { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; background: var(--line-soft); display: block; box-shadow: inset 0 0 0 1px rgba(27, 25, 23, .06); }
@@ -212,8 +212,8 @@
   /* A dish with no photo of its own but one per option shows those in the strip under
      its text and spans the full width, so no thumb column is left blank (owner, 2026-09-17). */
   .has-photos .item.no-photo:has(> .shots) { grid-template-columns: minmax(0, 1fr); }
-  .shot { display: grid; gap: 4px; justify-items: center; width: 76px; padding: 0; border: 0; background: none; cursor: zoom-in; scroll-margin-top: calc(var(--bar-h) + 8px); }
-  .shot img { width: 76px; height: 76px; object-fit: cover; border-radius: 10px; background: var(--line-soft); display: block; }
+  .shot { display: grid; gap: 4px; justify-items: center; width: calc(76px * 4 / 3); padding: 0; border: 0; background: none; cursor: zoom-in; scroll-margin-top: calc(var(--bar-h) + 8px); }
+  .shot img { width: calc(76px * 4 / 3); height: 76px; object-fit: cover; border-radius: 10px; background: var(--line-soft); display: block; }
   .shot span { font-size: 0.75rem; line-height: 1rem; color: var(--body); text-align: center; }
   .shot:active img { transform: scale(.95); }
   .al { margin: 7px 0 0; font-size: 0.8125rem; line-height: 1.1875rem; color: var(--body); text-align: end; justify-self: end; }
@@ -366,7 +366,7 @@
   /* A zero basis lets a long label wrap beside its price instead of pushing the price onto a line of its own. */
   .variants li > span:first-child { flex: 1 1 0%; min-width: 0; max-width: 100%; }
   .variants li > .price { flex: none; margin-inline-start: auto; }
-  .shot { width: max-content; min-width: 76px; max-width: min(12em, 280px); }
+  .shot { width: max-content; min-width: calc(76px * 4 / 3); max-width: min(12em, 280px); }
   .shot span { max-width: 100%; }
   .section-btn { justify-self: start; min-height: 44px; max-width: 100%; border: 0; background: none; color: var(--red-deep); font-size: .875rem; font-weight: 700; padding: 4px 0; text-align: start; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
   .section-list { display: grid; }
@@ -618,7 +618,7 @@ function optionShotsHTML(it, k) {
 }
 function specialsHTML() {
   return `<div class="specials">${DATA.structure.specials.map(sp => {
-    const img = DATA.photos[sp.item] ? `${pictureHTML("img/" + DATA.photos[sp.item], 84, 'alt="" width="84" height="84"')}` : `<span></span>`;
+    const img = DATA.photos[sp.item] ? `${pictureHTML("img/" + DATA.photos[sp.item], 84, 'alt="" width="112" height="84"')}` : `<span></span>`;
     // The card carries its dish's allergens so "hide flagged" takes it away with the dish.
     // It shows no warning of its own: tapping it lands on the dish, which states them.
     const promoted = ITEM_BY_ID[sp.item];
