@@ -533,6 +533,9 @@ function pickLang() {
 const ORDER = DATA.structure.allergens;
 const merged = e => { const set = new Set([...(e.contains || []), ...(e.likely || [])]); return ORDER.filter(a => set.has(a)); };
 const allOf = it => { const set = new Set(merged(it)); (it.prices || []).forEach(p => (p.contains || []).forEach(a => set.add(a))); (it.addons || []).forEach(a => merged(a).forEach(x => set.add(x))); return ORDER.filter(a => set.has(a)); };
+/* The Contains line leaves off what a dish is itself, as a fried egg is egg (the owner, 2026-09-23); the filter
+   above still reads every allergen. */
+const shown = e => merged(e).filter(a => !(e.containsOmit || []).includes(a));
 const aName = a => state.avoid.has(a) ? `<mark>${prose(t("allergen." + a))}</mark>` : prose(t("allergen." + a));
 const listSeparator = () => isRTL() ? "، " : ", ";
 const listNames = arr => arr.map(aName).join(listSeparator());
@@ -555,7 +558,7 @@ DATA.structure.sections.forEach(sec => sec.items.forEach(it => {
 }));
 
 function containsHTML(entry) {
-  const list = merged(entry);
+  const list = shown(entry);
   if (!list.length) return "";
   return `<p class="al"><b>${prose(t("ui.contains"))}:</b> ${listNames(list)}</p>`;
 }
@@ -586,7 +589,7 @@ function itemHTML(it, kind) {
   const desc = has(k + ".desc") ? `<p class="desc">${prose(t(k + ".desc"))}</p>` : "";
   const note = has(k + ".note") ? `<p class="note">${prose(t(k + ".note"))}</p>` : "";
   const variants = keyed ? variantsHTML(k, it) : "";
-  const sides = it.addons ? `<div class="sides"><span class="lab">${prose(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${prose(t("addon." + a.id + ".name"))}${merged(a).length ? ` <span class="vplus">(${prose(t("ui.contains"))}: ${listNames(merged(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
+  const sides = it.addons ? `<div class="sides"><span class="lab">${prose(t("ui.sides"))}</span><ul class="variants">${it.addons.map(a => `<li><span>${prose(t("addon." + a.id + ".name"))}${shown(a).length ? ` <span class="vplus">(${prose(t("ui.contains"))}: ${listNames(shown(a))})</span>` : ""}</span>${priceHTML(a.prices[0])}</li>`).join("")}</ul></div>` : "";
   const pi = kind === "item" ? PHOTO_INDEX[it.id] : undefined;
   let photo = "";
   if (pi !== undefined) {
@@ -1063,7 +1066,7 @@ function searchResults() {
   $('searchFilter').innerHTML=state.avoid.size ? prose(t('ui.avoiding'))+': '+listNames([...state.avoid])+' · '+prose(t(state.hide?'ui.hideFlagged':'ui.showFlagged')) : '';
   $('searchResults').innerHTML=rows.map(({it})=>{
     const nm=nameBlock('item.'+it.id), flagged=allOf(it).some(a=>state.avoid.has(a));
-    return `<li class="search-result${flagged?' flagged':''}" data-result="${it.id}"><a class="search-result-link" href="#item-${it.id}" data-search-item="${it.id}" aria-labelledby="result-name-${it.id}"><h3 id="result-name-${it.id}">${nm.h3}</h3>${nm.sub}${it.prices.length===1?priceHTML(it.prices[0]):''}${containsHTML({contains:allOf(it)})}</a></li>`;
+    return `<li class="search-result${flagged?' flagged':''}" data-result="${it.id}"><a class="search-result-link" href="#item-${it.id}" data-search-item="${it.id}" aria-labelledby="result-name-${it.id}"><h3 id="result-name-${it.id}">${nm.h3}</h3>${nm.sub}${it.prices.length===1?priceHTML(it.prices[0]):''}${containsHTML({contains:allOf(it),containsOmit:it.containsOmit})}</a></li>`;
   }).join('');
 }
 function openSearch(keyboard) {

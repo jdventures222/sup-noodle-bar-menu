@@ -10,7 +10,8 @@ def markup(structure, s):
         n=p['p']; value=str(int(n)) if n==int(n) else format(n,'.2f')
         return '<bdi dir="ltr">'+('+' if p.get('plus') else '')+'$'+value+'</bdi>'
     def contains(entry):
-        values=set(entry.get('contains',[])+entry.get('likely',[]))
+        # The Contains line leaves off what a dish is itself, as a fried egg is egg (the owner, 2026-09-23).
+        values=set(entry.get('contains',[])+entry.get('likely',[]))-set(entry.get('containsOmit',[]))
         return ('<p><b>'+t('ui.contains')+':</b> '+', '.join(t('allergen.'+a) for a in structure['allergens'] if a in values)+'</p>') if values else ''
     def item(it,kind='item'):
         key=kind+'.'+it['id']; out='<article><h3>'+t(key+'.name')+'</h3>'

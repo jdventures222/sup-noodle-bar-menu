@@ -17,6 +17,9 @@ def money(n, plus=False):
     return ("+" if plus else "") + "$" + s
 def merged(e):
     st = set(e.get("contains", [])) | set(e.get("likely", [])); return [a for a in ORDER if a in st]
+# The Contains line leaves off what a dish is itself, as a fried egg is egg (the owner, 2026-09-23).
+def shown(e):
+    return [a for a in merged(e) if a not in e.get("containsOmit", [])]
 def photo_of(id):
     for ext in (".png", ".jpg"):
         p = root/"assets"/"items"/f"{id}{ext}"
@@ -36,7 +39,7 @@ def build(lang):
     names = lambda lst: ("، " if rtl else ", ").join(prose(t("allergen."+a)) for a in lst)
     price = lambda p: f'<span class="price">{ltr(money(p["p"], p.get("plus")))}</span>'
     def al_line(e):
-        lst = merged(e)
+        lst = shown(e)
         if not lst: return ""
         return f'<p class="al"><b>{prose(t("ui.contains"))}:</b> {names(lst)}</p>'
     def name_block(k):
@@ -67,7 +70,7 @@ def build(lang):
         if it.get("addons"):
             rows = ""
             for a in it["addons"]:
-                extra = (' <span class="vplus">(' + prose(t("ui.contains")) + ': ' + names(merged(a)) + ')</span>') if merged(a) else ""
+                extra = (' <span class="vplus">(' + prose(t("ui.contains")) + ': ' + names(shown(a)) + ')</span>') if shown(a) else ""
                 rows += f'<li><span>{prose(t("addon."+a["id"]+".name"))}{extra}</span><span class="dots"></span>{price(a["prices"][0])}</li>'
             sides = f'<div class="sides"><span class="lab caps">{prose(t("ui.sides"))}</span><ul class="variants">{rows}</ul></div>'
         ph = photo_of(it["id"]) if kind=="item" else None

@@ -114,7 +114,7 @@
 
   .card {
     position: relative;
-    display: grid; grid-template-columns: 64px minmax(0, 1fr); grid-template-rows: auto auto 1fr;
+    display: grid; grid-template-columns: 48px minmax(0, 1fr) 56px; grid-template-rows: auto auto 1fr;
     width: 100%; align-items: start; gap: 14px; padding: 14px;
     border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
   }
@@ -124,7 +124,7 @@
   .go:focus-visible { outline: none; }
   .go:focus-visible::after { outline: 3px solid var(--red); outline-offset: 4px; }
   .mark {
-    width: 52px; height: 52px; border-radius: 10px;
+    width: 48px; height: 48px; border-radius: 10px;
     display: grid; place-items: center; overflow: hidden;
   }
   .mark img { display: block; width: 100%; height: 100%; object-fit: contain; }
@@ -133,10 +133,11 @@
   /* SUP's mark is a disc that fills its square file; clip to the disc. */
   .mark.on-dark { background: #051B13; }
   .mark.on-dark img { padding: 5px; }
-  /* Identity beside the mark/QR stack, then a full-width photo and the location list. The last row
-     absorbs only the space required to stretch to the tallest panel; locations sit at its bottom. */
+  /* One header row, the mark, the name and the QR tile, then a full-width photo and the location list. The last
+     row absorbs only the space required to stretch to the tallest panel; the locations sit at its top. */
   .text { min-width: 0; align-self: center; overflow-wrap: anywhere; }
-  .card > .side, .card > .text { grid-row: 1; }
+  .card > .side, .card > .text, .card > .qr { grid-row: 1; }
+  .card > .qr { grid-column: 3; }
   .card > .dish { grid-row: 2; grid-column: 1 / -1; }
   .card > .where { grid-row: 3; grid-column: 1 / -1; align-self: start; margin-top: 0; }
   .dish { position: relative; z-index: 1; width: 100%; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: var(--line); }
@@ -147,15 +148,15 @@
   .name { margin: 0; font-weight: 700; font-size: 1.0625rem; line-height: 1.3; letter-spacing: -.02em; overflow-wrap: anywhere; }
   .sub { display: block; margin-top: 4px; color: var(--body); font-size: 0.8125rem; line-height: 1.45; }
   .where { display: block; margin-top: 6px; color: var(--muted); font-size: 0.8125rem; line-height: 1.45; }
-  /* One row per location, divided by hairlines: its button at the start and Hours, Call and Directions at
-     the end of the same row, or under the button where the row has no room for both; the week unfolds
-     beneath the row at the card's full width. */
+  /* One row per location, divided by hairlines: its button fills the row up to Hours, Call and Directions, three
+     icon buttons of one size at its end, so every row lines up in every language; the week unfolds beneath the
+     row at the card's full width. */
   .chips { display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--line); }
-  .loc { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 12px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .loc { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 8px; padding: 4px 0; border-bottom: 1px solid var(--line); }
   .chips .loc > a {
     position: relative; z-index: 1;
-    display: inline-flex; align-items: center; justify-content: center;
-    flex: 0 1 auto; min-width: 44px; min-height: 44px; max-width: 100%; padding: 6px 10px;
+    display: inline-flex; align-items: center; justify-content: flex-start;
+    flex: 1 1 0; min-width: 44px; min-height: 44px; max-width: 100%; padding: 6px 10px;
     border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
     color: var(--ink); font-size: 0.8125rem; font-weight: 600; line-height: 1.4;
     text-align: start; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
@@ -171,16 +172,17 @@
   .side { display: grid; justify-items: center; gap: 6px; }
   /* A hairline in the brand's own accent between its mark and its code (H3). */
   .brand-line { width: 36px; height: 3px; border-radius: 2px; background: var(--brand, var(--red)); }
-  /* Per location (H2): an Hours button that unfolds the week, tap-to-call and directions in one row, the
-     seven-day table below them with today's row marked. All of it sits above the card's stretched link. */
+  /* Per location (H2): an Hours button that unfolds the week, tap-to-call and directions in one row, as icons named
+     for assistive technology and in a tooltip, the seven-day table below them with today's row marked. All of it
+     sits above the card's stretched link. */
   .loc-info { display: contents; font-size: 0.8125rem; line-height: 1.3; color: var(--muted); }
-  .loc-info .acts { display: flex; flex-wrap: wrap; justify-content: flex-end; flex: 1 0 88px; min-width: 0; max-width: 100%; margin-inline-start: auto; gap: 0 4px; }
-  .loc-info .act { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; max-width: 100%; gap: 4px; min-width: 44px; min-height: 44px; padding: 4px; margin: 0; border: 0; border-radius: 4px; background: none; font: inherit; color: var(--brand-action, var(--brand, var(--red))); font-weight: 600; overflow-wrap: anywhere; text-align: start; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; cursor: pointer; }
+  .loc-info .acts { display: flex; flex: none; gap: 6px; }
+  .loc-info .act { position: relative; z-index: 1; display: inline-grid; place-items: center; flex: none; min-width: 44px; min-height: 44px; padding: 0; margin: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); font: inherit; color: var(--brand-action, var(--brand, var(--red))); cursor: pointer; transition: border-color .15s ease, background-color .15s ease; }
   .loc-info .act:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
-  .loc-info .act svg { flex: none; width: 14px; height: 14px; transition: transform .2s ease; }
+  .loc-info .act svg { width: 20px; height: 20px; }
   html:is([lang="fa"], [lang="ar"], [lang="ur"], [lang="hi"]) :is(.chips .loc > a, .loc-info .act) { line-height: 1.7; }
   html[lang="ur"] :is(.chips .loc > a, .loc-info .act) { line-height: 2.6; }
-  .loc-info .act[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .loc-info .act[aria-expanded="true"] { border-color: currentColor; box-shadow: inset 0 0 0 1px currentColor; }
   .week-wrap { flex-basis: 100%; padding-inline-start: 12px; }
   .week-wrap { min-width: 0; max-width: 100%; }
   .week { position: relative; z-index: 1; max-width: 100%; margin: 2px 0 8px; border-collapse: collapse; color: var(--body); font-variant-numeric: tabular-nums; }
@@ -190,7 +192,7 @@
   .week tr[aria-current] { color: var(--ink); font-weight: 600; }
   html[dir="rtl"] .week th { padding: 2px 0 2px 12px; }
   .qr { position: relative; z-index: 1; }
-  .qr-open { display: block; width: 64px; height: 64px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; }
+  .qr-open { display: block; width: 56px; height: 56px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; }
   .qr-open img { display: block; width: 100%; height: 100%; }
   .qr-open:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
   /* A ring only after keyboard input: focus that returns to a tile after a tap, or that a restored page keeps on a
@@ -322,6 +324,16 @@
   @media (min-width: 64rem) {
     :root { --page-width: 64rem; }
   }
+  /* Where panels stand side by side, they share their row tracks, so every photo and location list starts at the
+     same height; a phone shows one panel at a time and keeps each header to its own content. */
+  @supports (grid-template-rows: subgrid) {
+    @media (min-width: 40rem) {
+      .directory { grid-template-rows: auto auto 1fr; }
+      .entry { display: grid; grid-row: span 3; grid-template-rows: subgrid; }
+      .card { grid-row: span 3; grid-template-rows: subgrid; }
+      .card > .text { align-self: start; }
+    }
+  }
   @media (hover: hover) {
     .card:hover { background: var(--surface); }
     .qr-open:hover { border-color: var(--red); }
@@ -337,13 +349,13 @@
     .seg:hover { border-color: var(--control); background: var(--surface); }
     .seg[aria-checked="true"]:hover { border-color: var(--ink); background: var(--red); }
     .chips .loc > a:hover { color: var(--brand-action, var(--brand, var(--red))); border-color: currentColor; background: var(--ground); }
-    .loc-info .act:hover { text-decoration-color: currentColor; }
+    .loc-info .act:hover { border-color: currentColor; }
     .location-option:hover { border-color: var(--accent); background: var(--surface); }
   }
   .seg:active { background: var(--line); border-color: var(--control); }
   .seg[aria-checked="true"]:active { background: var(--ink); border-color: var(--ink); }
   .chips .loc > a:active { color: var(--brand-action, var(--brand, var(--red))); border-color: currentColor; background: var(--line); }
-  .loc-info .act:active { background: var(--line); text-decoration-color: currentColor; }
+  .loc-info .act:active { background: var(--line); border-color: currentColor; }
   .location-option:active { border-color: var(--accent); background: var(--line); }
   .card:active { background: var(--surface); }
   @media (prefers-reduced-motion: reduce) {
@@ -402,11 +414,12 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry" style="--brand: #E5342B; --brand-action: #B4231C">
         <div class="card">
-          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="sup/img/mark.l216.avif 216w, sup/img/mark.l320.avif 320w" sizes="54px"><source type="image/webp" srcset="sup/img/mark.l216.webp 216w, sup/img/mark.l320.webp 320w" sizes="54px"><img src="sup/img/mark.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span><span class="qr"><button class="qr-open" type="button" data-code="sup" aria-haspopup="dialog"><img class="qr-img" src="r/qr/sup-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span></span>
+          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="sup/img/mark.l216.avif 216w, sup/img/mark.l320.avif 320w" sizes="54px"><source type="image/webp" srcset="sup/img/mark.l216.webp 216w, sup/img/mark.l320.webp 320w" sizes="54px"><img src="sup/img/mark.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span></span>
           <div class="text">
             <h2 class="name" id="sup-name"><a class="go" href="sup/" data-href="sup/"><bdi dir="ltr">SUP Noodle Bar</bdi></a></h2>
             <span class="sub" data-t="brand.sup.tagline">Vietnamese noodle bar</span>
           </div>
+          <span class="qr"><button class="qr-open" type="button" data-code="sup" aria-haspopup="dialog"><img class="qr-img" src="r/qr/sup-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span>
           <span class="dish" data-brand="sup" aria-hidden="true"><picture style="--photo-zoom:1.3333;--photo-x:0%;--photo-y:0%"><source type="image/avif" srcset="sup/img/bao.s252.avif 252w, sup/img/full/bao.avif 1324w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><source type="image/webp" srcset="sup/img/bao.s252.webp 252w, sup/img/full/bao.webp 1324w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><img src="sup/img/bao.jpg" alt="" width="400" height="400" decoding="async"></picture></span>
             <span class="where chips" role="group" aria-labelledby="sup-name sup-locations">
               <span class="sr-only" id="sup-locations" data-t="ui.byLocation">Menu by location:</span>
@@ -418,11 +431,12 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry" style="--brand: #ef872a; --brand-action: #843d0d">
         <div class="card">
-          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="vox/assets/logo.l216.avif 216w, vox/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="vox/assets/logo.l216.webp 216w, vox/assets/logo.l480.webp 480w" sizes="54px"><img src="vox/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span><span class="qr"><button class="qr-open" type="button" data-code="vox" aria-haspopup="dialog"><img class="qr-img" src="r/qr/vox-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span></span>
+          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="vox/assets/logo.l216.avif 216w, vox/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="vox/assets/logo.l216.webp 216w, vox/assets/logo.l480.webp 480w" sizes="54px"><img src="vox/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span></span>
           <div class="text">
             <h2 class="name" id="vox-name"><a class="go" href="vox/" data-href="vox/"><bdi dir="ltr">VOX Kitchen</bdi></a></h2>
             <span class="sub" data-t="brand.vox.tagline">Many flavors. One voice.</span>
           </div>
+          <span class="qr"><button class="qr-open" type="button" data-code="vox" aria-haspopup="dialog"><img class="qr-img" src="r/qr/vox-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span>
           <span class="dish" data-brand="vox" aria-hidden="true"><picture style="--bg-top:#d0743b;--bg-bot:#633013;--photo-zoom:1.334;--photo-x:0.2%;--photo-y:0.0%"><source type="image/avif" srcset="vox/assets/items/011c344cea2fd4e0.s252.avif 448w, vox/assets/full/011c344cea2fd4e0.avif 1280w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><source type="image/webp" srcset="vox/assets/items/011c344cea2fd4e0.s252.webp 448w, vox/assets/full/011c344cea2fd4e0.webp 1280w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><img src="vox/assets/items/011c344cea2fd4e0.jpg" alt="" width="450" height="253" decoding="async" loading="lazy"></picture></span>
             <span class="where chips" role="group" aria-labelledby="vox-name vox-locations">
               <span class="sr-only" id="vox-locations" data-t="ui.byLocation">Menu by location:</span>
@@ -435,11 +449,12 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry" style="--brand: #003440">
         <div class="card">
-          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="nep/assets/brand/logo.l216.avif 216w, nep/assets/brand/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="nep/assets/brand/logo.l216.webp 216w, nep/assets/brand/logo.l480.webp 480w" sizes="54px"><img src="nep/assets/brand/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span><span class="qr"><button class="qr-open" type="button" data-code="nep" aria-haspopup="dialog"><img class="qr-img" src="r/qr/nep-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span></span>
+          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="nep/assets/brand/logo.l216.avif 216w, nep/assets/brand/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="nep/assets/brand/logo.l216.webp 216w, nep/assets/brand/logo.l480.webp 480w" sizes="54px"><img src="nep/assets/brand/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span></span>
           <div class="text">
             <h2 class="name" id="nep-name"><a class="go" href="nep/" data-href="nep/"><bdi dir="ltr">NEP Cafe</bdi></a></h2>
             <span class="sub" data-t="brand.nep.tagline">A snapshot of Vietnamese dining.</span>
           </div>
+          <span class="qr"><button class="qr-open" type="button" data-code="nep" aria-haspopup="dialog"><img class="qr-img" src="r/qr/nep-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span>
           <span class="dish" data-brand="nep" aria-hidden="true"><picture style="--bg-top:#bbb1a0;--bg-bot:#b6aa99;--photo-zoom:1.334;--photo-x:-3.45%;--photo-y:0.0%"><source type="image/avif" srcset="nep/assets/items/014d4a75c1af00ab.s252.avif 448w, nep/assets/full/014d4a75c1af00ab.avif 1280w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><source type="image/webp" srcset="nep/assets/items/014d4a75c1af00ab.s252.webp 448w, nep/assets/full/014d4a75c1af00ab.webp 1280w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><img src="nep/assets/items/014d4a75c1af00ab.jpg" alt="" width="450" height="253" decoding="async" loading="lazy"></picture></span>
             <span class="where chips" role="group" aria-labelledby="nep-name nep-locations">
               <span class="sr-only" id="nep-locations" data-t="ui.byLocation">Menu by location:</span>
@@ -451,11 +466,12 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry" style="--brand: #e11f28; --brand-action: #ae1820">
         <div class="card">
-          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="rol/assets/logo.l216.avif 216w, rol/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="rol/assets/logo.l216.webp 216w, rol/assets/logo.l480.webp 480w" sizes="54px"><img src="rol/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span><span class="qr"><button class="qr-open" type="button" data-code="rol" aria-haspopup="dialog"><img class="qr-img" src="r/qr/rol-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span></span>
+          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="rol/assets/logo.l216.avif 216w, rol/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="rol/assets/logo.l216.webp 216w, rol/assets/logo.l480.webp 480w" sizes="54px"><img src="rol/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span></span>
           <div class="text">
             <h2 class="name" id="rol-name"><a class="go" href="rol/" data-href="rol/"><bdi dir="ltr">ROL Hand Roll Bar</bdi></a></h2>
             <span class="sub" data-t="brand.rol.tagline">The freshest seat in the house.</span>
           </div>
+          <span class="qr"><button class="qr-open" type="button" data-code="rol" aria-haspopup="dialog"><img class="qr-img" src="r/qr/rol-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span>
           <span class="dish" data-brand="rol" aria-hidden="true"><picture style="--bg-top:#2a2a2a;--bg-bot:#292929;--photo-zoom:1.334;--photo-x:-0.29%;--photo-y:0.0%"><source type="image/avif" srcset="rol/assets/items/appetizers-chili-garlic-edamame.s252.avif 448w, rol/assets/full/appetizers-chili-garlic-edamame.avif 1280w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><source type="image/webp" srcset="rol/assets/items/appetizers-chili-garlic-edamame.s252.webp 448w, rol/assets/full/appetizers-chili-garlic-edamame.webp 1280w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><img src="rol/assets/items/appetizers-chili-garlic-edamame.jpg" alt="" width="450" height="253" decoding="async" loading="lazy"></picture></span>
             <span class="where chips" role="group" aria-labelledby="rol-name rol-locations">
               <span class="sr-only" id="rol-locations" data-t="ui.byLocation">Menu by location:</span>
@@ -468,11 +484,12 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry" style="--brand: #816740">
         <div class="card">
-          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="kin/assets/logo.l216.avif 216w, kin/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="kin/assets/logo.l216.webp 216w, kin/assets/logo.l480.webp 480w" sizes="54px"><img src="kin/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span><span class="qr"><button class="qr-open" type="button" data-code="kin" aria-haspopup="dialog"><img class="qr-img" src="r/qr/kin-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span></span>
+          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="kin/assets/logo.l216.avif 216w, kin/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="kin/assets/logo.l216.webp 216w, kin/assets/logo.l480.webp 480w" sizes="54px"><img src="kin/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span></span>
           <div class="text">
             <h2 class="name" id="kin-name"><a class="go" href="kin/" data-href="kin/"><bdi dir="ltr">KIN Craft Ramen &amp; Izakaya</bdi></a></h2>
             <span class="sub" data-t="brand.kin.tagline">Ramen and izakaya plates.</span>
           </div>
+          <span class="qr"><button class="qr-open" type="button" data-code="kin" aria-haspopup="dialog"><img class="qr-img" src="r/qr/kin-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span>
           <span class="dish" data-brand="kin" aria-hidden="true"><picture style="--bg-top:#181818;--bg-bot:#1a1a1a;--photo-zoom:1.626;--photo-x:-2.03%;--photo-y:0.87%"><source type="image/avif" srcset="kin/assets/items/add-bean-sprouts.s252.avif 252w, kin/assets/full/add-bean-sprouts.avif 720w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><source type="image/webp" srcset="kin/assets/items/add-bean-sprouts.s252.webp 252w, kin/assets/full/add-bean-sprouts.webp 720w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><img src="kin/assets/items/add-bean-sprouts.jpg" alt="" width="450" height="450" decoding="async" loading="lazy"></picture></span>
             <span class="where chips" role="group" aria-labelledby="kin-name kin-locations">
               <span class="sr-only" id="kin-locations" data-t="ui.byLocation">Menu by location:</span>
@@ -483,11 +500,12 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry" style="--brand: #3E6092">
         <div class="card">
-          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="ini/assets/logo.l216.avif 216w, ini/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="ini/assets/logo.l216.webp 216w, ini/assets/logo.l480.webp 480w" sizes="54px"><img src="ini/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span><span class="qr"><button class="qr-open" type="button" data-code="ini" aria-haspopup="dialog"><img class="qr-img" src="r/qr/ini-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span></span>
+          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="ini/assets/logo.l216.avif 216w, ini/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="ini/assets/logo.l216.webp 216w, ini/assets/logo.l480.webp 480w" sizes="54px"><img src="ini/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span></span>
           <div class="text">
             <h2 class="name" id="ini-name"><a class="go" href="ini/" data-href="ini/"><bdi dir="ltr">INI Ristorante</bdi></a></h2>
             <span class="sub" data-t="brand.ini.tagline">Italian cooking. Japanese point of view.</span>
           </div>
+          <span class="qr"><button class="qr-open" type="button" data-code="ini" aria-haspopup="dialog"><img class="qr-img" src="r/qr/ini-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span>
           <span class="dish" data-brand="ini" aria-hidden="true"><picture style="--bg-top:#c3b9b0;--bg-bot:#bbab9e;--photo-zoom:1.1402;--photo-x:2.48%;--photo-y:0.0%"><source type="image/avif" srcset="ini/assets/items/australian-ribeye.s252.avif 383w, ini/assets/full/australian-ribeye.avif 1095w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><source type="image/webp" srcset="ini/assets/items/australian-ribeye.s252.webp 383w, ini/assets/full/australian-ribeye.webp 1095w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><img src="ini/assets/items/australian-ribeye.jpg" alt="" width="450" height="296" decoding="async" loading="lazy"></picture></span>
             <span class="where chips" role="group" aria-labelledby="ini-name ini-locations">
               <span class="sr-only" id="ini-locations" data-t="ui.byLocation">Menu by location:</span>
@@ -498,11 +516,12 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry" style="--brand: #00494f">
         <div class="card">
-          <span class="side"><span class="mark on-dark"><picture><source type="image/avif" srcset="qua/assets/logo.l216.avif 216w, qua/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="qua/assets/logo.l216.webp 216w, qua/assets/logo.l480.webp 480w" sizes="54px"><img src="qua/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span><span class="qr"><button class="qr-open" type="button" data-code="qua" aria-haspopup="dialog"><img class="qr-img" src="r/qr/qua-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span></span>
+          <span class="side"><span class="mark on-dark"><picture><source type="image/avif" srcset="qua/assets/logo.l216.avif 216w, qua/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="qua/assets/logo.l216.webp 216w, qua/assets/logo.l480.webp 480w" sizes="54px"><img src="qua/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span></span>
           <div class="text">
             <h2 class="name" id="qua-name"><a class="go" href="qua/" data-href="qua/"><bdi dir="ltr">QUA</bdi></a></h2>
             <span class="sub" data-t="brand.qua.tagline">Contemporary Chinese cuisine.</span>
           </div>
+          <span class="qr"><button class="qr-open" type="button" data-code="qua" aria-haspopup="dialog"><img class="qr-img" src="r/qr/qua-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span>
           <span class="dish" data-brand="qua" aria-hidden="true"><picture style="--bg-top:#eae9e4;--bg-bot:#e9e9e3;--photo-zoom:1.33;--photo-x:2.08%;--photo-y:0.0%"><source type="image/avif" srcset="qua/assets/items/afternoon-tea-set.s203.avif 360w, qua/assets/full/afternoon-tea-set.avif 1200w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><source type="image/webp" srcset="qua/assets/items/afternoon-tea-set.s203.webp 360w, qua/assets/full/afternoon-tea-set.webp 1200w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><img src="qua/assets/items/afternoon-tea-set.jpg" alt="" width="360" height="203" decoding="async" loading="lazy"></picture></span>
             <span class="where chips" role="group" aria-labelledby="qua-name qua-locations">
               <span class="sr-only" id="qua-locations" data-t="ui.byLocation">Menu by location:</span>
@@ -513,11 +532,12 @@ html[lang="ja"] { line-break: strict; word-break: normal; }
 
       <li class="entry" style="--brand: #5c3d1e">
         <div class="card">
-          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="kei-coffee/assets/logo.l216.avif 216w, kei-coffee/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="kei-coffee/assets/logo.l216.webp 216w, kei-coffee/assets/logo.l480.webp 480w" sizes="54px"><img src="kei-coffee/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span><span class="qr"><button class="qr-open" type="button" data-code="kei-coffee" aria-haspopup="dialog"><img class="qr-img" src="r/qr/kei-coffee-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span></span>
+          <span class="side"><span class="mark"><picture><source type="image/avif" srcset="kei-coffee/assets/logo.l216.avif 216w, kei-coffee/assets/logo.l480.avif 480w" sizes="54px"><source type="image/webp" srcset="kei-coffee/assets/logo.l216.webp 216w, kei-coffee/assets/logo.l480.webp 480w" sizes="54px"><img src="kei-coffee/assets/logo.png" alt="" width="54" height="54"></picture></span><span class="brand-line" aria-hidden="true"></span></span>
           <div class="text">
             <h2 class="name" id="kei-coffee-name"><a class="go" href="kei-coffee/" data-href="kei-coffee/"><bdi dir="ltr">Kei Coffee House</bdi></a></h2>
             <span class="sub" data-t="brand.kei-coffee.tagline">Start your day with intention.</span>
           </div>
+          <span class="qr"><button class="qr-open" type="button" data-code="kei-coffee" aria-haspopup="dialog"><img class="qr-img" src="r/qr/kei-coffee-s.png" alt="" width="80" height="80" loading="lazy" decoding="async"></button></span>
           <span class="dish" data-brand="kei-coffee" aria-hidden="true"><picture style="--bg-top:#eeedeb;--bg-bot:#ecebe9;--photo-zoom:1.3333;--photo-x:0.83%;--photo-y:0.0%"><source type="image/avif" srcset="kei-coffee/assets/items/affogato-soft-serve-thumb.s180.avif 320w, kei-coffee/assets/items/affogato-soft-serve-full.avif 1440w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><source type="image/webp" srcset="kei-coffee/assets/items/affogato-soft-serve-thumb.s180.webp 320w, kei-coffee/assets/items/affogato-soft-serve-full.webp 1440w" sizes="(min-width: 40rem) 310px, min(calc(84vw - 30px), 310px)"><img src="kei-coffee/assets/items/affogato-soft-serve-thumb.jpg" alt="" width="320" height="180" decoding="async" loading="lazy"></picture></span>
             <span class="where chips" role="group" aria-labelledby="kei-coffee-name kei-coffee-locations">
               <span class="sr-only" id="kei-coffee-locations" data-t="ui.byLocation">Menu by location:</span>
@@ -693,7 +713,10 @@ const laToday = date => WEEKDAYS.indexOf(new Intl.DateTimeFormat("en-US", { time
 /* 2026-01-05 is a Monday; the UTC calendar stands in for a wall clock so no zone shifts the hour. */
 const fmtTime = m => new Intl.DateTimeFormat(intlTag(), { hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(new Date(Date.UTC(2026, 0, 5, Math.floor(m / 60) % 24, m % 60)));
 const fmtDay = wd => new Intl.DateTimeFormat(intlTag(), { weekday: "long", timeZone: "UTC" }).format(new Date(Date.UTC(2026, 0, 5 + wd)));
-const CHEVRON_DOWN = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const icon = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const CLOCK = icon('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>');
+const PHONE = icon('<path d="M7 3.5h2.4l1.4 4.2-2 1.5a11 11 0 0 0 6 6l1.5-2 4.2 1.4v2.4a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 5 5.7a2 2 0 0 1 2-2.2z"/>');
+const PIN = icon('<path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0c0 5.2-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>');
 function weekHTML(loc, today) {
   return `<table class="week"><tbody>${loc.hours.map((span, d) => `<tr${d === today ? ' aria-current="date"' : ""}><th scope="row">${prose(fmtDay(d))}</th><td>${span ? `<bdi>${fmtTime(span[0])}</bdi> – <bdi>${fmtTime(span[1])}</bdi>` : prose(t("ui.closed"))}</td></tr>`).join("")}</tbody></table>`;
 }
@@ -704,9 +727,9 @@ function renderHours(date) {
     const id = `week-${l.brand}-${l.id}`, open = box.querySelector(".act[aria-expanded]")?.getAttribute("aria-expanded") === "true";
     const where = `${brandName(l.brand)} ${plain(t(l.city))}`;
     box.innerHTML = `<span class="acts">` +
-      `<button class="act" type="button" aria-expanded="${open}" aria-controls="${id}" aria-label="${esc(plain(t("ui.hours")))} · ${esc(where)}">${prose(t("ui.hours"))}${CHEVRON_DOWN}</button>` +
-      `<a class="act" href="tel:${esc(l.tel)}" aria-label="${esc(plain(t("ui.call")))} · ${esc(where)}">${prose(t("ui.call"))}</a>` +
-      `<a class="act" href="${esc(l.maps)}" target="_blank" rel="noopener" aria-label="${esc(plain(t("ui.directions")))} · ${esc(where)}">${prose(t("ui.directions"))}</a></span>` +
+      `<button class="act" type="button" aria-expanded="${open}" aria-controls="${id}" aria-label="${esc(plain(t("ui.hours")))} · ${esc(where)}" title="${esc(plain(t("ui.hours")))}">${CLOCK}</button>` +
+      `<a class="act" href="tel:${esc(l.tel)}" aria-label="${esc(plain(t("ui.call")))} · ${esc(where)}" title="${esc(plain(t("ui.call")))}">${PHONE}</a>` +
+      `<a class="act" href="${esc(l.maps)}" target="_blank" rel="noopener" aria-label="${esc(plain(t("ui.directions")))} · ${esc(where)}" title="${esc(plain(t("ui.directions")))}">${PIN}</a></span>` +
       `<div class="week-wrap" id="${id}"${open ? "" : " hidden"}>${weekHTML(l, today)}</div>`;
   });
 }
@@ -734,35 +757,41 @@ function fillQr(code) {
   $("qrBody").innerHTML = group.map((c, i) => `<figure class="qr-code"><img src="r/qr/${esc(c.code)}.png" alt="" width="2048" height="2048" loading="lazy" decoding="async"><figcaption><span class="qr-name">${codeLabel(c.code, group.length === 1)}</span><a class="save" href="r/qr/${esc(c.code)}.png" download="menu-fyt-life-${esc(c.code)}-qr.png">${prose(t("ui.saveQr"))}</a></figcaption></figure>`).join("");
 }
 /* Derive the choice from the chips, including SUP's two locations sharing one menu. Keep the name's
-   real href for no-JS and modified clicks; the stretched link also covers the panel's background. */
+   real href for no-JS and modified clicks; the stretched link also covers the panel's background. Opened by a
+   photo's View dish, the choice is the locations whose menus list that dish, each opening the dish there. */
 const locationChips = card => [...card.querySelectorAll(".chips .loc > a[data-href]")];
 const needsLocation = card => new Set(locationChips(card).map(a => a.dataset.href)).size > 1;
-function fillLocations(card) {
+function fillLocations(card, dish = $("locationDialog").__dish) {
   const dlg = $("locationDialog"), today = laToday();
   const focused = [...$("locationBody").children].indexOf(document.activeElement);
-  dlg.__card = card;
+  dlg.__card = card; dlg.__dish = dish;
+  const stops = dish && new Map(dish[3].map(s => typeof s === "string" ? [s, dish[1]] : s));
   const colors = getComputedStyle(card);
   for (const key of ["--brand", "--brand-action"]) { const value = colors.getPropertyValue(key); if (value.trim()) dlg.style.setProperty(key, value); else dlg.style.removeProperty(key); }
   $("locationMark").replaceChildren(card.querySelector(".mark").cloneNode(true));
   $("locationTitle").innerHTML = ltr(brandName(card.querySelector(".qr-open").dataset.code));
-  $("locationBody").innerHTML = locationChips(card).map(a => {
+  $("locationBody").innerHTML = locationChips(card).filter(a => !stops || stops.has(a.dataset.href)).map(a => {
     const key = a.closest(".loc").querySelector(".loc-info")?.dataset.loc;
     const loc = LOCS.find(l => `${l.brand}/${l.id}` === key), span = loc?.hours?.[today];
     const hours = span === undefined ? "" : `${prose(fmtDay(today))} · ${span === null ? prose(t("ui.closed")) : `<bdi>${esc(fmtTime(span[0]))}</bdi> – <bdi>${esc(fmtTime(span[1]))}</bdi>`}`;
-    return `<a class="location-option" href="${esc(menuHref(a.dataset.href))}" data-href="${esc(a.dataset.href)}"><span class="location-copy"><strong class="location-city">${prose(a.textContent.trim())}</strong>${loc?.street ? `<span class="location-address">${ltr(loc.street)}</span>` : ""}${hours ? `<span class="location-hours">${hours}</span>` : ""}</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 5 5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
+    const link = stops ? `href="${esc(dishHref(a.dataset.href, stops.get(a.dataset.href)))}"` : `href="${esc(menuHref(a.dataset.href))}" data-href="${esc(a.dataset.href)}"`;
+    return `<a class="location-option" ${link}><span class="location-copy"><strong class="location-city">${prose(a.textContent.trim())}</strong>${loc?.street ? `<span class="location-address">${ltr(loc.street)}</span>` : ""}${hours ? `<span class="location-hours">${hours}</span>` : ""}</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 5 5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
   }).join("");
   if (focused >= 0) $("locationBody").children[focused]?.focus({ preventScroll: true });
+}
+function openLocations(card, dish, opener, keyboard) {
+  requestOpen(adopt => {
+    const dlg = $("locationDialog"); fillLocations(card, dish);
+    dlg.__returnFocus = opener; dlg.__keyboardOpen = keyboard;
+    openDialog(dlg, adopt); dlg.focus({ preventScroll: true });
+  });
 }
 document.querySelectorAll(".name > a.go").forEach(a => {
   if (needsLocation(a.closest(".card"))) { a.setAttribute("aria-haspopup", "dialog"); a.setAttribute("aria-controls", "locationDialog"); }
   a.addEventListener("click", e => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || !needsLocation(a.closest(".card"))) return;
     e.preventDefault();
-    requestOpen(adopt => {
-      const dlg = $("locationDialog"); fillLocations(a.closest(".card"));
-      dlg.__returnFocus = a; dlg.__keyboardOpen = e.detail === 0;
-      openDialog(dlg, adopt); dlg.focus({ preventScroll: true });
-    });
+    openLocations(a.closest(".card"), null, a, e.detail === 0);
   });
 });
 /* The last input the guest used: a ring follows keyboard focus only (CSS html[data-input="pointer"]). */
@@ -1177,9 +1206,11 @@ window.addEventListener("resize", () => {
   [...LB.zooms, LB.bg, LB.chrome].forEach(el => el.getAnimations().forEach(a => a.finish()));
   lbLayout(); lbSetZoom(LB.index, 1, 0, 0, false); lbPlaceTrack(false);
 });
-/* "View dish" opens the dish on the restaurant's own menu page; "Share" shares that address (the native sheet where
-   there is one, else the clipboard and a toast), as the menus' viewer does for its dishes. */
-const dishUrl = i => { const d = lbDish(i); return d ? new URL(`${d[2]}?lang=${encodeURIComponent(state.lang)}#item-${d[1]}`, location.href).href : ""; };
+/* "View dish" opens the dish on the restaurant's own menu page, or, where several locations' menus list it, the
+   location chooser with those locations; "Share" shares that address (the native sheet where there is one, else the
+   clipboard and a toast), as the menus' viewer does for its dishes. */
+const dishHref = (page, id) => `${page}?lang=${encodeURIComponent(state.lang)}#item-${id}`;
+const dishUrl = i => { const d = lbDish(i); return d ? new URL(dishHref(d[2], d[1]), location.href).href : ""; };
 function shareLink(url) {
   if (navigator.share) return navigator.share({ url }).then(() => "shared", () => "shared");
   if (navigator.clipboard) return navigator.clipboard.writeText(url).then(() => "copied", () => "failed");
@@ -1193,7 +1224,11 @@ function toast(text) {
 }
 document.addEventListener("click", e => {
   const share = e.target.closest("[data-share-dish]"), view = e.target.closest("[data-view-dish]");
-  if (view) { const url = dishUrl(+view.dataset.viewDish); if (url) location.href = url; return; }
+  if (view) {
+    const d = lbDish(+view.dataset.viewDish);
+    if (d && d[3]) { openLocations(document.querySelector(`.dish[data-brand="${LB.brand}"]`).closest(".card"), d, LB.opener, !!LB.dlg.__keyboardOpen); return; }
+    const url = dishUrl(+view.dataset.viewDish); if (url) location.href = url; return;
+  }
   if (!share) return;
   const url = dishUrl(+share.dataset.shareDish); if (!url) return;
   shareLink(url).then(v => { if (v === "copied") toast(t("ui.linkCopied")); });
