@@ -95,7 +95,7 @@
     --row-end: max(var(--page-end), calc((100% - var(--page-width)) / 2 + var(--page-end)));
   }
   .directory {
-    display: grid; grid-auto-flow: column; grid-auto-columns: min(84vw, 340px); align-items: stretch; gap: 14px;
+    display: grid; grid-auto-flow: column; grid-auto-columns: min(84vw, 340px); align-items: start; gap: 14px;
     margin: 0; padding-block: 8px calc(24px + env(safe-area-inset-bottom)); padding-inline: var(--row-start) var(--row-end);
     list-style: none; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
     scroll-padding-inline: var(--row-start) var(--row-end);
@@ -114,7 +114,7 @@
 
   .card {
     position: relative;
-    display: grid; grid-template-columns: 48px minmax(0, 1fr) 56px; grid-template-rows: auto auto 1fr;
+    display: grid; grid-template-columns: 48px minmax(0, 1fr) 56px; grid-template-rows: minmax(var(--head, 0px), auto) auto auto;
     width: 100%; align-items: start; gap: 14px; padding: 14px;
     border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
   }
@@ -133,8 +133,8 @@
   /* SUP's mark is a disc that fills its square file; clip to the disc. */
   .mark.on-dark { background: #051B13; }
   .mark.on-dark img { padding: 5px; }
-  /* One header row, the mark, the name and the QR tile, then a full-width photo and the location list. The last
-     row absorbs only the space required to stretch to the tallest panel; the locations sit at its top. */
+  /* One header row, the mark, the name and the QR tile, then a full-width photo and the location list. Each panel
+     ends at its own last location, so a restaurant with one location has a shorter panel than one with three. */
   .text { min-width: 0; align-self: center; overflow-wrap: anywhere; }
   .card > .side, .card > .text, .card > .qr { grid-row: 1; }
   .card > .qr { grid-column: 3; }
@@ -324,15 +324,10 @@
   @media (min-width: 64rem) {
     :root { --page-width: 64rem; }
   }
-  /* Where panels stand side by side, they share their row tracks, so every photo and location list starts at the
-     same height; a phone shows one panel at a time and keeps each header to its own content. */
-  @supports (grid-template-rows: subgrid) {
-    @media (min-width: 40rem) {
-      .directory { grid-template-rows: auto auto 1fr; }
-      .entry { display: grid; grid-row: span 3; grid-template-rows: subgrid; }
-      .card { grid-row: span 3; grid-template-rows: subgrid; }
-      .card > .text { align-self: start; }
-    }
+  /* Where panels stand side by side, every header row is as tall as the tallest (--head, from levelHeaders), so every
+     photo starts level; a phone shows one panel at a time and keeps each header to its own content. */
+  @media (min-width: 40rem) {
+    .card > .text { align-self: start; }
   }
   @media (hover: hover) {
     .card:hover { background: var(--surface); }
@@ -681,6 +676,20 @@ function startDirectory() {
     if (dx) row.scrollBy({ left: dx, behavior: "instant" });
   });
   update();
+}
+/* Side by side, the header rows share the tallest one's height (--head), so every photo starts level while each panel
+   keeps its own length. The header items keep their natural height whatever the row's, so this cannot feed back. */
+function levelHeaders() {
+  const row = document.querySelector(".directory"), wide = matchMedia("(min-width: 40rem)");
+  const heads = [...row.querySelectorAll(".card > :is(.side, .text, .qr)")];
+  const level = () => {
+    if (!wide.matches) { row.style.removeProperty("--head"); return; }
+    row.style.setProperty("--head", Math.ceil(Math.max(...heads.map(el => el.getBoundingClientRect().height))) + "px");
+  };
+  const resized = new ResizeObserver(level);
+  heads.forEach(el => resized.observe(el));
+  wide.addEventListener("change", level);
+  level();
 }
 function render() {
   document.documentElement.lang = state.lang === "zh" ? "zh-Hans" : state.lang;
@@ -1257,6 +1266,7 @@ document.addEventListener("keydown", e => {
 state.lang = pickLang();
 render();
 startDirectory();
+levelHeaders();
 /* A tile of the restaurant's own dishes on each card: one of the thumbnails its menu ships (DATA.photos and
    option shots, gathered by hub/build.py), chosen at random and replaced by another at a random interval
    of 4 to 8 s with a crossfade, while the tile is on screen. A reduced-motion setting keeps the first
