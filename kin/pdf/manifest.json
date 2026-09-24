@@ -2,24 +2,24 @@
  "layout": "diner-print-v1",
  "printer_sha256": "ff9ca4247e94070f05892bf397859b23ce19bf90ff6ad678dd5a5176fb18d8cb",
  "pages": {
-  "index.html": "7874c5a9921e90cc84f2b19451029c19238f3d6b3d35b6e9d901a88da343e3ed"
+  "index.html": "0af146f11099868bb51e2d2a2f04631065fdd3be280ca9a73b37d9327ae1b2aa"
  },
  "print_pages": {
-  "KIN-Menu-en.html": "9f7c7fdb34117907ac5c7fa1498f5ab20d91fd162f046b93d803404ac46ed36a",
-  "KIN-Menu-es.html": "3f48b20fff25808112ed7a9ce9e0fb956a5627446f53c412edab2cf31f96e813",
-  "KIN-Menu-vi.html": "151e867ee7ed18939204f72cb21b2022373f87fa4b5264c9b781b50cfffcf744",
-  "KIN-Menu-ko.html": "65f9452ac8fc873c9a8a88038c011babc77ccd85b4eebefc7e74031fb49d2c07",
-  "KIN-Menu-zh.html": "a8b5162e4106a44fb60976ee5d2fc7ab0d57854db6fed9a8992cc6b74c249c6d",
-  "KIN-Menu-zh-Hant.html": "b426af1893662f9551f3392c5414c533e310aab3d8c8603972b4db20be192a7a",
-  "KIN-Menu-tl.html": "4ef7ba06f2edf65f1a8a1cab0090bf6b208682d870d5a3fbaf65e29f194d61a2",
-  "KIN-Menu-fa.html": "844d3d5eb25f39108ee223e60259cedecfe0f31e22564052ea4c3c622df1eb92",
-  "KIN-Menu-ar.html": "36539840e6453ff9b431bc81c4812c13d442e32c90185cebf4c6c2ed6f5e63f8",
-  "KIN-Menu-ja.html": "92b7949998925846aaad8267e82622448a08671755ddb250b3ec635843a8f555",
-  "KIN-Menu-ru.html": "6ae51e68c3e18de9af732fa9bb12f2dfb1364223e4375c4a30f2b7c787635533",
-  "KIN-Menu-hi.html": "2b18666a62f9566e71f2ba37e5ab51b527f804f04316fc1a691dbced9cd69c90",
-  "KIN-Menu-ur.html": "abc35d9493fc110c3f830b13c5eb7ebb089f3b6ee26701d8fb45858076352219"
+  "KIN-Menu-en.html": "1cf21ef757304ffddba3b4be8b10c5ba5ca04b8b305bd2b05a042c5c8dfa4649",
+  "KIN-Menu-es.html": "ce5fcb4c493ea68636239944ca34305f16ba4afb850d832eb0d8144a73c472f9",
+  "KIN-Menu-vi.html": "0a577824ab2ddaa1454da8e100f4c842395dc5f19c1f90f94ff5b121636c36f1",
+  "KIN-Menu-ko.html": "01e91992066c4143d6c5b13235d74279b2401d380ac66fad56fee72fe9d31ba9",
+  "KIN-Menu-zh.html": "9be837ca4835d4aa2f6248235540bd95186c91939a2926d62531baa9e24135a3",
+  "KIN-Menu-zh-Hant.html": "0c8ce7383b7a33e1e06ba8e2b88bb84b8ac0d7a585435714a809da97441e4bb1",
+  "KIN-Menu-tl.html": "5b459d67ba831d6d9295c098b8359cf9e6f4701ee0565886815317f84e8d8327",
+  "KIN-Menu-fa.html": "4c867912f96772e44a609ed216d8ad0507930addc51018bd7af42207edcf6e2a",
+  "KIN-Menu-ar.html": "3b54ef8f97dfabe7cbc97e43111c6e028a8dbe1ec2de7fb32dc21e92f3678931",
+  "KIN-Menu-ja.html": "fdee38262e10df6e5acdcca1349b99364112d81245b1c141de3b3ce43278443b",
+  "KIN-Menu-ru.html": "6376d929deb10f447eff1502193442d96e45efcfc461e90e7c584d9390059c68",
+  "KIN-Menu-hi.html": "81664998cc8be5c7899a0d2e8694033ae718e8c18e862cede0261d0d313ca3bd",
+  "KIN-Menu-ur.html": "c28d4537893ace8c369fee812158b4b84ff1b9c0a2cd55fc297f5945cfed46cb"
  },
- "source_sha256": "c19aaf6e4c18b121a68daeb651fd58684063fe83fb1c7a3839ac31f74055bf8d",
+ "source_sha256": "17be07af89994a70d4749c588c35cbe579a79cac8ae5b05b263b2cb332e8c941",
  "revision_date": "2026-09-23",
  "files": [
   "KIN-Menu-ar.pdf",
@@ -52,18 +52,18 @@
   "KIN-Menu-ur.pdf": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nAAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes      4  0\nBAAAAA+Times-Bold                    CID TrueType      Identity-H       yes yes yes      8  0\nCAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes      9  0\nDAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     10  0\nEAAAAA+Times-Roman                   CID TrueType      Identity-H       yes yes yes     11  0\nFAAAAA+Times-Bold                    CID TrueType      Identity-H       yes yes yes     12  0\nGAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     13  0\nHAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     16  0\nIAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     17  0\nJAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     18  0\nKAAAAA+HelveticaNeue-Bold            CID TrueType      Identity-H       yes yes yes     19  0\nLAAAAA+HelveticaNeue                 CID TrueType      Identity-H       yes yes yes     20  0\nMAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     21  0\nNAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     23  0\nOAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     24  0\nPAAAAA+Times-Roman                   CID TrueType      Identity-H       yes yes yes     58  0\nQAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     83  0\nRAAAAA+Arial-BoldMT                  CID TrueType      Identity-H       yes yes yes    137  0\n"
  },
  "pdf_sha256": {
-  "KIN-Menu-en.pdf": "ad4098a1a07cd6c03649fea9b86e53fddec303b57c4bea3079ca64c18c4e0f8e",
-  "KIN-Menu-es.pdf": "b8b7694dc232031b478e25fcaff9df5267cc3ba42f8a6caaf553bdaea6643259",
-  "KIN-Menu-vi.pdf": "eb7fb2d67789ea9171ac2dc3e0e8c5d7e865bab11f33660d31581ccae4ec59fa",
-  "KIN-Menu-ko.pdf": "774bdc0270f97f0a6286d18aabc4e710ebdb3f2df896721c7efe9b643b47c450",
-  "KIN-Menu-zh.pdf": "d9a72e4593cce6f0e6f8deaab3552f9ecaf5f294f48649e20afc3b090eb5296f",
-  "KIN-Menu-zh-Hant.pdf": "8fea5fefe96666b3abf0a8b1c102fff9c9c1d54cacf9cde84299b03709e962ec",
-  "KIN-Menu-tl.pdf": "c6ac5b800fae00ac995d77b68d3cdf7bcce7044c217d8863e96e5813039a5c8b",
-  "KIN-Menu-fa.pdf": "899313a12cac83a7fd8080c9678b898a2569e7509f73b2bf3db61d478233f704",
-  "KIN-Menu-ar.pdf": "030be6d4ed3e280087974d776ce59349786e7b6c669f06624efab496a2d10145",
-  "KIN-Menu-ja.pdf": "61af7d8d782a6f14618575e4fd0dce66084ce33f9377bfd48c1f1f76d50bac98",
-  "KIN-Menu-ru.pdf": "4650e549405f4341af48435f29fa6329b92d3a4efe3321591381c2633ca864ba",
-  "KIN-Menu-hi.pdf": "34ba410193445b1902e3f9f46c29deba7454252c53d3777d8694b874a7a41433",
-  "KIN-Menu-ur.pdf": "ff546a95cb97a2c301ceb112cdc2988105fbd162c49c92349a318f4b5696c7f8"
+  "KIN-Menu-en.pdf": "ea0591bbf12dfa445eeceda2a902af93f98db6654486de397c998c9f61f0ef0f",
+  "KIN-Menu-es.pdf": "9bd2f4b567ef11816cd630ba0476361e6dc2bd5dd254b5a823cf7960463ef2d8",
+  "KIN-Menu-vi.pdf": "b69cb47eac732b9da18cce8ba0ad434fbe023c95fe25bbbdd3c4d5dc9f9777c8",
+  "KIN-Menu-ko.pdf": "bd990239b729d5b556e2330df518d6a25b99335e3cbad9b7698c32fd9ae6c8c8",
+  "KIN-Menu-zh.pdf": "eaa50ec54ea501f43713395cda1fa0cbbca58b3b4c0d1fa92cd8d5483cbeebfa",
+  "KIN-Menu-zh-Hant.pdf": "acd5ce488d1c6556148ee790fc9401936003b35e5c1ff2183262d7c42e4699c9",
+  "KIN-Menu-tl.pdf": "e726bcc811cdc6e5f544d632dfd6a628c6b742d2fecebdcd5fa4de8d74101a99",
+  "KIN-Menu-fa.pdf": "716e18711b136cc12ce35eb39291b4992a4507ab52a1bc784b721a494d92a4f0",
+  "KIN-Menu-ar.pdf": "dfa4a97f058d9e1230b6798a566e22d1714d1be5f909779d3106c261a236082f",
+  "KIN-Menu-ja.pdf": "bad1e7bfa5dd64c7cad031b60f25354eb1b76b9e82a2ee86aeec9b6516d3f221",
+  "KIN-Menu-ru.pdf": "5cdc6d89491d1b0cd01af9b26943e7c4877fc72601aa30500697b04e055cfb3d",
+  "KIN-Menu-hi.pdf": "5187651313d8cb8c2e8ceb43db3bce533f66ebfce12e5637109008a9652879e2",
+  "KIN-Menu-ur.pdf": "7b8aa1b1ba2f28545aed5e81c071d263aa4f1fa2dbf1b682d8c59cd3d3697e57"
  }
 }

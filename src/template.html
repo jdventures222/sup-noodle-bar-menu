@@ -1396,7 +1396,21 @@ function goToItem(id) {
 function openLinkedDish() {
   hiddenDishNote();
   if (!linkedDish || !$(linkedDish)) return;
-  requestAnimationFrame(() => goToItem(linkedDish));
+  requestAnimationFrame(() => { if (goToItem(linkedDish)) holdItem(linkedDish); });
+}
+/* Fonts and pictures that arrive after the jump change the height above the dish, and Safari keeps no scroll anchor, so
+   the dish would slide off: keep it under the bar until the page has settled or the guest scrolls, taps or types. */
+function holdItem(id) {
+  const target = $(id), inputs = ["wheel", "touchstart", "pointerdown", "keydown"];
+  let held = true;
+  const pin = () => { if (held && target.getClientRects().length) window.scrollTo({ top: Math.max(0, scrollY + target.getBoundingClientRect().top - $("bar").offsetHeight - 8), behavior: "instant" }); };
+  const heights = new ResizeObserver(pin);
+  const release = () => { held = false; heights.disconnect(); clearTimeout(timer); inputs.forEach(type => removeEventListener(type, release, true)); };
+  let timer = setTimeout(release, 10000);
+  heights.observe(document.documentElement); heights.observe($("bar"));
+  inputs.forEach(type => addEventListener(type, release, { capture: true, passive: true }));
+  const loaded = document.readyState === "complete" ? null : new Promise(done => addEventListener("load", done, { once: true }));
+  Promise.all([document.fonts && document.fonts.ready, loaded]).then(() => { if (!held) return; pin(); clearTimeout(timer); timer = setTimeout(release, 1000); });
 }
 function hiddenDishNote() {
   const note = $("linkNote"); if (!note) return;
@@ -1422,7 +1436,7 @@ function toast(text) {
 }
 document.addEventListener("click", e => {
   const share = e.target.closest("#shareMenu, [data-share-dish]"), view = e.target.closest("[data-view-dish]");
-  if (view) { const id = "item-" + view.dataset.viewDish, pointer = e.detail !== 0; LB.dlg.__afterClose = () => { const target = $(id); if (!target) return; target.classList.toggle("pointer-focus", pointer); goToItem(id); clearTimeout(searchHighlightTimer); document.querySelector(".search-highlight")?.classList.remove("search-highlight"); target.classList.add("search-highlight"); searchHighlightTimer = setTimeout(() => target.classList.remove("search-highlight"), 1800); }; closeDialog(LB.dlg); return; }
+  if (view) { const id = "item-" + view.dataset.viewDish, pointer = e.detail !== 0; LB.dlg.__afterClose = () => { const target = $(id); if (!target) return; target.classList.toggle("pointer-focus", pointer); if (goToItem(id)) holdItem(id); clearTimeout(searchHighlightTimer); document.querySelector(".search-highlight")?.classList.remove("search-highlight"); target.classList.add("search-highlight"); searchHighlightTimer = setTimeout(() => target.classList.remove("search-highlight"), 1800); }; closeDialog(LB.dlg); return; }
   if (!share) return;
   const done = shareLink(share.dataset.shareDish ? dishUrl(share.dataset.shareDish) : menuUrl());
   const dlg = openDlg();
