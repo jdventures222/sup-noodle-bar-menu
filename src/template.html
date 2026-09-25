@@ -388,12 +388,17 @@
   #sectionBtn { grid-column: 1; grid-row: 1; justify-self: start; }
   #searchBtn { grid-column: 3; grid-row: 1; justify-self: end; }
   #searchBtn, #sectionBtn { max-width: 100%; white-space: normal; }
-  /* The masthead logo scrolls away, so the bar carries it on its first row, between
-     Sections and Search. In flow, so the row never changes height; hidden by
-     visibility until the bar sticks, so it is never a focusable target at the top. */
+  /* The bar's first row, Sections, the logo and Search, shows only once the bar sticks (the owner, 2026-09-24). At
+     the top of the page the row folds to nothing, so the language band meets the chips, and visibility hides its
+     controls, so none is a focusable target there. The stuck bar holds the row's height (--tools-h, from
+     syncBarHeight) out of the page's flow, so nothing below it moves when the row opens. */
   .bar-logo { grid-column: 2; grid-row: 1; justify-self: center; align-self: center; height: var(--logo-band); display: flex; align-items: center; justify-content: center; border: 0; padding: 0 8px; background: none; cursor: pointer; opacity: 0; visibility: hidden; transition: opacity .18s ease; }
   .bar.scrolled .bar-logo { opacity: 1; visibility: visible; }
-  @media (prefers-reduced-motion: reduce) { .bar-logo { transition: none; } }
+  .bar:not(.scrolled) .wrap { grid-template-rows: 0px; }
+  .bar:not(.scrolled) :is(#sectionBtn, #searchBtn) { align-self: start; opacity: 0; visibility: hidden; }
+  #sectionBtn, #searchBtn { transition: opacity .18s ease; }
+  .bar.scrolled { margin-bottom: calc(-1 * var(--tools-h, 0px)); }
+  @media (prefers-reduced-motion: reduce) { .bar-logo, #sectionBtn, #searchBtn { transition: none; } }
   .bar-logo img { display: block; width: 32px; height: 32px; border-radius: 50%; }
   .bar-logo picture { display: block; line-height: 0; }
   .fine bdi { overflow-wrap: anywhere; }
@@ -516,17 +521,18 @@ function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 /* Language: an explicit choice in the URL wins, then a remembered one, then the device's own preference list.
    Region subtags are dropped, so es-MX, vi-VN, ko-KR and zh-TW all reach the menu language they read. */
+const knownLang = code => LANGS.some(l => l.code === code) && !!DATA.strings[code];
 function pickLang() {
   const q = new URLSearchParams(location.search).get("lang");
-  if (q && DATA.strings[q]) return q;
-  const saved = load("sup-lang"); if (saved && DATA.strings[saved]) return saved;
+  if (q && knownLang(q)) return q;
+  const saved = load("sup-lang"); if (saved && knownLang(saved)) return saved;
   const prefs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"]);
   for (const p of prefs) {
     const tag = String(p).toLowerCase();
     // Chinese must be matched on script before it is reduced to "zh"; Filipino and
     // Tagalog are the same menu.
     const hit = /^zh\b.*(hant|tw|hk|mo)/.test(tag) ? "zh-Hant" : /^(fil|tl)\b/.test(tag) ? "tl" : tag.split(/[-_]/)[0];
-    if (DATA.strings[hit]) { state.detected = hit !== "en"; return hit; }
+    if (knownLang(hit)) { state.detected = hit !== "en"; return hit; }
   }
   return "en";
 }
@@ -723,6 +729,7 @@ function renderBar() {
   /* Sections and Search flank the logo on the bar's first row on every menu (owner, 2026-09-17). */
   const MENU_TOOLS = true;
   jr.before(...(MENU_TOOLS ? [sections, logo, search] : [logo]));
+  watchBarSizes();
   jr.append(lb, ab); const sep = document.createElement("span"); sep.className = "sep"; jr.append(sep);
   DATA.structure.sections.forEach(sec => {
     const a = document.createElement("a"); a.className = "chip"; a.href = "#sec-" + sec.id; a.innerHTML = prose(t(`sec.${sec.id}.title`)); jr.appendChild(a);
@@ -869,7 +876,13 @@ function applyFilter() {
   if ($("searchSheet").open) searchResults();
   syncBarHeight();
 }
-function syncBarHeight() { document.documentElement.style.setProperty("--bar-h", $("bar").offsetHeight + "px"); }
+/* --bar-h is the stuck bar's height even at the top of the page, where the tools row is folded, so a section
+   reached from there lands below the bar that is then over it. */
+function syncBarHeight() {
+  const bar = $("bar"), toolsH = Math.max(0, ...["sectionBtn", "searchBtn", "barLogo"].map(id => $(id)?.getBoundingClientRect().height || 0));
+  bar.style.setProperty("--tools-h", toolsH + "px");
+  document.documentElement.style.setProperty("--bar-h", bar.getBoundingClientRect().height + (bar.classList.contains("scrolled") ? 0 : toolsH) + "px");
+}
 /* The current section is read straight from the layout on every scroll frame rather than
    watched with an IntersectionObserver: a thin observer band can be crossed entirely between
    two samples during a flick, which leaves the previous chip highlighted. */
@@ -1379,7 +1392,11 @@ $("main").addEventListener("click", e => {
   lbOpen(+b.dataset.photo, b, e.detail === 0);
 });
 
-if ("ResizeObserver" in window) new ResizeObserver(syncBarHeight).observe($("bar"));
+/* The folded row's buttons grow with the guest's text size and late fonts while the bar keeps its height, so they
+   are watched too; renderBar replaces them, and hands each new set to watchBarSizes. */
+const barSizes = "ResizeObserver" in window ? new ResizeObserver(syncBarHeight) : null;
+function watchBarSizes() { barSizes?.disconnect(); ["bar", "sectionBtn", "searchBtn", "barLogo"].forEach(id => $(id) && barSizes?.observe($(id))); }
+watchBarSizes();
 state.lang = pickLang();
 (load("sup-avoid") || "").split(",").filter(a => ORDER.includes(a)).forEach(a => state.avoid.add(a));
 const sharedFilter = new URLSearchParams(location.search);
