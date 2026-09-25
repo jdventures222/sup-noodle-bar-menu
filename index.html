@@ -597,15 +597,16 @@ function load(k) { try { return localStorage.getItem(k); } catch (e) { return nu
 /* Language: an explicit choice in the URL wins, then a remembered one, then the device's own preference list;
    the menus follow the same order. Region subtags are dropped, so es-MX, vi-VN, ko-KR and zh-TW all reach the
    language they read. */
+const known = code => LANGS.some(l => l.code === code);
 function pickLang() {
   const q = new URLSearchParams(location.search).get("lang");
-  if (q && STRINGS[q]) { state.chosen = true; return q; }
-  const saved = load("menus-lang"); if (saved && STRINGS[saved]) { state.chosen = true; return saved; }
+  if (q && known(q)) { state.chosen = true; return q; }
+  const saved = load("menus-lang"); if (saved && known(saved)) { state.chosen = true; return saved; }
   const prefs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"]);
   for (const p of prefs) {
     const tag = String(p).toLowerCase();
     const hit = /^zh\b.*(hant|tw|hk|mo)/.test(tag) ? "zh-Hant" : /^(fil|tl)\b/.test(tag) ? "tl" : tag.split(/[-_]/)[0];
-    if (STRINGS[hit]) { state.detected = hit !== "en"; return hit; }
+    if (known(hit)) { state.detected = hit !== "en"; return hit; }
   }
   return "en";
 }
@@ -620,23 +621,30 @@ function fadeLangbar() {
   const x = Math.abs(lb.scrollLeft);
   lb.dataset.fade = x <= 1 ? "end" : x >= room - 1 ? "start" : "both";
 }
-/* Keep a pill reached by keyboard clear of the fade; only the bar moves, never the page. */
+/* Keep the selected pill clear of the fade (on load, after fonts, on turning, from the keyboard); only the bar moves, never the page. */
 function revealSeg(btn) {
   const lb = $("langbar"), r = btn.getBoundingClientRect(), b = lb.getBoundingClientRect(), edge = 40;
   if (r.left < b.left + edge) lb.scrollLeft += r.left - b.left - edge;
   else if (r.right > b.right - edge) lb.scrollLeft += r.right - b.right + edge;
 }
+const revealLang = () => { const b = $("langbar").querySelector('[aria-checked="true"]'); if (b) revealSeg(b); };
 function renderLangbar() {
   const lb = $("langbar");
   lb.setAttribute("aria-label", t("ui.chooseLanguage"));
   lb.innerHTML = LANGS.map(l => `<button class="seg" type="button" role="radio" lang="${l.code}" data-lang="${l.code}" tabindex="${l.code === state.lang ? 0 : -1}" aria-checked="${l.code === state.lang}">${nativeName(l)}</button>`).join("");
   lb.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => { if (b.dataset.lang !== state.lang) setLang(b.dataset.lang); }));
+  revealLang();
   fadeLangbar();
   const ad = $("autodetect"); ad.hidden = !state.detected;
   if (state.detected) ad.innerHTML = `${GLOBE}<span>${prose(t("ui.autoDetected"))}</span>`;
 }
 $("langbar").addEventListener("scroll", fadeLangbar, { passive: true });
 window.addEventListener("resize", fadeLangbar);
+/* Only a width change (a turned phone) reveals the selected language again: the height changes whenever the
+   browser's toolbar slides, and that must not move a bar the guest has scrolled. */
+let barWidth = innerWidth;
+window.addEventListener("resize", () => { if (innerWidth !== barWidth) { barWidth = innerWidth; revealLang(); } });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { revealLang(); fadeLangbar(); });
 /* Progressive enhancement of the native list scroller. Its hidden, unfocusable arrows are mouse-only;
    keyboard users tab through the actual controls (or focus the list and use native arrow keys). */
 function startDirectory() {
