@@ -2,25 +2,25 @@
  "layout": "diner-print-v1",
  "printer_sha256": "ff9ca4247e94070f05892bf397859b23ce19bf90ff6ad678dd5a5176fb18d8cb",
  "pages": {
-  "index.html": "ab5bf27a9202bc63b5f0259ad21782bef13b33f5d0df08eb85d90bb221ba1748"
+  "index.html": "63753438f4ff7641d78815772d6e5005b7e55b87722de56fec7ed43eb3e820c6"
  },
  "print_pages": {
-  "QUA-Menu-en.html": "be6a97e4c3dee3fefad7674ef1b797539dcb06925a93977c22bfed21e9257f03",
-  "QUA-Menu-es.html": "c750ac6b9423d2f7db762d4446407564668a4367f51b96fa499c06c84c580e2f",
-  "QUA-Menu-vi.html": "7d88acb5a3427c891c3b8e4e3336b894defd8aa264d58ad403a2a332a6ada27e",
-  "QUA-Menu-ko.html": "701822d7216e34dfbee3134ad0c86ccfa96b2f174c9fec5076d9478715e66de0",
-  "QUA-Menu-zh.html": "43cfdea546be852e6fec2348c2b07bf3bed47551fcf9abd52410135bee5dce54",
-  "QUA-Menu-zh-Hant.html": "d4c16455e6a5232178aec9de80ad9e358efe05aeb7dd1d9ec52175981b8bbd2f",
-  "QUA-Menu-tl.html": "cd73d5cebaf17eec62036777a6ce349af36b0c3e4c38b2b06c2b4d4dd24581d7",
-  "QUA-Menu-fa.html": "25f15dbea268bbd0283f1667b7bcbb617269a1e584c21cc74676303fd3241e3e",
-  "QUA-Menu-ar.html": "a37ddb3b98b55223d4f7f4c1a702356aec4df8aa668ec5ccc5339312274a63e2",
-  "QUA-Menu-ja.html": "7ad5b9d1fc7e7d2128915a107affaf065745f9908cc30da8239389650cc66490",
-  "QUA-Menu-ru.html": "0cf5ce9ee3bff275c627347122c0efb98420d573e69683b237404baa3b4e2cf9",
-  "QUA-Menu-hi.html": "73769840163bcd66360aaf0b5e96f79353ca0d4cab1f15290b256cbdc8ac8179",
-  "QUA-Menu-ur.html": "fdf44a6979fb00b26f459266fad1986ab18f158c9057ef0b503f9c3e71b0e33c"
+  "QUA-Menu-en.html": "f3da3590f244b3f1f5481c966716a8d637295bc0d7ebcc9e10b4ae3fa10ebdb2",
+  "QUA-Menu-es.html": "be12e4a6b5f7b32f72f2d3319fc62b5f6e22ef0f7bbb81f7a2f2eca228b911cc",
+  "QUA-Menu-vi.html": "cc470058a820c0750406055ea0fd7242e9cabfae9ec54b3708cc576f6cf577e7",
+  "QUA-Menu-ko.html": "f10113925d959f29040e2245ee108c84f47c2c38c4f6d0b8de3200cae423e498",
+  "QUA-Menu-zh.html": "1e0d3c91264206b635009a1012fb4f71068485b84845c2ff998d82e18d4247af",
+  "QUA-Menu-zh-Hant.html": "65a441f1c525e3990333664973cd6a544b0e7e4df7f53a9f21f50b454c9a34a0",
+  "QUA-Menu-tl.html": "9b493dc385af6d5fab594746024a8ac3fecb59be4c3c8eaa41f51d098c52ab17",
+  "QUA-Menu-fa.html": "cf4b5f7a76c0d3e3568d106df4e29ee1205bf8b321457daf5402af6711422663",
+  "QUA-Menu-ar.html": "cb0e60f600861587c97bf96aec99603a4d438a6b3a29ce4ff3ed5af3c8fb999b",
+  "QUA-Menu-ja.html": "2306d61d3bde4b06ec0ef44acc9cef05316e12ea99cca1c717e9e47a3d88b0a4",
+  "QUA-Menu-ru.html": "39db56456bfb5ca1421001aed6d6baf231e47bef6565b2fd014941ea89b9482c",
+  "QUA-Menu-hi.html": "3e3961cc74c557512703390c7b6eef738d20971d0e986207ef5d282ceb8873f4",
+  "QUA-Menu-ur.html": "92d5aa7ad30666faafd6ca3e615c6d1e993b1868982f0186f0671069a065ba3e"
  },
- "source_sha256": "f664e116b7838cb4f4cf046a19d4c102eb0f69c485f90ad674bc4d4d56ad0914",
- "revision_date": "2026-09-24",
+ "source_sha256": "8bc63f80ab971f5b1d7baaaf547ff8c1e16f2d7f323c6496ee4a45493a4a4586",
+ "revision_date": "2026-09-25",
  "files": [
   "QUA-Menu-ar.pdf",
   "QUA-Menu-en.pdf",
@@ -52,18 +52,18 @@
   "QUA-Menu-ur.pdf": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nAAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes      4  0\nBAAAAA+Times-Bold                    CID TrueType      Identity-H       yes yes yes      8  0\nCAAAAA+Times-Roman                   CID TrueType      Identity-H       yes yes yes      9  0\nDAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     10  0\nEAAAAA+Times-Bold                    CID TrueType      Identity-H       yes yes yes     11  0\nFAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     12  0\nGAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     16  0\nHAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     18  0\nIAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     19  0\nJAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     20  0\nKAAAAA+Arial-BoldMT                  CID TrueType      Identity-H       yes yes yes     21  0\nLAAAAA+HelveticaNeue-Bold            CID TrueType      Identity-H       yes yes yes     22  0\nMAAAAA+HelveticaNeue-Bold            CID TrueType      Identity-H       yes yes yes     23  0\nNAAAAA+HelveticaNeue                 CID TrueType      Identity-H       yes yes yes     24  0\nOAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     25  0\nPAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     26  0\nQAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     28  0\nRAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     38  0\nSAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     46  0\nTAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes    168  0\nUAAAAA+Arial-BoldMT                  CID TrueType      Identity-H       yes yes yes    215  0\n"
  },
  "pdf_sha256": {
-  "QUA-Menu-en.pdf": "393df89bc947473dc02b30c51d11a1366830b979e5a1a06310d122bf3fc09e54",
-  "QUA-Menu-es.pdf": "4cba99eb0f803cb844b01e3d85bcf96c75419f2b6723d942f687042e8144a21e",
-  "QUA-Menu-vi.pdf": "7b0454cafaf8013ad7d5d81cddd52a354e7288c2212494a0909777e9c4550e25",
-  "QUA-Menu-ko.pdf": "d7aaff3da5946331d53727b32c5f4da319a10d133d5ac6a12c037b57a3d39667",
-  "QUA-Menu-zh.pdf": "1db5d84319cbf397b9c0d4fbfa5db48aa8404fb6991cb91ac08252b3d3b7a975",
-  "QUA-Menu-zh-Hant.pdf": "179c0f28963e985760ef882f50b5803ffc9156a748dc2f9ab5950d1aa303d1b2",
-  "QUA-Menu-tl.pdf": "24198b9349ef392fb0a7d9d19ccb04b00077e48090c661e591cb4d3db9873948",
-  "QUA-Menu-fa.pdf": "3ed71efb117bf04af3a8bae20a11a8855fe5fa4c42ef4184eee7cdc758cd56ac",
-  "QUA-Menu-ar.pdf": "b1b157ad2a272977c84bf66d6e14befb1049c4552f7ab53016a78d355947331a",
-  "QUA-Menu-ja.pdf": "dbdcea72569788606fef082e38bbf7c55b594d9c4f5010394f81815c2c387290",
-  "QUA-Menu-ru.pdf": "7fc853a4753a95e5f2cce3ebd665b0bf79366ebbd6bef3fc38813c2b12ba9196",
-  "QUA-Menu-hi.pdf": "7988ab34a25664e5f24b52ae936fedfb6e0e0bcedc88911d6204549158e7f89f",
-  "QUA-Menu-ur.pdf": "025b95d690b28933f2d92b05be4d4c2b5ab7db799edf791791edc9b83a4a2626"
+  "QUA-Menu-en.pdf": "b4a6e5a13a8889798be95084f8c4fe94ee9ab422cdedd79d29662b7ffcdf802d",
+  "QUA-Menu-es.pdf": "ad81e002a5087a2823222d23607ade48305410c7d7b756ef72ad3157c8800b60",
+  "QUA-Menu-vi.pdf": "8234a203db4079e5288e328d271fc9af5e99b4d11a800be51fda444777538243",
+  "QUA-Menu-ko.pdf": "351968b05dbbf93d2136c70a336111b6c167a1dcae755064f1fedf27b71c55a0",
+  "QUA-Menu-zh.pdf": "43b5a75c6951964330a046935396afac226d5fb5eea174145449520090f8bf05",
+  "QUA-Menu-zh-Hant.pdf": "d4cf012048cd80d5e2eeb43b82e5c3fb8a6373c1281431ff0a38af54daf417ee",
+  "QUA-Menu-tl.pdf": "2692026159535492bb6ee1bb49601b7ce6f8404ccd298952a6da6fdfda7b22de",
+  "QUA-Menu-fa.pdf": "60cb44b92b50472cb14e67932e9dd2db2cd7e706c0f22aaf0f642e38021ffa0d",
+  "QUA-Menu-ar.pdf": "675b2812fabc8a45cccd7359a30bbf6fe89bc1edbb28b568e77dc8b953ac4f9c",
+  "QUA-Menu-ja.pdf": "bb00052a830d4c8603edcab854bf03941d300425edab6c6ac85d9c4dc7ac1f83",
+  "QUA-Menu-ru.pdf": "358024564c04c062584e6dd603c5d27b7d5b358b554568013646097a6ecb0962",
+  "QUA-Menu-hi.pdf": "697d06863599cd2e05e8cfd4e61982c721986e10dbd233875685f2a5f3f4088c",
+  "QUA-Menu-ur.pdf": "f655f06fade2fa4a98391aed5705b548bc2d8a8df2bf2db049cbb044ccf15890"
  }
 }

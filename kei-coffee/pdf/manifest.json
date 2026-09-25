@@ -2,25 +2,25 @@
  "layout": "diner-print-v1",
  "printer_sha256": "ff9ca4247e94070f05892bf397859b23ce19bf90ff6ad678dd5a5176fb18d8cb",
  "pages": {
-  "index.html": "b1f311002a0797da0973a452b7ba6563df57b6cfedde67d6beeceb3ea38b260d"
+  "index.html": "6e39e4a03fc57c397ab2544d324c28b26aee6e899c27f7c80a6a001cba05bb0c"
  },
  "print_pages": {
-  "Kei-Coffee-Menu-en.html": "468c206d3beb036410126d2b96e6a13149ab62b60b1d59b5de3d862e493b69ea",
-  "Kei-Coffee-Menu-es.html": "151f30a84861df7217f16f189f4da5db154a24dc9e48961080d6e205278c3919",
-  "Kei-Coffee-Menu-vi.html": "a6cc76d2d2856355ca42ce6a27a95a8ad08b9f822d8d693e91dd238d6d813486",
-  "Kei-Coffee-Menu-ko.html": "68ec4f577146c99fc68eb2a43f26ec591730b6fe6510b6bc124d9f3b8329df42",
-  "Kei-Coffee-Menu-zh.html": "f969b8802107db4217501e8dc3e00e0c8e87156f7238ad12dea2006a18e684a8",
-  "Kei-Coffee-Menu-zh-Hant.html": "f792ed00cb25db6dc115fba69f0ed117ab38185c0c1339df2fb1fff879959949",
-  "Kei-Coffee-Menu-tl.html": "6c39032658489fa1f704073a055052e80bcd80974badab984ea04c4ce0dd917c",
-  "Kei-Coffee-Menu-fa.html": "c22941c0f0bdd11f8499434cf1dbc9f15efa36a67c718fc2202e0ad851574e30",
-  "Kei-Coffee-Menu-ar.html": "2064d5f31f1881b77f24ae4e64ddb4571b2dfae50c404958121c754e3cf9e407",
-  "Kei-Coffee-Menu-ja.html": "ec952bc574043287baa403d4ae46c7b713475cebdc4387464fbd82cf1146c5e7",
-  "Kei-Coffee-Menu-ru.html": "5b7d2dc8daa3c2ae9f4bdfdd19cb1ced38665b6190f494f1ae36afc7e8123741",
-  "Kei-Coffee-Menu-hi.html": "f8ded79849e70c73c94b9dc4444c4f68cad1bb765e79b0a2799661667d2f319a",
-  "Kei-Coffee-Menu-ur.html": "9553e2c42fe7491a6687489b678e7df06c1498a84fb2a60b8dd57cd6ff4cca2d"
+  "Kei-Coffee-Menu-en.html": "a07933e6e5ad0451549a462d7f8c9d521b54998f29c2bc63932f3bf876018909",
+  "Kei-Coffee-Menu-es.html": "7034eddf5f1ea72ff5e75e4c7c6ca7e8b94f8f42a1dcb7e8fa1abf1d7baa6174",
+  "Kei-Coffee-Menu-vi.html": "16c9e34efd87ec38568400f37ffb6b98f66942b770b3d97d0467c753ebd6a12c",
+  "Kei-Coffee-Menu-ko.html": "cff45c3c4ab52028123f0019d43312000a1feec510fe7027a7531e8622fa560d",
+  "Kei-Coffee-Menu-zh.html": "ebae3a7a5794b7fb784af6e1a26c0e9d44af7bb2f8b7930487b814d34d37732c",
+  "Kei-Coffee-Menu-zh-Hant.html": "c250b7e0e75aa90e3a6b5f4325a8eed29ac1831c360b0259d8f7dc7e46aefc4f",
+  "Kei-Coffee-Menu-tl.html": "3f6a2a5dcdd22f1ec2447d337756b36ca4df3b832b420964c15c981f94dbd04f",
+  "Kei-Coffee-Menu-fa.html": "4685eb3e5c2e042f7442909a5d1e4c4269898ad035f3732b3e9e2a59777eeb45",
+  "Kei-Coffee-Menu-ar.html": "e7f230f2bd84065a6e5bf4334dcd017af12f69c2491e99d0b3888332f94cbc95",
+  "Kei-Coffee-Menu-ja.html": "67f3abd97f357b85063a8f744623be5782a2333cd7781668becd9bf7d671dcc4",
+  "Kei-Coffee-Menu-ru.html": "6df57008e06d165dce1f09e52abf7784452c0caace7f4651dc77fc33489a10dd",
+  "Kei-Coffee-Menu-hi.html": "c254839d7cbc37201cfa9c92ce439a6f471af4216df32e8d0e89747984fc21c2",
+  "Kei-Coffee-Menu-ur.html": "c003aaf877e5dc3ea6cf7bfaa63d7d49a20fd929b20490830540fbdb9d02bf1d"
  },
- "source_sha256": "ba12c3ad1bee54ced95063e9798f6f5325b7b4844574997352864619781dc151",
- "revision_date": "2026-09-24",
+ "source_sha256": "5cd38fae8e461fac038e39a7afc06220df96b9bc971138142a787bfd3277aa7f",
+ "revision_date": "2026-09-25",
  "files": [
   "Kei-Coffee-Menu-ar.pdf",
   "Kei-Coffee-Menu-en.pdf",
@@ -52,18 +52,18 @@
   "Kei-Coffee-Menu-ur.pdf": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nAAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes      4  0\nBAAAAA+Times-Bold                    CID TrueType      Identity-H       yes yes yes      8  0\nCAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes      9  0\nDAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     10  0\nEAAAAA+Times-Roman                   CID TrueType      Identity-H       yes yes yes     11  0\nFAAAAA+Times-Bold                    CID TrueType      Identity-H       yes yes yes     12  0\nGAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     13  0\nHAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     17  0\nIAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     18  0\nJAAAAA+HelveticaNeue-Bold            CID TrueType      Identity-H       yes yes yes     19  0\nKAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     26  0\nLAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     27  0\nMAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     28  0\nNAAAAA+HelveticaNeue                 CID TrueType      Identity-H       yes yes yes     29  0\nOAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     31  0\nPAAAAA+NotoNastaliqUrdu              CID TrueType      Identity-H       yes yes yes     32  0\nQAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     67  0\nRAAAAA+NotoNastaliqUrdu-Bold         CID TrueType      Identity-H       yes yes yes     68  0\nSAAAAA+Times-Roman                   CID TrueType      Identity-H       yes yes yes    149  0\nTAAAAA+Times-Bold                    CID TrueType      Identity-H       yes yes yes    151  0\n"
  },
  "pdf_sha256": {
-  "Kei-Coffee-Menu-en.pdf": "12107a5208bcd8e446adad2eedecf84800e98dfa4cb08a8f45437284911788c6",
-  "Kei-Coffee-Menu-es.pdf": "f71cd5465da72fe2fdbc9704ddab688312f8694f2a663c95c8a7c7fd70d38483",
-  "Kei-Coffee-Menu-vi.pdf": "9b023c57423442f38c420971f50b88b3c9fbbf21451aa93072cf69db1c2a41b2",
-  "Kei-Coffee-Menu-ko.pdf": "251344e1dc9ae5794339ecd9876005f27b2838eb7273e238f118b6001f9618d4",
-  "Kei-Coffee-Menu-zh.pdf": "d89e67a0db1e39d6532793feae17dced5b44b3396891cb972a5ece4a3591836d",
-  "Kei-Coffee-Menu-zh-Hant.pdf": "a438b18d5a7fd25a2fd20ae12579f3b683c1d1f06edd364840574c95cc261039",
-  "Kei-Coffee-Menu-tl.pdf": "be26f95dcedd9f2aac511b05ca84afe847c17adc173a02662e29e5aace4830dc",
-  "Kei-Coffee-Menu-fa.pdf": "e85b0761a04f7fd33cbb74209cda132043529d6f291a146967ee83aac5fd9ecd",
-  "Kei-Coffee-Menu-ar.pdf": "28606c28989433c00d9c9e260b6a2970d43d2f8d3d9512bf995ea4057abea384",
-  "Kei-Coffee-Menu-ja.pdf": "3b56c883558e23647bdf14d8cb7933fcb857b69767ce04fed7858ff68b30ad51",
-  "Kei-Coffee-Menu-ru.pdf": "b51821e23458e1700bb10b4b2a832d78344075721cd2937b7cd6c6f96671dd02",
-  "Kei-Coffee-Menu-hi.pdf": "587a1cc0a156112fce956debd4e117299f42e40567f2960c7fcdf6630759632b",
-  "Kei-Coffee-Menu-ur.pdf": "11c1e99675efb8a6954983f634717153965e0a7621776e59b806b090e12af4be"
+  "Kei-Coffee-Menu-en.pdf": "50237c1870438f83faa562324e6327badb5107e09638f4a7955fe7277627562f",
+  "Kei-Coffee-Menu-es.pdf": "dfd3668fa62a18bc2de78e0cc376e3a77673a929eb557351b45d216ceeb6ae3b",
+  "Kei-Coffee-Menu-vi.pdf": "644211919b639159f2c09472be86ea9b14c601b0bf331d36de445b2eafb3dc7d",
+  "Kei-Coffee-Menu-ko.pdf": "b82764d53d34818d677d120d520d52f24cdc23cfdd9698ce6f036ac0de1edbfd",
+  "Kei-Coffee-Menu-zh.pdf": "28c9db18627e9db669984f5f9c08a719afa4dfabb250a1d65b056d10138c5fff",
+  "Kei-Coffee-Menu-zh-Hant.pdf": "c954a3a096ffc5009b4b16d353159cb0c808c93b07a28fa4afd69209cf65c509",
+  "Kei-Coffee-Menu-tl.pdf": "9d0f1a64e6db360899ce5434ed689d57511fe6e94888e075c0584260d83a3bea",
+  "Kei-Coffee-Menu-fa.pdf": "f68b3a0b9a8a80ef4000669737690cfd083b42565707dd4bec65ba32d7e74855",
+  "Kei-Coffee-Menu-ar.pdf": "6ffe47a28f4642912af574f5ad7eea906da729ba191f8f0be272b9139b1db3f8",
+  "Kei-Coffee-Menu-ja.pdf": "42d974f8484887cfd35300ac54a13661c5c65cf5408a5ffd8fc701d70d391dcc",
+  "Kei-Coffee-Menu-ru.pdf": "72d4003083ab17f172ab0132c1101a16b6d4d5758c85509df5212dec4c5aff04",
+  "Kei-Coffee-Menu-hi.pdf": "aa77df585e887e136df94ebb5a29ca735af5b5fa01f3155833055761556174c1",
+  "Kei-Coffee-Menu-ur.pdf": "3df7c0c2a1b30a4d906dc8ae013942f25291834c88e0f510374a1b871fcb4c91"
  }
 }
