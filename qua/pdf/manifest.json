@@ -2,24 +2,24 @@
  "layout": "diner-print-v1",
  "printer_sha256": "ff9ca4247e94070f05892bf397859b23ce19bf90ff6ad678dd5a5176fb18d8cb",
  "pages": {
-  "index.html": "46f1e1782816bf1a586100ae8e996c92f71fed4a589791f0447118967f66b3a4"
+  "index.html": "d084e4c662fa7bd60f4f6588c3359efa89a59eb0de602b93b2e99861d63db8d9"
  },
  "print_pages": {
-  "QUA-Menu-en.html": "a237ae6c0044409c6dc08b40fe268379d7da9911b93e96dc1ec5de04269e38d9",
-  "QUA-Menu-es.html": "01aeeecabd8599152e395d91c0433c0122141c431ff31b784186481ef03fa287",
-  "QUA-Menu-vi.html": "8a6bb40b0ab9928a2a50326a3bedc0c1aa386850fa645ecfd5f4ea6c346aead6",
-  "QUA-Menu-ko.html": "366a8c1a8f7283b241653efb3b08228385fc92a2eaa01b197cfc7e79de8cc3e4",
-  "QUA-Menu-zh.html": "f19600971efef1a8692d4f81e61c4fe5294f2fd1f7d747444a2fb098496ab31c",
-  "QUA-Menu-zh-Hant.html": "a7b7cc169343dc3659afe86a618d0a940a57bb5ca93b6a14f5dea741900b29c8",
-  "QUA-Menu-tl.html": "c6edb5af28a615507ef22b1332d972c89d57c302214a9d35368d2526dca39837",
-  "QUA-Menu-fa.html": "628d9a85215b00c3ea0c3a883f3ce9f341d92c07f9b2c1979f08c88d128ae1ff",
-  "QUA-Menu-ar.html": "b2391c39db22d07a2aa69ea993f6c8843ddbe2a6f02c78a35b11c261321c95bb",
-  "QUA-Menu-ja.html": "f12ea6bd82b6c0ca350034695bcc73e697e712c2fb468a26be7cc562f10d5c12",
-  "QUA-Menu-ru.html": "4ec1f8870514be76fc454d7ed0c7151bef585070fe22da5f341a97758093ded5",
-  "QUA-Menu-hi.html": "9f250f98f92e746cbb554302e5c1235e67281bc1b7949928120c83b1f510abbc",
-  "QUA-Menu-ur.html": "372ab5116154aea2fe290da27e82833a618050322abc692943d5f9aace406bff"
+  "QUA-Menu-en.html": "2e423e87ddb5679a1991b264dfdfb787aff7b7faee8d09e3d8ff356307f2218b",
+  "QUA-Menu-es.html": "8503d0cd3ccda9ec82059977f1e04d40c8a6f76a898ae9c63a714c38dbedf4b6",
+  "QUA-Menu-vi.html": "4f726c612393835e272e29dfdced137f96281f4fc5c5d4e965d34f59fa270a84",
+  "QUA-Menu-ko.html": "f1a8ade3f3b027d9b1a4dcfb45ebb31c12937044931eae80cc81efcb009c318e",
+  "QUA-Menu-zh.html": "0daba03d17714b76057269e735f7df6881e5b5db92eb067a5e6e164e39daa22d",
+  "QUA-Menu-zh-Hant.html": "34ab9361fdc60af9eb518c56352d87c66652f74c36dabe03e1e574a43be9af41",
+  "QUA-Menu-tl.html": "75bbadb8080fe573b84df9e31639f9a2298d1bbb7750b2045723d37a6f87c991",
+  "QUA-Menu-fa.html": "612f16504a574908f734d4636f1022f15cb6f8b57904b5a27a6a8457b0349eb9",
+  "QUA-Menu-ar.html": "3e650827040612c146382c25b485f1f4895548675697ad0a83e871419c0b1e4b",
+  "QUA-Menu-ja.html": "e84518c6a9d2ee0f6966df1f8af5985f8c05dddfa5d44ed4e1f998235c7ba0a2",
+  "QUA-Menu-ru.html": "8484fad8ef147824000640fbe517b2a32beec8a9ad9cb84e85c35040e62dfe5c",
+  "QUA-Menu-hi.html": "5f37923ad141c144f6693e22c6b381fa92e249836f6b1fb844f57b16ee62a527",
+  "QUA-Menu-ur.html": "ac4b78760c71b45c4bd22bd155e7bb16094dd3e78d873c3df9bdfdcd43660752"
  },
- "source_sha256": "435564e52710cb3520bc7f192eefdb91b284cf010a6d0cd2cef998aa16c48495",
+ "source_sha256": "7a63bb60ba2e7455281a1d5676fbf730d11d7ed54ded112d63128b98a8ba8c12",
  "revision_date": "2026-09-26",
  "files": [
   "QUA-Menu-ar.pdf",

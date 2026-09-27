@@ -2,24 +2,24 @@
  "layout": "diner-print-v1",
  "printer_sha256": "ff9ca4247e94070f05892bf397859b23ce19bf90ff6ad678dd5a5176fb18d8cb",
  "pages": {
-  "index.html": "68b538979d5176c2311c4fe5acebe8187ccc45010cdf4a66c42591a52cacef34"
+  "index.html": "687b38e0f57df81581381740f914e20c54900617ef84b09fe888323839ca0e69"
  },
  "print_pages": {
-  "INI-Menu-en.html": "0ed7ca123cd5277ce690fb3ce8fc20f9526dd95c2015c42beccb079110455064",
-  "INI-Menu-es.html": "c2d8038d4ae083b050a973cc7260cbba95e86760dee0a5ef39bb5a71ac3e1bd9",
-  "INI-Menu-vi.html": "463ff58a16c9c9fc27adb0526a68ef416750bb8bdc4702e255e9ec39d9ea88f2",
-  "INI-Menu-ko.html": "3bf5f09f8f2df93c59e90b5f939a57a5073bf75b5f4a137116bcfe3d8dc4213a",
-  "INI-Menu-zh.html": "e707bd90781a693c7957cd0e2b1c76ec67f84e35a41ef688f9aba4ec969c5333",
-  "INI-Menu-zh-Hant.html": "1fb3064a4d3d40fa8ca774f2cb0b7c907b83f5f31ac68bc658303e24e7b90574",
-  "INI-Menu-tl.html": "365107d0259e75a0a649123a124d24f7defea2a4dd31ba50f55445a0c470141b",
-  "INI-Menu-fa.html": "93f82a08df76682b04cf99ffb1ed5f98bd2f691d31ebca4a0c80f019c4238b19",
-  "INI-Menu-ar.html": "9e9d82bd30a85bb0a38b14c3ede09867d5904cba1d26e182253c5379b76d8dd8",
-  "INI-Menu-ja.html": "d11e6a9f9f0d4743db179b47d24737f72fadb55a075db683f3db93be6ebf79d9",
-  "INI-Menu-ru.html": "089eb72ee058a839da4e840e7080280be61fffa0d740ec487d7f45b9c4469ef1",
-  "INI-Menu-hi.html": "821897f8769800ad7c28be07c9cc371e416008f2f55213ed1776f1446e88e9f1",
-  "INI-Menu-ur.html": "654598be928fd029c38fd36ceea72ac4c8ec5c38b5cb7a42919ba6c3ac3fd40a"
+  "INI-Menu-en.html": "d0a9e6762efbbee83aba43e7a36e250e4e510b1512e92dcef8ae3a43edc919a4",
+  "INI-Menu-es.html": "8d2afc58d7ad71cc97a89f6b85bfa64e0590ef8acc4c0caef86b09fd47cf3977",
+  "INI-Menu-vi.html": "e07c09ab9437bcf2069c4d1203ae4b62e0145e2d4a1a73a07a1a6a3dde104c7c",
+  "INI-Menu-ko.html": "44880033ef114e1d948effebb07d7be0c2839914131813c2991da6ca88dbabc7",
+  "INI-Menu-zh.html": "72d51a35e4cc2e3596968c6895bd8522e26581509c6719d697331441455206f1",
+  "INI-Menu-zh-Hant.html": "63c99291176de23a29f94afc7cdf96b721d72397732689f0be2bf6b07878136b",
+  "INI-Menu-tl.html": "d5f745eb8b036beac3bc24623e9e5f9ac616d5a7c95db9562a2c6e0a0530ab9a",
+  "INI-Menu-fa.html": "592be5b02c8878c0e15e5a2104e9af0ca06a9b5c4ede9e8b2587f2d30e6fb484",
+  "INI-Menu-ar.html": "26451519f0b66398a2f89c030fae127a5110739685ca88ca535b2c287bfd7d77",
+  "INI-Menu-ja.html": "5e2f05a6da13914f948a9f9c45e5220cb24aa5f0e276c3b3e63ab60caab10875",
+  "INI-Menu-ru.html": "8b244837544cf90fbdd80b8219a759738c8df9d625542abfc3e10f66490cecda",
+  "INI-Menu-hi.html": "01324e3aab4563e268d5daf4650c58cc197dd8b2b04b37e8f3498d044b1a0855",
+  "INI-Menu-ur.html": "6634960a194dab991d5401fd3355e2543c5acde6142d91e74c91decc3ac2a6b2"
  },
- "source_sha256": "349c984d9dc0ca59180bba8f7055cbe3ae78695fe4fb1ba1a10d096cf6e8991a",
+ "source_sha256": "0275f3a42aeac283e058c77901809498415dc3eb43d482491f0a34e8541aab76",
  "revision_date": "2026-09-26",
  "files": [
   "INI-Menu-ar.pdf",

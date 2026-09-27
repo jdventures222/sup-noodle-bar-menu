@@ -1208,6 +1208,13 @@ window.addEventListener("popstate", () => {
   document.querySelectorAll("dialog[open]").forEach(d => { if (!st || st.modal !== d.id || st.k !== d.dataset.k) closeDialog(d, true); });
   runNext();
 });
+/* Under the page's smooth scrolling Chrome animates a Back or Forward return, over a second on a long menu, and a
+   second Back or Forward inside it stores the half-way spot in the entry it leaves (Safari returns at once). A return
+   lands at once; the next tap or key gives a tapped link its smooth jump again. */
+if (window.navigation) {
+  navigation.addEventListener("navigate", e => { if (e.navigationType === "traverse") document.documentElement.style.scrollBehavior = "auto"; });
+  for (const type of ["keydown", "click"]) addEventListener(type, () => document.documentElement.style.removeProperty("scroll-behavior"), true);
+}
 document.querySelectorAll("dialog").forEach(dlg => {
   dlg.addEventListener("cancel", e => { e.preventDefault(); closeDialog(dlg); });
   /* A press that starts on the sheet and ends on the backdrop (a mouse drag) clicks the dialog itself,
