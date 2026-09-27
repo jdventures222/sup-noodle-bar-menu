@@ -610,6 +610,16 @@ html[lang="ur"] .promo-list .promo-card :is(.eyebrow, .promo-title, .when, .term
 .dish > .photo-tile-blur, .promo-media > .photo-tile-blur { position: absolute; inset: 0; }
 .dish > .photo-tile-blur.in, .promo-media > .photo-tile-blur.in { opacity: 0; }
 
+/* Contains is a filter detail on screen. Keep the full line on matching dishes;
+   an option note matches only when its own listNames() output marks a selected allergen.
+   No-JS fallbacks use their own markup; printed menus keep every existing line. */
+@media screen {
+  #main .item:not(.flagged) > .al,
+  #searchResults .search-result:not(.flagged) > .al,
+  #searchResults .search-result:not(.flagged) > a > .al,
+  #main .vplus:not(:has(mark)),
+  #searchResults .vplus:not(:has(mark)) { display: none; }
+}
 </style>
 </head>
 <body>

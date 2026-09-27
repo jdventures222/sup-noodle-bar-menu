@@ -432,6 +432,16 @@
   @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
   /* Printing carries every options disclosure and the footer's notices (finding 16). */
   @media print { #main details { display: block !important; } #main details > summary { list-style: none; } #main details > :not(summary) { display: block !important; } .end, #footer, footer.end { display: block !important; } }
+/* Contains is a filter detail on screen. Keep the full line on matching dishes;
+   an option note matches only when its own listNames() output marks a selected allergen.
+   No-JS fallbacks use their own markup; printed menus keep every existing line. */
+@media screen {
+  #main .item:not(.flagged) > .al,
+  #searchResults .search-result:not(.flagged) > .al,
+  #searchResults .search-result:not(.flagged) > a > .al,
+  #main .vplus:not(:has(mark)),
+  #searchResults .vplus:not(:has(mark)) { display: none; }
+}
 </style>
 </head>
 <body>
