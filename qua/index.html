@@ -596,6 +596,20 @@ html[lang="ur"] .promo-list .promo-card :is(.eyebrow, .promo-title, .when, .term
 .promo-list .promo-card .promo-media[data-pool] > picture, .promo-list .promo-card .promo-media[data-pool] > img { position: absolute; inset: 0; transition: opacity .6s ease; }
 .promo-list .promo-card .promo-media[data-pool] > .in { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .promo-list .promo-card .promo-media[data-pool] > picture, .promo-list .promo-card .promo-media[data-pool] > img { transition: none; } }
+/* 2026-09-26: whole dish over a blurred, cover-scaled copy of its own photo.
+   Layer geometry and clipping are shared by every screen and print template. */
+.photo-tile-blur { display: block; position: relative; width: 100%; height: 100%; overflow: hidden; isolation: isolate; container-type: inline-size; }
+.photo-tile-blur .photo-layer { display: block; position: absolute; inset: 0; }
+.photo-tile-blur .photo-layer picture { display: block; position: absolute; inset: 0; width: 100%; height: 100%; background: none; transition: none; }
+.photo-tile-blur .photo-layer img { display: block; width: 100% !important; height: 100% !important; object-fit: contain !important; object-position: center !important; border-radius: 0 !important; background: transparent !important; transform: translate(var(--tile-x), var(--tile-y)) scale(var(--tile-zoom)) !important; transform-origin: center; clip-path: var(--tile-clip); }
+.photo-tile-blur .photo-backdrop { filter: blur(6cqw); pointer-events: none; }
+/* The two directional feathers intersect; the vessel ellipse adds a fully
+   opaque sharp region. Only exposed sides fade, over 10% of the shorter side. */
+.photo-tile-blur .photo-foreground { -webkit-mask-image: var(--tile-mask); mask-image: var(--tile-mask); -webkit-mask-composite: source-over, source-in; mask-composite: add, intersect; mask-repeat: no-repeat; }
+/* Existing rotation owns only the outer layer, never its two image copies. */
+.dish > .photo-tile-blur, .promo-media > .photo-tile-blur { position: absolute; inset: 0; }
+.dish > .photo-tile-blur.in, .promo-media > .photo-tile-blur.in { opacity: 0; }
+
 </style>
 </head>
 <body>
@@ -763,11 +777,32 @@ function framingStyle(path) {
 }
 /* AVIF and WebP derivatives beside each JPEG; the JPEG stays the fallback. Densities are
    computed against the box the photo fills, so one thumbnail serves 84px tiles and 76px shots. */
-function pictureHTML(path, box, attrs) {
+/* One renderer for menu, option, promo, directory and print tiles. The two
+   pictures have identical candidates, so the browser reuses the same resource.
+   Viewer images never call this helper. No animation or generated image. */
+function photoTileHTML(markup, frame) {
+  if (!frame || frame.backdrop !== "blur") return markup;
+  const layer = (name, f) => `<span class="photo-layer ${name}" style="--tile-zoom:${f.zoom};--tile-x:${f.x}%;--tile-y:${f.y}%;--tile-clip:inset(${frame.clip.map(n => n + "%").join(" ")})${name === "photo-foreground" ? ';--tile-mask:' + photoForegroundMask(frame) : ''}"${name === "photo-backdrop" ? ' aria-hidden="true"' : ""}>${markup}</span>`;
+  return `<span class="photo-tile-blur">${layer("photo-backdrop", frame.backdropFrame)}${layer("photo-foreground", frame)}</span>`;
+}
+
+function photoForegroundMask(frame) {
+  const [t,r,b,l] = frame.clip, {zoom:z,x,y} = frame;
+  const edges = [50+(l-50)*z+x,50+(t-50)*z+y,50+(50-r)*z+x,50+(50-b)*z+y];
+  const n = v => String(Number(v.toFixed(5)));
+  const axis = (direction,lo,hi,fade) => `linear-gradient(to ${direction},${lo > .01 ? `transparent ${n(lo)}%,#000 ${n(lo+fade)}%` : '#000 0%'},${hi < 99.99 ? `#000 ${n(hi-fade)}%,transparent ${n(hi)}%` : '#000 100%'})`;
+  const [cx,cy,rx,ry] = frame.sharpEllipse;
+  return [`radial-gradient(ellipse ${n(rx)}% ${n(ry)}% at ${n(cx)}% ${n(cy)}%,#000 100%,transparent 100%)`,axis('right',edges[0],edges[2],7.5),axis('bottom',edges[1],edges[3],10)].join(',');
+}
+
+function plainPictureHTML(path, box, attrs) {
   const alt = DATA.alt[path];
   if (!alt) return `<img src="${path}" ${attrs}>`;
   const set = rows => rows.map(([f, w, h]) => `${f} ${(Math.min(w, h) / box).toFixed(2)}x`).join(", ");
   return `<picture><source type="image/avif" srcset="${set(alt.avif)}"><source type="image/webp" srcset="${set(alt.webp)}"><img src="${path}" ${attrs}></picture>`;
+}
+function pictureHTML(path, box, attrs) {
+  return photoTileHTML(plainPictureHTML(path, box, attrs), DATA.framing[path]);
 }
 function derivedHTML(entry) {
   const tags = (entry.derivedAllergens || []).map(row => row.allergen);
