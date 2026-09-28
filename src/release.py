@@ -76,7 +76,7 @@ class LocationText(HTMLParser):
 
 def normalize_location(text):
     text = unicodedata.normalize('NFKC', text).casefold()
-    return re.sub(r'[\s\u00b7\u30fb\u200b-\u200f\u202a-\u202e\u2066-\u2069\-\u2010-\u2015\u2212]+', '', text)
+    return re.sub(r'[\s\u00b7\u30fb\u00ad\u034f\u180e\u200b-\u200f\u2060-\u2064\ufeff\u202a-\u202e\u2066-\u2069\-\u2010-\u2015\u2212]+', '', text)
 
 
 def verify_menu_contacts(fallback):
