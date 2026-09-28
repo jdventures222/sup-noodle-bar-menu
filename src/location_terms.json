@@ -1,0 +1,163 @@
+{
+  "forbidden": [
+    "Aliso Creek",
+    "Aliso Creek Road",
+    "Aliso Viejo",
+    "Beach Bl",
+    "Beach Blvd",
+    "Beach Boulevard",
+    "Bear St",
+    "Bear Street",
+    "Brookhurst",
+    "Brookhurst Street",
+    "Buena Park",
+    "Costa Mesa",
+    "Culver",
+    "Fountain Valley",
+    "Idaho St",
+    "Idaho Street",
+    "Irvine",
+    "La Habra",
+    "South Coast Plaza",
+    "Warner Av",
+    "Warner Ave",
+    "Warner Avenue",
+    "Westminster",
+    "Алисо-Вьехо",
+    "Буэна-Парк",
+    "Вестминстер",
+    "Ирвайн",
+    "Ирвайна",
+    "Коста-Меса",
+    "Ла-Хабра",
+    "Фаунтин-Вэлли",
+    "آلیسو ویهو",
+    "أليسو فييخو",
+    "إرفاين",
+    "اروائن",
+    "ارواین",
+    "الیسو ویئہو",
+    "اِروائن",
+    "بوئنا پارک",
+    "بوينا بارك",
+    "فاؤنٹین ویلی",
+    "فاونتن فالي",
+    "فاونتن ولی",
+    "كوستا ميسا",
+    "لا هابرا",
+    "لا ہابرا",
+    "وستمنستر",
+    "وست‌مینستر",
+    "ویسٹ منسٹر",
+    "کوستا میسا",
+    "کوسٹا میسا",
+    "अर्वाइन",
+    "अलिसो विएहो",
+    "इरवाइन",
+    "कोस्टा मेसा",
+    "फाउंटेन वैली",
+    "बुएना पार्क",
+    "ला हाब्रा",
+    "वेस्टमिंस्टर",
+    "アリソビエホ",
+    "アーバイン",
+    "ウェストミンスター",
+    "コスタメサ",
+    "ファウンテンバレー",
+    "ブエナパーク",
+    "ラハブラ",
+    "尔湾",
+    "爾灣",
+    "芳泉谷",
+    "어바인",
+    "파운틴밸리"
+  ],
+  "supFooterPhones": [
+    {
+      "key": "ui.buenaPark",
+      "phone": "714-521-2444",
+      "href": "tel:+17145212444",
+      "labels": {
+        "ar": "بوينا بارك",
+        "en": "Buena Park",
+        "es": "Buena Park",
+        "fa": "بوئنا پارک",
+        "hi": "बुएना पार्क",
+        "ja": "ブエナパーク",
+        "ko": "Buena Park",
+        "ru": "Буэна-Парк",
+        "tl": "Buena Park",
+        "ur": "بوئنا پارک",
+        "vi": "Buena Park",
+        "zh-Hant": "Buena Park",
+        "zh": "Buena Park"
+      }
+    },
+    {
+      "key": "ui.irvine",
+      "phone": "657-300-8420",
+      "href": "tel:+16573008420",
+      "labels": {
+        "ar": "إرفاين",
+        "en": "Irvine",
+        "es": "Irvine",
+        "fa": "ارواین",
+        "hi": "इरवाइन",
+        "ja": "アーバイン",
+        "ko": "Irvine",
+        "ru": "Ирвайн",
+        "tl": "Irvine",
+        "ur": "اِروائن",
+        "vi": "Irvine",
+        "zh-Hant": "Irvine",
+        "zh": "Irvine"
+      }
+    }
+  ],
+  "regressionControls": [
+    {
+      "class": "Korean spacing",
+      "html": "<p>파운틴 밸리</p>"
+    },
+    {
+      "class": "Japanese middle dot",
+      "html": "<p>ファウンテン・バレー</p>"
+    },
+    {
+      "class": "street suffix",
+      "html": "<p>Beach Boulevard</p>"
+    },
+    {
+      "class": "named entity",
+      "html": "<p>Fountain&nbsp;Valley</p>"
+    },
+    {
+      "class": "other named entity",
+      "html": "<p>Fountain&NonBreakingSpace;Valley</p>"
+    },
+    {
+      "class": "numeric entity",
+      "html": "<p>Fount&#x61;in&#160;Valley</p>"
+    },
+    {
+      "class": "inline split",
+      "html": "<p><span>Foun</span><span>tain</span> <span>Val</span><span>ley</span></p>"
+    },
+    {
+      "class": "NBSP",
+      "html": "<p>Fountain Valley</p>"
+    },
+    {
+      "class": "hyphen",
+      "html": "<p>Fountain‑Valley</p>"
+    },
+    {
+      "class": "case",
+      "html": "<p>FOUNTAIN VALLEY</p>"
+    },
+    {
+      "class": "dictionary alias",
+      "html": "<p>अर्वाइन</p>"
+    }
+  ]
+}

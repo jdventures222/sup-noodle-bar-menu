@@ -816,7 +816,9 @@ function ctaHTML() {
 function sectionHTML(sec) {
   const compact = ["extras", "kids", "drinks"].includes(sec.id);
   const hasPhotos = sec.items.some(it => DATA.photos[it.id]);
-  const intro = has(`sec.${sec.id}.intro`) ? `<p class="intro">${prose(t(`sec.${sec.id}.intro`))}</p>` : "";
+  // This sentence names both Uni dishes; only their selected catalog flags justify it.
+  const limited = sec.id !== 'premium' || ['premium-uni', 'premium-uni-toro'].every(id => sec.items.some(it => it.id === id && it.limitedAvailability));
+  const intro = limited && has(`sec.${sec.id}.intro`) ? `<p class="intro">${prose(t(`sec.${sec.id}.intro`))}</p>` : "";
   const broth = has(`sec.${sec.id}.brothNote`) ? `<p class="intro small">${prose(t(`sec.${sec.id}.brothNote`))}</p>` : "";
   const refills = "";
   const addons = sec.addons ? `<div class="addons"><h3>${prose(t("ui.addons"))}</h3><ul class="items">${sec.addons.map(a => itemHTML(a, "addon")).join("")}</ul></div>` : "";

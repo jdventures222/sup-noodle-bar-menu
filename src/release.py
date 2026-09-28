@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import unicodedata
 from html.parser import HTMLParser
 from urllib.parse import unquote, urlsplit
 from build_common import LANGS, SOURCES, PHASE2_KEYS, read_strings, source_hash, poppler_tool
@@ -45,9 +46,41 @@ class Document(HTMLParser):
             self.price_text += data
 
 
+LOCATION_BLOCKS = set('address article aside blockquote br dd div dl dt fieldset figcaption figure footer form h1 h2 h3 h4 h5 h6 header hr li main nav ol p pre section table tbody td th thead tr ul'.split())
+
+
+class LocationText(HTMLParser):
+    """Decode HTML5 entities; inline elements preserve adjoining text nodes."""
+    def __init__(self, html):
+        super().__init__(convert_charrefs=True)
+        self.parts, self.hidden = [], []
+        self.feed(html)
+        self.close()
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ('head', 'script', 'style'):
+            self.hidden.append(tag)
+        if not self.hidden and tag in LOCATION_BLOCKS:
+            self.parts.append(' ')
+
+    def handle_endtag(self, tag):
+        if self.hidden and tag == self.hidden[-1]:
+            self.hidden.pop()
+        if not self.hidden and tag in LOCATION_BLOCKS:
+            self.parts.append(' ')
+
+    def handle_data(self, data):
+        if not self.hidden:
+            self.parts.append(data)
+
+
+def normalize_location(text):
+    text = unicodedata.normalize('NFKC', text).casefold()
+    return re.sub(r'[\s\u00b7\u30fb\u200b-\u200f\u202a-\u202e\u2066-\u2069\-\u2010-\u2015\u2212]+', '', text)
+
+
 def verify_menu_contacts(fallback):
     """Only the paired city labels in SUP's final no-JS contacts may name a place."""
-    from html import unescape
     expected = '<p>' + '<br>'.join(loc['city'] + ' · ' + loc['phone'] for loc in LOCATIONS) + '</p>'
     pattern = r'<p>[^<>]*<br>[^<>]*</p>(?=<p>@supnoodlebar<br>[\s\S]*?</p></div></noscript>\s*$)'
     contacts = re.findall(pattern, fallback)
@@ -55,12 +88,46 @@ def verify_menu_contacts(fallback):
         raise ValueError('SUP phone labels: missing footer or incorrect city/phone pairing')
     # Remove exactly the validated footer labels, not every city occurrence.
     remaining = re.sub(pattern, '<p>' + '<br>'.join(loc['phone'] for loc in LOCATIONS) + '</p>', fallback)
-    visible = ' '.join(unescape(re.sub(r'<style>[\s\S]*?</style>|<[^>]+>', ' ', remaining)).split()).casefold()
-    terms = {loc[key] for loc in LOCATIONS for key in ('city', 'street')} | {'Beach Blvd', 'Culver'}
+    visible = normalize_location(''.join(LocationText(remaining).parts))
+    # Standalone serving copy of brand/scripts/location_terms.json; checked for parity.
+    terms = set(json.loads((ROOT / 'location_terms.json').read_text())['forbidden'])
+    terms.update(loc[key] for loc in LOCATIONS for key in ('city', 'street'))
     terms.update(words[key] for words in read_strings(ROOT).values() for key in ('ui.buenaPark', 'ui.irvine'))
     for term in terms:
-        if term.casefold() in visible:
+        if normalize_location(term) in visible:
             raise ValueError('Visible menu location: ' + term)
+
+
+def verify_location_controls(fallback):
+    # Inside the menu, BEFORE contacts: the end-anchored footer remains valid.
+    def insert(html):
+        mutant = fallback.replace('<h1>', html + '<h1>', 1)
+        assert mutant != fallback, 'Missing menu body for location control'
+        return mutant
+
+    verify_menu_contacts(insert('<p>Welcome</p>'))
+    contract = json.loads((ROOT / 'location_terms.json').read_text())
+    controls = contract['regressionControls'] + [
+        {'class': 'verified alias', 'html': '<p>' + term + '</p>'} for term in contract['forbidden']]
+    controls += [{'class': 'SUP source contact', 'html': '<p>' + loc[key] + '</p>'}
+                 for loc in LOCATIONS for key in ('city', 'street')]
+    for test in controls:
+        try:
+            verify_menu_contacts(insert(test['html']))
+        except ValueError as exc:
+            if not str(exc).startswith('Visible menu location: '):
+                raise AssertionError('Wrong failure for ' + test['class']) from exc
+        else:
+            raise ValueError('Menu location control accepted: ' + test['class'])
+    swapped = fallback.replace('Buena Park · 714-521-2444', 'Irvine · 714-521-2444')
+    try:
+        verify_menu_contacts(swapped)
+    except ValueError as exc:
+        if not str(exc).startswith('SUP phone labels: '):
+            raise AssertionError('Wrong failure for swapped city/phone') from exc
+    else:
+        raise ValueError('SUP swapped city/phone control accepted')
+    print(f'PASS SUP location controls: {len(controls)} location-specific failures, swapped phone rejected; harmless body text passes')
 
 
 def verify(work):
@@ -102,22 +169,7 @@ def verify(work):
             sum(len(s['hasMenuItem']) for s in p['hasMenu']['hasMenuSection']) != dishes for p in places):
         raise ValueError('JSON-LD places or dish count differ from the data')
     verify_menu_contacts(fallback)
-    for loc in LOCATIONS:
-        for value in (loc['city'], loc['street']):
-            mutant = fallback.replace('</noscript>', '<p>' + value + '</p></noscript>')
-            try:
-                verify_menu_contacts(mutant)
-            except ValueError:
-                pass
-            else:
-                raise ValueError('Menu location control accepted: ' + value)
-    swapped = fallback.replace('Buena Park · 714-521-2444', 'Irvine · 714-521-2444')
-    try:
-        verify_menu_contacts(swapped)
-    except ValueError:
-        pass
-    else:
-        raise ValueError('SUP swapped city/phone control accepted')
+    verify_location_controls(fallback)
     if '<link rel="manifest" href="manifest.webmanifest">' not in text:
         raise ValueError('Missing web app manifest link')
     # The menu lives under BASE: its canonical, alternates and worker scope must all say so.
