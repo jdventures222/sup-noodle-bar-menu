@@ -1,7 +1,7 @@
 {
  "ui.title": "SUP Noodle Bar Menu",
  "ui.brand": "SUP Noodle Bar",
- "ui.tagline": "Vietnamese noodle bar in Buena Park and Irvine",
+ "ui.tagline": "Vietnamese noodle bar",
  "ui.language": "Language",
  "ui.jumpTo": "Jump to",
  "ui.specials": "Specials",
@@ -227,5 +227,6 @@
  "ui.searchNoneFiltered": "No dishes match this search and the current filters.",
  "ui.viewDish": "View dish",
  "ui.share": "Share",
- "ui.linkCopied": "Link copied"
+ "ui.linkCopied": "Link copied",
+ "ui.description": "Vietnamese noodle bar in Buena Park and Irvine"
 }

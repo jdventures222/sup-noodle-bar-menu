@@ -1,6 +1,6 @@
 """SUP's crawl surface, from its own menu data: one Restaurant per location with the menu nested
-as JSON-LD, and the web app manifest. The two locations are the ones the page's footer prints;
-release.py checks they still agree."""
+as JSON-LD, and the web app manifest. Location metadata is retained independently of the location-free menu footer;
+release.py checks its addresses and the footer's phone numbers separately."""
 import json
 from decimal import Decimal, ROUND_HALF_UP
 
@@ -54,7 +54,7 @@ def jsonld(structure, s):
 
 
 def manifest(s):
-    return json.dumps({'name': s['ui.title'], 'short_name': 'SUP', 'description': s['ui.tagline'], 'start_url': './',
+    return json.dumps({'name': s['ui.title'], 'short_name': 'SUP', 'description': s['ui.description'], 'start_url': './',
                        'display': 'minimal-ui', 'lang': 'en', 'background_color': '#F6F2ED', 'theme_color': '#FFFFFF',
                        'icons': [{'src': 'img/logo.png', 'sizes': '320x320', 'type': 'image/png'}]},
                       ensure_ascii=False, indent=1) + '\n'

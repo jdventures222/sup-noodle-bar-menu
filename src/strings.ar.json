@@ -1,7 +1,7 @@
 {
   "ui.title": "قائمة SUP Noodle Bar",
   "ui.brand": "SUP Noodle Bar",
-  "ui.tagline": "مطعم نودلز فيتنامي في بوينا بارك وإرفاين",
+  "ui.tagline": "مطعم نودلز فيتنامي",
   "ui.language": "اللغة",
   "ui.jumpTo": "الانتقال إلى",
   "ui.specials": "العروض الخاصة",
@@ -227,5 +227,6 @@
   "ui.searchNoneFiltered": "لا توجد أطباق تطابق هذا البحث والمرشحات الحالية.",
   "ui.viewDish": "عرض الطبق",
   "ui.share": "مشاركة",
-  "ui.linkCopied": "تم نسخ الرابط"
+  "ui.linkCopied": "تم نسخ الرابط",
+  "ui.description": "مطعم نودلز فيتنامي في بوينا بارك وإرفاين"
 }

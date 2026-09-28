@@ -1,7 +1,7 @@
 {
   "ui.title": "منوی SUP Noodle Bar",
   "ui.brand": "SUP Noodle Bar",
-  "ui.tagline": "رستوران نودل ویتنامی در بوئنا پارک و ارواین",
+  "ui.tagline": "رستوران نودل ویتنامی",
   "ui.language": "زبان",
   "ui.jumpTo": "رفتن به",
   "ui.specials": "پیشنهادهای ویژه",
@@ -227,5 +227,6 @@
   "ui.searchNoneFiltered": "هیچ غذایی با این جستجو و فیلترهای فعلی مطابقت ندارد.",
   "ui.viewDish": "مشاهدهٔ غذا",
   "ui.share": "اشتراک‌گذاری",
-  "ui.linkCopied": "پیوند کپی شد"
+  "ui.linkCopied": "پیوند کپی شد",
+  "ui.description": "رستوران نودل ویتنامی در بوئنا پارک و ارواین"
 }

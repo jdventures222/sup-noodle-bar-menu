@@ -1,7 +1,7 @@
 {
   "ui.title": "SUP Noodle Bar کا مینو",
   "ui.brand": "SUP Noodle Bar",
-  "ui.tagline": "بوئنا پارک اور اِروائن میں ویتنامی نوڈل بار",
+  "ui.tagline": "ویتنامی نوڈل بار",
   "ui.language": "زبان",
   "ui.jumpTo": "براہِ راست جائیں",
   "ui.specials": "خصوصی پیشکشیں",
@@ -227,5 +227,6 @@
   "ui.searchNoneFiltered": "اس تلاش اور موجودہ فلٹرز سے کوئی پکوان مطابقت نہیں رکھتا۔",
   "ui.viewDish": "پکوان دیکھیں",
   "ui.share": "شیئر کریں",
-  "ui.linkCopied": "لنک کاپی ہو گیا"
+  "ui.linkCopied": "لنک کاپی ہو گیا",
+  "ui.description": "بوئنا پارک اور اِروائن میں ویتنامی نوڈل بار"
 }

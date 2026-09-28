@@ -672,8 +672,8 @@ function sectionHTML(sec) {
 }
 function footerHTML() {
   return `<div class="locs">
-    <div><h3>${prose(t("ui.buenaPark"))}</h3><address dir="ltr">5141 Beach Blvd Unit B<br>Buena Park, CA 90621<br><a href="tel:+17145212444"><bdi dir="ltr">714-521-2444</bdi></a></address></div>
-    <div><h3>${prose(t("ui.irvine"))}</h3><address dir="ltr">14370 Culver Dr Unit 2H<br>Irvine, CA 92604<br><a href="tel:+16573008420"><bdi dir="ltr">657-300-8420</bdi></a></address></div>
+    <div><h3>${prose(t("ui.buenaPark"))}</h3><address dir="ltr"><a href="tel:+17145212444"><bdi dir="ltr">714-521-2444</bdi></a></address></div>
+    <div><h3>${prose(t("ui.irvine"))}</h3><address dir="ltr"><a href="tel:+16573008420"><bdi dir="ltr">657-300-8420</bdi></a></address></div>
   </div>
   <p class="notice"><b>${prose(t("ui.allergyTitle"))}</b>${prose(t("ui.allergyNotice"))}</p>
   ${["ar", "fa", "ur"].includes(state.lang) ? `<p class="notice halal-note">${prose(t("ui.halalNote"))}</p>` : ""}

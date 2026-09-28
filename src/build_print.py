@@ -103,8 +103,8 @@ def build(lang):
 <div class="flow">
 {"".join(section(sec) for sec in structure["sections"])}
 <div class="end">
-  <div class="loc"><h3 class="caps">{prose(t("ui.buenaPark"))}</h3><address dir="ltr">5141 Beach Blvd Unit B, Buena Park, CA 90621 · 714-521-2444</address></div>
-  <div class="loc"><h3 class="caps">{prose(t("ui.irvine"))}</h3><address dir="ltr">14370 Culver Dr Unit 2H, Irvine, CA 92604 · 657-300-8420</address></div>
+  <div class="loc"><h3 class="caps">{prose(t("ui.buenaPark"))}</h3><address dir="ltr">714-521-2444</address></div>
+  <div class="loc"><h3 class="caps">{prose(t("ui.irvine"))}</h3><address dir="ltr">657-300-8420</address></div>
   <div class="loc"><h3 class="caps"><bdi dir="ltr">SUP Noodle Bar</bdi></h3><div class="web" dir="ltr"><bdi dir="ltr"><a href="https://www.keiconcepts.info/brands/sup">keiconcepts.info/brands/sup</a></bdi><br><bdi dir="ltr">@supnoodlebar</bdi> · <bdi dir="ltr"><a href="mailto:hello@keiconcepts.info">hello@keiconcepts.info</a></bdi></div></div>
   <div class="closing-notices">
   <p class="notice"><b class="caps">{prose(t("ui.allergyTitle"))}</b>{prose(t("ui.allergyNotice"))}</p>

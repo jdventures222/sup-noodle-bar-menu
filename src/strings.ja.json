@@ -1,7 +1,7 @@
 {
   "ui.title": "SUP Noodle Bar メニュー",
   "ui.brand": "SUP Noodle Bar",
-  "ui.tagline": "ブエナパークとアーバインのベトナム麺料理店",
+  "ui.tagline": "ベトナム麺料理店",
   "ui.language": "言語",
   "ui.jumpTo": "移動先",
   "ui.specials": "特別メニュー",
@@ -227,5 +227,6 @@
   "ui.searchNoneFiltered": "この検索条件と現在のフィルターに一致する料理はありません。",
   "ui.viewDish": "料理を見る",
   "ui.share": "共有",
-  "ui.linkCopied": "リンクをコピーしました"
+  "ui.linkCopied": "リンクをコピーしました",
+  "ui.description": "ブエナパークとアーバインのベトナム麺料理店"
 }

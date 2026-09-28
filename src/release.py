@@ -45,6 +45,24 @@ class Document(HTMLParser):
             self.price_text += data
 
 
+def verify_menu_contacts(fallback):
+    """Only the paired city labels in SUP's final no-JS contacts may name a place."""
+    from html import unescape
+    expected = '<p>' + '<br>'.join(loc['city'] + ' · ' + loc['phone'] for loc in LOCATIONS) + '</p>'
+    pattern = r'<p>[^<>]*<br>[^<>]*</p>(?=<p>@supnoodlebar<br>[\s\S]*?</p></div></noscript>\s*$)'
+    contacts = re.findall(pattern, fallback)
+    if 'id="sup-nojs"' not in fallback or contacts != [expected]:
+        raise ValueError('SUP phone labels: missing footer or incorrect city/phone pairing')
+    # Remove exactly the validated footer labels, not every city occurrence.
+    remaining = re.sub(pattern, '<p>' + '<br>'.join(loc['phone'] for loc in LOCATIONS) + '</p>', fallback)
+    visible = ' '.join(unescape(re.sub(r'<style>[\s\S]*?</style>|<[^>]+>', ' ', remaining)).split()).casefold()
+    terms = {loc[key] for loc in LOCATIONS for key in ('city', 'street')} | {'Beach Blvd', 'Culver'}
+    terms.update(words[key] for words in read_strings(ROOT).values() for key in ('ui.buenaPark', 'ui.irvine'))
+    for term in terms:
+        if term.casefold() in visible:
+            raise ValueError('Visible menu location: ' + term)
+
+
 def verify(work):
     site = work / 'site'
     strings = read_strings(work)
@@ -83,9 +101,23 @@ def verify(work):
     if [p['address']['streetAddress'] for p in places] != [loc['street'] for loc in LOCATIONS] or any(
             sum(len(s['hasMenuItem']) for s in p['hasMenu']['hasMenuSection']) != dishes for p in places):
         raise ValueError('JSON-LD places or dish count differ from the data')
+    verify_menu_contacts(fallback)
     for loc in LOCATIONS:
-        if loc['street'] not in text or loc['phone'] not in text:
-            raise ValueError('JSON-LD location differs from the footer: ' + loc['city'])
+        for value in (loc['city'], loc['street']):
+            mutant = fallback.replace('</noscript>', '<p>' + value + '</p></noscript>')
+            try:
+                verify_menu_contacts(mutant)
+            except ValueError:
+                pass
+            else:
+                raise ValueError('Menu location control accepted: ' + value)
+    swapped = fallback.replace('Buena Park · 714-521-2444', 'Irvine · 714-521-2444')
+    try:
+        verify_menu_contacts(swapped)
+    except ValueError:
+        pass
+    else:
+        raise ValueError('SUP swapped city/phone control accepted')
     if '<link rel="manifest" href="manifest.webmanifest">' not in text:
         raise ValueError('Missing web app manifest link')
     # The menu lives under BASE: its canonical, alternates and worker scope must all say so.

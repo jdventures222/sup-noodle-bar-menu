@@ -1,7 +1,7 @@
 {
   "ui.title": "SUP Noodle Bar 메뉴",
   "ui.brand": "SUP Noodle Bar",
-  "ui.tagline": "Buena Park와 Irvine에 있는 베트남 쌀국수 전문점",
+  "ui.tagline": "베트남 쌀국수 전문점",
   "ui.language": "언어",
   "ui.jumpTo": "바로 가기",
   "ui.specials": "스페셜",
@@ -227,5 +227,6 @@
   "ui.searchNoneFiltered": "이 검색어와 현재 필터에 해당하는 메뉴가 없습니다.",
   "ui.viewDish": "메뉴 보기",
   "ui.share": "공유",
-  "ui.linkCopied": "링크 복사됨"
+  "ui.linkCopied": "링크 복사됨",
+  "ui.description": "Buena Park와 Irvine에 있는 베트남 쌀국수 전문점"
 }

@@ -1,7 +1,7 @@
 {
   "ui.title": "Menú de SUP Noodle Bar",
   "ui.brand": "SUP Noodle Bar",
-  "ui.tagline": "Restaurante de fideos vietnamitas en Buena Park e Irvine",
+  "ui.tagline": "Restaurante de fideos vietnamitas",
   "ui.language": "Idioma",
   "ui.jumpTo": "Ir a",
   "ui.specials": "Especiales",
@@ -227,5 +227,6 @@
   "ui.searchNoneFiltered": "Ningún plato coincide con esta búsqueda y los filtros actuales.",
   "ui.viewDish": "Ver platillo",
   "ui.share": "Compartir",
-  "ui.linkCopied": "Enlace copiado"
+  "ui.linkCopied": "Enlace copiado",
+  "ui.description": "Restaurante de fideos vietnamitas en Buena Park e Irvine"
 }
