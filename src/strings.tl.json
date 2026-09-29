@@ -1,7 +1,7 @@
 {
   "ui.title": "Menu ng SUP Noodle Bar",
   "ui.brand": "SUP Noodle Bar",
-  "ui.tagline": "Kainan ng mga pansit na Biyetnames",
+  "ui.tagline": "Kainan ng mga pansit na Biyetnames sa Buena Park at Irvine",
   "ui.language": "Wika",
   "ui.jumpTo": "Pumunta sa",
   "ui.specials": "Mga espesyal",
@@ -227,6 +227,5 @@
   "ui.searchNoneFiltered": "Walang pagkaing tumutugma sa paghahanap na ito at sa kasalukuyang mga filter.",
   "ui.viewDish": "Tingnan ang pagkain",
   "ui.share": "Ibahagi",
-  "ui.linkCopied": "Nakopya ang link",
-  "ui.description": "Kainan ng mga pansit na Biyetnames sa Buena Park at Irvine"
+  "ui.linkCopied": "Nakopya ang link"
 }

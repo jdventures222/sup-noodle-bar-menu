@@ -1,7 +1,7 @@
 {
   "ui.title": "SUP Noodle Bar का मेन्यू",
   "ui.brand": "SUP Noodle Bar",
-  "ui.tagline": "वियतनामी नूडल बार",
+  "ui.tagline": "बुएना पार्क और इरवाइन में वियतनामी नूडल बार",
   "ui.language": "भाषा",
   "ui.jumpTo": "सीधे जाएँ",
   "ui.specials": "खास पेशकश",
@@ -227,6 +227,5 @@
   "ui.searchNoneFiltered": "इस खोज और मौजूदा फ़िल्टर से कोई व्यंजन मेल नहीं खाता।",
   "ui.viewDish": "व्यंजन देखें",
   "ui.share": "शेयर करें",
-  "ui.linkCopied": "लिंक कॉपी हो गया",
-  "ui.description": "बुएना पार्क और इरवाइन में वियतनामी नूडल बार"
+  "ui.linkCopied": "लिंक कॉपी हो गया"
 }

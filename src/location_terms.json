@@ -77,6 +77,8 @@
       "key": "ui.buenaPark",
       "phone": "714-521-2444",
       "href": "tel:+17145212444",
+      "street": "5141 Beach Blvd Unit B",
+      "locality": "Buena Park, CA 90621",
       "labels": {
         "ar": "بوينا بارك",
         "en": "Buena Park",
@@ -97,6 +99,8 @@
       "key": "ui.irvine",
       "phone": "657-300-8420",
       "href": "tel:+16573008420",
+      "street": "14370 Culver Dr Unit 2H",
+      "locality": "Irvine, CA 92604",
       "labels": {
         "ar": "إرفاين",
         "en": "Irvine",
@@ -114,6 +118,21 @@
       }
     }
   ],
+  "supTaglines": {
+    "ar": "مطعم نودلز فيتنامي في بوينا بارك وإرفاين",
+    "en": "Vietnamese noodle bar in Buena Park and Irvine",
+    "es": "Restaurante de fideos vietnamitas en Buena Park e Irvine",
+    "fa": "رستوران نودل ویتنامی در بوئنا پارک و ارواین",
+    "hi": "बुएना पार्क और इरवाइन में वियतनामी नूडल बार",
+    "ja": "ブエナパークとアーバインのベトナム麺料理店",
+    "ko": "Buena Park와 Irvine에 있는 베트남 쌀국수 전문점",
+    "ru": "Вьетнамская лапшичная в Буэна-Парке и Ирвайне",
+    "tl": "Kainan ng mga pansit na Biyetnames sa Buena Park at Irvine",
+    "ur": "بوئنا پارک اور اِروائن میں ویتنامی نوڈل بار",
+    "vi": "Quán phở và mì Việt Nam tại Buena Park và Irvine",
+    "zh": "位于 Buena Park 和 Irvine 的越南面食餐厅",
+    "zh-Hant": "位於 Buena Park 和 Irvine 的越南麵食餐廳"
+  },
   "regressionControls": [
     {
       "class": "Korean spacing",

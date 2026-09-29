@@ -80,17 +80,23 @@ def normalize_location(text):
 
 
 def verify_menu_contacts(fallback):
-    """Only the paired city labels in SUP's final no-JS contacts may name a place."""
-    expected = '<p>' + '<br>'.join(loc['city'] + ' · ' + loc['phone'] for loc in LOCATIONS) + '</p>'
+    """Only SUP's final no-JS contacts (city · street · phone) and its tagline under the heading may name a place,
+    each exactly as restored on the owner's word (2026-09-29)."""
+    expected = '<p>' + '<br>'.join(loc['city'] + ' · ' + loc['street'] + ' · ' + loc['phone'] for loc in LOCATIONS) + '</p>'
     pattern = r'<p>[^<>]*<br>[^<>]*</p>(?=<p>@supnoodlebar<br>[\s\S]*?</p></div></noscript>\s*$)'
     contacts = re.findall(pattern, fallback)
     if 'id="sup-nojs"' not in fallback or contacts != [expected]:
-        raise ValueError('SUP phone labels: missing footer or incorrect city/phone pairing')
-    # Remove exactly the validated footer labels, not every city occurrence.
-    remaining = re.sub(pattern, '<p>' + '<br>'.join(loc['phone'] for loc in LOCATIONS) + '</p>', fallback)
-    visible = normalize_location(''.join(LocationText(remaining).parts))
+        raise ValueError('SUP phone labels: missing footer, street address or incorrect city/phone pairing')
     # Standalone serving copy of brand/scripts/location_terms.json; checked for parity.
-    terms = set(json.loads((ROOT / 'location_terms.json').read_text())['forbidden'])
+    contract = json.loads((ROOT / 'location_terms.json').read_text())
+    tagline = r'(?<=</h1>)<p>([^<>]*)</p>'
+    if re.findall(r'<h1>[^<>]*</h1><p>([^<>]*)</p>', fallback) != [contract['supTaglines']['en']]:
+        raise ValueError('SUP tagline: the fallback does not carry the tagline with its cities')
+    # Remove exactly the validated footer contacts and tagline, not every city occurrence.
+    remaining = re.sub(pattern, '<p>' + '<br>'.join(loc['phone'] for loc in LOCATIONS) + '</p>', fallback)
+    remaining = re.sub(tagline, '<p></p>', remaining, count=1)
+    visible = normalize_location(''.join(LocationText(remaining).parts))
+    terms = set(contract['forbidden'])
     terms.update(loc[key] for loc in LOCATIONS for key in ('city', 'street'))
     terms.update(words[key] for words in read_strings(ROOT).values() for key in ('ui.buenaPark', 'ui.irvine'))
     for term in terms:
@@ -119,15 +125,47 @@ def verify_location_controls(fallback):
                 raise AssertionError('Wrong failure for ' + test['class']) from exc
         else:
             raise ValueError('Menu location control accepted: ' + test['class'])
-    swapped = fallback.replace('Buena Park · 714-521-2444', 'Irvine · 714-521-2444')
-    try:
-        verify_menu_contacts(swapped)
-    except ValueError as exc:
-        if not str(exc).startswith('SUP phone labels: '):
-            raise AssertionError('Wrong failure for swapped city/phone') from exc
-    else:
-        raise ValueError('SUP swapped city/phone control accepted')
-    print(f'PASS SUP location controls: {len(controls)} location-specific failures, swapped phone rejected; harmless body text passes')
+    tagline = '<p>' + contract['supTaglines']['en'] + '</p>'
+    for name, mutant, reason in [
+            ('swapped city/phone', fallback.replace('Buena Park · 5141', 'Irvine · 5141'), 'SUP phone labels: '),
+            ('footer without a street address', fallback.replace(' · 5141 Beach Blvd Unit B · ', ' · '), 'SUP phone labels: '),
+            ('tagline without its cities', fallback.replace(tagline, '<p>Vietnamese noodle bar</p>'), 'SUP tagline: '),
+            ('another city in the tagline', fallback.replace(tagline, tagline[:-4] + ' and Fountain Valley</p>'), 'SUP tagline: ')]:
+        assert mutant != fallback, 'Vacuous control: ' + name
+        try:
+            verify_menu_contacts(mutant)
+        except ValueError as exc:
+            if not str(exc).startswith(reason):
+                raise AssertionError('Wrong failure for ' + name) from exc
+        else:
+            raise ValueError('SUP control accepted: ' + name)
+    print(f'PASS SUP location controls: {len(controls)} location-specific failures; swapped phone, bare footer and tagline controls rejected; harmless body text passes')
+
+
+def verify_restored_locations(work, site, text, strings):
+    """James, 2026-09-29: SUP shows both street addresses and the tagline's cities again, on screen in every language,
+    in the no-JS menu (verify_menu_contacts) and in all 13 print pages and PDFs."""
+    contract = json.loads((work / 'location_terms.json').read_text())
+    contacts = contract['supFooterPhones']
+    if [(c['street'], c['locality'], c['phone']) for c in contacts] != [(loc['street'], loc['city'] + ', CA ' + loc['zip'], loc['phone']) for loc in LOCATIONS]:
+        raise ValueError('Location contract differs from the JSON-LD locations')
+    for c in contacts:
+        # The screen footer is one template for every language; only its city heading is translated.
+        if text.count(f'{c["street"]}<br>{c["locality"]}<br><a href="{c["href"]}"><bdi dir="ltr">{c["phone"]}</bdi></a>') != 1:
+            raise ValueError('Screen footer lacks the street address: ' + c['street'])
+    for lang in LANGS:
+        if strings[lang]['ui.tagline'] != contract['supTaglines'][lang]:
+            raise ValueError(f'{lang}: tagline is not the tagline with its cities')
+        page = (work / f'print-{lang}.html').read_text()
+        brand = re.findall(r'<h1 class="caps">[\s\S]*?</h1><p>([\s\S]*?)</p></div></div>', page)
+        if len(brand) != 1 or re.sub(r'<[^>]+>', '', brand[0]) != contract['supTaglines'][lang]:
+            raise ValueError(f'{lang}: print tagline is not the tagline with its cities')
+        pdf_text = re.sub(r'\s+', '', subprocess.check_output([poppler_tool('pdftotext'), '-enc', 'UTF-8', str(site / 'pdf' / f'SUP-Menu-{lang}.pdf'), '-'], text=True))
+        for c in contacts:
+            address = f'{c["street"]}, {c["locality"]} · {c["phone"]}'
+            if page.count(f'<address dir="ltr">{address}</address>') != 1 or re.sub(r'\s+', '', address) not in pdf_text:
+                raise ValueError(f'{lang}: print page or PDF lacks the street address: {c["street"]}')
+    print('PASS SUP locations shown: both street addresses on screen, in print and in 13 PDFs; the tagline with its cities in 13 languages')
 
 
 def verify(work):
@@ -170,6 +208,7 @@ def verify(work):
         raise ValueError('JSON-LD places or dish count differ from the data')
     verify_menu_contacts(fallback)
     verify_location_controls(fallback)
+    verify_restored_locations(work, site, text, strings)
     if '<link rel="manifest" href="manifest.webmanifest">' not in text:
         raise ValueError('Missing web app manifest link')
     # The menu lives under BASE: its canonical, alternates and worker scope must all say so.

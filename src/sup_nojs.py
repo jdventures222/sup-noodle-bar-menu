@@ -40,5 +40,5 @@ def markup(structure, s):
         out+='</section>'
     out+='<p><b>'+t('ui.allergyTitle')+'</b> '+t('ui.allergyNotice')+'</p><p><b>'+t('ui.rawTitle')+'</b> '+t('ui.rawNotice')+'</p>'
     out+='<p>'+t('ui.pdfMenu')+': '+' · '.join('<a href="pdf/SUP-Menu-'+lang+'.pdf"><bdi lang="'+lang+'">'+label+'</bdi></a>' for lang,label in zip(LANGS,LABELS))+'</p>'
-    out+='<p>Buena Park · 714-521-2444<br>Irvine · 657-300-8420</p><p>@supnoodlebar<br><a href="https://www.keiconcepts.info/brands/sup">keiconcepts.info/brands/sup</a><br><a href="mailto:hello@keiconcepts.info">hello@keiconcepts.info</a></p></div></noscript>'
+    out+='<p>Buena Park · 5141 Beach Blvd Unit B · 714-521-2444<br>Irvine · 14370 Culver Dr Unit 2H · 657-300-8420</p><p>@supnoodlebar<br><a href="https://www.keiconcepts.info/brands/sup">keiconcepts.info/brands/sup</a><br><a href="mailto:hello@keiconcepts.info">hello@keiconcepts.info</a></p></div></noscript>'
     return out

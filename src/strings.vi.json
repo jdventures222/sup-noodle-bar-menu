@@ -1,7 +1,7 @@
 {
   "ui.title": "Thực đơn SUP Noodle Bar",
   "ui.brand": "SUP Noodle Bar",
-  "ui.tagline": "Quán phở và mì Việt Nam",
+  "ui.tagline": "Quán phở và mì Việt Nam tại Buena Park và Irvine",
   "ui.language": "Ngôn ngữ",
   "ui.jumpTo": "Đi đến",
   "ui.specials": "Món đặc biệt",
@@ -227,6 +227,5 @@
   "ui.searchNoneFiltered": "Không có món nào khớp với tìm kiếm này và bộ lọc hiện tại.",
   "ui.viewDish": "Xem món",
   "ui.share": "Chia sẻ",
-  "ui.linkCopied": "Đã sao chép liên kết",
-  "ui.description": "Quán phở và mì Việt Nam tại Buena Park và Irvine"
+  "ui.linkCopied": "Đã sao chép liên kết"
 }

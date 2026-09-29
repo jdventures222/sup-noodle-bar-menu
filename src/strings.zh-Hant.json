@@ -1,7 +1,7 @@
 {
   "ui.title": "SUP Noodle Bar 菜單",
   "ui.brand": "SUP Noodle Bar",
-  "ui.tagline": "越南麵食餐廳",
+  "ui.tagline": "位於 Buena Park 和 Irvine 的越南麵食餐廳",
   "ui.language": "語言",
   "ui.jumpTo": "跳至",
   "ui.specials": "特惠",
@@ -227,6 +227,5 @@
   "ui.searchNoneFiltered": "沒有餐點符合目前的搜尋與篩選條件。",
   "ui.viewDish": "查看餐點",
   "ui.share": "分享",
-  "ui.linkCopied": "連結已複製",
-  "ui.description": "位於 Buena Park 和 Irvine 的越南麵食餐廳"
+  "ui.linkCopied": "連結已複製"
 }

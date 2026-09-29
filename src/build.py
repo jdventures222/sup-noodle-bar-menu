@@ -57,7 +57,7 @@ data = json.dumps({"structure": structure, "strings": strings, "photos": photos,
 def uri(name, mime):
     return f"data:{mime};base64," + base64.b64encode((root / "assets" / name).read_bytes()).decode()
 html = (root / "template.html").read_text()
-html = html.replace("__DESCRIPTION__", html_lib.escape(all_strings['en']['ui.description'], quote=True)).replace("__PREVIEW_TITLE__", html_lib.escape(all_strings['en']['ui.title'], quote=True)).replace("__REVISION__", rev['stamp'])
+html = html.replace("__DESCRIPTION__", html_lib.escape(all_strings['en']['ui.tagline'], quote=True)).replace("__PREVIEW_TITLE__", html_lib.escape(all_strings['en']['ui.title'], quote=True)).replace("__REVISION__", rev['stamp'])
 html = html.replace("__DATA__", data.replace("</", "<\\/")).replace("__JSONLD__", jsonld(structure, all_strings['en']))
 fallback = markup(structure, all_strings['en'])
 html = html.replace('__NOJS__', fallback)
